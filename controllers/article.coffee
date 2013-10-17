@@ -332,7 +332,7 @@ module.exports.filters =
   # "/":
   #   get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns']
   "/":
-    get:['freshLogin','getRecent','get_infos','article/new-comments']
+    get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns']
   "/:id":
     get:['freshLogin','getRecent','get_infos','article/get-article','article/this-column','article/comments','article/article_zan_logs']
   "/:id/zan":

@@ -15,20 +15,20 @@ read = require("readability")
 request = require 'request'
 rss = require 'rss'
 module.exports.controllers = 
+  # "/":
+  #   "get":(req,res,next)->
+  #     func_column.count {is_publish:1},(error,count)->
+  #       if error then next error
+  #       else
+  #         res.locals.total=count
+  #         res.locals.totalPage=Math.ceil(count/20)
+  #         res.locals.page = (req.query.page||1)
+  #         func_column.getAll 1,10,{is_publish:1},"last_article_time desc,visit_count desc",(error,columns)->
+  #           if error then next error
+  #           else
+  #             res.locals.columns = columns
+  #             res.render 'article/columns.jade'
   "/":
-    "get":(req,res,next)->
-      func_column.count {is_publish:1},(error,count)->
-        if error then next error
-        else
-          res.locals.total=count
-          res.locals.totalPage=Math.ceil(count/20)
-          res.locals.page = (req.query.page||1)
-          func_column.getAll 1,10,{is_publish:1},"last_article_time desc,visit_count desc",(error,columns)->
-            if error then next error
-            else
-              res.locals.columns = columns
-              res.render 'article/columns.jade'
-  "/old":
     "get":(req,res,next)->
       condition = 
         is_yuanchuang:1
@@ -329,9 +329,9 @@ module.exports.filters =
     get:['checkLogin',"checkCard"]
     post:['checkLoginJson',"checkCard"]
   
+  # "/":
+  #   get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns']
   "/":
-    get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns']
-  "/old":
     get:['freshLogin','getRecent','get_infos','article/new-comments']
   "/:id":
     get:['freshLogin','getRecent','get_infos','article/get-article','article/this-column','article/comments','article/article_zan_logs']

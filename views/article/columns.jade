@@ -1,0 +1,123 @@
+!!! 5
+html(xmlns:wb='http://open.weibo.com/wb')
+  head
+    include ../head
+    title #{locals.column?locals.column.name+' - ':''}专栏 - 前端乱炖
+    |<meta name="description" content="用于展示各种原创文章，原创翻译文章，知识性比较强，内容比较专业和系统。专栏这个称呼是一个总称，而其内部，可以分很多独立的专栏，有私人的，也有公开可以投稿的。每个人都可以申请创建一个专栏，但是需要审核。一个专栏是同一系列文章的一个集合，而这个系列可以是一个技术点（例如NodeJS入门系列），也可以是一种抽象的类别（例如情感专栏）。">
+    script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
+    script(src='#{assets_head}/js/masonry.js')
+    style
+  body#articles
+    - locals.pageId=1;
+    include ../header
+    #content.clearfix
+      .actions.topactions
+        a.btn(href="/article/column/add",data-original-title="专栏按照最新文章的添加时间排序，要让自己的专栏有更多展示机会，那就经常更新文章吧。") 创建我的专栏
+        .right-actions
+          a(class="",href="/article/old") 老文章
+      .column-list.clearfix
+        if locals.columns
+          each column in columns
+            .column-item
+              .head 
+                a.title(href="/article/column/#{column.id}") #{column.name} 
+                if !column.is_public 
+                  |<i class="icon-white icon-lock"></i>
+                //- .others
+                  //- span.item
+                  //-   span.key <i class="icon-white icon-list"></i>
+                  //-   span.value #{column.article_count}
+                  //- span.item
+                  //-   span.key <i class="icon-white icon-eye-open"></i>
+                  //-   span.value #{column.visit_count}
+                  //- span.item
+                  //-   span.key <i class="icon-white icon-heart"></i>
+                  //-   span.value #{column.zan_count}
+                  
+                span.actions
+                  if column.is_public || (locals.user&&user.id==column.user_id)
+                    a.btn(href="/article/add?column_id=#{column.id}",data-original-title="向此专栏投递文章")
+                      i.icon-plus.icon-white
+                  if column.is_rssed
+                    a.btn.disabled.red_bg.red_border
+                      i.icon-rss
+                  else
+                    a.btn.red_bg.red_border(href="/article/column/#{column.id}/rss",data-original-title="邮件订阅此专栏更新")
+                      i.icon-rss
+              ul.article-list
+                if !column.articles.length
+                  .no 暂无文章
+                each article,i in column.articles
+                  - var showA = false;
+                  if article.is_publish
+                    showA = true
+                  else if locals.user && locals.user.id == article.user_id
+                    showA = true
+
+
+                  if showA
+                    article.post(id="post-#{article.id}",class="#{i%2==1?'yooo':''} ")
+                      .entry-title
+                        h2.title
+                          
+                          //- a.t-user(href="/user/#{article.user_id}",data-original-title="#{article.user_nick}")
+                          //-   img(src="#{article.user_headpic}",width="20")
+                          
+                          if  !locals.column&&article.column
+                            a(href="/article/column/#{article.column.id}") 【#{article.column.name}】
+                          a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                          if !article.is_publish
+                            span.label.tip 此文正在审核中
+                          
+                      //- .entry-content.clearfix 
+                      //-   if article.main_pic
+                      //-     img.main_pic(src="#{article.main_pic}")
+                      //-   |!{article.desc||article.html.replace(/<p>(.*?)<\/p>/g,"$1\n").replace(/<[^>]*?>/g,"").substr(0,300).replace(/([^\n])\n+([^\n])/g,"$1<br/>$2")}
+                      .entry-foot
+                        div.others
+                          span.author.vcard.item
+                            span.index 
+                              i.icon-user
+                            a.value.url.fn(rel='author', href='/user/#{article.user_id}') #{article.user_nick}
+                          
+                          
+                          span.time.item
+                            span.index 
+                              i.icon-clock
+                            a.value #{moment(article.publish_time*1000).fromNow()}
+                            
+                          if locals.user && (user.is_admin||user.id==article.user_id)
+                            span.views.item
+                              a.value(href="/article/#{article.id}/edit") 编辑
+                          span.right-foot
+                            span.views.item
+                              span.index 
+                                i.icon-comments
+                              a.value #{article.comment_count}
+                            span.views.item
+                              span.index 
+                                i.icon-signal
+                              a.value #{article.visit_count}
+      include ../page
+      
+    
+    include ../footer
+    if locals.column
+      p.
+        <script id="bdshare_js" data="type=tools&amp;uid=2555549" ></script>
+        <script type="text/javascript" id="bdshell_js"></script>
+        <script>
+          var bds_config={"bdText":"分享一个@前端乱炖 的系列文章专栏【#{column.name}】，所有者：@#{column.user.nick}，专栏简介：#{column.desc_md.replace(/\s/g,'')}","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
+          document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+        </script>
+    script
+      $(document).ready(function(){
+         $('.column-list').masonry({
+                    itemSelector : '.column-item',
+                   columnWidth :475
+                });
+        })
+     
+      $('.actions a').tooltip({
+          placement:"bottom"
+      })

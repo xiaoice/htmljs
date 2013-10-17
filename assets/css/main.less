@@ -3,8 +3,22 @@
 @blue:#68a4d1;
 @lightgreen:#6fb79b;
 @red:#f27369;
+.red_bg{
+  background: @red !important;
+}
+.red_border{
+  border-color: @red !important;
+}
 .hidden{
   display:none !important;
+}
+#fixed-modules{
+  position: relative;
+  width:250px;
+}
+#fixed-modules.fixed{
+  position: fixed;
+  top:20px;
 }
 .new-function{
   position: relative;
@@ -279,7 +293,7 @@ i{
     padding:10px;
     background: #efefef;
     img{
-      height:50px;
+      height:30px;
       border-radius: 3px;
     }
     .desc{

@@ -15,24 +15,24 @@ read = require("readability")
 request = require 'request'
 rss = require 'rss'
 module.exports.controllers = 
-  # "/":
-  #   "get":(req,res,next)->
-  #     func_column.count {is_publish:1},(error,count)->
-  #       if error then next error
-  #       else
-  #         res.locals.total=count
-  #         res.locals.totalPage=Math.ceil(count/20)
-  #         res.locals.page = (req.query.page||1)
-  #         func_column.getAll 1,10,{is_publish:1},"last_article_time desc,visit_count desc",(error,columns)->
-  #           if error then next error
-  #           else
-  #             res.locals.columns = columns
-  #             res.render 'article/columns.jade'
   "/":
+    "get":(req,res,next)->
+      func_column.count {is_publish:1},(error,count)->
+        if error then next error
+        else
+          res.locals.total=count
+          res.locals.totalPage=Math.ceil(count/20)
+          res.locals.page = (req.query.page||1)
+          func_column.getAll 1,10,{is_publish:1},"last_article_time desc,visit_count desc",(if res.locals.user then res.locals.user.id else null),(error,columns)->
+            if error then next error
+            else
+              res.locals.columns = columns
+              res.render 'article/columns.jade'
+  "/old":
     "get":(req,res,next)->
       condition = 
         is_yuanchuang:1
-      
+        column_id:null
       func_article.count condition,(error,count)->
         if error then next error
         else
@@ -236,7 +236,7 @@ module.exports.controllers =
             source_user_nick:res.locals.user.nick
             time:new Date()
             target_path:"/article/"
-            action_name:"【赞】了您的原创文章("+req.body.score+" 分)"
+            action_name:"【赞】了您的原创文章()"+req.body.score+")"
             target_path_name:article.title
         res.send result
   "/:id":
@@ -329,10 +329,10 @@ module.exports.filters =
     get:['checkLogin',"checkCard"]
     post:['checkLoginJson',"checkCard"]
   
-  # "/":
-  #   get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns']
   "/":
-    get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns']
+    get:['freshLogin','getRecent','get_infos','article/new-comments']
+  "/old":
+    get:['freshLogin','getRecent','get_infos','article/new-comments']
   "/:id":
     get:['freshLogin','getRecent','get_infos','article/get-article','article/this-column','article/comments','article/article_zan_logs']
   "/:id/zan":
@@ -341,7 +341,7 @@ module.exports.filters =
     get:['checkLogin',"checkCard"]
     post:['checkLogin',"checkCard"]
   "/column/:id":
-    get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns',"article/get-column"]
+    get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns',"article/get-column",'article/get-column-rss']
   "/column/:id/rss":
     get:['checkLogin','checkCard']
 

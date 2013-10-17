@@ -31,28 +31,7 @@ html
                 p(style="color:#999;") 本站推荐按照您的情况，为作者捐助一下金额：1元，5元，10元，20元，或者更多。
                 p 
                   a(href="#{article.card.alipay}",target="_blank") 点击这里用支付宝捐助
-          .module#score(style="margin-top:10px;")
-            .hd 评价（当前分数：#{article.score} 打分次数：#{zan_logs.length}）
-            .bd(class="#{zan_guo?'marked':''}")
-              span.mark 
-                i.icon-dislikes(data-index="1")
-                i.icon-dislikes(data-index="2")
-                i.icon-dislikes(data-index="3")
-                i.icon-dislikes(data-index="4")
-                i.icon-dislikes(data-index="5")
-                i.icon-dislikes(data-index="6")
-                i.icon-dislikes(data-index="7")
-                i.icon-dislikes(data-index="8")
-                i.icon-dislikes(data-index="9")
-                i.icon-dislikes(data-index="10")
-              span.mark-score <em>0</em>分
-              span.mark-already 您已经评价过，打分：<em>#{locals.zan_score?zan_score:0}</em>
-              .zan-logs
-                if locals.zan_logs
-                  each zan in zan_logs
-                    if zan&&zan.user
-                      a.user(style="display:inline-block;",href="/user/#{zan.user.id}",data-original-title="#{zan.user.nick} #{zan.score}分") 
-                        img(src="#{zan.user.head_pic}",width="20")
+          
           .comment.module
             .hd 评论
             .bd
@@ -124,18 +103,42 @@ html
               span.views
                 span.index 评论：
                 a.value #{article.comment_count}
-          if locals.column_articles
-            .module.recent
-              .hd 本专栏其他文章
-              .bd
-                each a in column_articles
-                  div.item <a href="/article/#{a.id}">#{a.title}</a>
-          .module.recent
-            .hd 近期文章
-            .bd
-              if locals.recents
-                each recent in recents
-                  div.item <a href="/article/#{recent.id}">#{recent.title}</a>
+          #fixed-modules
+            .module#score(style="margin-top:10px;")
+              .hd 评价
+              .bd(class="#{zan_guo?'marked':''}")
+                span.mark 
+                  i.icon-dislikes(data-index="1")
+                  i.icon-dislikes(data-index="2")
+                  i.icon-dislikes(data-index="3")
+                  i.icon-dislikes(data-index="4")
+                  i.icon-dislikes(data-index="5")
+                  i.icon-dislikes(data-index="6")
+                  i.icon-dislikes(data-index="7")
+                  i.icon-dislikes(data-index="8")
+                  i.icon-dislikes(data-index="9")
+                  i.icon-dislikes(data-index="10")
+                span.mark-score <em>0</em>分
+                .mark-already 您已经评价过，打分：<em>#{locals.zan_score?zan_score:0}</em>
+                .zan-logs
+                  if locals.zan_logs
+                    each zan in zan_logs
+                      if zan&&zan.user
+                        a.user(style="display:inline-block;",href="/user/#{zan.user.id}",data-original-title="#{zan.user.nick} #{zan.score}分") 
+                          img(src="#{zan.user.head_pic}",width="20")
+            if locals.column_articles
+              .module.recent
+                .hd 本专栏其他文章
+                .bd
+                  each a in column_articles
+                    div.item <a href="/article/#{a.id}">#{a.title}</a>
+            else
+              .module.recent
+                .hd 近期文章
+                .bd
+                  if locals.recents
+                    each recent in recents
+                      div.item <a href="/article/#{recent.id}">#{recent.title}</a>
           
       - locals.shareImgs = article.html.match(/img\s*?src=["|'](.*?)["|']/);
       p.
@@ -300,3 +303,9 @@ html
           $('.user').tooltip({
           placement:"bottom"
           })
+          var offset = $('#fixed-modules').offset();
+          $(window).scroll(function(){
+            var scrollTop = $(window).scrollTop();
+            if (offset.top < scrollTop+40) $('#fixed-modules').addClass('fixed');
+            else $('#fixed-modules').removeClass('fixed');
+          });

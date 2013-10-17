@@ -11,6 +11,28 @@ module.exports =
       callback null,count
     .error (e)->
       callback e
+  searchAll:(keys,page,count,callback)->
+    query_where = [];
+    keys.forEach (key)->
+      query_where.push "CONCAT(`title`,`desc`,`user_nick`) like ?"
+    arr = [query_where.join(" and ")]
+    keys.forEach (key)->
+      arr.push "%"+key+"%"
+    Article.findAll
+      where:arr
+      offset: (page - 1) * count
+      limit: count
+      order: "id desc"
+    .success (articles)->
+      res.locals.articles = articles
+      Question.findAll
+        where:arr
+        offset: (page - 1) * count
+        limit: count
+        order: "id desc"
+      .success (articles)->
+        res.locals.articles = articles
+        
   getAll:(page,count,callback)->
     #select * from indexinfos  left join articles  on articles.uuid = indexinfos.info_id left join questions on questions.uuid = indexinfos.info_id;
     sequelize.query("select indexinfo.createdAt AS createdAt,indexinfo.sort AS sort,indexinfo.id AS id,

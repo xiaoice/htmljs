@@ -19,3 +19,7 @@ module.exports =
     type:"tinyint"
   desc_md:"text"
   desc_html:"text"
+  last_article_time:"bigint"
+  rss_count:
+    defaultValue:0
+    type:"int"

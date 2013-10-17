@@ -6,6 +6,8 @@ var config = {
   ,cacert:'cacert.pem'//ca证书路径地址，用于curl中ssl校验 
   ,transport:'http' //访问模式,根据自己的服务器是否支持ssl访问，若支持请选择https；若不支持请选择http
   ,input_charset:'utf-8'//字符编码格式 目前支持 gbk 或 utf-8
+  ,trade_create_by_buyer_return_url : 'http://www.html-js.com/alipay/trade_create_by_buyer/return_url'
+  ,trade_create_by_buyer_notify_url: 'http://www.html-js.com/alipay/trade_create_by_buyer/notify_url'
 };
 
 var Alipay = require('alipay').Alipay;

@@ -13,7 +13,7 @@ module.exports.controllers =
       # alipay.create_direct_pay_by_user(data, res)
 
       data = 
-        out_trade_no:"U03745-131011-03873"#req.body.WIDout_trade_no 
+        out_trade_no:Math.random()*10000000000000000#req.body.WIDout_trade_no 
         subject:"前端乱炖活动报名"#req.body.WIDsubject 
         total_fee:"1"#req.body.WIDtotal_fee 
         body: "前端乱炖活动报名"#req.body.WIDbody

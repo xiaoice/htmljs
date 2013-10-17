@@ -341,7 +341,7 @@ module.exports.filters =
     get:['checkLogin',"checkCard"]
     post:['checkLogin',"checkCard"]
   "/column/:id":
-    get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns',"article/get-column",'article/get-column-rss']
+    get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns',"article/get-column"]
   "/column/:id/rss":
     get:['checkLogin','checkCard']
 

@@ -15,12 +15,12 @@ module.exports.controllers =
       data = 
         out_trade_no:"U03745-131011-03873"#req.body.WIDout_trade_no 
         subject:"前端乱炖活动报名"#req.body.WIDsubject 
-        total_fee:"0.1"#req.body.WIDtotal_fee 
+        total_fee:"1"#req.body.WIDtotal_fee 
         body: "前端乱炖活动报名"#req.body.WIDbody
         show_url:"www.html-js.com"#req.body.WIDshow_url
         quantity  : "1"#req.body.WIDquantity,
         payment_type:"1"
-        price:"0.1"
+        price:"1"
         logistics_fee : "0"#req.body.WIDlogistics_fee,
         logistics_type  : "POST"#req.body.WIDlogistics_type,
         logistics_payment : "SELLER_PAY"#req.body.WIDlogistics_payment,

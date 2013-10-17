@@ -61,7 +61,13 @@ html(xmlns:wb='http://open.weibo.com/wb')
               .col-action
                 a.btn(href="/article/add?column_id=#{column.id}",data-original-title="",style="margin-right:10px;") 
                   i.icon-plus.icon-white
-                  |在此专栏发表文章
+                  |  在此专栏发表文章
+                a.btn(href="/article/column/#{column.id}/rss") 
+                  i.icon-message-plus
+                  |  订阅此专栏
+            .col-rss
+              span.label.label-warning 订阅后，此专栏文章有更新会直接把全文发到您的邮箱，请确保在花名册中填写了正确的邮箱地址。
+              
 
       .left
 

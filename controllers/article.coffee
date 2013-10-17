@@ -17,6 +17,19 @@ rss = require 'rss'
 module.exports.controllers = 
   "/":
     "get":(req,res,next)->
+      func_column.count {is_publish:1},(error,count)->
+        if error then next error
+        else
+          res.locals.total=count
+          res.locals.totalPage=Math.ceil(count/20)
+          res.locals.page = (req.query.page||1)
+          func_column.getAll 1,10,{is_publish:1},"last_article_time desc,visit_count desc",(error,columns)->
+            if error then next error
+            else
+              res.locals.columns = columns
+              res.render 'article/columns.jade'
+  "/old":
+    "get":(req,res,next)->
       condition = 
         is_yuanchuang:1
       
@@ -151,7 +164,7 @@ module.exports.controllers =
         main_pic:if match then match[1] else null
         desc:safeConverter.makeHtml req.body.md.substr(0,200)
       if req.body.column_id
-        func_column.addCount req.body.column_id,"article_count",()->
+        func_column.update req.body.column_id,{last_article_time:(new Date()).getTime()},()->
 
       result = 
         success:0
@@ -211,11 +224,20 @@ module.exports.controllers =
     post:(req,res,next)->
       result = 
         success:0
-      func_article.addZan req.params.id,res.locals.user.id,req.body.score,(error,log)->
+      func_article.addZan req.params.id,res.locals.user.id,req.body.score,(error,log,article)->
         if error 
           result.info = error.message
         else
           result.success = 1
+          func_info.add 
+            target_user_id:article.user_id
+            type:1
+            source_user_id:res.locals.user.id
+            source_user_nick:res.locals.user.nick
+            time:new Date()
+            target_path:"/article/"
+            action_name:"【赞】了您的原创文章("+req.body.score+" 分)"
+            target_path_name:article.title
         res.send result
   "/:id":
     "get":(req,res,next)->
@@ -287,6 +309,15 @@ module.exports.controllers =
             else
               res.locals.articles = articles
               res.render 'articles.jade'
+  "/column/:id/rss":
+    get:(req,res,next)->
+      if not res.locals.card then next new Error '请先添加花名册并且填写正确的邮箱地址才能使用此功能！'
+      else if not res.locals.card.email then next new Error '请先添加花名册并且填写正确的邮箱地址才能使用此功能！'
+      else
+        func_column.addRss req.params.id,res.locals.user.id,(error)->
+          if error then next error
+          else
+            res.redirect 'back'
 module.exports.filters = 
   "/add":
     get:['checkLogin',"checkCard","article/all-pub-columns"]
@@ -300,6 +331,8 @@ module.exports.filters =
   
   "/":
     get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns']
+  "/old":
+    get:['freshLogin','getRecent','get_infos','article/new-comments']
   "/:id":
     get:['freshLogin','getRecent','get_infos','article/get-article','article/this-column','article/comments','article/article_zan_logs']
   "/:id/zan":
@@ -308,8 +341,9 @@ module.exports.filters =
     get:['checkLogin',"checkCard"]
     post:['checkLogin',"checkCard"]
   "/column/:id":
-    get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns',"article/get-column"]
-
+    get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns',"article/get-column",'article/get-column-rss']
+  "/column/:id/rss":
+    get:['checkLogin','checkCard']
 
 
 

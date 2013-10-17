@@ -115,7 +115,7 @@ func_article =
               article.updateAttributes
                 score: if article.score==0 then score else (article.score+score)/2
               .success ()->
-                callback null,log
+                callback null,log,article
               .error (e)->
                 callback e
             .error (e)->

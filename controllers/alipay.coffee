@@ -32,5 +32,7 @@ module.exports.controllers =
   "/trade_create_by_buyer/notify_url":
     post:(req,res,next)->
       console.log req.body
+    get:(req,res,next)->
+      console.log req.query
   "/trade_create_by_buyer/return_url":
     get:(req,res,next)->

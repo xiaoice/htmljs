@@ -324,7 +324,7 @@ module.exports.controllers =
     "get":(req,res,next)->
       res.end "
 User-agent: *\n
-Disallow: /user/login/\n
+Disallow: /user/login\n
 Disallow: /talk/\n
 "
 module.exports.filters = 

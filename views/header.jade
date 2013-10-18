@@ -14,12 +14,12 @@
               a(href="/qa") <i class="icon-lightbulb"></i>问答
             li(class="#{locals.pageId==10?'active':''}",pageId="10")
               a(href="/topic") <i class="icon-conversation"></i>话题
-            //
-              li(class="#{locals.pageId==8?'active':''}",pageId="8")
-                a(href="/tag") 标签
-            //
-              li(class="#{locals.pageId==4?'active':''}",pageId="4")
-                a(href="/read") <i class="icon-bookmark"></i>阅读
+            
+            li.hidden(class="#{locals.pageId==8?'active':''}",pageId="8")
+              a(href="/tag") 标签
+          
+            li.hidden(class="#{locals.pageId==4?'active':''}",pageId="4")
+              a(href="/read") <i class="icon-bookmark"></i>阅读
             li(class="#{locals.pageId==2?'active':''}",pageId="2")
               a(href="/cards") <i class="icon-nameplate"></i>花名册
 
@@ -27,9 +27,9 @@
               a(href="/act") <i class="icon-sampler"></i>活动
             li(class="#{locals.pageId==9?'active':''}",pageId="9")
               a(href="/tools") <i class="icon-classic-hammer"></i>常用工具
-            //
-              li(class="#{locals.pageId==6?'active':''}",pageId="6")
-                a(href="/book") 免费送书
+          
+            li.hidden(class="#{locals.pageId==6?'active':''}",pageId="6")
+              a(href="/book") 免费送书
             
           if locals.user
             ul.right-nav

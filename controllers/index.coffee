@@ -320,6 +320,13 @@ module.exports.controllers =
   "/ad":
     "get":(req,res,next)->
       res.render 'ad.jade'
+  "/robots.txt":
+    "get":(req,res,next)->
+      res.end "
+User-agent: *\n
+Disallow: /user/login/\n
+Disallow: /talk/\n
+"
 module.exports.filters = 
   "/article/add":
     get:['checkLogin',"checkCard"]

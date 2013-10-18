@@ -24,7 +24,7 @@ html
                 each qt,i in qts
                   .qa-item(class="#{i%2==1?'yooo':''} #{qt.question.answer_count==0?'unanswered':''}")
                     .entry-title
-                      h1.title
+                      h2.title
                         a(href='/qa/#{qt.question.id}', title='#{qt.question.title}', rel='bookmark') 
                           |#{qt.question.title}
                       div.others

@@ -1,11 +1,13 @@
 #header
+  .logo.hidden
+    h1 前端乱炖
   .navbar.navbar-inverse.navbar-fixed-top
     .navbar-inner
       .container
         .nav-collapse.collapse
           ul.nav
             li(class="#{locals.pageId==0?'active':''}",pageId="0")
-              a(href="/") <i class="icon-home"></i>乱炖首页
+              a(href="/") <i class="icon-home"></i>首页
             li(class="#{locals.pageId==1?'active':''}",pageId="1")
               a(href="/article") <i class="icon-book-open"></i>专栏
             li(class="#{locals.pageId==7?'active':''}",pageId="7")

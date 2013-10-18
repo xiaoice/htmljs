@@ -66,20 +66,21 @@ html(xmlns:wb='http://open.weibo.com/wb')
                 a.bds_douban
                 a.bds_renren
                 a.shareCount
-            if column.is_public || (locals.user&&user.id==column.user_id)
-              .col-action
+            
+            .col-action
+              if column.is_public || (locals.user&&user.id==column.user_id)
                 a.btn(href="/article/add?column_id=#{column.id}",data-original-title="",style="margin-right:10px;") 
                   i.icon-plus.icon-white
                   |  在此专栏发表文章
-                if !locals.is_rssed
-                  a.btn(href="/article/column/#{column.id}/rss") 
-                    i.icon-message-plus
-                    |  订阅此专栏
-                else
-                  a.btn.disabled
-                    |已订阅
-            .col-rss
-              span.label.label-warning 订阅后，此专栏文章有更新会直接把全文发到您的邮箱，请确保在花名册中填写了正确的邮箱地址。
+              if !locals.is_rssed
+                a.btn(href="/article/column/#{column.id}/rss") 
+                  i.icon-message-plus
+                  |  订阅此专栏
+                
+              else
+                a.btn.disabled
+                  |已订阅
+              
               
 
       .left

@@ -46,10 +46,10 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       i.icon-plus.icon-white
                   if column.is_rssed
                     a.btn.disabled.red_bg.red_border
-                      i.icon-rss
+                      i.rss.social.icon-dd
                   else
                     a.btn.red_bg.red_border(href="/article/column/#{column.id}/rss",data-original-title="邮件订阅此专栏更新")
-                      i.icon-rss
+                      i.rss.social
               ul.article-list
                 if !column.articles.length
                   .no 暂无文章

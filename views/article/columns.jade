@@ -66,6 +66,12 @@ html(xmlns:wb='http://open.weibo.com/wb')
                           if  !locals.column&&article.column
                             a(href="/article/column/#{article.column.id}") 【#{article.column.name}】
                           a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                          if article.comment_count == 0
+                            span.label.tip.new New
+                          else if article.comment_count >=7 || article.is_hot
+                            span.label.tip.hot HOT
+                          else if article.sort == 10000
+                            span.label.tip.top 置顶
                           if !article.is_publish
                             span.label.tip 此文正在审核中
                           

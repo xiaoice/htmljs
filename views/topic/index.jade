@@ -11,6 +11,12 @@ html
     - locals.pageId=10;
     include ./../header
     #content.clearfix
+      ul.breadcrumb
+        li
+          a(href="/") 首页
+          span.divider /
+        li.active
+          span 话题
       .left
         .actions
           a.btn(href="/topic/add") <i class="icon-plus icon-white"></i> 添加一枚话题

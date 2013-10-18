@@ -11,6 +11,12 @@ html(xmlns:wb='http://open.weibo.com/wb')
     - locals.pageId=1;
     include ../header
     #content.clearfix
+      ul.breadcrumb
+        li
+          a(href="/") 首页
+          span.divider /
+        li.active
+          span 专栏
       .actions.topactions
         a.btn(href="/article/column/add",data-original-title="专栏按照最新文章的添加时间排序，要让自己的专栏有更多展示机会，那就经常更新文章吧。") 创建我的专栏
         .right-actions

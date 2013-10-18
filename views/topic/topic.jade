@@ -22,6 +22,15 @@ html
     - locals.pageId=10;
     include ./../header
     #content.clearfix
+      ul.breadcrumb
+        li
+          a(href="/") 首页
+          span.divider /
+        li
+          a(href="/topic") 话题
+          span.divider /
+        li.active
+          span #{topic.title}
       .left
         .module.main
           .topic-title

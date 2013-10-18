@@ -12,6 +12,23 @@ html
     - locals.pageId=1;
     include header
     #content.clearfix
+      ul.breadcrumb
+        li
+          a(href="/") 首页
+          span.divider /
+        if article.column
+          li
+            a(href="/article/") 专栏
+            span.divider /
+          li
+            a(href="/article/column/#{article.column.id}") #{article.column.name}
+            span.divider /
+        else
+          li
+            a(href="/article/") 专栏
+            span.divider /
+        li.active
+          span #{article.title}
       if !article
         p.alert 不存在的阅读篇章
       else

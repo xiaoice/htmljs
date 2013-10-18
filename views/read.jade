@@ -13,6 +13,15 @@ html
       if !article
         p.alert 不存在的阅读篇章
       else
+        ul.breadcrumb
+        li
+          a(href="/") 首页
+          span.divider /
+        li
+          a(href="/read") 阅读
+          span.divider /
+        li.active
+          span #{article.title}
         .left
           article.post(id="post-#{article.id}")
             .entry-title

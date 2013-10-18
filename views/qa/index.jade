@@ -14,6 +14,12 @@ html
     - locals.pageId=7;
     include ./../header
     #content.clearfix
+      ul.breadcrumb
+        li
+          a(href="/") 首页
+          span.divider /
+        li.active
+          span 问答
       .left
         .actions
           a.btn(href="/qa/add") <i class="icon-plus icon-white"></i> 我要提问

@@ -22,6 +22,15 @@ html
     - locals.pageId=7;
     include ./../header
     #content.clearfix
+      ul.breadcrumb
+        li
+          a(href="/") 首页
+          span.divider /
+        li
+          a(href="/qa") 问答
+          span.divider /
+        li.active
+          span #{question.title}
       .left
         .module.main
           .qa-title

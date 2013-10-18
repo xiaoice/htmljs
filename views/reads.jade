@@ -11,6 +11,12 @@ html(xmlns:wb='http://open.weibo.com/wb')
     - locals.pageId=4;
     include header
     #content.clearfix
+      ul.breadcrumb
+        li
+          a(href="/") 首页
+          span.divider /
+        li.active
+          span 阅读
       //- .my-reads
       //-   .hd 我的阅读
       //-   .bd

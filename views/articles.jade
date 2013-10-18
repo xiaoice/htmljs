@@ -12,8 +12,8 @@ html(xmlns:wb='http://open.weibo.com/wb')
   body#articles
     - locals.pageId=1;
     include header
-    include article_cats
     #content.clearfix
+      
       if !locals.column
           //- .column-list.clearfix.module
           //-   .bd
@@ -45,6 +45,15 @@ html(xmlns:wb='http://open.weibo.com/wb')
           //-       i.icon-plus.icon-white
           //-       |  发表文章
         else
+          ul.breadcrumb
+            li
+              a(href="/") 首页
+              span.divider /
+            li
+              a(href="/article/") 专栏
+              span.divider /
+            li.active
+              span #{column.name}
           .column
             .col-title 专栏名：#{column.name}
             .col-user 所有者：#{column.user.nick}

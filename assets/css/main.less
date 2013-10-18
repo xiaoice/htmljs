@@ -211,29 +211,68 @@ i{
 .action a {padding:0 5px;}
 
 #header{
+  background: #fff;
+  box-shadow: 1px 1px 1px #eee;
+  .wrapper{
+    width:940px;
+    margin:0 auto;
+  }
+  .logo{
+    h1{
+      font-size: 16px;
+      line-height: 18px;
+      color:@green;
+      text-align: center;
+    }
+    img{
+      width:100px;
+    }
+    float:left;
+    margin-top: 15px;
+  }
+  .navbar{
+    float:left;
+    margin: 0;
+    margin-left: 20px;
+    width:800px;
+  }
   .navbar-inner{
-    height:30px;
-    min-height: 30px;
-    background: @green;
+    height:80px;
+    min-height: 100px;
+    box-shadow: none;
     border:none;
     color:#fff;
     line-height: 30px;
+    background: none;
     a{
       text-shadow:none;
-      color:#fff;
+      color:#aaa;
       line-height: 30px;
       padding-top:0;
       font-size:13px;
       padding-bottom: 0;
-
+      margin-top:35px;
+    }
+    a:hover{
+      color:@green;
+      // background: #fff;
+      background: none;
+      box-shadow: none;
+      font-weight: bold;
     }
     .active a{
       color:@green;
-      background: #fff;
+      // background: #fff;
+      background: none;
+      box-shadow: none;
+      font-weight: bold;
     }
     i{
       vertical-align: -2px;
       margin-right: 5px;
+    }
+    .nav{
+      float:left;
     }
   }
   .right-nav{

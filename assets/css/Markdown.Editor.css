@@ -16,9 +16,10 @@
 .wmd-prompt-dialog>div{font-size:0.8em;font-family:arial,helvetica,sans-serif;}
 .wmd-prompt-dialog>form>input[type="text"]{border:1px solid #999999;color:black;}
 .wmd-prompt-dialog>form>input[type="button"]{border:1px solid #888888;font-family:trebuchet MS,helvetica,sans-serif;font-size:0.8em;font-weight:bold;}
-#content .btn-toolbar .btn{background:#f3f3f3;border:1px solid #ddd;background-image:none;}
+#content .btn-toolbar .btn{background:none;border:none;background-image:none;}
+#content .btn-toolbar{border-bottom:1px solid #eee;border:none;box-shadow: none;}
 #content .btn-toolbar .btn:hover{background:#eee;background-image:none;}
-#content .btn-toolbar .btn i{font-size:0;}
+#content .btn-toolbar .btn i{color:#777;background: none;}
 #title{width:100%;}
 .wmd-input{margin-top:10px;}
 .wmd-preview{margin-top:10px;}

@@ -102,5 +102,5 @@ func_column =
         callback new Error '没有订阅过此专栏'
     .error (e)->
       callback e
-__FC func_column,Column,['delete','add','addCount','count']
+__FC func_column,Column,['delete','add','addCount','count','update']
 module.exports = func_column

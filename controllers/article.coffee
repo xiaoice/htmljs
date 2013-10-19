@@ -21,9 +21,9 @@ module.exports.controllers =
         if error then next error
         else
           res.locals.total=count
-          res.locals.totalPage=Math.ceil(count/20)
+          res.locals.totalPage=Math.ceil(count/10)
           res.locals.page = (req.query.page||1)
-          func_column.getAll 1,10,{is_publish:1},"last_article_time desc,visit_count desc",(if res.locals.user then res.locals.user.id else null),(error,columns)->
+          func_column.getAll res.locals.page,10,{is_publish:1},"last_article_time desc,visit_count desc",(if res.locals.user then res.locals.user.id else null),(error,columns)->
             if error then next error
             else
               res.locals.columns = columns

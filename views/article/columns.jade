@@ -28,7 +28,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
               .head 
                 a.title(href="/article/column/#{column.id}") #{column.name} 
                 if !column.is_public 
-                  |<i class="icon-white icon-lock"></i>
+                  |<i class="icon-lock" style="background:none;"></i>
                 //- .others
                   //- span.item
                   //-   span.key <i class="icon-white icon-list"></i>

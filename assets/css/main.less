@@ -22,7 +22,7 @@
 }
 #fixed-modules.fixed{
   position: fixed;
-  top:20px;
+  top:0px;
 }
 .new-function{
   position: relative;
@@ -131,9 +131,11 @@ i{
     background-size: 80% 80%;
   }
 }
+@module-border-color:#ddd;
 .module{
     background:#fff;
-    border-radius:5px;
+    border-radius:0px;
+    border:1px solid @module-border-color;
     padding:15px 20px;
     margin-bottom:10px;
     .hd .right_more{font-size: 12px;float:right;
@@ -211,8 +213,9 @@ i{
 .action a {padding:0 5px;}
 
 #header{
-  background: #fff;
-  box-shadow: 1px 1px 1px #eee;
+  background: @green;
+  box-shadow: 3px 2px 1px #ddd;
+  border-top: 3px solid @red;
   .wrapper{
     width:940px;
     margin:0 auto;
@@ -225,36 +228,39 @@ i{
       text-align: center;
     }
     img{
-      width:100px;
+      width:50px;
     }
     float:left;
-    margin-top: 15px;
+    margin-top: 10px;
   }
   .navbar{
     float:left;
     margin: 0;
-    margin-left: 20px;
-    width:800px;
+    width:100%;
   }
   .navbar-inner{
-    height:80px;
-    min-height: 100px;
+    padding:0;
+    height:40px;
+    min-height:40px;
     box-shadow: none;
     border:none;
     color:#fff;
-    line-height: 30px;
+    line-height: 40px;
     background: none;
+    li{
+      margin-right: 0px;
+    }
     a{
       text-shadow:none;
-      color:#999;
-      line-height: 30px;
+      color:#fff;
+      line-height: 40px;
       padding-top:0;
-      font-size:13px;
+      font-size:14px;
       padding-bottom: 0;
-      margin-top:35px;
+      display: inline-block;
     }
     a:hover{
-      color:@green;
+      color:#fff;
       // background: #fff;
       background: none;
       box-shadow: none;
@@ -262,9 +268,7 @@ i{
     }
     .active a{
       color:@green;
-      // background: #fff;
-      background: none;
-      box-shadow: none;
+       background: #fff;
       font-weight: bold;
     }
     i{
@@ -826,7 +830,6 @@ margin:100px auto;
   }
   .act-item{
     background: #fff;
-    border-radius: 5px;
     margin-bottom:20px;
     display: inline-block;
     width:450px;
@@ -836,7 +839,6 @@ margin:100px auto;
       padding:15px;
       background: @green;
       color:#fff;
-      border-radius: 3px;
       .ln{
         line-height:20px;
         margin-bottom: 2px;

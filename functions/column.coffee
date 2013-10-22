@@ -18,7 +18,6 @@ func_column =
       offset: (page - 1) * count
       limit: count
       order: if desc then desc else "article_count desc"
-      include:[User]
     if condition then query.where = condition
     Column.findAll(query)
     .success (columns)->

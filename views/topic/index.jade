@@ -70,7 +70,7 @@ html
                         a(href="/topic/#{topic.id}/update?is_hot=1") hot
                         a(href="/topic/#{topic.id}/update?is_hot=0") nohot
                   div.user
-                    a(data-original-title="#{topic.user_nick}")
+                    a(data-original-title="#{topic.user_nick}",href="/user/#{topic.user_id}")
                       img(src="#{topic.user_headpic}")
                       if topic.user&&topic.user.sex
                         if topic.user.sex == '男'

@@ -21,6 +21,16 @@ html(xmlns:wb='http://open.weibo.com/wb')
         a.btn(href="/article/column/add",data-original-title="专栏按照最新文章的添加时间排序，要让自己的专栏有更多展示机会，那就经常更新文章吧。") 创建我的专栏
         .right-actions
           a(class="",href="/article/old") 老文章
+      .my-columns.module
+        .bd 
+          span 我的专栏：
+          if locals.my_columns && locals.my_columns.length
+            each column in my_columns
+              a(href="") #{column.name}（#{column.article_count}）
+          else
+            span 暂无专栏。
+
+
       .column-list.clearfix
         if locals.columns
           each column in columns

@@ -1,13 +1,12 @@
 #header
   .wrapper.clearfix
-    //- a.logo(href="/",title="前端乱炖")
-    //-   img(src="#{assets_head}/images/logo.png?1")
-    //-   h1.hidden 前端乱炖
+    a.logo(href="/",title="前端乱炖")
+      span.dun 炖
     .navbar.navbar-inverse
       .navbar-inner
         .container
           .nav-collapse.collapse
-            ul.nav
+            ul.nav.left-nav
               li(class="#{locals.pageId==0?'active':''}",pageId="0")
                 a(href="/") <i class="icon-home"></i>首页
               li(class="#{locals.pageId==1?'active':''}",pageId="1")
@@ -22,30 +21,37 @@
             
               li.hidden(class="#{locals.pageId==4?'active':''}",pageId="4")
                 a(href="/read") <i class="icon-bookmark"></i>阅读
-              li(class="#{locals.pageId==2?'active':''}",pageId="2")
-                a(href="/cards") <i class="icon-nameplate"></i>花名册
+              
 
-              li(class="#{locals.pageId==5?'active':''}",pageId="5")
-                a(href="/act") <i class="icon-sampler"></i>活动
-              li(class="#{locals.pageId==9?'active':''}",pageId="9")
-                a(href="/tools") <i class="icon-classic-hammer"></i>常用工具
+              
+              
             
               li.hidden(class="#{locals.pageId==6?'active':''}",pageId="6")
                 a(href="/book") 免费送书
-              
-            if locals.user
-              ul.right-nav
+              //- li.dropdown
+              //-   a.dropdown-toggle(data-toggle="dropdown")
+              //-     |<i class="icon-list"></i> 花名册
+              //-   ul.dropdown-menu
+            
+            ul.right-nav
+              if locals.user
                 li 
-                  a(href="/user",title="有#{unread_count}条未读消息") 
+                  a(href="/user",title="有#{unread_count}条未读消息",style="margin-right:5px;") 
                     img(src="#{user.head_pic}",width="20px")
                     if locals.unread_count
                       span.unread(href="/user",) #{unread_count}
-                li
                   a(href="/user/logout?redirect=#{encodeURIComponent(locals.url)}") 退出
-            else
-              ul.right-nav
+              else
                 li
                   a(href="/user/login?redirect=#{encodeURIComponent(locals.url)}") 登录
+              li(class="#{locals.pageId==2?'':''}",pageId="2")
+                a(href="/cards") <i class="icon-nameplate hidden"></i>花名册
+              li(class="#{locals.pageId==5?'':''}",pageId="5")
+                a(href="/act") <i class="icon-sampler hidden"></i>活动
+              li(class="#{locals.pageId==9?'':''}",pageId="9")
+                a(href="/tools") <i class="icon-classic-hammer hidden"></i>常用工具
+
+        
 if locals.user && (!locals.user.card_id)
   #tips(style="width:940px;margin:0 auto;margin-top:40px;")
     .module
@@ -53,4 +59,4 @@ if locals.user && (!locals.user.card_id)
         |您还没有加入 花名册 ，加入花名册后，可以享受更多功能，现在加入，<a href="/add-card">加入花名册</a>。<br/>
         |如果您之前在花名册添加过信息，点击这里去领取你的名片，<a href="/cards">领取花名册</a>
 else
-  #tips(style="margin-top:20px;")
+  #tips(style="margin-top:30px;")

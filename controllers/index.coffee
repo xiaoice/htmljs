@@ -180,37 +180,26 @@ module.exports.controllers =
           res.redirect '/user'
   "/card/:id":
     get:(req,res,next)->
-      res.locals.md5 = md5
-
-      func_card.getById req.params.id,(error,card)->
+      func_card.getVisitors req.params.id,(error,visitors)->
         if error then next error
-        else if not card then next new Error '不存在的名片'
         else
-          func_card.getVisitors card.id,(error,visitors)->
-            if error then next error
-            else
-              res.locals.visitors = visitors
-              func_card.addVisit card.id,res.locals.user||null
-              if card then res.locals.card = card
-              if card.user_id && res.locals.user && card.user_id!=res.locals.user.id
-                func_info.add 
-                  target_user_id:card.user_id
-                  type:1
-                  source_user_id:res.locals.user.id
-                  source_user_nick:res.locals.user.nick
-                  time:new Date()
-                  target_path:req.originalUrl
-                  action_name:"【访问】了您的名片"
-                  target_path_name:card.nick+"的名片"
-                ,()->
-                  console.log 'success'
-                func_article.getByUserIdAndType (card.user_id||-1),1,(error,articles)->
-                  if error then next error
-                  else
-                    res.locals.articles = articles
-                    res.render 'user/p.jade'
-              else
-                res.render 'user/p.jade'
+          res.locals.visitors = visitors
+          func_card.addVisit req.params.id,res.locals.user||null
+          if res.locals.card.user_id && res.locals.user && res.locals.card.user_id!=res.locals.user.id
+            func_info.add 
+              target_user_id:res.locals.card.user_id
+              type:1
+              source_user_id:res.locals.user.id
+              source_user_nick:res.locals.user.nick
+              time:new Date()
+              target_path:req.originalUrl
+              action_name:"【访问】了您的名片"
+              target_path_name:res.locals.card.nick+"的名片"
+            ,()->
+              console.log 'success'
+            res.render 'user/p.jade'
+          else
+            res.render 'user/p.jade'
   "/card/:id/bao":
     post:(req,res,next)->
       data = 
@@ -333,7 +322,7 @@ module.exports.filters =
   "/cards":
     get:['freshLogin',"checkCard","card_recent","card/new-comments"]
   "/card/:id":
-    get:['freshLogin','getBao','card/comments','card/zans']
+    get:['freshLogin','card/get-card','card/comments','card/zans','card/his-articles','card/his-question','card/his-topic','card/his-answer']
   "/add-card":
     get:['checkLogin',"checkCard"]
     post:['checkLogin']

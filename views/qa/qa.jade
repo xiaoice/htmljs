@@ -17,7 +17,7 @@ html
       #insertImageDialog h4 { margin-bottom: 10px; }
       #insertImageDialog input[type=text] { width: 260px; }
       #insertImageDialog .loading-small { display:none; float: left; padding-right: 5px; }
-   
+      #fixed-modules{width:270px;}
   body#qa
     - locals.pageId=7;
     include ./../header
@@ -185,16 +185,7 @@ html
           .bd
             span 浏览数：#{question.visit_count}
             span 回答数：#{question.answer_count}
-        .module.share
-          .hd 分享
-          .bd 
-            div#bdshare.bdshare_t.bds_tools.get-codes-bdshare.clearfix(style="width:300px;margin-top:10px;float:none;margin-left:0px;")
-              a.bds_tsina
-              a.bds_qzone
-              a.bds_tqq
-              a.bds_douban
-              a.bds_renren
-              a.shareCount
+
         if locals.ehis 
           .module.edithistory
             .hd 问题修改记录
@@ -205,6 +196,17 @@ html
                     span 此问题在 <em>#{moment(eh.createdAt).fromNow()}</em> 被 <em>#{eh.user.nick}</em> 修改。<br/>理由：<em>#{eh.reason}</em>
               else
                 .item 暂无修改记录
+        #fixed-modules
+          .module.share
+            .hd 分享
+            .bd 
+              div#bdshare.bdshare_t.bds_tools.get-codes-bdshare.clearfix(style="width:300px;margin-top:10px;float:none;margin-left:0px;")
+                a.bds_tsina
+                a.bds_qzone
+                a.bds_tqq
+                a.bds_douban
+                a.bds_renren
+                a.shareCount
     script#comment-tpl(type="text/template")
       .comment-item.clearfix
         div.con 
@@ -490,6 +492,12 @@ html
         })
         })
         })
+          var offset = $('#fixed-modules').offset();
+          $(window).scroll(function(){
+            var scrollTop = $(window).scrollTop();
+            if (offset.top < scrollTop+40) $('#fixed-modules').addClass('fixed');
+            else $('#fixed-modules').removeClass('fixed');
+          });
     p.
       <script id="bdshare_js" data="type=tools&amp;uid=2555549" ></script>
       <script type="text/javascript" id="bdshell_js"></script>

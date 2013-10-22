@@ -13,7 +13,7 @@ ColumnRss.sync()
 
 
 func_column = 
-  getAll:(page,count,condition,desc,user_id,callback)->
+  getAllWithArticle:(page,count,condition,desc,user_id,callback)->
     query = 
       offset: (page - 1) * count
       limit: count
@@ -101,5 +101,5 @@ func_column =
         callback new Error '没有订阅过此专栏'
     .error (e)->
       callback e
-__FC func_column,Column,['delete','add','addCount','count','update']
+__FC func_column,Column,['delete','add','addCount','count','update','getAll']
 module.exports = func_column

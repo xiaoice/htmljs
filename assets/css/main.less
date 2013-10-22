@@ -143,9 +143,14 @@ i{
     .hd{line-height:30px;color:#333;font-size:16px;height:30px;font-weight:bold;color:#666;}
     .bd{font-size:12px;padding:0px;color:#666;}
   }
+  body{
+    background: url(../images/bg-repeat.png) ;
+    background: #efefef;
+  }
 #content{
   width:940px;
   margin:20px auto;
+
   .btn{
     height:27px;
     border:none;
@@ -211,14 +216,47 @@ i{
 .search button{height:25px;}
 .cat-select .label{margin:2px 5px;cursor:pointer;}
 .action a {padding:0 5px;}
+#nav{
+  .wrapper{
+    width:940px;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+  .logo{
+    .words{
+      span{
+        display: inline-block;
+        border-radius: 5px;
+        width:25px;
+        height:25px;
+        margin-right: 2px;
+        border:2px solid #fff;
+        background: none;
+        font-size: 18px;
+        
+        line-height: 25px;
+        text-align: center;
+      }
+      span.dun{
+        border:2px solid @red;
+        color:@red;
+        background: #fff;
+      }
+    }
+  }
+  .navs{
 
+  }
+}
 #header{
   background: @green;
-  box-shadow: 3px 2px 1px #ddd;
-  border-top: 3px solid @red;
+  // box-shadow: 3px 2px 1px #ddd;
+  // border-top: 3px solid @red;
+  // border-bottom: 3px solid #aaa;
   .wrapper{
     width:940px;
     margin:0 auto;
+    height:30px;
   }
   .logo{
     h1{
@@ -231,33 +269,49 @@ i{
       width:50px;
     }
     float:left;
-    margin-top: 10px;
+    span{
+        display: inline-block;
+        width:27px;
+        height:26px;
+        border:2px solid #fff;
+        background: none;
+        font-size: 18px;
+        
+        line-height: 25px;
+        text-align: center;
+      }
+      span.dun{
+        border:2px solid @red;
+        color:@red;
+        background: #fff;
+      }
   }
   .navbar{
     float:left;
     margin: 0;
-    width:100%;
+    width:900px;
   }
   .navbar-inner{
     padding:0;
-    height:40px;
-    min-height:40px;
+    min-height:30px;
     box-shadow: none;
     border:none;
     color:#fff;
     line-height: 40px;
     background: none;
+    overflow: visible;
     li{
       margin-right: 0px;
     }
     a{
       text-shadow:none;
       color:#fff;
-      line-height: 40px;
+      line-height: 30px;
       padding-top:0;
-      font-size:14px;
+      font-size:12px;
       padding-bottom: 0;
       display: inline-block;
+      padding:0 12px;
     }
     a:hover{
       color:#fff;
@@ -268,7 +322,7 @@ i{
     }
     .active a{
       color:@green;
-       background: #fff;
+       background: #efefef;
       font-weight: bold;
     }
     i{
@@ -279,6 +333,13 @@ i{
       float:left;
     }
   }
+  .left-nav{
+    li{
+      a{
+        font-size: 12px !important;
+      }
+    }
+  }
   .right-nav{
     float:right;
     
@@ -286,10 +347,11 @@ i{
     li{
       list-style: none;
       line-height:30px;
-      margin-left:10px;
+      margin-left:15px;
       float:left;
       a{
-        display: block;
+        display: inline-block;
+        padding:0;
       }
       .unread{
     display: inline-block;

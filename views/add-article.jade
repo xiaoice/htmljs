@@ -104,6 +104,10 @@ html
         $("#wmd-input").keyup(function(){
           localStorage.setItem("textarea_article_add",this.value)
           })
+        $("#title").val(localStorage.getItem("textarea_article_add_title"))
+        $("#title").keyup(function(){
+          localStorage.setItem("textarea_article_add_title",this.value)
+          })
       }
        
       $("#form").submit(function(e){

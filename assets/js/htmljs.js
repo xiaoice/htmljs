@@ -103,6 +103,7 @@ $(document).ready(function(){
         };
 $('textarea.expand').keyup(function () {
           var t = $(this);
+          if($(this).hasClass("fullscreen-textarea")) return;
           if (!this.justifyDoc) {
               this.justifyDoc = $(document.createElement('div'));
 

@@ -3,14 +3,14 @@ html
   head
     include head
     title 添加专栏文章
-    link(href='#{assets_head}/css/Markdown.Editor.css?ddd', type='text/css', rel='stylesheet', charset='utf-8')
+    link(href='#{assets_head}/css/Markdown.Editor.css?ddddd', type='text/css', rel='stylesheet', charset='utf-8')
     script(src='#{assets_head}/js/jquery.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-transition.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-modal.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
     script(src='#{assets_head}/js/Markdown.Converter.js')
     script(src='#{assets_head}/js/Markdown.Sanitizer.js')
-    script(src='#{assets_head}/js/Markdown.Editor.js')
+    script(src='#{assets_head}/js/Markdown.Editor.js?ee')
     script
       var article_id = #{locals.article?article.id:0}
     style
@@ -36,10 +36,12 @@ html
                 input(type="hidden",name="id",value="#{article.id}")
               .control-group
                 input#title(type='text', name='title', placeholder='文章标题',value="#{locals.article?article.title:''}")
-              .control-group
-                .wmd-panel
-                  #wmd-button-bar
-                  textarea.expand.wmd-input#wmd-input(name="md",placeholder="文章内容，markdown语法。如果没有写完，可以直接关闭页面，下次打开内容仍然会在。") #{locals.article?article.md:''}
+              .control-group#wmd-editor-parent
+                .wmd-panel#wmd-editor-con
+                  .padding
+                    #wmd-bar-parent
+                      #wmd-button-bar
+                    textarea.expand.wmd-input#wmd-input(name="md",placeholder="文章内容，markdown语法。如果没有写完，可以直接关闭页面，下次打开内容仍然会在。") #{locals.article?article.md:''}
               .control-group
                 .columns
                   input#column(type="hidden",name="column_id",value="#{locals.article?article.column_id:column_id}")
@@ -47,9 +49,11 @@ html
                   div.bd 
                     each column,i in columns
                       span.label(data-id="#{column.id}",class="#{locals.article?(article.column_id==column.id?'label-success':''):(column.id==column_id?'label-success':'')}",data-original-title="#{column.desc_md&&column.desc_md.substr(0,100)}",title="#{column.desc_md&&column.desc_md.substr(0,100)}") #{column.name}
-              .wmd-panel.wmd-preview
-                div 预览
-                #wmd-preview
+              .control-group#wmd-preview-parent
+                .wmd-panel.wmd-preview#wmd-preview-con
+                  .padding
+                    #wmd-preview
+
               .control-group
                 button.btn#submit(type='submit') 发表
           #myModal.modal.hide.fade.
@@ -75,10 +79,24 @@ html
           .hd 准则
           .bd
             .item 专栏第一准则：我们特别欣赏【入门式】，【基础性】，【总结性】，【普及式】，【系列化】的文章。以帮助别人为本，而不是为了炫技为了让别人看着觉得很”牛逼“。
+      #fullscreen-editor.hidden
+      #fullscreen-exit.hidden 
+        a.btn
+          i.icon-resize-small
     script(src='#{assets_head}/js/ajaxfileupload.js')
     script(src='#{assets_head}/js/loadingTip.js')
     script(src='#{assets_head}/js/messageTip.js')
     script
+      
+      $("#fullscreen-exit").click(function(){
+        $("#fullscreen-editor").addClass("hidden")
+        $("#fullscreen-exit").addClass("hidden")
+         $("#wmd-button-bar").appendTo($("#wmd-bar-parent"))
+        $("#wmd-editor-con").appendTo($("#wmd-editor-parent"))
+        $("#wmd-preview-con").appendTo($("#wmd-preview-parent"))
+        $("#wmd-preview").css({height:"auto"});
+        $(".wmd-panel textarea").css({height:300}).removeClass("fullscreen-textarea");
+          })
       $(".columns .label").click(function(){
         $(".columns .label").removeClass("label-success")
         $(this).addClass("label-success");

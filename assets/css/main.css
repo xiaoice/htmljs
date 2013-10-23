@@ -261,7 +261,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #qa .main .comment .comment-item{padding-bottom:5px;}
 #qa .main .comment .comment-publish{margin-top:10px;}
 #qa .qa-title{border-bottom:1px solid #ddd;}#qa .qa-title .title{font-size:20px;line-height:50px;font-weight:normal;margin:0;padding:0;}
-#qa .qa-content{padding:10px;font-size:14px;color:#404040;}
+#qa .qa-content{padding:10px;font-size:14px;color:#404040;}#qa .qa-content blockquote p{line-height:25px;margin:0;font-size:12px;}
 #qa .qa-user .action{float:left;}#qa .qa-user .action a{line-height:40px;margin-right:10px;color:#999;font-size:14px;}#qa .qa-user .action a i{-webkit-transform:scale(0.9);-moz-transform:scale(0.9);}
 #qa .qa-user .action .tags a{padding:1px 4px;margin-right:5px;color:#fff;font-weight:normal;font-size:12px;background:#aaa;}
 #qa .qa-user .action .tags a:hover{background:#5bb793;}
@@ -429,6 +429,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #article .post .entry-content{color:#555;padding:20px 0;font-size:13px;line-height:25px;word-wrap:break-word;word-break:break-all;}#article .post .entry-content h1,#article .post .entry-content h2,#article .post .entry-content h3,#article .post .entry-content h4,#article .post .entry-content h5{font-size:1.5em;}
 #article .post .entry-content p{line-height:25px;margin:20px 0;}
 #article .post .entry-content img{display:block;}
+#article .post .entry-content blockquote p{line-height:25px;margin:0;font-size:12px;}
 #article .post .entry-meta{padding-top:10px;border-top:1px solid #ddd;color:#999;}
 #article #score .bd{color:#999;}
 #article #score .mark i{vertical-align:0px;background:none;}

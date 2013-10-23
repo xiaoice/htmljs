@@ -1412,7 +1412,7 @@
                 group5.appendChild(helpButton);
                 buttons.help = helpButton;
             }
-
+            buttons.fullscreen = makeButton("wmd-fullscreen-button", "全屏安静编辑模式", "icon-fullscreen", bindCommand("fullscreen"), group5);
             setUndoRedoButtonStates();
         }
 
@@ -2046,6 +2046,17 @@
         var d = new Date();
         chunk.selection = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
         chunk.endTag = "";
+    }
+    commandProto.fullscreen = function(chunk, postProcessing){
+       $("#fullscreen-editor").removeClass("hidden")
+       $("#fullscreen-exit").removeClass("hidden")
+         $("#wmd-button-bar").appendTo($("#fullscreen-editor"))
+        $("#wmd-editor-con").appendTo($("#fullscreen-editor"))
+        $("#wmd-preview-con").appendTo($("#fullscreen-editor"))
+        $("#fullscreen-editor #wmd-preview").css({height:$(window).height()-93});
+        $("#fullscreen-editor textarea").css({height:$(window).height()-73,overflowY:"auto"}).addClass("fullscreen-textarea");
+
+        
     }
     commandProto.doHeading = function (chunk, postProcessing) {
 

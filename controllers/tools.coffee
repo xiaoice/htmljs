@@ -52,5 +52,7 @@ module.exports.controllers =
         result.info = e.message
         res.send result
 module.exports.filters = 
-  "/*":
+  "/":
+    get:['freshLogin']
+  "/:name":
     get:['freshLogin']

@@ -82,7 +82,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                           if  !locals.column&&article.column
                             a(href="/article/column/#{article.column.id}") 【#{article.column.name}】
                           a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
-                          if article.comment_count == 0
+                          if article.visit_count<70
                             span.label.tip.new New
                           else if article.comment_count >=7 || article.is_hot
                             span.label.tip.hot HOT

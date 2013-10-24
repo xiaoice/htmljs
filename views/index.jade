@@ -204,11 +204,13 @@ html
             .bd
               img(src="#{assets_head}/images/qrcode.jpg")
         if locals.top_users
-          .module
+          .module.top-users
             .hd 用户经验榜
             .bd
               each user in locals.top_users
                 .item 
+                  a(href="/user/#{user.id}")
+                    img(src="#{user.head_pic}",width="20")
                   a(href="/user/#{user.id}") #{user.nick} 
                   span #{user.coin}
     include footer

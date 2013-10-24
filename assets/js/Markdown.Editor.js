@@ -60,7 +60,15 @@
                                                   * its own image insertion dialog, this hook should return true, and the callback should be called with the chosen
                                                   * image url (or null if the user cancelled). If this hook returns false, the default dialog will be used.
                                                   */
-
+        $("#fullscreen-exit").click(function(){
+            $("#fullscreen-editor").addClass("hidden")
+            $("#fullscreen-exit").addClass("hidden")
+             $("#wmd-button-bar").appendTo($("#wmd-bar-parent"))
+            $("#wmd-editor-con").appendTo($("#wmd-editor-parent"))
+            $("#wmd-preview-con").appendTo($("#wmd-preview-parent"))
+            $("#wmd-preview").css({height:"auto"});
+            $(".wmd-panel textarea").css({height:300}).removeClass("fullscreen-textarea");
+          })
         this.getConverter = function () { return markdownConverter; }
 
         var that = this,
@@ -1412,7 +1420,10 @@
                 group5.appendChild(helpButton);
                 buttons.help = helpButton;
             }
-            buttons.fullscreen = makeButton("wmd-fullscreen-button", "全屏安静编辑模式", "icon-fullscreen", bindCommand("fullscreen"), group5);
+            if($("#fullscreen-editor").length){
+               buttons.fullscreen = makeButton("wmd-fullscreen-button", "全屏安静编辑模式", "icon-fullscreen", bindCommand("fullscreen"), group5);
+             
+            }
             setUndoRedoButtonStates();
         }
 

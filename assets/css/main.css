@@ -161,7 +161,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #article .comment .comment-list .comment-item .con{width:580px;word-break:break-all;}
 #read .comment-layer{width:680px;}#read .comment-layer .input{width:620px;}
 #me .comment .comment-list .comment-item .con{width:500px;word-break:break-all;}
-#q_comment_list .comment-item .con{width:540px;word-break:break-all;}
+#q_comment_list .comment-item .con{width:530px;word-break:break-all;}
 #index #content{width:940px;}
 #index .left{width:650px;float:left;overflow:hidden;}
 #index .search{padding:0;overflow:hidden;padding-bottom:15px;}#index .search .adds a{margin-right:5px;}
@@ -444,7 +444,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #add-article .right .item{border-bottom:1px solid #eee;padding:5px 0;}
 #add-article #title{width:630px;}
 #add-article .columns .bd{padding-top:10px;}
-#add-article .columns .label{margin-right:5px;float:left;cursor:pointer;}
+#add-article .columns .label{margin-right:5px;float:left;cursor:pointer;margin-bottom:5px;}
 @media screen and (min-width:100px) and (max-width:800px){body{padding:10px;} #gotop{right:10px;bottom:10px;} #content,#header,#footer{width:100% !important;}#content .left,#header .left,#footer .left{width:100% !important;} #content .right,#header .right,#footer .right{width:100% !important;margin-left:0 !important;}#content .right .module,#header .right .module,#footer .right .module{margin-left:0 !important;} #content .module,#header .module,#footer .module{padding:10px;} #content .wrapper,#header .wrapper,#footer .wrapper{width:100% !important;} #content .main,#header .main,#footer .main{width:100% !important;} .navbar .container{width:100% !important;} #index .timeline-item .others{margin-top:10px;} #index .timeline-item .entry-foot{line-height:25px;} #index .timeline-item .item{line-height:14px;} #index .timeline-item .time{display:block;} #header .navbar li[pageId="4"]{display:none !important;} #header .navbar li[pageId="9"]{display:none !important;} #header .navbar i{display:none;} #header .navbar .right-nav{position:absolute;right:0px;top:30px;background:#5bb793;padding-right:10px;} #articles .column-item{width:90% !important;} #cards .f2er-list{width:100% !important;}#cards .f2er-list li{width:90% !important;margin:10px 0 !important;padding:5%;} #qas .actions .right-actions{display:none;}}#cards{background:#efefef;}#cards .head_pic{float:left;}
 #cards .search{margin-bottom:5px;}
 #cards .f2er-list{padding:0;margin:0;width:1000px;}
@@ -499,11 +499,11 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #topics .topic-list{border:1px solid #dddddd;overflow:hidden;}
 #topics .topic-item.yooo{background:#F7F7F7;}
 #topics .topic-item.uncommented{background:#f1fff1;border-top:1px solid #deeadd;margin-top:-1px;border-bottom:1px solid #deeadd;}
-#topics .topic-item{background:#fff;padding:10px 10px;position:relative;}#topics .topic-item .tip{right:0;top:0;width:40px;height:16px;line-height:16px;text-align:center;background:#68a4d1;color:#fff;z-index:10;padding:1px 4px;font-weight:normal;font-size:12px;vertical-align:2px;margin-left:10px;}
+#topics .topic-item{background:#fff;padding:5px 10px;position:relative;}#topics .topic-item .tip{right:0;top:0;width:40px;height:16px;line-height:16px;text-align:center;background:#68a4d1;color:#fff;z-index:10;padding:1px 4px;font-weight:normal;font-size:12px;vertical-align:2px;margin-left:10px;}
 #topics .topic-item .tip.new{background:#cb7a65;}
 #topics .topic-item .tip.hot{background:#f74360;}
 #topics .topic-item .entry-title{position:relative;}#topics .topic-item .entry-title .headpic{float:left;margin-right:20px;}
-#topics .topic-item .entry-title .title{font-size:15px;line-height:40px;margin:0;font-weight:bold;font-weight:normal;padding-right:50px;}#topics .topic-item .entry-title .title a{color:#333;}
+#topics .topic-item .entry-title .title{font-size:15px;line-height:30px;margin:0;font-weight:bold;font-weight:normal;padding-right:50px;}#topics .topic-item .entry-title .title a{color:#333;}
 #topics .topic-item .entry-title .item{font-size:12px;margin-right:20px;}#topics .topic-item .entry-title .item .index{color:#aaa;}
 #topics .topic-item .entry-title .item .value{color:#999;}
 #topics .topic-item .entry-title .actions a{margin-right:5px;}

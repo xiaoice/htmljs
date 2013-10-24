@@ -43,17 +43,18 @@ html
                         span.index 提问者：
                         a.value.url.fn(rel='author', href='/user/#{topic.user_id}') #{topic.user_nick}
                     
+                    
+                    //- span.time.item
+                      //- a.value 发布于：#{moment(topic.createdAt).fromNow()}
+                    if topic.last_comment_user_id
+                      span.time.item
+                        span.value 最后由 <a href="/user/#{topic.last_comment_user_id}">#{topic.last_comment_user_nick}</a> 回复于 #{moment(topic.last_comment_time).fromNow()}
                     span.views.item
-                      span.index View：
+                      span.index 浏览：
                       a.value #{topic.visit_count}
                     span.views.item
                       span.index 跟帖：
                       a.value #{topic.comment_count}
-                    span.time.item
-                      a.value 发布于：#{moment(topic.createdAt).fromNow()}
-                    if topic.last_comment_user_id
-                      span.time.item
-                        span.value 最后由 <a href="/user/#{topic.last_comment_user_id}">#{topic.last_comment_user_nick}</a> 回复于 #{moment(topic.last_comment_time).fromNow()}
                     if topic.tagNames
                       - var tags = topic.tagNames.split(",")
                       span.tags.item

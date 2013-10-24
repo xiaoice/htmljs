@@ -88,15 +88,7 @@ html
     script(src='#{assets_head}/js/messageTip.js')
     script
       
-      $("#fullscreen-exit").click(function(){
-        $("#fullscreen-editor").addClass("hidden")
-        $("#fullscreen-exit").addClass("hidden")
-         $("#wmd-button-bar").appendTo($("#wmd-bar-parent"))
-        $("#wmd-editor-con").appendTo($("#wmd-editor-parent"))
-        $("#wmd-preview-con").appendTo($("#wmd-preview-parent"))
-        $("#wmd-preview").css({height:"auto"});
-        $(".wmd-panel textarea").css({height:300}).removeClass("fullscreen-textarea");
-          })
+      
       $(".columns .label").click(function(){
         $(".columns .label").removeClass("label-success")
         $(this).addClass("label-success");
@@ -109,7 +101,7 @@ html
       var editor1 = new Markdown.Editor(converter1);
       editor1.run();
       var converter2 = new Markdown.Converter();
-
+      
       converter2.hooks.chain("preConversion", function (text) {
           return text.replace(/\b(a\w*)/gi, "*$1*");
       });

@@ -293,6 +293,7 @@ html
                 if(data.success){
                   markEnable = false;
                   $("#score .bd").addClass("marked")
+                  $(".mark-already em").html($(self).attr("data-index"))
                   messageTip.show("打分成功！")
                 }else{
                   alert(data.info)

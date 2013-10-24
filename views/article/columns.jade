@@ -26,7 +26,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
           span 我的专栏：
           if locals.my_columns && locals.my_columns.length
             each column in my_columns
-              a(href="") #{column.name}（#{column.article_count}）
+              a(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
           else
             span 暂无专栏。
 

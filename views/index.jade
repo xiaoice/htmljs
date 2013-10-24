@@ -18,20 +18,20 @@ html
           div.alert.alert-warning 本站第一次线下活动【中秋节杭州基层前端大聚会】，开始报名！<a href="/act/1">戳我去报名</a>！
         .module.search
           .bd
-            div.
-              <script>
-                (function() {
-                  var cx = '004549130280129344040:hye4d842ysg';
-                  var gcse = document.createElement('script');
-                  gcse.type = 'text/javascript';
-                  gcse.async = true;
-                  gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-                      '//www.google.com/cse/cse.js?cx=' + cx;
-                  var s = document.getElementsByTagName('script')[0];
-                  s.parentNode.insertBefore(gcse, s);
-                })();
-              </script>
-              <gcse:search></gcse:search>
+            //- div.
+            //-   <script>
+            //-     (function() {
+            //-       var cx = '004549130280129344040:hye4d842ysg';
+            //-       var gcse = document.createElement('script');
+            //-       gcse.type = 'text/javascript';
+            //-       gcse.async = true;
+            //-       gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+            //-           '//www.google.com/cse/cse.js?cx=' + cx;
+            //-       var s = document.getElementsByTagName('script')[0];
+            //-       s.parentNode.insertBefore(gcse, s);
+            //-     })();
+            //-   </script>
+            //-   <gcse:search></gcse:search>
             div.adds(style="padding:15px;padding-bottom:0;")
               |快速入口：
               a.btn.gray(href="/qa/add") <i class="icon-lightbulb"></i> 提问问题
@@ -204,15 +204,16 @@ html
             .bd
               img(src="#{assets_head}/images/qrcode.jpg")
         if locals.top_users
-          .module.top-users
-            .hd 用户经验榜
-            .bd
-              each user in locals.top_users
-                .item 
-                  a(href="/user/#{user.id}")
-                    img(src="#{user.head_pic}",width="20")
-                  a(href="/user/#{user.id}") #{user.nick} 
-                  span #{user.coin}
+          #fixed-modules
+            .module.top-users
+              .hd 用户经验榜
+              .bd
+                each user in locals.top_users
+                  .item 
+                    a(href="/user/#{user.id}")
+                      img(src="#{user.head_pic}",width="20")
+                    a(href="/user/#{user.id}") #{user.nick} 
+                    span #{user.coin}
     include footer
     script
       $('.t-user').tooltip({

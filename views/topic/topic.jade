@@ -121,16 +121,17 @@ html
           .bd
             span 浏览数：#{topic.visit_count}
             span 跟帖数：#{topic.comment_count}
-        .module.share
-          .hd 分享
-          .bd 
-            div#bdshare.bdshare_t.bds_tools.get-codes-bdshare.clearfix(style="width:300px;margin-top:10px;float:none;margin-left:0px;")
-              a.bds_tsina
-              a.bds_qzone
-              a.bds_tqq
-              a.bds_douban
-              a.bds_renren
-              a.shareCount
+        #fixed-modules
+          .module.share
+            .hd 分享
+            .bd 
+              div#bdshare.bdshare_t.bds_tools.get-codes-bdshare.clearfix(style="width:300px;margin-top:10px;float:none;margin-left:0px;")
+                a.bds_tsina
+                a.bds_qzone
+                a.bds_tqq
+                a.bds_douban
+                a.bds_renren
+                a.shareCount
         
     script#comment-tpl(type="text/template")
       .comment-item.clearfix

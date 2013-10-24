@@ -131,5 +131,15 @@ $('textarea.expand').keyup(function () {
           t.height(this.justifyDoc.height());
       });
 });
-
+$(document).ready(function(){
+  if($('#fixed-modules').length){
+     var offset = $('#fixed-modules').offset();
+          $(window).scroll(function(){
+            var scrollTop = $(window).scrollTop();
+            if (offset.top < scrollTop+40) $('#fixed-modules').addClass('fixed');
+            else $('#fixed-modules').removeClass('fixed');
+          });
+  }
+ 
+})
 

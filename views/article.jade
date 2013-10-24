@@ -33,7 +33,7 @@ html
         p.alert 不存在的阅读篇章
       else
         .left
-          article.post(id="post-#{article.id}")
+          article.post.module(id="post-#{article.id}")
             .entry-title
               
               h2.title(href='http://p.html-js.com/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
@@ -100,14 +100,7 @@ html
               if article.quote_url
                 div.views.item
                   a.value(href="#{article.quote_url}",target="_blank") 原文链接
-              div.item.share#bdshare.bdshare_t.bds_tools.get-codes-bdshare.clearfix(style="width:300px;margin-top:10px;float:none;margin-left:0px;")
-                span.index(style="float:left;line-height:30px;") 分享：
-                a.bds_tsina
-                a.bds_qzone
-                a.bds_tqq
-                a.bds_douban
-                a.bds_renren
-                a.shareCount
+              
               div.item
                 if locals.user && (user.is_admin||user.id==article.user_id)
                   span.index 管理：
@@ -121,6 +114,15 @@ html
                 span.index 评论：
                 a.value #{article.comment_count}
           #fixed-modules
+            .module
+              .hd 分享给好友
+              div.share#bdshare.bdshare_t.bds_tools.get-codes-bdshare.clearfix(style="width:300px;margin-top:10px;float:none;margin-left:0px;")
+                a.bds_tsina
+                a.bds_qzone
+                a.bds_tqq
+                a.bds_douban
+                a.bds_renren
+                a.shareCount
             .module#score(style="margin-top:10px;")
               .hd 评价
               .bd(class="#{zan_guo?'marked':''}")
@@ -320,9 +322,4 @@ html
           $('.user').tooltip({
           placement:"bottom"
           })
-          var offset = $('#fixed-modules').offset();
-          $(window).scroll(function(){
-            var scrollTop = $(window).scrollTop();
-            if (offset.top < scrollTop+40) $('#fixed-modules').addClass('fixed');
-            else $('#fixed-modules').removeClass('fixed');
-          });
+          

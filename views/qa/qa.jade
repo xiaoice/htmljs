@@ -66,6 +66,10 @@ html
             if !answers.length
               div 暂无回答
             else
+              - if(question.good_answer_id){
+              - for (var i=0;i<locals.answers.length;i++){if(question.good_answer_id==answers[i].id){var abcd = locals.answers.splice(i,1);locals.answers.unshift(abcd[0]);break;}}
+              
+              - }
               .answer-list
                 each ans,i in answers
                   if !ans.is_unused

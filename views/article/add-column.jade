@@ -2,14 +2,14 @@
 html
   head
     include ../head
-    link(href='#{assets_head}/css/Markdown.Editor.css?dd2', type='text/css', rel='stylesheet', charset='utf-8')
+    link(href='#{assets_head}/css/Markdown.Editor.css?ddd2', type='text/css', rel='stylesheet', charset='utf-8')
     script(src='#{assets_head}/js/jquery.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-transition.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-modal.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
     script(src='#{assets_head}/js/Markdown.Converter.js')
     script(src='#{assets_head}/js/Markdown.Sanitizer.js')
-    script(src='#{assets_head}/js/Markdown.Editor.js')
+    script(src='#{assets_head}/js/Markdown.Editor.js?ddd')
     title 添加专栏
     style
       #content input[type="text"]{
@@ -29,9 +29,11 @@ html
               legend 添加专栏
               .control-group
                 input#title(type='text', value = "",name='name', placeholder='专栏名称,使用尽量少的字描述',required)
-              .control-group
-                .wmd-panel
-                  #wmd-button-bar
+              .control-group#wmd-editor-parent
+                .wmd-panel#wmd-editor-con
+                  .padding
+                    #wmd-bar-parent
+                      #wmd-button-bar
                   textarea.wmd-input#wmd-input(name="desc_md",placeholder='专栏描述',required) 
                   
               .control-group
@@ -41,9 +43,10 @@ html
                 label.radio
                   input(type='radio', value = "1",name='is_public',checked) 
                   | 所有人都可以投递到此专栏
-              .wmd-panel.wmd-preview
-                div 预览
-                #wmd-preview
+              .control-group#wmd-preview-parent
+                .wmd-panel.wmd-preview#wmd-preview-con
+                  .padding
+                    #wmd-preview
               .control-group
                 button.btn(type='submit') 添加
           
@@ -54,6 +57,10 @@ html
             div 提交专栏添加申请后，需要管理员审核后方能使用。
             div 专栏可以设置私有和共有。
             div 标题和描述，请尽量清晰。
+      #fullscreen-editor.hidden
+      #fullscreen-exit.hidden 
+        a.btn
+          i.icon-resize-small
     include ../footer
     script(src='#{assets_head}/js/ajaxfileupload.js')
     script(src='#{assets_head}/js/loadingTip.js')

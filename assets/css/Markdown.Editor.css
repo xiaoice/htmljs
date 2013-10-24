@@ -81,8 +81,8 @@
   display: inline-block;
   vertical-align: top;
 }
-
-#wmd-preview{color:#555;padding:20px 0;font-size:13px;line-height:25px;word-wrap:break-word;word-break:break-all;}
+#wmd-preview{background:#eee;border:1px solid #ddd;
+  padding:10px;color:#555;font-size:13px;line-height:25px;word-wrap:break-word;word-break:break-all;}
 #wmd-preview h1,#wmd-preview h2,#wmd-preview h3,#wmd-preview h4,#wmd-preview h5{font-size:1.5em;}
 #wmd-preview p{line-height:25px;margin:20px 0;}
 #wmd-preview img{display:block;}

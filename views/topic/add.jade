@@ -2,14 +2,14 @@
 html
   head
     include ../head
-    link(href='#{assets_head}/css/Markdown.Editor.css?dd2', type='text/css', rel='stylesheet', charset='utf-8')
+    link(href='#{assets_head}/css/Markdown.Editor.css?ddd2', type='text/css', rel='stylesheet', charset='utf-8')
     script(src='#{assets_head}/js/jquery.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-transition.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-modal.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
     script(src='#{assets_head}/js/Markdown.Converter.js')
     script(src='#{assets_head}/js/Markdown.Sanitizer.js')
-    script(src='#{assets_head}/js/Markdown.Editor.js')
+    script(src='#{assets_head}/js/Markdown.Editor.js?dd')
     title 添加话题
     style
       #insertImageDialog { display:none; padding: 10px; position:absolute;width:400px;}
@@ -28,12 +28,15 @@ html
               legend 添加话题
               .control-group
                 input#title(type='text', name='title', placeholder='标题')
-              .control-group
-                .wmd-panel
-                  #wmd-button-bar
+              .control-group#wmd-editor-parent
+                .wmd-panel#wmd-editor-con
+                  .padding
+                    #wmd-bar-parent
+                      #wmd-button-bar
                   textarea.expand.wmd-input#wmd-input(name="md",placeholder='话题内容')
-                  .wmd-panel.wmd-preview
-                    div 预览
+              .control-group#wmd-preview-parent
+                .wmd-panel.wmd-preview#wmd-preview-con
+                  .padding
                     #wmd-preview
               //- .control-group
               //-   label.checkbox
@@ -62,7 +65,10 @@ html
             div.item 话题用于闲散轻松的讨论，无太多限制。
             div.item 如果是专业型比较强的问题，请发布到【问答】栏目。如果是专业文章，发布到【专栏】栏目
             div.item 可以发布技术话题，也可以发布和技术人有关的方方面面的话题。
-
+      #fullscreen-editor.hidden
+      #fullscreen-exit.hidden 
+        a.btn
+          i.icon-resize-small
     include ../footer
     script(src='#{assets_head}/js/ajaxfileupload.js')
     script(src='#{assets_head}/js/loadingTip.js')

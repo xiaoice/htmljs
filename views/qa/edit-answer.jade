@@ -2,14 +2,14 @@
 html
   head
     include ../head
-    link(href='#{assets_head}/css/Markdown.Editor.css?33', type='text/css', rel='stylesheet', charset='utf-8')
+    link(href='#{assets_head}/css/Markdown.Editor.css?3d3', type='text/css', rel='stylesheet', charset='utf-8')
     script(src='#{assets_head}/js/jquery.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-transition.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-modal.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
     script(src='#{assets_head}/js/Markdown.Converter.js')
     script(src='#{assets_head}/js/Markdown.Sanitizer.js')
-    script(src='#{assets_head}/js/Markdown.Editor.js')
+    script(src='#{assets_head}/js/Markdown.Editor.js?dd')
     title 编辑回答-前端乱炖
     style
       #insertImageDialog { display:none; padding: 10px; position:absolute;width:400px;}
@@ -29,12 +29,15 @@ html
               input(type="hidden",name="question_id",value="#{answer.question_id}")
               .control-group
                 .question-title 本答案用来回答问题：《<a href="/qa/#{answer.question_id}">#{answer.question.title}</a>》
-              .control-group
-                .wmd-panel
-                  #wmd-button-bar
+              .control-group#wmd-editor-parent
+                .wmd-panel#wmd-editor-con
+                  .padding
+                    #wmd-bar-parent
+                      #wmd-button-bar
                   textarea.wmd-input#wmd-input(name="md",placeholder='回答内容，请尽可能详细和准确。') #{answer.md}
-                  .wmd-panel.wmd-preview
-                    div 预览
+              .control-group#wmd-preview-parent
+                .wmd-panel.wmd-preview#wmd-preview-con
+                  .padding
                     #wmd-preview
               .control-group
                 button.btn(type='submit') 发表
@@ -57,6 +60,10 @@ html
             div 可以使用markdown语法，可以插入图片。
             div 分享到微博可以让更多人关注并回答问题。
             div 回答前请阅读：<a href="/qa/7" target="_blank">问答系统指南</a>
+      #fullscreen-editor.hidden
+      #fullscreen-exit.hidden 
+        a.btn
+          i.icon-resize-small
     script(src='#{assets_head}/js/ajaxfileupload.js')
     script(src='#{assets_head}/js/loadingTip.js')
     script(src='#{assets_head}/js/messageTip.js')

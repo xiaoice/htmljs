@@ -2,14 +2,14 @@
 html
   head
     include ../head
-    link(href='#{assets_head}/css/Markdown.Editor.css?dd', type='text/css', rel='stylesheet', charset='utf-8')
+    link(href='#{assets_head}/css/Markdown.Editor.css?ddd', type='text/css', rel='stylesheet', charset='utf-8')
     script(src='#{assets_head}/js/jquery.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-transition.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-modal.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
     script(src='#{assets_head}/js/Markdown.Converter.js')
     script(src='#{assets_head}/js/Markdown.Sanitizer.js')
-    script(src='#{assets_head}/js/Markdown.Editor.js')
+    script(src='#{assets_head}/js/Markdown.Editor.js?dd')
     title 添加问题
     style
       #insertImageDialog { display:none; padding: 10px; position:absolute;width:400px;}
@@ -28,12 +28,15 @@ html
               legend 提问
               .control-group
                 input#title(type='text', name='title', placeholder='简单描述')
-              .control-group
-                .wmd-panel
-                  #wmd-button-bar
+              .control-group#wmd-editor-parent
+                .wmd-panel#wmd-editor-con
+                  .padding
+                    #wmd-bar-parent
+                      #wmd-button-bar
                   textarea.expand.wmd-input#wmd-input(name="md",placeholder='详细问题')
-                  .wmd-panel.wmd-preview
-                    div 预览
+              .control-group#wmd-preview-parent
+                .wmd-panel.wmd-preview#wmd-preview-con
+                  .padding
                     #wmd-preview
               if locals.tags
                 .control-group
@@ -80,7 +83,10 @@ html
             div.item 一。请确保描述清楚以便别人可以回答您的问题。例如直击本质的现象，所有表现形式，报错信息，发生场景等。
             div.item 二。不要吝啬多贴代码，推荐使用 <a href="http://jsfiddle.net/" target="_blank">http://jsfiddle.net/</a> 演示代码。
             div.item 三。请带着求教或者请教的态度问问题，没有人有回答你问题的义务，如果有人回答你，请感谢他，并且给他点上一个赞，作者会收到感谢并为别人解决更多问题。
-
+      #fullscreen-editor.hidden
+      #fullscreen-exit.hidden 
+        a.btn
+          i.icon-resize-small
     include ../footer
     script(src='#{assets_head}/js/ajaxfileupload.js')
     script(src='#{assets_head}/js/loadingTip.js')

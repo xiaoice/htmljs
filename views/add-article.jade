@@ -3,14 +3,14 @@ html
   head
     include head
     title 添加专栏文章
-    link(href='#{assets_head}/css/Markdown.Editor.css?ddddd', type='text/css', rel='stylesheet', charset='utf-8')
+    link(href='#{assets_head}/css/Markdown.Editor.css?dddddd', type='text/css', rel='stylesheet', charset='utf-8')
     script(src='#{assets_head}/js/jquery.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-transition.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-modal.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
     script(src='#{assets_head}/js/Markdown.Converter.js')
     script(src='#{assets_head}/js/Markdown.Sanitizer.js')
-    script(src='#{assets_head}/js/Markdown.Editor.js?ee')
+    script(src='#{assets_head}/js/Markdown.Editor.js?eeddd')
     script
       var article_id = #{locals.article?article.id:0}
     style
@@ -101,7 +101,7 @@ html
       var editor1 = new Markdown.Editor(converter1);
       editor1.run();
       var converter2 = new Markdown.Converter();
-      
+
       converter2.hooks.chain("preConversion", function (text) {
           return text.replace(/\b(a\w*)/gi, "*$1*");
       });

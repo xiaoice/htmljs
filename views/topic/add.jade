@@ -27,13 +27,21 @@ html
             fieldset
               legend 添加话题
               .control-group
-                input#title(type='text', name='title', placeholder='标题')
+                input#title(type='text', name='title', placeholder='标题（最少5个字）',required,pattern=".{5,100}")
               .control-group#wmd-editor-parent
                 .wmd-panel#wmd-editor-con
                   .padding
                     #wmd-bar-parent
                       #wmd-button-bar
-                  textarea.expand.wmd-input#wmd-input(name="md",placeholder='话题内容')
+                  textarea.expand.wmd-input#wmd-input(name="md",placeholder='话题内容（最少20个字）',required)
+              if locals.tags
+                .control-group
+                  .tags
+                    input#tags(type="hidden",name="tag_id",value="")
+                    span.tags-hd 选个标签吧：
+                    span.tags-bd 
+                      each tag,i in tags
+                        span.label(data-id="#{tag.id}",title="#{tag.name}") #{tag.name}
               .control-group#wmd-preview-parent
                 .wmd-panel.wmd-preview#wmd-preview-con
                   .padding
@@ -75,7 +83,14 @@ html
     script(src='#{assets_head}/js/messageTip.js')
 
     script
-      
+      $(".tags .label").click(function(){
+        $(".tags .label").removeClass("label-success");
+        $(this).addClass("label-success");
+        $("#tags").val($(this).attr("data-id"))
+        })
+      $('.tags .label').tooltip({
+          placement:"bottom"
+      })
       var converter1 = Markdown.getSanitizingConverter();
       var editor1 = new Markdown.Editor(converter1);
       editor1.run();
@@ -90,6 +105,10 @@ html
       });
       $("#form").submit(function(e){
         e.preventDefault()
+          if(!$("#tags").val()){
+          alert("必须选择一个标签")
+            return false;
+          }
           HtmlJS.util.ajax("/topic/add",$("#form").serialize(),"post",function(data){
             if(data.success){
               alert("发布成功")

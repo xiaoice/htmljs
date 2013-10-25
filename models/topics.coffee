@@ -22,3 +22,4 @@ module.exports =
   is_hot:
     type:"int"
     defaultValue:0
+  tag_id:"int"

@@ -505,6 +505,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #topics .topic-item .tip.hot{background:#f74360;}
 #topics .topic-item .entry-title{position:relative;}#topics .topic-item .entry-title .headpic{float:left;margin-right:20px;}
 #topics .topic-item .entry-title .title{font-size:14px;line-height:30px;margin:0;font-weight:bold;font-weight:normal;padding-right:50px;}#topics .topic-item .entry-title .title a{color:#333;}
+#topics .topic-item .entry-title .title .tag{font-size:12px;padding:0 2px;color:#666;}
 #topics .topic-item .entry-title .item{font-size:12px;margin-right:20px;}#topics .topic-item .entry-title .item .index{color:#bbb;}
 #topics .topic-item .entry-title .item .value{color:#aaa;}
 #topics .topic-item .entry-title .actions a{margin-right:5px;}

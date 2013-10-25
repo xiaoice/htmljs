@@ -28,8 +28,13 @@ html
                 
                 .entry-title
                   h2.title
-                    
+                    if topic.topicTag
+                      |[
+                      a.tag(href="/topic/?tag_id=#{topic.tag_id}")
+                        |#{topic.topicTag.name}
+                      |] 
                     a(href='/topic/#{topic.id}', title='#{topic.title}', rel='bookmark') 
+
                       |#{topic.title}
                     if topic.comment_count == 0
                       span.label.tip.new New
@@ -83,6 +88,14 @@ html
         .module
           .bd 
             .item 话题用于闲散轻松的讨论，无太多限制。
+        .module
+          .hd 最新回复
+          .bd 
+            if locals.recent_replys
+              each reply in recent_replys
+                div.item 
+                  span #{reply.user_nick}：
+                  a(href="/topic/#{reply.topic_id}",style="word-break:break-all;") #{reply.html.replace(/<[^>]*?>/g,"").substr(0,70)+"..."}
         
         
     script

@@ -113,11 +113,14 @@ module.exports.controllers =
           res.send result
 module.exports.filters = 
   "/":
-    get:['freshLogin','topic/all-topics']
+    get:['freshLogin','topic/all-topics','topic/recent-replys']
   "/add":
     get:['checkLogin','topic/all-tags']
     post:['checkLoginJson']
   "/:id":
     get:['freshLogin','topic/all-comments']
   "/:id/add":
+    post:['checkLoginJson']
+  "/:id/edit":
+    get:['checkLogin','topic/all-tags']
     post:['checkLoginJson']

@@ -3,6 +3,7 @@ safeConverter = pagedown.getSanitizingConverter()
 func_topic = __F 'topic'
 func_topic_comment = __F 'topic_comment'
 func_info = __F 'info'
+func_topic_tag = __F 'topic/tag'
 func_user = __F 'user'
 moment = require 'moment'
 module.exports.controllers = 

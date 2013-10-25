@@ -131,6 +131,10 @@ module.exports.controllers =
   "/myqa":
     get:(req,res,next)->
       res.render 'user/myqa.jade'
+  "/all-users":
+    get:(req,res,next)->
+      func_user.getAllNames (error,usernames)->
+        res.send usernames
   "/":
     get:(req,res,next)->
       

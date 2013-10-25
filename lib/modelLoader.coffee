@@ -11,7 +11,7 @@ global.sequelize = sequelize = new Sequelize(config.mysql_table, config.mysql_us
   host:config.mysql_host
 )
 module.exports = global.__M= (modelName,defaultMethods)->
-  obj = sequelize.define modelName, require path.join config.base_path,"models",modelName+config.script_ext
+  obj = sequelize.define modelName.replace(/\//g,"_"), require path.join config.base_path,"models",modelName+config.script_ext
   if defaultMethods
   	defaultMethods.forEach (method)->
 

@@ -4,8 +4,29 @@ Card = __M 'cards'
 Card.sync()
 VisitLog = __M 'card_visit_log'
 VisitLog.sync()
-
+cache = 
+  allNames:
+    data:[]
+    time:0
 func_user =  
+  getAllNames:(callback)->
+    nowTime = new Date().getTime()
+    if (nowTime-cache.allNames.time>1000*60*60) #every hour
+      User.findAll
+        order:'nick'
+      .success (users)->
+        usernames = []
+        users.forEach (user)->
+          usernames.push user.nick
+        cache.allNames.data = usernames
+        cache.allNames.time = nowTime
+        callback null,usernames
+      .error (e)->
+        callback null,[]
+
+    else
+      callback null,cache.allNames.data
+
   getByWeiboId:(id,callback)->
     User.find
       where:

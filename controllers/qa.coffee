@@ -2,6 +2,7 @@ func_question = __F 'question'
 func_timeline = __F 'timeline'
 func_answer = __F 'answer'
 func_info = __F 'info'
+func_topic = __F 'topic'
 func_comment = __F 'comment'
 pagedown = require("pagedown")
 safeConverter = pagedown.getSanitizingConverter()
@@ -246,6 +247,27 @@ module.exports.controllers =
                 action_name:"【采纳】了你的回答，获得 20 经验值"
                 target_path_name:answer.md.substr(0,100)
             res.redirect 'back'
+  "/:question_id/move_to_topic":
+    get:(req,res,next)->
+      if !res.locals.user.is_admin
+        next new Error '没有权限'
+      else
+        func_question.getById req.params.question_id,(error,question)->
+          if error then next error
+          else
+            func_topic.add 
+              title:question.title
+              md:question.md
+              html:question.html
+              user_id:question.user_id
+              user_nick:question.user_nick
+              user_headpic:question.user_headpic
+              last_comment_time:new Date()
+            ,(error,topic)->
+              func_question.delete question.id,(error)->
+                if error then next error
+                else
+                  res.redirect '/topic'
 module.exports.filters = 
   "/":
     get:['freshLogin','qa/all-question','qa/hot-question','qa/recent-answers']
@@ -271,4 +293,6 @@ module.exports.filters =
   "/answer/:id/comment":
     post:['checkLoginJson']
   "/:question_id/good/:answer_id":
+    get:['checkLogin']
+  "/:question_id/move_to_topic":
     get:['checkLogin']

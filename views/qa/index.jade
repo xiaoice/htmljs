@@ -71,6 +71,7 @@ html
                           a(href="/qa/#{question.id}/update?sort=10000") 置顶
                         a(href="/qa/#{question.id}/update?is_hot=1") hot
                         a(href="/qa/#{question.id}/update?is_hot=0") nohot
+                        a(href="/qa/#{question.id}/move_to_topic") 变话题
                   div.user
                     a(data-original-title="#{question.user_nick}",href="/user/#{question.user.id}")
                       img(src="#{question.user_headpic}")

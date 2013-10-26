@@ -30,5 +30,28 @@ func_tag =
       callback null,qt
     .error (e)->
       callback e
+  getQuestionsByTagNames:(tagNames,page,count,callback)->
+    if tagNames.length == 0
+      callback null,[]
+    else
+      Tag.findAll
+        where:
+          name:tagNames
+      .success (tags)->
+        tagIds= []
+        tags.forEach (tag)->
+          tagIds
+        QuestionTag.findAll
+          where:
+            id:tagNames
+          order:'id desc'
+          include:[Question]
+        .success (qt)->
+          callback null,qt
+        .error (e)->
+          callback e
+      .error (e)->
+        callback e
+      
 __FC func_tag,Tag,['getAll','add','update','getById']
 module.exports = func_tag

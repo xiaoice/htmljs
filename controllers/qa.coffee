@@ -73,13 +73,8 @@ module.exports.controllers =
         res.send result
   "/:id":
     "get":(req,res,next)->
-      func_question.getById req.params.id,(error,question)->
-        if error then next error
-        else if not question then next new Error '不存在的问题'
-        else
-          func_question.update question.id,{visit_count:question.visit_count*1+1}
-          res.locals.question = question
-          res.render 'qa/qa.jade'
+      func_question.addCount req.params.id,'visit_count'
+      res.render 'qa/qa.jade'
   "/:id/update":
     "get":(req,res,next)->
       func_question.update req.params.id,req.query,(error,question)->
@@ -279,7 +274,7 @@ module.exports.filters =
   "/answer/:id/update":
     get:['checkLogin','checkAdmin']
   "/:id":
-    get:['freshLogin','qa/get-answers','qa/all-edit-history']
+    get:['freshLogin','qa/get-question','qa/get-answers','qa/all-edit-history','qa/same-questions']
   "/:id/edit":
     get:['checkLogin','tag/all-tags']
     post:['checkLogin']

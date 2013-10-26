@@ -211,6 +211,13 @@ html
                 a.bds_douban
                 a.bds_renren
                 a.shareCount
+          if locals.same_questions&&locals.same_questions.length
+            .module.same_questions
+              .hd 类似问题
+              .bd
+                each a in same_questions
+                  if a.id != question.id
+                    div.item <a href="/qa/#{a.id}">#{a.title}</a>
     script#comment-tpl(type="text/template")
       .comment-item.clearfix
         div.con 

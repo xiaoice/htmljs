@@ -61,7 +61,7 @@ func_question =
         QuestionTag.create
           questionId:question_id
           tagId:tagid
-  getAll: (page,count,condition,order,callback)->
+  getAllWithAnswer: (page,count,condition,order,callback)->
     query = 
       offset: (page - 1) * count
       limit: count
@@ -73,7 +73,7 @@ func_question =
       callback null,ms
     .error (e)->
       callback e
-   addComment:(id)->
+  addComment:(id)->
     Question.find
       where:
         id:id
@@ -82,5 +82,5 @@ func_question =
         q.updateAttributes
           comment_count: if q.comment_count then (q.comment_count+1) else 1
     .error (e)->
-__FC func_question,Question,['delete','update','add','count']
+__FC func_question,Question,['delete','getAll','update','add','count','addCount']
 module.exports = func_question

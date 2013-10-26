@@ -39,7 +39,7 @@ html
             .desc !{topic.html.replace(/<code>/g,"<code class='language-javascript'>")}
           .topic-user.clearfix
             .action
-              if locals.user
+              if locals.user && (user.is_admin||user.id==topic.user_id)
                 a(href="/topic/#{topic.id}/edit") <i class="icon-pencil icon-gray"></i>编辑
               a#bdshare.bdshare_t.bds_tools.get-codes-bdshare(style="float:none;") 
                 span.bds_more(style="background:none !important;float:none;display:inline;padding:0;") 分享

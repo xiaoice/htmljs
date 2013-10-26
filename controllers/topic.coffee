@@ -35,12 +35,8 @@ module.exports.controllers =
         res.send result
   "/:id":
     get:(req,res,next)->
-      func_topic.getById req.params.id,(error,topic)->
-        if error then next error
-        else
-          res.locals.topic = topic
-          func_topic.addCount topic.id,'visit_count'
-          res.render 'topic/topic.jade'
+      func_topic.addCount req.params.id,'visit_count'
+      res.render 'topic/topic.jade'
   "/:id/edit":
     get:(req,res,next)->
       func_topic.getById req.params.id,(error,topic)->
@@ -118,7 +114,7 @@ module.exports.filters =
     get:['checkLogin','topic/all-tags']
     post:['checkLoginJson']
   "/:id":
-    get:['freshLogin','topic/all-comments']
+    get:['freshLogin','topic/get-topic','topic/all-comments','topic/sametag_topics']
   "/:id/add":
     post:['checkLoginJson']
   "/:id/edit":

@@ -15,12 +15,10 @@ func_user =
       User.findAll
         order:'nick'
       .success (users)->
-        usernames = []
-        users.forEach (user)->
-          usernames.push user.nick
-        cache.allNames.data = usernames
+        
+        cache.allNames.data = users
         cache.allNames.time = nowTime
-        callback null,usernames
+        callback null,users
       .error (e)->
         callback null,[]
 

@@ -24,50 +24,51 @@ html
 
     include header
     #content
-      .left
-        .module
-          if !locals.card || !locals.card.alipay
-            p.alert() 你还没有填写你的支付宝收款账号，无法接受读者的赞助，请去花名册完善自己的信息。<a href="/edit-card">去完善</a>
-          form.form-horizontal#form(method='post')
-            input(type='hidden', name='is_yuanchuang',value="1")
-            fieldset
-              legend #{locals.article?"编辑文章":"发表新文章"}
-              if locals.article
-                input(type="hidden",name="id",value="#{article.id}")
-              .control-group
-                input#title(type='text', name='title', placeholder='文章标题',value="#{locals.article?article.title:''}")
-              .control-group#wmd-editor-parent
-                .wmd-panel#wmd-editor-con
-                  .padding
-                    #wmd-bar-parent
-                      #wmd-button-bar
-                    textarea.expand.wmd-input#wmd-input(name="md",placeholder="文章内容，markdown语法。如果没有写完，可以直接关闭页面，下次打开内容仍然会在。") #{locals.article?article.md:''}
-              .control-group
-                .columns
-                  input#column(type="hidden",name="column_id",value="#{locals.article?article.column_id:column_id}")
-                  div.hd 发表到何专栏：
-                  div.bd 
-                    each column,i in columns
-                      span.label(data-id="#{column.id}",class="#{locals.article?(article.column_id==column.id?'label-success':''):(column.id==column_id?'label-success':'')}",data-original-title="#{column.desc_md&&column.desc_md.substr(0,100)}",title="#{column.desc_md&&column.desc_md.substr(0,100)}") #{column.name}
-              .control-group#wmd-preview-parent
-                .wmd-panel.wmd-preview#wmd-preview-con
-                  .padding
-                    #wmd-preview
+      .content
+        .left
+          .module
+            if !locals.card || !locals.card.alipay
+              p.alert() 你还没有填写你的支付宝收款账号，无法接受读者的赞助，请去花名册完善自己的信息。<a href="/edit-card">去完善</a>
+            form.form-horizontal#form(method='post')
+              input(type='hidden', name='is_yuanchuang',value="1")
+              fieldset
+                legend #{locals.article?"编辑文章":"发表新文章"}
+                if locals.article
+                  input(type="hidden",name="id",value="#{article.id}")
+                .control-group
+                  input#title(type='text', name='title', placeholder='文章标题',value="#{locals.article?article.title:''}")
+                .control-group#wmd-editor-parent
+                  .wmd-panel#wmd-editor-con
+                    .padding
+                      #wmd-bar-parent
+                        #wmd-button-bar
+                      textarea.expand.wmd-input#wmd-input(name="md",placeholder="文章内容，markdown语法。如果没有写完，可以直接关闭页面，下次打开内容仍然会在。") #{locals.article?article.md:''}
+                .control-group
+                  .columns
+                    input#column(type="hidden",name="column_id",value="#{locals.article?article.column_id:column_id}")
+                    div.hd 发表到何专栏：
+                    div.bd 
+                      each column,i in columns
+                        span.label(data-id="#{column.id}",class="#{locals.article?(article.column_id==column.id?'label-success':''):(column.id==column_id?'label-success':'')}",data-original-title="#{column.desc_md&&column.desc_md.substr(0,100)}",title="#{column.desc_md&&column.desc_md.substr(0,100)}") #{column.name}
+                .control-group#wmd-preview-parent
+                  .wmd-panel.wmd-preview#wmd-preview-con
+                    .padding
+                      #wmd-preview
 
-              .control-group
-                button.btn#submit(type='submit') 发表
-          #myModal.modal.hide.fade.
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h3 id="myModalLabel">插入图片</h3>
-            </div>
-            <div class="modal-body">
-                <input type="file" name="pic" id="file" />
-            </div>
-            <div class="modal-footer">
-              <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
-              <button class="btn btn-primary">插入</button>
-            </div>
+                .control-group
+                  button.btn#submit(type='submit') 发表
+            #myModal.modal.hide.fade.
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">插入图片</h3>
+              </div>
+              <div class="modal-body">
+                  <input type="file" name="pic" id="file" />
+              </div>
+              <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                <button class="btn btn-primary">插入</button>
+              </div>
       .right 
         .module
           .hd 提示

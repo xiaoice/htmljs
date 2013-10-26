@@ -32,55 +32,56 @@ html
       if !article
         p.alert 不存在的阅读篇章
       else
-        .left
-          article.post.module(id="post-#{article.id}")
-            .entry-title
-              
-              h2.title(href='http://p.html-js.com/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
-              
-            .entry-content !{article.html.replace(/([^>])\r\n\r\n([^<])/g,"$1<br/>$2").replace(/<code>/g,"<code class='language-javascript'>")}
-            .entry-meta
-              p 本站专栏文章皆为原创，转载请注明出处和本文链接(<a href="http://www.html-js.com/article/#{article.id}">http://www.html-js.com/article/#{article.id}</a>)，本站和作者保留随时要求删除文章的权利！
-          if article.card && article.card.alipay 
-            .module(style="margin-top:10px;")
-              .hd 如果本文对您有帮助，本站希望您能为作者赞助一点心意，
+        .content
+          .left
+            article.post.module(id="post-#{article.id}")
+              .entry-title
+                
+                h2.title(href='http://p.html-js.com/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                
+              .entry-content !{article.html.replace(/([^>])\r\n\r\n([^<])/g,"$1<br/>$2").replace(/<code>/g,"<code class='language-javascript'>")}
+              .entry-meta
+                p 本站专栏文章皆为原创，转载请注明出处和本文链接(<a href="http://www.html-js.com/article/#{article.id}">http://www.html-js.com/article/#{article.id}</a>)，本站和作者保留随时要求删除文章的权利！
+            if article.card && article.card.alipay 
+              .module(style="margin-top:10px;")
+                .hd 如果本文对您有帮助，本站希望您能为作者赞助一点心意，
+                .bd
+                  p(style="color:#999;") 本站推荐按照您的情况，为作者捐助一下金额：1元，5元，10元，20元，或者更多。
+                  p 
+                    a(href="#{article.card.alipay}",target="_blank") 点击这里用支付宝捐助
+            
+            .comment.module
+              .hd 评论
               .bd
-                p(style="color:#999;") 本站推荐按照您的情况，为作者捐助一下金额：1元，5元，10元，20元，或者更多。
-                p 
-                  a(href="#{article.card.alipay}",target="_blank") 点击这里用支付宝捐助
-          
-          .comment.module
-            .hd 评论
-            .bd
-              .publish 
-                textarea.input-block-level#comment-text(placeholder="参与讨论。支持markdown语法")
-                .btn.comment-submit#comment-submit 发表评论
-              .comment-list
-                if comments.length
-                  each comment in comments
-                    .comment-item.clearfix
-                      a.headpic
-                        img(src="#{comment.user_headpic}",width=70,height=70)
-                      .comment-right
-                        div.con 
-                          span.author.vcard.item
-                            a.value.url.fn(rel='author', href='/user/#{comment.user_id}') #{comment.user_nick}：
-                          | !{comment.html}
-                        .time #{moment(comment.createdAt).fromNow()}
-                          a.reply(data-nick="#{comment.user_nick}") 回复
-                else
-                  div 暂无评论
-              script#comment-tpl(type="text/template")
-                .comment-item.clearfix
-                  a.headpic
-                    img(src="{{user_headpic}}",width=70,height=70)
-                  .comment-right
-                    div.con 
-                      span.author.vcard.item
-                        a.value.url.fn(rel='author', href='/user/{{user_id}}') {{user_nick}}：
-                      | {{{html}}}
-                    .time {{createdAt}} 
-                      a.reply(data-nick="{{user_nick}}") 回复
+                .publish 
+                  textarea.input-block-level#comment-text(placeholder="参与讨论。支持markdown语法")
+                  .btn.comment-submit#comment-submit 发表评论
+                .comment-list
+                  if comments.length
+                    each comment in comments
+                      .comment-item.clearfix
+                        a.headpic
+                          img(src="#{comment.user_headpic}",width=70,height=70)
+                        .comment-right
+                          div.con 
+                            span.author.vcard.item
+                              a.value.url.fn(rel='author', href='/user/#{comment.user_id}') #{comment.user_nick}：
+                            | !{comment.html}
+                          .time #{moment(comment.createdAt).fromNow()}
+                            a.reply(data-nick="#{comment.user_nick}") 回复
+                  else
+                    div 暂无评论
+                script#comment-tpl(type="text/template")
+                  .comment-item.clearfix
+                    a.headpic
+                      img(src="{{user_headpic}}",width=70,height=70)
+                    .comment-right
+                      div.con 
+                        span.author.vcard.item
+                          a.value.url.fn(rel='author', href='/user/{{user_id}}') {{user_nick}}：
+                        | {{{html}}}
+                      .time {{createdAt}} 
+                        a.reply(data-nick="{{user_nick}}") 回复
         .right
           div.module.user
             a.headpic

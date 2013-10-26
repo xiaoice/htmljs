@@ -21,52 +21,62 @@ html
     - locals.pageId=7;
     include ../header
     #content.clearfix
-      .left
-        .module
-          form.form-horizontal#form(method='post')
-            fieldset
-              legend 提问
-              .control-group
-                input#title(type='text', name='title', placeholder='简单描述',required)
-              .control-group#wmd-editor-parent
-                .wmd-panel#wmd-editor-con
-                  .padding
-                    #wmd-bar-parent
-                      #wmd-button-bar
-                  textarea.expand.wmd-input#wmd-input(name="md",placeholder='详细问题',required)
-              .control-group#wmd-preview-parent
-                .wmd-panel.wmd-preview#wmd-preview-con
-                  .padding
-                    #wmd-preview
-              if locals.tags
+      .content
+        .left
+          .module
+            form.form-horizontal#form(method='post')
+              fieldset
+                legend 提问
                 .control-group
-                  .tags
-                    input#tags(type="hidden",name="tags",value="")
-                    input#tagNames(type="hidden",name="tagNames",value="")
-                    span.tags-hd 问题标签：
-                    span.tags-bd 
-                      each tag,i in tags
-                        span.label(data-id="#{tag.id}",data-original-title="#{tag.desc_md.substr(0,100)}",title="#{tag.desc_md.substr(0,100)}") #{tag.name}
-                      a(href="/tag/add",target="_blank",style="padding-left:10px;font-size:12px;") 添加新标签
-              .control-group
-                label.checkbox
-                  input(type="checkbox",name="to_weibo",checked="true")
-                  |分享到微博
-              .control-group
-                button.btn#submit(type='submit') 发表
-          #myModal.modal.hide.fade.
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h3 id="myModalLabel">插入图片</h3>
-            </div>
-            <div class="modal-body">
-                <input type="file" name="pic" id="file" />
-            </div>
-            <div class="modal-footer">
-              <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
-              <button class="btn btn-primary">插入</button>
-            </div>
-          
+                  input#title(type='text', name='title', placeholder='简单描述',required)
+                .control-group#wmd-editor-parent
+                  .wmd-panel#wmd-editor-con
+                    .padding
+                      #wmd-bar-parent
+                        #wmd-button-bar
+                    textarea.expand.wmd-input#wmd-input(name="md",placeholder='详细问题',required)
+                .control-group#wmd-preview-parent
+                  .wmd-panel.wmd-preview#wmd-preview-con
+                    .padding
+                      #wmd-preview
+                if locals.tags
+                  .control-group
+                    .tags
+                      input#tags(type="hidden",name="tags",value="")
+                      input#tagNames(type="hidden",name="tagNames",value="")
+                      span.tags-hd 问题标签：
+                      span.tags-bd 
+                        each tag,i in tags
+                          span.label(data-id="#{tag.id}",data-original-title="#{tag.desc_md.substr(0,100)}",title="#{tag.desc_md.substr(0,100)}") #{tag.name}
+                        a(href="/tag/add",target="_blank",style="padding-left:10px;font-size:12px;") 添加新标签
+                .control-group.invite
+                  label 邀请回答
+                  .invite-list.clearfix
+                    .user.clearfix
+                      .headpic 
+                        img(src="http://tp1.sinaimg.cn/1717808700/50/5656122350/1")
+                      .infos
+                        .nick 芋头
+                        .desc 思考，去做，做好，做的比别人好
+                .control-group
+                  label.checkbox
+                    input(type="checkbox",name="to_weibo",checked="true")
+                    |分享到微博
+                .control-group
+                  button.btn#submit(type='submit') 发表
+            #myModal.modal.hide.fade.
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">插入图片</h3>
+              </div>
+              <div class="modal-body">
+                  <input type="file" name="pic" id="file" />
+              </div>
+              <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                <button class="btn btn-primary">插入</button>
+              </div>
+            
 
       .right 
         .module

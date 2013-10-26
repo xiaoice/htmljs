@@ -248,13 +248,31 @@ i{
 
   }
 }
+#content{
+    width:1000px;
+  }
+  .content{
+    width:100%;
+    float:left;
+  }
+  .left{
+    width:auto;
+    margin-right: 290px;
+    overflow: hidden; 
+  }
+  .right{
+    width:270px;
+    margin-left: -270px;
+    float:left;
+    overflow: hidden;
+  }
 #header{
   background: @green;
   // box-shadow: 3px 2px 1px #ddd;
   // border-top: 3px solid @red;
   // border-bottom: 3px solid #aaa;
   .wrapper{
-    width:940px;
+    width:1000px;
     margin:0 auto;
     height:30px;
   }
@@ -287,9 +305,7 @@ i{
       }
   }
   .navbar{
-    float:left;
     margin: 0;
-    width:900px;
   }
   .navbar-inner{
     padding:0;
@@ -374,7 +390,7 @@ i{
 }
 #footer{
   .wrapper{
-    width:940px;
+    width:1000px;
     margin:30px auto;
     .module{
     .bd{

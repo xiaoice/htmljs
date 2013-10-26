@@ -13,170 +13,171 @@ html
     include header
 
     #content.clearfix
-      .left
-        //
-          div.alert.alert-warning 本站第一次线下活动【中秋节杭州基层前端大聚会】，开始报名！<a href="/act/1">戳我去报名</a>！
-        .module.search
-          .bd
-            //- div.
-            //-   <script>
-            //-     (function() {
-            //-       var cx = '004549130280129344040:hye4d842ysg';
-            //-       var gcse = document.createElement('script');
-            //-       gcse.type = 'text/javascript';
-            //-       gcse.async = true;
-            //-       gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-            //-           '//www.google.com/cse/cse.js?cx=' + cx;
-            //-       var s = document.getElementsByTagName('script')[0];
-            //-       s.parentNode.insertBefore(gcse, s);
-            //-     })();
-            //-   </script>
-            //-   <gcse:search></gcse:search>
-            div.adds(style="padding:15px;padding-bottom:0;")
-              |快速入口：
-              a.btn.gray(href="/qa/add") <i class="icon-lightbulb"></i> 提问问题
-              a.btn.gray(href="/topic/add") <i class="icon-conversation"></i> 发起话题
-              a.btn.gray(href="/article/add") <i class="icon-book-open"></i> 发表原创文章
+      .content
+        .left
+          //
+            div.alert.alert-warning 本站第一次线下活动【中秋节杭州基层前端大聚会】，开始报名！<a href="/act/1">戳我去报名</a>！
+          .module.search
+            .bd
+              //- div.
+              //-   <script>
+              //-     (function() {
+              //-       var cx = '004549130280129344040:hye4d842ysg';
+              //-       var gcse = document.createElement('script');
+              //-       gcse.type = 'text/javascript';
+              //-       gcse.async = true;
+              //-       gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+              //-           '//www.google.com/cse/cse.js?cx=' + cx;
+              //-       var s = document.getElementsByTagName('script')[0];
+              //-       s.parentNode.insertBefore(gcse, s);
+              //-     })();
+              //-   </script>
+              //-   <gcse:search></gcse:search>
+              div.adds(style="padding:15px;padding-bottom:0;")
+                |快速入口：
+                a.btn.gray(href="/qa/add") <i class="icon-lightbulb"></i> 提问问题
+                a.btn.gray(href="/topic/add") <i class="icon-conversation"></i> 发起话题
+                a.btn.gray(href="/article/add") <i class="icon-book-open"></i> 发表原创文章
 
-        .module.timelines
-          each timeline in timelines
-            if timeline.card_id
-              .card-item.timeline-item.clearfix
-                a.t-user(href="/user/#{timeline.card_user_id}",data-original-title="#{timeline.card_nick}")
-                  img(data-original="#{timeline.card_head_pic}",width="20")
-                span.value  #{moment(timeline.createdAt).fromNow()} 
-                a(href="/card/#{timeline.card_id}") #{timeline.card_nick} 
-                span 添加了自己的名片：
-                a(href="/card/#{timeline.card_id}") 查看名片 
-                .entry-name <i class="icon-nameplate" title="名片"></i>
-            else if timeline.article_id
-              .article-item.timeline-item.clearfix
-                .entry-title
-                  h2.title
-                    a.t-user(href="/user/#{timeline.article_user_id}",data-original-title="#{timeline.article_user_nick}")
-                      img(data-original="#{timeline.article_user_headpic}",width="20")
-                    a.real-title(href='/article/#{timeline.article_id}', title='#{timeline.article_title}', rel='bookmark') #{timeline.article_title}
-                .entry-foot
-                  div.others
-                    span.time.item
-                      span.value #{moment(timeline.createdAt).fromNow()} 由
-                      a.value.url.fn(rel='author', href='/user/#{timeline.article_user_id}')  #{timeline.article_user_nick} 
-                      span.value 
-                        | 发布在 
-                        if timeline.article_column_id && locals.columns
-                          each column in columns
-                            if column.id == timeline.article_column_id
-                              a(href="/article/column/#{column.id}") #{column.name}
-                        |  专栏
-                    span.item
-                      span.index 浏览 
-                      span.value #{timeline.article_visit_count}
-                    span.item
-                      span.index 评论 
-                      span.value  #{timeline.article_comment_count}
-                    span.item
-                      span.index 评分
-                      a.value(href="/article/#{timeline.article_id}#score")  #{timeline.article_score}/10
-                    if locals.user&&locals.user.is_admin
-                      span.actions.item
-                        span.index 操作：
-                        if timeline.sort ==10000
-                          a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
-                        else
-                          a(href="/index/#{timeline.id}/update?sort=10000") 置顶
-                .entry-name <i class="icon-book-open" title="专栏原创文章"></i>
-                    
-            else if timeline.question_id
-              .question-item.timeline-item.clearfix
-                .entry-title
-                  h2.title
-                    a.t-user(href="/user/#{timeline.question_user_id}",data-original-title="#{timeline.question_user_nick}")
-                      img(data-original="#{timeline.question_user_headpic}",width="20")
-                    a.real-title(href='/qa/#{timeline.question_id}', title='#{timeline.question_title}', rel='bookmark') #{timeline.question_title}
-                .entry-foot
-                  div.others
-                    span.time.item
-                      span.value #{moment(timeline.createdAt).fromNow()} 由
-                      a.value.url.fn(rel='author', href='/user/#{timeline.question_user_id}')  #{timeline.question_user_nick} 
-                      span.value 发布在 问答区
-                    span.item
-                      span.index 浏览 
-                      span.value #{timeline.question_visit_count}
-                    span.item
-                      span.index 回答 
-                      span.value #{timeline.question_answer_count}
-                    if locals.user&&locals.user.is_admin
-                      span.actions.item
-                        span.index 操作：
-                        if timeline.sort ==10000
-                          a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
-                        else
-                          a(href="/index/#{timeline.id}/update?sort=10000") 置顶
-                .entry-name <i class="icon-lightbulb"  title="问答"></i>
-            else if timeline.topic_id
-              .topic-item.timeline-item.clearfix
-                .entry-title
-                  h2.title
-                    a.t-user(href="/user/#{timeline.topic_user_id}",data-original-title="#{timeline.topic_user_nick}")
-                      img(data-original="#{timeline.topic_user_headpic}",width="20")
-                    a.real-title(href='/topic/#{timeline.topic_id}', title='#{timeline.topic_title}', rel='bookmark') #{timeline.topic_title}
-                .entry-foot
-                  div.others
-                    span.time.item
-                      span.value #{moment(timeline.createdAt).fromNow()} 由
-                      a.value.url.fn(rel='author', href='/user/#{timeline.topic_user_id}')  #{timeline.topic_user_nick} 
-                      span.value 发布在 话题区
-                    span.item
-                      span.index 浏览 
-                      span.value #{timeline.topic_visit_count}
-                    span.item
-                      span.index 跟帖
-                      span.value #{timeline.topic_comment_count}
-                    if locals.user&&locals.user.is_admin
-                      span.actions.item
-                        span.index 操作：
-                        if timeline.sort ==10000
-                          a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
-                        else
-                          a(href="/index/#{timeline.id}/update?sort=10000") 置顶
-                .entry-name <i class="icon-conversation" title="话题"></i>
-            else if timeline.act_id
-              .topic-item.timeline-item.clearfix
-                .entry-title
-                  h2.title
-                    a.real-title(href='/act/#{timeline.act_id}', title='#{timeline.act_title}', rel='bookmark') 【活动】#{timeline.act_title}
-                .entry-foot
-                  div.others
-                    span.time.item
-                      span.value #{moment(timeline.createdAt).fromNow()} 
-                      span.value 发布在 活动区
-                    span.item
-                      span.index 浏览 
-                      span.value #{timeline.act_visit_count}
-                    span.item
-                      span.index 跟帖
-                      span.value  #{timeline.act_comment_count}
-                    if locals.user&&locals.user.is_admin
-                      span.actions.item
-                        span.index 操作：
-                        if timeline.sort ==10000
-                          a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
-                        else
-                          a(href="/index/#{timeline.id}/update?sort=10000") 置顶
-                .entry-name <i class="icon-sampler" title="活动"></i>
-            //- .timeline-item.clearfix
-            //-   .user
-            //-     .headpic(href="/user/#{timeline.who_id}") 
-            //-       img(src="#{timeline.who_headpic}")
-            //-   .infos
-            //-     .action 
-            //-       a.nick(href="/user/#{timeline.who_id}") #{timeline.who_nick}
-            //-       |#{timeline.action}
-            //-       a.title(href="#{timeline.target_url}") #{timeline.target_name}
-            //-       span.time #{moment(timeline.createdAt).fromNow()}
-            //-     if timeline.desc
-            //-       .desc.clearfix !{timeline.desc}
-          include page
+          .module.timelines
+            each timeline in timelines
+              if timeline.card_id
+                .card-item.timeline-item.clearfix
+                  a.t-user(href="/user/#{timeline.card_user_id}",data-original-title="#{timeline.card_nick}")
+                    img(data-original="#{timeline.card_head_pic}",width="20")
+                  span.value  #{moment(timeline.createdAt).fromNow()} 
+                  a(href="/card/#{timeline.card_id}") #{timeline.card_nick} 
+                  span 添加了自己的名片：
+                  a(href="/card/#{timeline.card_id}") 查看名片 
+                  .entry-name <i class="icon-nameplate" title="名片"></i>
+              else if timeline.article_id
+                .article-item.timeline-item.clearfix
+                  .entry-title
+                    h2.title
+                      a.t-user(href="/user/#{timeline.article_user_id}",data-original-title="#{timeline.article_user_nick}")
+                        img(data-original="#{timeline.article_user_headpic}",width="20")
+                      a.real-title(href='/article/#{timeline.article_id}', title='#{timeline.article_title}', rel='bookmark') #{timeline.article_title}
+                  .entry-foot
+                    div.others
+                      span.time.item
+                        span.value #{moment(timeline.createdAt).fromNow()} 由
+                        a.value.url.fn(rel='author', href='/user/#{timeline.article_user_id}')  #{timeline.article_user_nick} 
+                        span.value 
+                          | 发布在 
+                          if timeline.article_column_id && locals.columns
+                            each column in columns
+                              if column.id == timeline.article_column_id
+                                a(href="/article/column/#{column.id}") #{column.name}
+                          |  专栏
+                      span.item
+                        span.index 浏览 
+                        span.value #{timeline.article_visit_count}
+                      span.item
+                        span.index 评论 
+                        span.value  #{timeline.article_comment_count}
+                      span.item
+                        span.index 评分
+                        a.value(href="/article/#{timeline.article_id}#score")  #{timeline.article_score}/10
+                      if locals.user&&locals.user.is_admin
+                        span.actions.item
+                          span.index 操作：
+                          if timeline.sort ==10000
+                            a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
+                          else
+                            a(href="/index/#{timeline.id}/update?sort=10000") 置顶
+                  .entry-name <i class="icon-book-open" title="专栏原创文章"></i>
+                      
+              else if timeline.question_id
+                .question-item.timeline-item.clearfix
+                  .entry-title
+                    h2.title
+                      a.t-user(href="/user/#{timeline.question_user_id}",data-original-title="#{timeline.question_user_nick}")
+                        img(data-original="#{timeline.question_user_headpic}",width="20")
+                      a.real-title(href='/qa/#{timeline.question_id}', title='#{timeline.question_title}', rel='bookmark') #{timeline.question_title}
+                  .entry-foot
+                    div.others
+                      span.time.item
+                        span.value #{moment(timeline.createdAt).fromNow()} 由
+                        a.value.url.fn(rel='author', href='/user/#{timeline.question_user_id}')  #{timeline.question_user_nick} 
+                        span.value 发布在 问答区
+                      span.item
+                        span.index 浏览 
+                        span.value #{timeline.question_visit_count}
+                      span.item
+                        span.index 回答 
+                        span.value #{timeline.question_answer_count}
+                      if locals.user&&locals.user.is_admin
+                        span.actions.item
+                          span.index 操作：
+                          if timeline.sort ==10000
+                            a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
+                          else
+                            a(href="/index/#{timeline.id}/update?sort=10000") 置顶
+                  .entry-name <i class="icon-lightbulb"  title="问答"></i>
+              else if timeline.topic_id
+                .topic-item.timeline-item.clearfix
+                  .entry-title
+                    h2.title
+                      a.t-user(href="/user/#{timeline.topic_user_id}",data-original-title="#{timeline.topic_user_nick}")
+                        img(data-original="#{timeline.topic_user_headpic}",width="20")
+                      a.real-title(href='/topic/#{timeline.topic_id}', title='#{timeline.topic_title}', rel='bookmark') #{timeline.topic_title}
+                  .entry-foot
+                    div.others
+                      span.time.item
+                        span.value #{moment(timeline.createdAt).fromNow()} 由
+                        a.value.url.fn(rel='author', href='/user/#{timeline.topic_user_id}')  #{timeline.topic_user_nick} 
+                        span.value 发布在 话题区
+                      span.item
+                        span.index 浏览 
+                        span.value #{timeline.topic_visit_count}
+                      span.item
+                        span.index 跟帖
+                        span.value #{timeline.topic_comment_count}
+                      if locals.user&&locals.user.is_admin
+                        span.actions.item
+                          span.index 操作：
+                          if timeline.sort ==10000
+                            a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
+                          else
+                            a(href="/index/#{timeline.id}/update?sort=10000") 置顶
+                  .entry-name <i class="icon-conversation" title="话题"></i>
+              else if timeline.act_id
+                .topic-item.timeline-item.clearfix
+                  .entry-title
+                    h2.title
+                      a.real-title(href='/act/#{timeline.act_id}', title='#{timeline.act_title}', rel='bookmark') 【活动】#{timeline.act_title}
+                  .entry-foot
+                    div.others
+                      span.time.item
+                        span.value #{moment(timeline.createdAt).fromNow()} 
+                        span.value 发布在 活动区
+                      span.item
+                        span.index 浏览 
+                        span.value #{timeline.act_visit_count}
+                      span.item
+                        span.index 跟帖
+                        span.value  #{timeline.act_comment_count}
+                      if locals.user&&locals.user.is_admin
+                        span.actions.item
+                          span.index 操作：
+                          if timeline.sort ==10000
+                            a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
+                          else
+                            a(href="/index/#{timeline.id}/update?sort=10000") 置顶
+                  .entry-name <i class="icon-sampler" title="活动"></i>
+              //- .timeline-item.clearfix
+              //-   .user
+              //-     .headpic(href="/user/#{timeline.who_id}") 
+              //-       img(src="#{timeline.who_headpic}")
+              //-   .infos
+              //-     .action 
+              //-       a.nick(href="/user/#{timeline.who_id}") #{timeline.who_nick}
+              //-       |#{timeline.action}
+              //-       a.title(href="#{timeline.target_url}") #{timeline.target_name}
+              //-       span.time #{moment(timeline.createdAt).fromNow()}
+              //-     if timeline.desc
+              //-       .desc.clearfix !{timeline.desc}
+            include page
       .right
         //- .module
         //-   .hd 公告

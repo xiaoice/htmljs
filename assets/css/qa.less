@@ -15,16 +15,8 @@ background:#efefef;
     }
   }
   
-  .left{
-    width:650px;
-    float:left;
-    overflow: hidden;
-  }
   .right{
-    width:270px;
-    margin-left: 20px;
-    float:left;
-    overflow: hidden;
+    
     padding-top: 35px;
     a{
       color:#6fb79b;
@@ -200,21 +192,16 @@ background:#efefef;
     }
   }
   .left{
-    width:650px;
-    float:left;
-    overflow: hidden;
+    
     .module{
       padding-top: 10px;
     }
     .control-group{
-      width:610px;
+      
     }
   }
   .right{
-    width:270px;
-    margin-left: 20px;
-    float:left;
-    overflow: hidden;
+   
     .module.count{
       span{
         font-size: 14px;
@@ -247,6 +234,42 @@ background:#efefef;
   .reason{
     width:100%;
   }
+  .invite{
+    .invite-list{
+      background: #eee;
+      border: 1px solid #ddd;
+      padding:5px;
+      .user{
+        font-size: 12px;
+        width:250px;
+        padding:5px;
+        cursor: pointer;
+        .headpic{
+          float:left;
+          img{
+            width:30px;
+            height:30px;
+          }
+        }
+        .infos{
+          width:190px;
+          float: left;
+          margin-left: 10px;
+          .nick{
+            font-weight: bold;
+            line-height: 15px;
+          }
+          .desc{
+            color:#999;
+            line-height:15px;
+          }
+        }
+      }
+      .user:hover{
+        background: #ddd;
+      }
+    }
+  }
 }
 #qa{
   background:#efefef;
@@ -255,16 +278,9 @@ background:#efefef;
 
     }
   }
-  .left{
-    width:650px;
-    float:left;
-    overflow: hidden;
-  }
+ 
   .right{
-    width:270px;
-    margin-left: 20px;
-    float:left;
-    overflow: hidden;
+    
     padding-top: 20px;
     .module.count{
       span{

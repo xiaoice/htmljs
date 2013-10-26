@@ -82,62 +82,62 @@ html(xmlns:wb='http://open.weibo.com/wb')
                   |已订阅
               
               
+      .content
+        .left
 
-      .left
-
-        ul.article-list
-          each article,i in articles
-            - var showA = false;
-            if article.is_publish
-              showA = true
-            else if locals.user && locals.user.id == article.user_id
-              showA = true
+          ul.article-list
+            each article,i in articles
+              - var showA = false;
+              if article.is_publish
+                showA = true
+              else if locals.user && locals.user.id == article.user_id
+                showA = true
 
 
-            if showA
-              article.post(id="post-#{article.id}",class="#{i%2==1?'yooo':''} ")
-                .entry-title
-                  h2.title
-                    
-                    //- a.t-user(href="/user/#{article.user_id}",data-original-title="#{article.user_nick}")
-                    //-   img(src="#{article.user_headpic}",width="20")
-                    
-                    if  !locals.column&&article.column
-                      a(href="/article/column/#{article.column.id}") 【#{article.column.name}】
-                    a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
-                    if !article.is_publish
-                      span.label.tip 此文正在审核中
-                    
-                //- .entry-content.clearfix 
-                //-   if article.main_pic
-                //-     img.main_pic(src="#{article.main_pic}")
-                //-   |!{article.desc||article.html.replace(/<p>(.*?)<\/p>/g,"$1\n").replace(/<[^>]*?>/g,"").substr(0,300).replace(/([^\n])\n+([^\n])/g,"$1<br/>$2")}
-                .entry-foot
-                  div.others
-                    span.author.vcard.item
-                      span.index 
-                        i.icon-user
-                      a.value.url.fn(rel='author', href='/user/#{article.user_id}') #{article.user_nick}
-                    
-                    
-                    span.time.item
-                      span.index 
-                        i.icon-clock
-                      a.value #{moment(article.publish_time*1000).fromNow()}
+              if showA
+                article.post(id="post-#{article.id}",class="#{i%2==1?'yooo':''} ")
+                  .entry-title
+                    h2.title
                       
-                    if locals.user && (user.is_admin||user.id==article.user_id)
-                      span.views.item
-                        a.value(href="/article/#{article.id}/edit") 编辑
-                    span.right-foot
-                      span.views.item
+                      //- a.t-user(href="/user/#{article.user_id}",data-original-title="#{article.user_nick}")
+                      //-   img(src="#{article.user_headpic}",width="20")
+                      
+                      if  !locals.column&&article.column
+                        a(href="/article/column/#{article.column.id}") 【#{article.column.name}】
+                      a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                      if !article.is_publish
+                        span.label.tip 此文正在审核中
+                      
+                  //- .entry-content.clearfix 
+                  //-   if article.main_pic
+                  //-     img.main_pic(src="#{article.main_pic}")
+                  //-   |!{article.desc||article.html.replace(/<p>(.*?)<\/p>/g,"$1\n").replace(/<[^>]*?>/g,"").substr(0,300).replace(/([^\n])\n+([^\n])/g,"$1<br/>$2")}
+                  .entry-foot
+                    div.others
+                      span.author.vcard.item
                         span.index 
-                          i.icon-comments
-                        a.value #{article.comment_count}
-                      span.views.item
+                          i.icon-user
+                        a.value.url.fn(rel='author', href='/user/#{article.user_id}') #{article.user_nick}
+                      
+                      
+                      span.time.item
                         span.index 
-                          i.icon-signal
-                        a.value #{article.visit_count}
-        include page
+                          i.icon-clock
+                        a.value #{moment(article.publish_time*1000).fromNow()}
+                        
+                      if locals.user && (user.is_admin||user.id==article.user_id)
+                        span.views.item
+                          a.value(href="/article/#{article.id}/edit") 编辑
+                      span.right-foot
+                        span.views.item
+                          span.index 
+                            i.icon-comments
+                          a.value #{article.comment_count}
+                        span.views.item
+                          span.index 
+                            i.icon-signal
+                          a.value #{article.visit_count}
+          include page
       .right
         //
           .module.text

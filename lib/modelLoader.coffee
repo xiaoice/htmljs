@@ -63,11 +63,12 @@ global.__FC = (func,model,methods)->
           where:
             id:id
         .success (m)->
-          m.updateAttributes(data)
-          .success ()->
-            callback&&callback null,m
-          .error (error)->
-            callback&&callback error
+          if m
+            m.updateAttributes(data)
+            .success ()->
+              callback&&callback null,m
+            .error (error)->
+              callback&&callback error
         .error (error)->
           callback&&callback error
     else if m == "count"

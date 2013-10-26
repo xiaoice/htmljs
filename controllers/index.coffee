@@ -177,6 +177,12 @@ module.exports.controllers =
       func_card.update req.body.id,req.body,(error,card)->
         if error then next error
         else
+          func_user.update card.user_id,
+            nick:card.nick
+            sex:card.sex
+            desc:card.desc
+          ,(error)->
+            if error then console.log error
           res.redirect '/user'
   "/card/:id":
     get:(req,res,next)->

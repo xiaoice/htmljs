@@ -493,10 +493,10 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #card .actions i{background:none;vertical-align:-1px;}
 #card .actions a{cursor:pointer;}
 #talk{background:#efefef;}
-#topics{background:#efefef;}#topics .head{height:30px;line-height:30px;background:#eee;border:1px solid #ddd;border-bottom:none;}#topics .head .tags{display:inline-block;vertical-align:top;}#topics .head .tags a{font-size:12px;color:#666;padding:0 10px;display:inline-block;height:30px;line-height:30px;}
+#topics{background:#efefef;}#topics .head{height:35px;line-height:35px;background:#eee;border:1px solid #ddd;border-bottom:none;}#topics .head .tags{display:inline-block;vertical-align:top;}#topics .head .tags a{font-size:13px;color:#666;padding:0 15px;display:inline-block;height:35px;line-height:35px;}
 #topics .head .tags a.active{background:#fff;border:1px solid #ddd;border-bottom:none;}
 #topics .head .tags a:first-child{border-left:none;}
-#topics .head .actions{width:100px;display:inline-block;vertical-align:top;float:right;padding-right:10px;}#topics .head .actions a{font-size:12px;height:30px;line-height:30px;float:right;}
+#topics .head .actions{width:100px;display:inline-block;vertical-align:top;float:right;padding-right:10px;}#topics .head .actions a{font-size:12px;line-height:35px;float:right;}
 #topics .right a{color:#6fb79b;}
 #topics .right .recent_comments .item{border-bottom:1px solid #eee;padding:5px 0;}
 #topics .right .hot_questions .item{border-bottom:1px solid #eee;padding:5px 0;}

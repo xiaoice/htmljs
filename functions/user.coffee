@@ -63,7 +63,7 @@ func_user =
                 weibo_name:user.nick
                 nick:card.nick
                 sex:card.sex
-
+                desc:card.desc
               .success ()->
                 callback null,user,card
                 

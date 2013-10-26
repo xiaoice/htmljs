@@ -49,15 +49,15 @@ html
                         each tag,i in tags
                           span.label(data-id="#{tag.id}",data-original-title="#{tag.desc_md.substr(0,100)}",title="#{tag.desc_md.substr(0,100)}") #{tag.name}
                         a(href="/tag/add",target="_blank",style="padding-left:10px;font-size:12px;") 添加新标签
-                .control-group.invite
-                  label 邀请回答
-                  .invite-list.clearfix
-                    .user.clearfix
-                      .headpic 
-                        img(src="http://tp1.sinaimg.cn/1717808700/50/5656122350/1")
-                      .infos
-                        .nick 芋头
-                        .desc 思考，去做，做好，做的比别人好
+                //- .control-group.invite
+                //-   label 邀请回答
+                //-   .invite-list.clearfix
+                //-     .user.clearfix
+                //-       .headpic 
+                //-         img(src="http://tp1.sinaimg.cn/1717808700/50/5656122350/1")
+                //-       .infos
+                //-         .nick 芋头
+                //-         .desc 思考，去做，做好，做的比别人好
                 .control-group
                   label.checkbox
                     input(type="checkbox",name="to_weibo",checked="true")

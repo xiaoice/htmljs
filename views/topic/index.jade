@@ -59,20 +59,17 @@ html
                     
                     //- span.time.item
                       //- a.value 发布于：#{moment(topic.createdAt).fromNow()}
-                    if topic.last_comment_user_id
-                      span.time.item
-                        span.value 最后由 <a href="/user/#{topic.last_comment_user_id}">#{topic.last_comment_user_nick}</a> 回复于 #{moment(topic.last_comment_time).fromNow()}
-                    span.views.item
-                      span.index 浏览：
-                      a.value #{topic.visit_count}
                     span.views.item
                       span.index 跟帖：
                       a.value #{topic.comment_count}
-                    if topic.tagNames
-                      - var tags = topic.tagNames.split(",")
-                      span.tags.item
-                        each tag in tags
-                          a.value(href="/tag/n/#{tag}") #{tag}
+                    span.views.item
+                      span.index 浏览：
+                      a.value #{topic.visit_count}
+                    
+                    if topic.last_comment_user_id
+                      span.time.item
+                        span.value 最后由 <a href="/user/#{topic.last_comment_user_id}">#{topic.last_comment_user_nick}</a> 回复于 #{moment(topic.last_comment_time).fromNow()}
+                    
                     
                     if locals.user&&locals.user.is_admin
                       span.actions.item

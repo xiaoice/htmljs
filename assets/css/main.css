@@ -320,7 +320,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #tag .qa-item .entry-title .user img{width:40px;height:40px;}
 #tag .qa-item .entry-content{padding:20px 0;word-break:break-all;color:#404040;}#tag .qa-item .entry-content h1,#tag .qa-item .entry-content h2,#tag .qa-item .entry-content h3,#tag .qa-item .entry-content h4,#tag .qa-item .entry-content h5{font-size:1.5em;}
 #tag .qa-item .entry-content p{font-size:14px;line-height:20px;margin:10px 0;}
-#user{background:#efefef;}#user .top-info{width:950px;background:#fff;border-radius:5px;}#user .top-info .left{float:left;width:680px;}
+#user{background:#efefef;}#user .top-info{width:1000px;background:#fff;border-radius:5px;}#user .top-info .left{float:left;width:730px;margin-right:0;}
 #user .top-info .right{float:left;width:250px;margin-left:10px;}
 #user .top-info .module{border:none;}
 #user .baseinfo .head-pic{float:left;width:100px;height:100px;margin:10px 0;}
@@ -334,8 +334,8 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #user .visit-info .visitor{float:left;margin-right:5px;margin-bottom:5px;}#user .visit-info .visitor img{width:30px;height:30px;}
 #user .my_card{width:650px;margin:20px 0;}#user .my_card .item{margin-right:50px;margin-bottom:20px;font-size:13px;padding-left:5px;line-height:18px;word-break:break-all;}#user .my_card .item .key{color:#404040;padding-right:10px;}
 #user .my_card .item .value{color:#999;}
-#user .main{margin-top:20px;width:950px;}#user .main .left{float:left;width:200px;}
-#user .main .right{width:740px;float:left;margin-left:10px;}
+#user .main{margin-top:20px;width:1000px;}#user .main .left{float:left;width:200px;margin-right:0;}
+#user .main .right{width:790px;float:left;margin-left:10px;}
 #user .main .nav a{display:block;line-height:30px;font-size:14px;color:#666;}
 #user .main .nav a:hover,#user .main .nav a.active{color:#5bb793;font-weight:bold;}
 #user .main .infos .info-item{border-top:1px dotted #eee;padding-top:10px;padding-bottom:10px;padding:10px;}#user .main .infos .info-item .t{color:#999;line-height:20px;}#user .main .infos .info-item .t .time{padding-left:10px;color:#ccc;}
@@ -465,8 +465,8 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #cards .f2er-list li .more{margin-left:10px;}
 #cards .main{width:1000px;}
 #cards .infos{float:left;width:310px;}
-#cards .left{float:left;width:780px;}
-#cards .right{float:left;width:200px;margin-left:20px;padding-top:10px;}#cards .right .module{margin-left:10px;background:#fff;padding:20px;margin-bottom:10px;}#cards .right .module .item{border-bottom:1px solid #eee;padding:5px 0;}#cards .right .module .item a{color:#6fb79b;}
+#cards .left{float:left;width:800px;margin-right:-220px;}
+#cards .right{float:left;width:200px;margin-left:-200px;padding-top:10px;}#cards .right .module{margin-left:10px;background:#fff;padding:20px;margin-bottom:10px;}#cards .right .module .item{border-bottom:1px solid #eee;padding:5px 0;}#cards .right .module .item a{color:#6fb79b;}
 #card #bdshare,#me #bdshare{float:none;}
 #cards .count-infos,#me .count-infos{position:absolute;top:10px;right:10px;line-height:17px;}#cards .count-infos a,#me .count-infos a{color:#999;cursor:pointer;}
 #cards .count-infos .icon,#me .count-infos .icon{vertical-align:top;-webkit-transition:all 0.2s ease-in-out;transition:all 0.2s ease-in-out;background:none;}
@@ -475,14 +475,14 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #cards .count-infos em,#me .count-infos em{font-style:normal;padding:0 5px;}
 #cards .count-infos span,#me .count-infos span{padding:0 5px;}
 #card .bao .actions a,#me .bao .actions a{margin-right:20px;}
-#card{background:#efefef;}#card .his-infos{margin:20px 0;position:relative;width:940px;}#card .his-infos .his-info{background:#fff;}#card .his-infos .his-info .post{width:410px;display:inline-block;}#card .his-infos .his-info .post .title{height:30px;overflow:hidden;}
-#card .top-info{width:940px;background:#fff;border-radius:5px;}#card .top-info .left{float:left;width:680px;}
+#card{background:#efefef;}#card .his-infos{margin:20px 0;position:relative;}#card .his-infos .his-info{background:#fff;}#card .his-infos .his-info .post{width:440px;display:inline-block;}#card .his-infos .his-info .post .title{height:30px;overflow:hidden;}
+#card .top-info{background:#fff;border-radius:5px;}#card .top-info .left{float:left;width:700px;margin-right:0;}
 #card .top-info .right{float:left;width:250px;margin-left:10px;}
 #card .top-info .module{border:none;}
 #card .visit-info .visitor{float:left;margin-right:5px;margin-bottom:5px;}#card .visit-info .visitor img{width:30px;height:30px;}
 #card .baseinfo .head-pic{width:50px;height:50px;margin:10px 0;}
 #card .baseinfo .base-info{padding-top:5px;}
-#card .baseinfo .item{margin-top:7px;color:#999;width:630px;font-size:13px;margin-right:40px;font-size:12px;}#card .baseinfo .item a{padding:0 5px;}
+#card .baseinfo .item{margin-top:7px;color:#999;width:650px;font-size:13px;margin-right:40px;font-size:12px;}#card .baseinfo .item a{padding:0 5px;}
 #card .baseinfo .item span.key{color:#666;padding:0 5px;padding-left:0;display:inline-block;}
 #card .baseinfo .sns a{padding-right:5px;}
 #card .baseinfo .sns .blog{background:url(http://htmljs.b0.upaiyun.com/images/icon-blog.png) no-repeat center center;height:15px;width:15px;display:inline-block;text-indent:-1000px;overflow:hidden;}

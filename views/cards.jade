@@ -28,68 +28,69 @@ html
           a.label(href="?filter=sex|女",class="#{locals.filter_sex=='女'?'label-success':''}") 女生
           a.label(href="?filter=is_dan|单身",class="#{locals.filter_is_dan=='单身'?'label-success':''}") 单身
       .main.clearfix
-        .left
-          ul.f2er-list
-            each card in cards
-              li.vcard
-                div.head_pic.user
-                  img.lazy(itemprop="photo",data-original='#{card.head_pic||"http://www.gravatar.com/avatar/"+md5(card.email)+"?d=http://ww2.sinaimg.cn/mw690/6663ae3cgw1dw6f3l62w6j.jpg"}', width='50',height="50")
-                  if card.sex
-                    if card.sex == '男'
-                      .sex.nan
-                    else
-                      .sex.nv
-                div.infos
-                  div
-                    span.key 昵称
-                    span.value.fn.nickname ：#{card.nick}
-                  div
-                    span.key 网站：
-                    if card.blog || card.github || card.weibo
-                      span.sns
-                        if card.blog
-                          a.blog(href='#{card.blog}', target='_blank',title="博客地址") blog
-                        if card.github
-                          a.github(href='#{card.github}', target='_blank',title="github地址") github
-                        if card.weibo
-                          a.weibo.url(href='#{card.weibo}', target='_blank',title="微博地址") weibo
-                  div
-                    span.key 经验值：
-                    span.value #{card.user?card.user.coin:0}
-                  div
-                    span.key 性别
-                    span.value ：#{card.sex}
+        .content
+          .left
+            ul.f2er-list
+              each card in cards
+                li.vcard
+                  div.head_pic.user
+                    img.lazy(itemprop="photo",data-original='#{card.head_pic||"http://www.gravatar.com/avatar/"+md5(card.email)+"?d=http://ww2.sinaimg.cn/mw690/6663ae3cgw1dw6f3l62w6j.jpg"}', width='50',height="50")
+                    if card.sex
+                      if card.sex == '男'
+                        .sex.nan
+                      else
+                        .sex.nv
+                  div.infos
+                    div
+                      span.key 昵称
+                      span.value.fn.nickname ：#{card.nick}
+                    div
+                      span.key 网站：
+                      if card.blog || card.github || card.weibo
+                        span.sns
+                          if card.blog
+                            a.blog(href='#{card.blog}', target='_blank',title="博客地址") blog
+                          if card.github
+                            a.github(href='#{card.github}', target='_blank',title="github地址") github
+                          if card.weibo
+                            a.weibo.url(href='#{card.weibo}', target='_blank',title="微博地址") weibo
+                    div
+                      span.key 经验值：
+                      span.value #{card.user?card.user.coin:0}
+                    div
+                      span.key 性别
+                      span.value ：#{card.sex}
+                      
+                      
+                      span.key 感情状况
+                      span.value ：#{card.is_dan?card.is_dan:"未知"}
+                    div
+                      span.key 城市
+                      span.value.adr ：#{card.city}
+                      span.key 职位
+                      span.value.title ：#{card.zhiwei}
+                    div.shanchang.clearfix
+                      span.key 擅长：
+                      span.value #{card.techang.substr(0,100)}
+                    div.more
+                      a(href="/card/#{card.id}") 更多信息
+                    if !locals.card
+                      if card.user_id
+                        span.renling 已被认领
+                      else
+                        a.renling(data-id="#{card.id}") 认领此名片 
+                  div.count-infos
+                    a(href="/card/#{card.id}")
+                      .icon-eye-open.icon
+                      span #{card.visit_count||0}
+                    a.zan(data-id="#{card.id}")
+                      .icon-heart.icon 
+                      em #{card.zan_count||0}
+                    a(href="/card/#{card.id}#comment-module")
+                      .icon-comments.icon
+                      span #{card.comment_count||0}
                     
-                    
-                    span.key 感情状况
-                    span.value ：#{card.is_dan?card.is_dan:"未知"}
-                  div
-                    span.key 城市
-                    span.value.adr ：#{card.city}
-                    span.key 职位
-                    span.value.title ：#{card.zhiwei}
-                  div.shanchang.clearfix
-                    span.key 擅长：
-                    span.value #{card.techang.substr(0,100)}
-                  div.more
-                    a(href="/card/#{card.id}") 更多信息
-                  if !locals.card
-                    if card.user_id
-                      span.renling 已被认领
-                    else
-                      a.renling(data-id="#{card.id}") 认领此名片 
-                div.count-infos
-                  a(href="/card/#{card.id}")
-                    .icon-eye-open.icon
-                    span #{card.visit_count||0}
-                  a.zan(data-id="#{card.id}")
-                    .icon-heart.icon 
-                    em #{card.zan_count||0}
-                  a(href="/card/#{card.id}#comment-module")
-                    .icon-comments.icon
-                    span #{card.comment_count||0}
-                  
-          include page
+            include page
         .right
           if locals.comments
             .module

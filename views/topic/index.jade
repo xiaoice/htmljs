@@ -18,9 +18,17 @@ html
         li.active
           span 话题
       .left
-        .actions
-          a.btn(href="/topic/add") <i class="icon-plus icon-white"></i> 添加一枚话题
-        if locals.topics
+        .head
+          .tags
+            a(href="/topic",class="#{!locals.tag_id?'active':''}") 全部
+            each tag in tags
+              a(href="/topic?tag_id=#{tag.id}",class="#{locals.tag_id==tag.id?'active':''}") #{tag.name}
+          .actions
+            a(href="/topic/add") 添加话题
+        if !(locals.topics&&topics.length)
+          .topic-list
+            .notopic 还没有话题，快去发表一个吧！
+        else
           .topic-list
             each topic,i in topics
               .topic-item(class="#{i%2==1?'yooo':''} #{topic.answer_count==0?'':''}")

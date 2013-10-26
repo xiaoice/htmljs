@@ -3,6 +3,7 @@ module.exports = (req,res,next)->
   if req.query.tag_id
     condition = 
       tag_id:req.query.tag_id
+    res.locals.tag_id = req.query.tag_id
   page = req.query.page || 1
   count = req.query.count || 30
   (__F 'topic').count condition,(error,_count)->

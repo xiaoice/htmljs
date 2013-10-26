@@ -2,7 +2,13 @@ if locals.card
   .top-info.clearfix
     .left
       .baseinfo.module.clearfix
-        .hd #{card.nick}
+        .hd 
+          h1 #{card.nick}
+          span(style="color:#666;margin-left:10px;font-size:12px;") #{card.desc?card.desc:"你还没有简介"}
+          //- input(type="text",value="",name="desc")
+          //- a.new-function(href="#",data-t="编辑一句话介绍，让别人了解你，会一直显示在你的昵称旁边")  
+          //-   i.icon-edit
+          //-   | 编辑一句话介绍
         .bd 
           
         .main-info.clearfix
@@ -28,8 +34,6 @@ if locals.card
                     a.github(href='#{card.github}', target='_blank',title="github地址") github
                   if card.weibo
                     a.weibo(href='#{card.weibo}', target='_blank',title="微博地址") weibo
-            .item 
-              span #{card.desc}
             .item 
               a#more_info(href="#") 展开更多
               if locals.card && locals.card.id == card.id

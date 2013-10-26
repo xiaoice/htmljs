@@ -102,9 +102,10 @@ html
                         .ans-con 
                           .con-hd 
                             a(href="/user/#{ans.user_id}") #{ans.user_nick}
-                            |<span style="color:#999;">(#{moment(ans.createdAt).fromNow()})</span>
+                            span(style="color:#333;")  #{ans.user.desc?("，"+ans.user.desc):""}
                           .con-bd !{ans.html.replace(/<code>/g,"<code class='language-javascript'>")}
                           .con-action
+                            |<span style="color:#999;margin-right:10px;">#{moment(ans.createdAt).fromNow()}</span>
                             if locals.user && (locals.user.id == ans.user_id||locals.user.is_admin)
                               a.edit(href="/qa/answer/#{ans.id}/edit") <i class="icon-pencil icon-gray"></i>编辑
                             a.add_comment(href="#",data-answer-id="#{ans.id}") <i class="icon-comment icon-gray"></i>评论 #{ans.comment_count}

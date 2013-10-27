@@ -152,11 +152,12 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #ad .set .left,#ad .set .right{width:200px;text-align:center;padding:20px;font-size:30px;background:#eee;float:left;height:200px;border-radius:5px;line-height:160px;margin-left:100px;margin-top:40px;margin-bottom:40px;}
 #ad .set .right{float:right;margin-right:100px;margin-top:40px;margin-bottom:40px;}
 .comment{margin-top:20px;margin-left:0px;font-size:12px;}.comment .publish textarea{height:50px;margin-top:10px;}
-.comment .comment-list{margin-top:20px;border-bottom:1px dotted #ddd;border-top:1px dotted #ddd;}.comment .comment-list .comment-item{border-bottom:1px dotted #ddd;padding:10px 0;}.comment .comment-list .comment-item .headpic{float:left;}.comment .comment-list .comment-item .headpic img{width:40px;}
+.comment .comment-hd{font-size:14px;margin-bottom:8px;}
+.comment .comment-list{margin-top:20px;border-bottom:1px dotted #ddd;}.comment .comment-list .comment-item{border-bottom:1px dotted #ddd;padding:10px 0;}.comment .comment-list .comment-item .headpic{float:left;}.comment .comment-list .comment-item .headpic img{width:25px;}
 .comment .comment-list .comment-item .comment-right{float:left;margin-left:10px;}
 .comment .comment-list .comment-item .author{padding-right:5px;}
-.comment .comment-list .comment-item .con{color:#666;word-break:break-all;}.comment .comment-list .comment-item .con p{margin:0;}
-.comment .comment-list .comment-item .time{color:#999;}
+.comment .comment-list .comment-item .con{color:#666;word-break:break-all;}.comment .comment-list .comment-item .con p{margin:0;display:inline;padding-right:10px;}
+.comment .comment-list .comment-item .time{color:#999;display:inline;}
 .comment .comment-list .comment-item .reply{display:none;margin-left:10px;cursor:pointer;}
 .comment .comment-list .comment-item:hover .reply{display:inline;}
 .comment-layer{position:fixed;bottom:0;background:#aaa;height:40px;z-index:1000;line-height:40px;padding:0 10px;box-shadow:0px 0px 2px #999;width:580px;}.comment-layer .icon-comment{margin-right:5px;}
@@ -260,8 +261,8 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #qa .right .edithistory em{color:#666;font-style:normal;}
 #qa .right .item{border-bottom:1px solid #eee;padding:5px 0;}#qa .right .item a{color:#6fb79b;}
 #qa .main{margin-top:20px;}#qa .main .con-comments{margin-top:10px;}
-#qa .main .comment{background:#f7f7f7;padding:10px;}#qa .main .comment .comment-list{margin:0;}
-#qa .main .comment .comment-item{padding-bottom:5px;}
+#qa .main .comment{background:#f7f7f7;border:1px solid #f1f1f1;padding:10px;}#qa .main .comment .comment-list{margin:0;}
+#qa .main .comment .comment-item{padding:10px;}
 #qa .main .comment .comment-publish{margin-top:10px;}
 #qa .qa-title{border-bottom:1px solid #ddd;}#qa .qa-title .title{font-size:20px;line-height:50px;font-weight:normal;margin:0;padding:0;}
 #qa .qa-content{padding:10px;font-size:14px;color:#404040;}#qa .qa-content blockquote p{line-height:25px;margin:0;font-size:12px;}
@@ -287,7 +288,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #qa .answer-list .answer-item .ans-user .zan:hover{background:#5bb793;}#qa .answer-list .answer-item .ans-user .zan:hover em{color:#fff;}
 #qa .answer-list .answer-item .ans-user .zan:hover i{border-color:#5bb793 #5bb793 #ffffff #5bb793;}
 #qa .answer-list .answer-item .ans-user .good{font-size:12px;padding:0;width:38px;height:20px;line-height:20px;margin-top:10px;}
-#qa .answer-list .answer-item .ans-user .good-answer{padding:0;width:38px;margin-top:10px;text-align:center;padding:5px 0;display:inline-block;color:#f27369;background:#efefef;border:1px solid #eee;border-radius:3px;font-size:12px;}
+#qa .answer-list .answer-item .ans-user .good-answer{width:38px;margin-top:0px;text-align:center;padding:0;display:inline-block;color:#f27369;background:none;border-radius:3px;font-size:12px;}
 #qa .answer-list .answer-item .ans-user .good-answer i{background:none;font-size:18px;width:18px;height:18px;}
 #qa .answer-list .answer-item .ans-user img{border-radius:5px;}
 #qa .answer-list .answer-item .ans-user .user{color:#666;display:block;}

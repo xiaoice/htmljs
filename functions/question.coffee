@@ -1,5 +1,4 @@
 Question = __M 'questions'
-
 User = __M 'users'
 Tag = __M 'tags'
 Answer = __M 'answers'

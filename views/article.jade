@@ -66,7 +66,7 @@ html
                           div.con 
                             span.author.vcard.item
                               a.value.url.fn(rel='author', href='/user/#{comment.user_id}') #{comment.user_nick}：
-                            | !{comment.html}
+                            .html !{comment.html}
                           .time #{moment(comment.createdAt).fromNow()}
                             a.reply(data-nick="#{comment.user_nick}") 回复
                   else
@@ -79,7 +79,7 @@ html
                       div.con 
                         span.author.vcard.item
                           a.value.url.fn(rel='author', href='/user/{{user_id}}') {{user_nick}}：
-                        | {{{html}}}
+                        .html {{{html}}}
                       .time {{createdAt}} 
                         a.reply(data-nick="{{user_nick}}") 回复
         .right

@@ -153,19 +153,20 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #ad .set .right{float:right;margin-right:100px;margin-top:40px;margin-bottom:40px;}
 .comment{margin-top:20px;margin-left:0px;font-size:12px;}.comment .publish textarea{height:50px;margin-top:10px;}
 .comment .comment-hd{font-size:14px;margin-bottom:8px;}
-.comment .comment-list{margin-top:20px;border-bottom:1px dotted #ddd;}.comment .comment-list .comment-item{border-bottom:1px dotted #ddd;padding:10px 0;}.comment .comment-list .comment-item .headpic{float:left;}.comment .comment-list .comment-item .headpic img{width:25px;}
+.comment .comment-list{margin-top:20px;border-bottom:1px dotted #ddd;}.comment .comment-list .comment-item{border-bottom:1px dotted #ddd;padding:10px 0;position:relative;}.comment .comment-list .comment-item .headpic{float:left;}.comment .comment-list .comment-item .headpic img{width:25px;}
 .comment .comment-list .comment-item .comment-right{float:left;margin-left:10px;}
-.comment .comment-list .comment-item .author{padding-right:5px;}
-.comment .comment-list .comment-item .con{color:#666;word-break:break-all;}.comment .comment-list .comment-item .con p{margin:0;display:inline;padding-right:10px;}
+.comment .comment-list .comment-item .author{padding-right:5px;}.comment .comment-list .comment-item .author a{font-size:12px;font-weight:bold;margin-right:10px;}
+.comment .comment-list .comment-item .con{color:#777;word-break:break-all;}.comment .comment-list .comment-item .con p{margin:0;display:inline;padding-right:10px;color:#777;line-height:25px;}
+.comment .comment-list .comment-item .con .html *{margin:0;display:inline;padding-right:10px;color:#777;}
 .comment .comment-list .comment-item .time{color:#999;display:inline;}
-.comment .comment-list .comment-item .reply{display:none;margin-left:10px;cursor:pointer;}
-.comment .comment-list .comment-item:hover .reply{display:inline;}
+.comment .comment-list .comment-item .reply{cursor:pointer;position:absolute;right:10px;top:15px;color:#999;font-size:12px;}.comment .comment-list .comment-item .reply i{background:none;vertical-align:-1px;}
 .comment-layer{position:fixed;bottom:0;background:#aaa;height:40px;z-index:1000;line-height:40px;padding:0 10px;box-shadow:0px 0px 2px #999;width:580px;}.comment-layer .icon-comment{margin-right:5px;}
 .comment-layer .input{cursor:pointer;margin-left:10px;background:#f3f3f3;line-height:30px;border-radius:3px;height:30px;padding:0 10px;box-shadow:inset 1px 1px 1px #aaa;width:520px;display:inline-block;}
 #article .comment-layer{width:660px;}#article .comment-layer .input{width:600px;}
 #article .comment .comment-list .comment-item .con{width:548px;word-break:break-all;}
 #read .comment-layer{width:680px;}#read .comment-layer .input{width:620px;}
 #me .comment .comment-list .comment-item .con{width:500px;word-break:break-all;}
+#q_comment_list .comment-list .comment-item .comment-right{margin-left:0;}
 #q_comment_list .comment-item .con{width:530px;word-break:break-all;}
 #index .search{padding:0;overflow:hidden;padding-bottom:15px;}#index .search .adds a{margin-right:5px;}
 #index .search .bd{border-radius:5px;}
@@ -273,7 +274,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #qa .qa-user .user .nick{width:120px;float:left;}#qa .qa-user .user .nick em{color:#999;font-weight:bold;font-size:12px;font-style:normal;}
 #qa .qa-user .user .time{color:#999;}
 #qa .answer-list .answer-item{border-bottom:1px solid #ddd;padding:10px 0;}#qa .answer-list .answer-item h1,#qa .answer-list .answer-item h2,#qa .answer-list .answer-item h3,#qa .answer-list .answer-item h4,#qa .answer-list .answer-item h5{font-size:1.5em;}
-#qa .answer-list .answer-item .ans-con{float:left;width:558px;margin-left:10px;font-size:13px;color:#404040;}#qa .answer-list .answer-item .ans-con p{line-height:25px;}
+#qa .answer-list .answer-item .ans-con{float:left;width:608px;margin-left:10px;font-size:13px;color:#404040;}#qa .answer-list .answer-item .ans-con p{line-height:25px;}
 #qa .answer-list .answer-item .ans-con .con-hd{font-size:13px;font-weight:bold;}
 #qa .answer-list .answer-item .ans-con .con-action a{line-height:30px;color:#999;font-size:12px;margin-right:10px;}#qa .answer-list .answer-item .ans-con .con-action a i{-webkit-transform:scale(0.8);-moz-transform:scale(0.8);vertical-align:-3px;}
 #qa .answer-list .answer-item .ans-con .con-action .edit i{-webkit-transform:scale(0.6);-moz-transform:scale(0.6);vertical-align:-3px;}

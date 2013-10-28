@@ -56,21 +56,19 @@ html
                   a(href="/user/#{question.user_id}") #{question.user_nick} 
                   em(title="经验值") #{question.user.coin||0}
                 .time #{moment(question.createdAt).fromNow()}
-            - console.log (question_comments.length)
             .con-comments.comment#q_comment_con(data-question-id="#{question.id}",class="#{(locals.question_comments&&question_comments.length>0)?'':'hidden'}")
               .comment-hd 评论
               .comment-list#q_comment_list(data-question-id="#{question.id}") 
                 each comment in question_comments
                   .comment-item.clearfix
-                    a.headpic
-                      img(src="#{comment.user_headpic}",width=40,height=40)
                     .comment-right
                       div.con 
                         span.author.vcard.item
-                          a.value.url.fn(rel='author', href='/user/#{comment.user_id}') #{comment.user_nick}：
-                        | !{comment.html}
-                        .time #{moment(comment.createdAt).fromNow()}
-                          a.reply(data-nick="#{comment.user_nick}") 回复
+                          a.value.url.fn(rel='author', href='/user/#{comment.user_id}') #{comment.user_nick}
+                          span.time #{moment(comment.createdAt).fromNow()}
+                        .html !{comment.html}
+                        a.reply(data-nick="#{comment.user_nick}") 
+                          | 回复
               .comment-publish
                 textarea#q_comment_content.input-block-level(placeholder="发表一些对此问题的看法，不是答案的讨论都应在此处进行。",data-question-id="#{question.id}")
                 .btn#q_comment_submit(data-question-id="#{question.id}") 提交评论
@@ -244,15 +242,15 @@ html
             a.reply(data-nick="{{user.nick}}") 回复
     script#comment-tpl-q(type="text/template")
       .comment-item.clearfix
-        a.headpic
-          img(src="{{user_headpic}}",width=70,height=70)
         .comment-right
           div.con 
             span.author.vcard.item
-              a.value.url.fn(rel='author', href='/user/{{user_id}}') {{user_nick}}：
-            | {{{html}}}
-          .time {{createdAt}} 
-            a.reply(data-nick="{{user_nick}}") 回复
+              a.value.url.fn(rel='author', href='/user/{{user_id}}') {{user_nick}}
+              span.time {{createdAt}} 
+            .html {{{html}}}
+          
+            a.reply(data-nick="{{user_nick}}") 
+              | 回复
     script(src='#{assets_head}/js/ajaxfileupload.js')
     script(src='#{assets_head}/js/loadingTip.js')
     script(src='#{assets_head}/js/messageTip.js')

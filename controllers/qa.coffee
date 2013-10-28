@@ -258,6 +258,7 @@ module.exports.controllers =
               user_nick:question.user_nick
               user_headpic:question.user_headpic
               last_comment_time:new Date()
+              uuid:question.uuid
             ,(error,topic)->
               func_question.delete question.id,(error)->
                 if error then next error

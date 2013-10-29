@@ -203,7 +203,7 @@ module.exports.controllers =
     post:(req,res,next)->
       result = 
         success:0
-      req.body.html = req.body.md
+      req.body.html = safeConverter.makeHtml req.body.md
       req.body.user_id = res.locals.user.id
       req.body.user_headpic = res.locals.user.head_pic
       req.body.user_nick = res.locals.user.nick

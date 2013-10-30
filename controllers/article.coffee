@@ -266,9 +266,11 @@ module.exports.controllers =
     post:(req,res,next)->
       if not res.locals.card
         next new Error '必须添加“花名册”后才能添加自己的专栏'
+      if not req.body.desc_md 
+        next new Error '必须填写简介'
       req.body.desc_html = safeConverter.makeHtml req.body.desc_md
       req.body.user_id = res.locals.user.id
-      if res.locals.user.is_admin then req.body.is_publish = 1
+      req.body.is_publish = 1
       
       func_column.add req.body,(error,column)->
         if error then next error

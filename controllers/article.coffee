@@ -153,7 +153,7 @@ module.exports.controllers =
         is_yuanchuang:1
         is_publish:if res.locals.user.is_admin then 1 else 0
         main_pic:if match then match[1] else null
-        desc:safeConverter.makeHtml req.body.md.substr(0,800)
+        desc:safeConverter.makeHtml req.body.md.substr(0,400)
       if req.body.column_id
         func_column.update req.body.column_id,{last_article_time:(new Date()).getTime()},()->
 
@@ -201,7 +201,7 @@ module.exports.controllers =
         title:req.body.title
         publish_time:new Date().getTime()/1000
         main_pic:if match then match[1] else null
-        desc:safeConverter.makeHtml req.body.md.substr(0,800)
+        desc:safeConverter.makeHtml req.body.md.substr(0,400)
         column_id:req.body.column_id
       result = 
         success:0

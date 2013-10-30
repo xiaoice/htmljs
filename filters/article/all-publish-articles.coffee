@@ -2,7 +2,7 @@ module.exports = (req,res,next)->
   condition = 
     is_yuanchuang:1
   page = req.query.page || 1
-  count = req.query.count || 30
+  count = req.query.count || 10
   (__F 'article').count condition,(error,_count)->
     if error then next error
     else

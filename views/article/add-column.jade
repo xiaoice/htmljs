@@ -37,12 +37,12 @@ html
                         #wmd-button-bar
                     textarea.wmd-input#wmd-input(name="desc_md",placeholder='专栏描述',required) 
                     
-                .control-group
+                .control-group.hidden
                   label.radio 
-                    input(type='radio', value = "0",name='is_public') 
+                    input(type='radio', value = "0",name='is_public',checked) 
                     | 只有我可以发表文章到专栏
                   label.radio
-                    input(type='radio', value = "1",name='is_public',checked) 
+                    input(type='radio', value = "1",name='is_public') 
                     | 所有人都可以投递到此专栏
                 .control-group#wmd-preview-parent
                   .wmd-panel.wmd-preview#wmd-preview-con
@@ -56,7 +56,7 @@ html
           .hd 提示
           .bd 
             div 提交专栏添加申请后，需要管理员审核后方能使用。
-            div 专栏可以设置私有和共有。
+            //- div 专栏可以设置私有和共有。
             div 标题和描述，请尽量清晰。
       #fullscreen-editor.hidden
       #fullscreen-exit.hidden 

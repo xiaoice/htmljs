@@ -1,5 +1,4 @@
 #qas{
-background:#efefef;
   .actions{
     padding-bottom: 5px;
     .right-actions{
@@ -35,7 +34,9 @@ background:#efefef;
     }
   }
   .qa-list{
-    border:1px solid @module-border-color;
+    // border:1px solid @module-border-color;
+    border-left: none;
+    border-right: none;
     overflow: hidden;
   }
   .qa-item.yooo{
@@ -43,15 +44,17 @@ background:#efefef;
   }
   .qa-item.unanswered{
     background: #f1fff1;
-    border-top:1px solid #deeadd;
+    border-top:1px solid #ddd;
     margin-top: -1px;
-    border-bottom:1px solid #deeadd;
+    border-bottom:1px solid #ddd;
+    border-bottom:1px solid #f1f1f1;
   }
 
   .qa-item{
     background: #fff;
     padding:10px;
     position: relative;
+    border-bottom:1px solid #f1f1f1;
     .tip{
       // position: absolute;
       right:0;
@@ -163,7 +166,7 @@ background:#efefef;
       margin:10px 10px;
       margin-bottom: 0px;
       border:1px solid #eee;
-      background: #fff;
+      background: #f3f3f3;
       .answer-user{
         float:left;
         img{
@@ -179,13 +182,12 @@ background:#efefef;
       }
     }
   }
-  .qa-item.new{
-    background: #f7fff8;
-    border-bottom: 1px solid #f3f3f3;
-  }
+  // .qa-item.new{
+  //   background: #f7fff8;
+  //   border-bottom: 1px solid #f3f3f3;
+  // }
 }
 #qa-add{
-  background:#efefef;
   .module{
     .bd{
 
@@ -272,7 +274,6 @@ background:#efefef;
   }
 }
 #qa{
-  background:#efefef;
   .module{
     .bd{
 

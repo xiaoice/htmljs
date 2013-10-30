@@ -2,6 +2,12 @@ config = require("./../config.coffee")
 path = require 'path'
 Sequelize = require("sequelize")
 uuid = require 'node-uuid'
+# redis = require("redis")
+# client = redis.createClient()
+# client.on "error",  (err)->
+#   console.log("redis error " + err)
+# global.redis_client = client
+
 global.sequelize = sequelize = new Sequelize(config.mysql_table, config.mysql_username, config.mysql_password,
   define:
     underscored: false
@@ -12,11 +18,9 @@ global.sequelize = sequelize = new Sequelize(config.mysql_table, config.mysql_us
 )
 module.exports = global.__M= (modelName,defaultMethods)->
   obj = sequelize.define modelName.replace(/\//g,"_"), require path.join config.base_path,"models",modelName+config.script_ext
-  if defaultMethods
-  	defaultMethods.forEach (method)->
-
   return obj
 global.uuid = require 'node-uuid'
+
 global.__FC = (func,model,methods)->
   methods.forEach (m)->
     if m == 'getById'
@@ -108,3 +112,37 @@ global.__FC = (func,model,methods)->
             callback&&callback error
         .error (error)->
           callback&&callback error
+  # wrapper = {}
+  # for k,v of func
+  #   ((i)-> 
+  #     wrapper[i]= ()->
+  #       args = []
+  #       argstr = []
+  #       cache_key = ""
+  #       _arguments = arguments
+  #       if func.path
+  #         func_path = func.path.replace(__C.base_path,"")+"/"+i
+  #         for e in arguments
+  #           args.push e
+  #           if e && typeof e != 'function'
+  #             argstr.push e.toString().replace(/\s/g,"")
+  #         cache_key = func_path+argstr.join("-")
+  #         if __C.cache.indexOf func_path !=0
+  #           # client.set(func_path+arguments.join("-"))
+  #           args[args.length-1]=()->
+  #             client.set(cache_key,JSON.stringify(arguments[1]))
+  #             _arguments[_arguments.length-1].apply(this,arguments)
+  #           client.get cache_key,(error,value)->
+  #             if value
+  #               datas = JSON.parse value
+  #               console.log datas
+  #               _arguments[_arguments.length-1].call(this,null,datas)
+  #               console.log "from redis"
+  #             else
+  #               func[i].apply(this,args)
+  #           return;
+  #       func[i].apply(this,args)
+  #   )(k)
+    
+  # return wrapper
+  return func

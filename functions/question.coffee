@@ -19,6 +19,7 @@ User.sync()
 Tag.sync()
 
 func_question = 
+  path :__filename
   getAllEditHistory:(q_id,callback)->
     QuestionEditHistory.findAll
       where:
@@ -81,5 +82,4 @@ func_question =
         q.updateAttributes
           comment_count: if q.comment_count then (q.comment_count+1) else 1
     .error (e)->
-__FC func_question,Question,['delete','getAll','update','add','count','addCount']
-module.exports = func_question
+module.exports = __FC func_question,Question,['delete','getAll','update','add','count','addCount']

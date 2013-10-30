@@ -1,28 +1,30 @@
 #topics{
-background:#efefef;
  
   .head{
     height:35px;
     line-height: 35px;
-    background: #eee;
-    border:1px solid #ddd;
+    background: #fff;
+    // border:1px solid #ddd;
     border-bottom: none;
     .tags{
       display: inline-block;
       vertical-align: top;
+      padding-left: 5px;
       a{
         font-size: 13px;
-        color:#666;
+        color:#444;
         padding:0 15px;
         display: inline-block;
-        height:35px;
-        line-height: 35px;
-
+        height:27px;
+        line-height: 27px;
+        margin-top: 4px;
       }
       a.active{
-        background: #fff;
-        border:1px solid #ddd;
+        background: #eee;
+        border-radius: 3px;
         border-bottom: none;
+        // color:@green;
+        font-weight: bold;
       }
       a:first-child{
         border-left: none;
@@ -61,7 +63,7 @@ background:#efefef;
     }
   }
   .topic-list{
-    border:1px solid @module-border-color;
+    // border:1px solid @module-border-color;
     overflow: hidden;
   }
   .notopic{
@@ -187,7 +189,6 @@ background:#efefef;
   }
 }
 #topic-add{
-  background:#efefef;
   .module{
     .bd{
 
@@ -238,13 +239,12 @@ background:#efefef;
 }
 
 #topic{
-  background:#efefef;
   .module{
     .bd{
 
     }
   }
-
+  
   .right{
     
     padding-top: 20px;

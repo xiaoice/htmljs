@@ -104,10 +104,13 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       
                       if  !locals.column&&article.column
                         a(href="/article/column/#{article.column.id}") 【#{article.column.name}】
-                      a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                      a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') &nbsp;&nbsp;&nbsp;#{article.title}
                       if !article.is_publish
                         span.label.tip 此文正在审核中
-                      
+                  .entry-content.clearfix 
+                    if article.main_pic
+                      img.main_pic(src="#{article.main_pic}")
+                    |!{article.desc.replace(/\s/g,"")!=""?article.desc:article.html}
                   //- .entry-content.clearfix 
                   //-   if article.main_pic
                   //-     img.main_pic(src="#{article.main_pic}")
@@ -153,12 +156,16 @@ html(xmlns:wb='http://open.weibo.com/wb')
               p NodeJS乱炖: 95323225（千人群）
               p 自由职业者: 275182059
               p IOS 乱炖: 292062123
-        .module.recent
-          .hd 近期评论
-          .bd
-            if locals.comments
-              each comment in comments
-                div.item #{comment.user_nick}：<a href="/article/#{comment.target_id.split("_")[1]}">!{comment.md.substr(0,70)}</a>
+        .module.recent_columns
+          .hd 其他专栏
+          each column in recent_columns
+            .recent_column
+              a.title(href="/article/column/#{column.id}") #{column.name}
+              .desc !{column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"..."}
+              .user
+                span 作者：
+                a(href="/user/#{column.user.id}") #{column.user.nick}
+              .time 更新时间：#{moment(column.last_article_time).fromNow()}
         .module.recent
           .hd 近期文章
           .bd

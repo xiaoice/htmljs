@@ -68,7 +68,6 @@ height: 30px;
 }
 #articles
 {
-  background: #efefef;
   .right-actions{
     float:right;
   }
@@ -79,6 +78,40 @@ height: 30px;
     a{
       margin-left: 10px;
       color:@red;
+    }
+  }
+  .actions{
+    margin-bottom: 10px;
+    a{
+      margin-right: 5px;
+    }
+  }
+   .recent_columns{
+    .recent_column{
+      padding:5px 0;
+      border-top: 1px solid #eee;
+      .title{
+        font-size: 13px;
+        color:#444;
+        line-height: 20px;
+        font-weight: bold;
+      }
+      .desc{
+        font-size: 12px;
+        line-height: 18px;
+        color:#aaa;
+        margin:5px 0;
+      }
+      .user{
+        font-size: 12px;
+        line-height: 20px;
+        color:#999;
+      }
+      .time{
+        color:#999;
+        font-size: 12px;
+        line-height: 20px;
+      }
     }
   }
   .column{
@@ -125,7 +158,6 @@ height: 30px;
   .column-list{
     border-radius:5px;
     margin-bottom: 20px;
-   
     .hd{
       font-size: 14px;
       font-weight: bold;
@@ -230,9 +262,12 @@ height: 30px;
     
   }
   .post{
-    background: #fff;
     padding:5px 15px;
     position: relative;
+    padding-top: 30px;
+    margin-bottom: 30px;
+    border-top:1px solid #eee;
+    background: #fff;
     i{
           background: none;
         }
@@ -281,40 +316,44 @@ height: 30px;
         float: left;
         margin-right: 20px;
       }
-      .title{
-        font-size:13px;
-        line-height: 30px;
-        margin:0;
-        font-weight: bold;
-        font-weight: normal;
-        padding-right:50px;
-        a{
-          color: #333;
-        }
-      }
+      
       .title{
         margin:0;
+        padding-right:80px;
         a{
         line-height: 30px;
         margin:0;
         color: #111;
         font-weight: normal;
+        font-size: 18px;
+          font-weight: bold;
         }
         .real-title{
           // margin-left: 10px;
+          font-size: 18px;
+          font-weight: bold;
+
         }
-         .t-user{
+         
+      }
+      .t-user{
         display: inline-block;
+        position: absolute;
         margin-right: 5px;
-        vertical-align: -4px;
+        vertical-align: -14px;
         background: #fff;
-        box-shadow: 1px 1px 1px #ddd;
-        width:20px;
-        height:20px;
+        box-shadow: 0px 0px 2px #aaa;
+        width:50px;
+        height:50px;
+        border:3px solid #fff;
+        border-radius: 50px;
+        right:10px;
+        top:0px;
         img{
           display: block;
+          border-radius: 50px;
         }
-      }
+        
       }
       .others{
         margin-top: 10px;
@@ -355,20 +394,27 @@ height: 30px;
       }
     }
     .entry-content{
-      padding:20px 0;
+      padding:10px 20px;
       word-break: break-all;
       color:#404040;
+      overflow: hidden;
+      img{
+        display: none;
+      }
       h1,h2,h3,h4,h5{
-        font-size:1.5em;
+        font-size:14px;
+        margin:10px 0;
+        line-height: 20px;
       }
       p{
         font-size:14px;
         line-height:20px;
         margin:10px 0;
+        color:#404040;
       }
     }
     .entry-foot{
-      line-height: 30px;
+      line-height: 40px;
       .item{
         font-size: 12px;
         margin-right: 20px;
@@ -389,7 +435,6 @@ height: 30px;
     }
   }
   .post.yooo{
-    background: #F7F7F7;
   }
   .article-list{
     margin:0;
@@ -400,7 +445,6 @@ height: 30px;
 }
 #article
 {
-  background: #efefef;
   .right{
     .module.count{
       span{
@@ -517,6 +561,7 @@ height: 30px;
       }
     }
   }
+
 }
 #add-article{
   background: #efefef;

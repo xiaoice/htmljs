@@ -17,17 +17,8 @@ rss = require 'rss'
 module.exports.controllers = 
   "/":
     "get":(req,res,next)->
-      func_column.count {is_publish:1},(error,count)->
-        if error then next error
-        else
-          res.locals.total=count
-          res.locals.totalPage=Math.ceil(count/10)
-          res.locals.page = (req.query.page||1)
-          func_column.getAllWithArticle res.locals.page,10,{is_publish:1},"last_article_time desc,visit_count desc",(if res.locals.user then res.locals.user.id else null),(error,columns)->
-            if error then next error
-            else
-              res.locals.columns = columns
-              res.render 'article/columns.jade'
+      
+      res.render 'article/articles.jade'
   "/old":
     "get":(req,res,next)->
       condition = 
@@ -162,7 +153,7 @@ module.exports.controllers =
         is_yuanchuang:1
         is_publish:if res.locals.user.is_admin then 1 else 0
         main_pic:if match then match[1] else null
-        desc:safeConverter.makeHtml req.body.md.substr(0,200)
+        desc:safeConverter.makeHtml req.body.md.substr(0,800)
       if req.body.column_id
         func_column.update req.body.column_id,{last_article_time:(new Date()).getTime()},()->
 
@@ -210,7 +201,7 @@ module.exports.controllers =
         title:req.body.title
         publish_time:new Date().getTime()/1000
         main_pic:if match then match[1] else null
-        desc:safeConverter.makeHtml req.body.md.substr(0,200)
+        desc:safeConverter.makeHtml req.body.md.substr(0,800)
         column_id:req.body.column_id
       result = 
         success:0
@@ -330,7 +321,7 @@ module.exports.filters =
     post:['checkLoginJson',"checkCard"]
   
   "/":
-    get:['freshLogin','getRecent','get_infos','article/new-comments','article/my-columns']
+    get:['freshLogin','getRecent','get_infos','article/new-comments','article/my-columns','article/recent-columns','article/all-publish-articles']
   "/old":
     get:['freshLogin','getRecent','get_infos','article/new-comments']
   "/:id":
@@ -341,7 +332,7 @@ module.exports.filters =
     get:['checkLogin',"checkCard"]
     post:['checkLogin',"checkCard"]
   "/column/:id":
-    get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns',"article/get-column",'article/get-column-rss']
+    get:['freshLogin','getRecent','get_infos','article/new-comments','article/recent-columns',"article/get-column",'article/get-column-rss']
   "/column/:id/rss":
     get:['checkLogin','checkCard']
 

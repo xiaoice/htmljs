@@ -137,7 +137,7 @@ i{
 .module{
     background:#fff;
     border-radius:0px;
-    border:1px solid @module-border-color;
+    // border-bottom:1px solid @module-border-color;
     padding:15px 20px;
     margin-bottom:10px;
     .hd .right_more{font-size: 12px;float:right;
@@ -159,11 +159,16 @@ i{
     line-height: 30px;
     padding:0;
     background: @green;
+    background-image: -moz-linear-gradient(top, @green, #3db284);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@green), to(#3db284));
+  background-image: -webkit-linear-gradient(top,@green, #3db284);
+  background-image: -o-linear-gradient(top, @green, #3db284);
+  background-image: linear-gradient(to bottom, @green, #3db284);
     padding-left: 10px;
     padding-right: 10px;
     display: inline-block;
     color: #fff;
-    border:1px solid @green;
+    border:1px solid  @green;
     line-height:27px;
   }
   .btn:hover{
@@ -340,7 +345,7 @@ i{
     }
     .active a{
       color:@green;
-       background: #efefef;
+       background: #fff;
       font-weight: bold;
     }
     i{

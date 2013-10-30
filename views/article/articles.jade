@@ -147,7 +147,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
           each column in recent_columns
             .recent_column
               a.title(href="/article/column/#{column.id}") #{column.name}
-              .desc !{column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"..."}
+              .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
               .user
                 span 作者：
                 a(href="/user/#{column.user.id}") #{column.user.nick}

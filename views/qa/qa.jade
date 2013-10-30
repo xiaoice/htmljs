@@ -113,7 +113,8 @@ html
                         .ans-con 
                           .con-hd 
                             a(href="/user/#{ans.user_id}") #{ans.user_nick}
-                            span(style="color:#333;")  #{ans.user.desc?("，"+ans.user.desc):""}
+                            if ans.user
+                              span(style="color:#333;")  #{ans.user.desc?("，"+ans.user.desc):""}
                           .con-bd !{ans.html.replace(/<code>/g,"<code class='language-javascript'>")}
                           .con-action
                             |<span style="color:#999;margin-right:10px;">#{moment(ans.createdAt).fromNow()}</span>

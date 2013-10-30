@@ -4,7 +4,7 @@ module.exports = (req,res,next)->
   condition = 
     topic_id:req.params.id
   page = req.query.page || 1
-  count = req.query.count || 30
+  count = req.query.count || 50
   func_topic_comment.count condition,(error,_count)->
     if error then next error
     else

@@ -136,8 +136,16 @@ $(document).ready(function(){
      var offset = $('#fixed-modules').offset();
           $(window).scroll(function(){
             var scrollTop = $(window).scrollTop();
-            if (offset.top < scrollTop+40) $('#fixed-modules').addClass('fixed');
-            else $('#fixed-modules').removeClass('fixed');
+            if (offset.top < scrollTop+40) 
+              $('#fixed-modules').addClass('fixed').css({
+              position:"fixed",top:0
+              });
+            else $('#fixed-modules').removeClass('fixed').css({
+              position:"relative",top:0
+            });
+            if($('#fixed-modules').height()+$('#fixed-modules').offset().top>$("#footer").offset().top+60){
+              $('#fixed-modules').css({position:"absolute",top:$("#content").height()-$('#fixed-modules').height()+60})
+            }
           });
   }
  

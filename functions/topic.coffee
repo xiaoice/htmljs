@@ -17,7 +17,7 @@ func_topic =
     Topic.find
       where:
         id:id
-      include:[User]
+      include:[User,Tag]
     .success (topic)->
       if not topic then callback new Error '不存在的话题'
       else

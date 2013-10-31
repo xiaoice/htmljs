@@ -104,7 +104,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       
                       
                       if  !locals.column&&article.column
-                        a(href="/article/column/#{article.column.id}") 【#{article.column.name}】
+                        a(href="/article/column/#{article.column.id}") 「#{article.column.name}」
                       a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
                       if !article.is_publish
                         span.label.tip 此文正在审核中

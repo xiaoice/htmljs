@@ -67,8 +67,8 @@ module.exports.controllers =
         if c
           console.log moment(c.createdAt).valueOf()
           console.log new Date()
-          if (new Date()).getTime()-moment(c.createdAt).valueOf() <60000
-            result.info = '跟帖间隔不能小于60秒'
+          if (new Date()).getTime()-moment(c.createdAt).valueOf() <20000
+            result.info = '跟帖间隔不能小于20秒'
             res.send result
             return
         func_topic_comment.add req.body,(error,comment,topic)->

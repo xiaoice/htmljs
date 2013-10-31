@@ -6,9 +6,10 @@ Question = __M 'questions'
 Comment = __M 'answer_comment'
 Comment.sync()
 User = __M 'users'
+Card = __M 'cards'
 Question.hasMany Ans,{foreignKey:"question_id"}
 Ans.belongsTo Question,{foreignKey:"question_id"}
-User.hasOne Comment,{foreignKey:"user_id"}
+User.hasOne(Comment,{foreignKey:"user_id"}).hasOne Ans,{foreignKey:"user_id"}
 Comment.belongsTo User,{foreignKey:"user_id"}
 
 Ans.hasMany Comment,{foreignKey:"answer_id"}
@@ -19,7 +20,10 @@ AnsZanHistory.belongsTo Ans,{foreignKey:"answer_id"}
 
 User.hasOne Ans,{foreignKey:"user_id"}
 Ans.belongsTo User,{foreignKey:"user_id"}
-
+# Card.hasOne Ans,{foreignKey:"user_id"}
+# Card.hasOne Ans
+Ans.belongsTo Card,{foreignKey:"user_id"}
+# Card.belongs Ans,{foreignKey:"user_id"}
 func_info = __F 'info'
 func_user  = __F 'user'
 func_answer = 
@@ -86,7 +90,20 @@ func_answer =
     if condition then query.where = condition
     Ans.findAll(query)
     .success (answers)->
-      callback null,answers
+      answerUserIDs = []
+      answers.forEach (ans)->
+        answerUserIDs.push ans.user_id
+      Card.findAll
+        where:
+          user_id:answerUserIDs
+      .success (cards)->
+        cards.forEach (card)->
+          answers.forEach (ans)->
+            if ans.user_id == card.user_id
+              ans.card = card
+        callback null,answers
+      .error ()->
+        callback null,answers
     .error (e)->
       callback e
   countByQuestionId:(q_id,condition,callback)->

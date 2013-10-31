@@ -423,8 +423,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .post .entry-title .tags a{margin-right:5px;}
 #articles .post .entry-title .user{position:absolute;right:10px;top:7px;}#articles .post .entry-title .user a{display:block;}
 #articles .post .entry-title .user img{width:40px;height:40px;}
-#articles .post .entry-content{padding:10px 20px;word-break:break-all;color:#404040;overflow:hidden;}#articles .post .entry-content img{display:none;}
-#articles .post .entry-content h1,#articles .post .entry-content h2,#articles .post .entry-content h3,#articles .post .entry-content h4,#articles .post .entry-content h5{font-size:14px;margin:10px 0;line-height:20px;}
+#articles .post .entry-content{padding:10px 20px;word-break:break-all;color:#404040;overflow:hidden;}#articles .post .entry-content h1,#articles .post .entry-content h2,#articles .post .entry-content h3,#articles .post .entry-content h4,#articles .post .entry-content h5{font-size:14px;margin:10px 0;line-height:20px;}
 #articles .post .entry-content p{font-size:14px;line-height:20px;margin:10px 0;color:#404040;}
 #articles .post .entry-foot{line-height:40px;}#articles .post .entry-foot .item{font-size:12px;margin-right:20px;}#articles .post .entry-foot .item .index{color:#bbb;}
 #articles .post .entry-foot .item .value{color:#bbb;}
@@ -482,7 +481,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #cards .count-infos em,#me .count-infos em{font-style:normal;padding:0 5px;}
 #cards .count-infos span,#me .count-infos span{padding:0 5px;}
 #card .bao .actions a,#me .bao .actions a{margin-right:20px;}
-#card .his-infos{margin:20px 0;position:relative;}#card .his-infos .his-info{background:#fff;}#card .his-infos .his-info .post{width:440px;display:inline-block;}#card .his-infos .his-info .post .title{height:30px;overflow:hidden;}
+#card .his-infos{margin:20px 0;position:relative;}#card .his-infos .his-info{background:#fff;}#card .his-infos .his-info .post{width:440px;display:inline-block;}#card .his-infos .his-info .post .title{height:30px;line-height:30px;overflow:hidden;}
 #card .top-info{background:#fff;border-radius:5px;}#card .top-info .left{float:left;width:700px;margin-right:0;}
 #card .top-info .right{float:left;width:250px;margin-left:10px;}
 #card .top-info .module{border:none;}
@@ -499,6 +498,9 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #card .actions{margin-top:20px;}#card .actions .item{float:left;margin-right:10px;}
 #card .actions i{background:none;vertical-align:-1px;}
 #card .actions a{cursor:pointer;}
+#card .post{overflow:visible;}
+#card .post .entry-title .title{height:auto;}
+#card .post .entry-title .title .real-title{font-size:14px;}
 #talk{background:#efefef;}
 #topics .head{height:35px;line-height:35px;background:#fff;border-bottom:none;}#topics .head .tags{display:inline-block;vertical-align:top;padding-left:5px;}#topics .head .tags a{font-size:13px;color:#444;padding:0 15px;display:inline-block;height:27px;line-height:27px;margin-top:4px;}
 #topics .head .tags a.active{background:#eee;border-radius:3px;border-bottom:none;font-weight:bold;}

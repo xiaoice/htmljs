@@ -103,8 +103,10 @@ html
                             |<i class=""></i>
                             em #{ans.zan_count||0}
                           if !question.good_answer_id 
-                            if locals.user && (locals.user.id == question.id||user.is_admin)
+                            if locals.user && (locals.user.id == question.user_id||user.is_admin)
                               a.btn.good(href="/qa/#{question.id}/good/#{ans.id}") 采纳
+                          if ans.card&&ans.card.alipay&&ans.card.alipay!="null"
+                            a.btn.good(href="#{ans.card.alipay}") 小费
                           else if question.good_answer_id == ans.id
                             span.good-answer
                               i.icon-certificate

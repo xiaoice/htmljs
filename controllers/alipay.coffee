@@ -11,7 +11,8 @@ module.exports.controllers =
       #   show_url:"http://www.html-js.com"#req.body.WIDshow_url
 
       # alipay.create_direct_pay_by_user(data, res)
-
+      trade_num = (new Date().getTime())+Math.random()*10000000000000000
+      
       data = 
         out_trade_no:Math.random()*10000000000000000#req.body.WIDout_trade_no 
         subject:"前端乱炖活动报名"#req.body.WIDsubject 

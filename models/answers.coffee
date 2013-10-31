@@ -3,7 +3,10 @@ module.exports =
   md:"text"
   html:"text"
   question_id:"int"
-  user_id:"int"
+  user_id:
+    type: "int",
+    references: "cards"
+    referencesKey: "user_id"
   user_headpic:"varchar(255)"
   user_nick:"varchar(50)"
   zan_count:

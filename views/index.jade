@@ -56,7 +56,7 @@ html
                     h2.title
                       a.t-user(href="/user/#{timeline.article_user_id}",data-original-title="#{timeline.article_user_nick}")
                         img(data-original="#{timeline.article_user_headpic}",width="20")
-                      a.real-title(href='/article/#{timeline.article_id}', title='#{timeline.article_title}', rel='bookmark') #{timeline.article_title}
+                      a.real-title(href='/article/#{timeline.article_id}', title='#{timeline.article_title}', rel='bookmark')「专栏」#{timeline.article_title}
                   .entry-foot
                     div.others
                       span.time.item
@@ -93,7 +93,7 @@ html
                     h2.title
                       a.t-user(href="/user/#{timeline.question_user_id}",data-original-title="#{timeline.question_user_nick}")
                         img(data-original="#{timeline.question_user_headpic}",width="20")
-                      a.real-title(href='/qa/#{timeline.question_id}', title='#{timeline.question_title}', rel='bookmark') #{timeline.question_title}
+                      a.real-title(href='/qa/#{timeline.question_id}', title='#{timeline.question_title}', rel='bookmark') 「问题」#{timeline.question_title}
                   .entry-foot
                     div.others
                       span.time.item
@@ -120,7 +120,7 @@ html
                     h2.title
                       a.t-user(href="/user/#{timeline.topic_user_id}",data-original-title="#{timeline.topic_user_nick}")
                         img(data-original="#{timeline.topic_user_headpic}",width="20")
-                      a.real-title(href='/topic/#{timeline.topic_id}', title='#{timeline.topic_title}', rel='bookmark') #{timeline.topic_title}
+                      a.real-title(href='/topic/#{timeline.topic_id}', title='#{timeline.topic_title}', rel='bookmark') 「话题」#{timeline.topic_title}
                   .entry-foot
                     div.others
                       span.time.item
@@ -132,7 +132,7 @@ html
                         span.value #{timeline.topic_visit_count}
                       span.item
                         span.index 跟帖
-                        span.value #{timeline.topic_comment_count}
+                        span.value  #{timeline.topic_comment_count}
                       if locals.user&&locals.user.is_admin
                         span.actions.item
                           span.index 操作：

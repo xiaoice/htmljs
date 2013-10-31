@@ -56,7 +56,8 @@ html
                     h2.title
                       a.t-user(href="/user/#{timeline.article_user_id}",data-original-title="#{timeline.article_user_nick}")
                         img(data-original="#{timeline.article_user_headpic}",width="20")
-                      a.real-title(href='/article/#{timeline.article_id}', title='#{timeline.article_title}', rel='bookmark')「专栏」#{timeline.article_title}
+                      span.suo 「专栏」
+                      a.real-title(href='/article/#{timeline.article_id}', title='#{timeline.article_title}', rel='bookmark') #{timeline.article_title}
                   .entry-foot
                     div.others
                       span.time.item
@@ -93,7 +94,8 @@ html
                     h2.title
                       a.t-user(href="/user/#{timeline.question_user_id}",data-original-title="#{timeline.question_user_nick}")
                         img(data-original="#{timeline.question_user_headpic}",width="20")
-                      a.real-title(href='/qa/#{timeline.question_id}', title='#{timeline.question_title}', rel='bookmark') 「问题」#{timeline.question_title}
+                      span.suo 「问题」
+                      a.real-title(href='/qa/#{timeline.question_id}', title='#{timeline.question_title}', rel='bookmark') #{timeline.question_title}
                   .entry-foot
                     div.others
                       span.time.item
@@ -120,7 +122,8 @@ html
                     h2.title
                       a.t-user(href="/user/#{timeline.topic_user_id}",data-original-title="#{timeline.topic_user_nick}")
                         img(data-original="#{timeline.topic_user_headpic}",width="20")
-                      a.real-title(href='/topic/#{timeline.topic_id}', title='#{timeline.topic_title}', rel='bookmark') 「话题」#{timeline.topic_title}
+                      span.suo 「话题」
+                      a.real-title(href='/topic/#{timeline.topic_id}', title='#{timeline.topic_title}', rel='bookmark') #{timeline.topic_title}
                   .entry-foot
                     div.others
                       span.time.item

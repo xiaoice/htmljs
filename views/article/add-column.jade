@@ -4,12 +4,7 @@ html
     include ../head
     link(href='#{assets_head}/css/Markdown.Editor.css?ddd2', type='text/css', rel='stylesheet', charset='utf-8')
     script(src='#{assets_head}/js/jquery.js')
-    script(src='#{assets_head}/js/bootstrap/bootstrap-transition.js')
-    script(src='#{assets_head}/js/bootstrap/bootstrap-modal.js')
-    script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
-    script(src='#{assets_head}/js/Markdown.Converter.js')
-    script(src='#{assets_head}/js/Markdown.Sanitizer.js')
-    script(src='#{assets_head}/js/Markdown.Editor.js?ddd')
+    include ../editor_head
     title 添加专栏
     style
       #content input[type="text"]{

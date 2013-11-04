@@ -2,21 +2,9 @@
 html
   head
     include ../head
-    link(href='#{assets_head}/css/Markdown.Editor.css?ddd', type='text/css', rel='stylesheet', charset='utf-8')
+    
     script(src='#{assets_head}/js/jquery.js')
-    script(src='#{assets_head}/js/bootstrap/bootstrap-transition.js')
-    script(src='#{assets_head}/js/bootstrap/bootstrap-modal.js')
-    script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
-    script(src='#{assets_head}/js/Markdown.Converter.js')
-    script(src='#{assets_head}/js/Markdown.Sanitizer.js')
-    script(src='#{assets_head}/js/Markdown.Editor.js?dd')
-    title 添加问题
-    style
-      #insertImageDialog { display:none; padding: 10px; position:absolute;width:400px;}
-      #insertImageDialog h4 { margin-bottom: 10px; }
-      #insertImageDialog input[type=text] { width: 260px; }
-      #insertImageDialog .loading-small { display:none; float: left; padding-right: 5px; }
-      #title{width:95%;}
+    include ../editor_head
   body#qa-add
     - locals.pageId=7;
     include ../header
@@ -25,7 +13,6 @@ html
         .left
           .module
             form.form-horizontal#form(method='post')
-              fieldset
                 legend 提问
                 .control-group
                   input#title(type='text', name='title', placeholder='简单描述',required)
@@ -119,11 +106,13 @@ html
       $('.tags .label').tooltip({
           placement:"bottom"
       })
-      var converter1 = Markdown.getSanitizingConverter();
+      var converter1 =new  Markdown.Converter();
+      Markdown.Extra.init(converter1);
       var editor1 = new Markdown.Editor(converter1);
+
       editor1.run();
       var converter2 = new Markdown.Converter();
-
+      //- Markdown.Extra.init(converter2);
       converter2.hooks.chain("preConversion", function (text) {
           return text.replace(/\b(a\w*)/gi, "*$1*");
       });

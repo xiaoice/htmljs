@@ -183,6 +183,10 @@ module.exports.controllers =
             target_path:'/article/'+article.id
             action_name:"发表了一篇文章待审核"
             target_path_name:article.title
+        sina.statuses.update 
+          access_token:res.locals.user.weibo_token
+          status:'我在@前端乱炖 发表了一篇原创文章【'+article.title+'】点击查看：'
+        
         res.send result
   "/:id/edit":
     "get":(req,res,next)->

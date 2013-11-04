@@ -6,9 +6,10 @@ func_topic = __F 'topic'
 func_comment = __F 'comment'
 pagedown = require("pagedown")
 safeConverter = pagedown.getSanitizingConverter()
+
 moment = require 'moment'
 Sina=require("./../lib/sdk/sina.js")
-
+sina=new Sina(__C.sdks.sina)
 module.exports.controllers = 
   "/":
     get:(req,res,next)->
@@ -42,7 +43,6 @@ module.exports.controllers =
             action:"发起了一个提问："
             desc:q.html.replace(/<p>(.*?)<\/p>/g,"$1\n").replace(/<[^>]*?>/g,"").substr(0,300).replace(/([^\n])\n+([^\n])/g,"$1<br/>$2")
           if req.body.to_weibo
-            sina=new Sina(__C.sdks.sina)
             sina.statuses.update 
               access_token:res.locals.user.weibo_token
               status:'我在@前端乱炖 发起了一个问题，求解答：【'+q.title+'】，点击查看或者回答问题：'+q.html.replace(/<[^>]*>/g,"").substr(0,130).replace(/\s/g,"")+''

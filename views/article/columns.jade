@@ -19,105 +19,32 @@ html(xmlns:wb='http://open.weibo.com/wb')
           span 专栏
       .actions.topactions
         a.btn(href="/article/column/add",data-original-title="专栏按照最新文章的添加时间排序，要让自己的专栏有更多展示机会，那就经常更新文章吧。") 创建我的专栏
-        .right-actions
-          a(class="",href="/article/old") 老文章
-      .my-columns.module
-        .bd 
-          span 我的专栏：
-          if locals.my_columns && locals.my_columns.length
+      .module.columns-list
+        .hd 我的专栏
+        .bd
+          if locals.my_columns && my_columns.length
             each column in my_columns
-              a(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
+              .column
+                a.title(href="/article/column/#{column.id}") #{column.name}
+                .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
+                .action   
+                  a(href="/article/add?column_id=#{column.id}",data-original-title="",style="margin-right:10px;") 发表文章
           else
-            span 暂无专栏。
+            .no 还没有专栏，先创建专栏再发表原创文章吧！
+              a(href="/article/column/add") 创建专栏
 
-
-      .column-list.clearfix
-        if locals.columns
-          each column in columns
-            .column-item
-              .head 
-                a.title(href="/article/column/#{column.id}") #{column.name} 
-                if !column.is_public 
-                  |<i class="icon-lock" style="background:none;"></i>
-                //- .others
-                  //- span.item
-                  //-   span.key <i class="icon-white icon-list"></i>
-                  //-   span.value #{column.article_count}
-                  //- span.item
-                  //-   span.key <i class="icon-white icon-eye-open"></i>
-                  //-   span.value #{column.visit_count}
-                  //- span.item
-                  //-   span.key <i class="icon-white icon-heart"></i>
-                  //-   span.value #{column.zan_count}
-                  
-                span.actions
-                  if column.is_public || (locals.user&&user.id==column.user_id)
-                    a.btn(href="/article/add?column_id=#{column.id}",data-original-title="向此专栏投递文章")
-                      i.icon-plus.icon-white
-                  if column.is_rssed
-                    a.btn.disabled.red_bg.red_border
-                      i.rss.social.icon-dd
-                  else
-                    a.btn.red_bg.red_border(href="/article/column/#{column.id}/rss",data-original-title="邮件订阅此专栏更新")
-                      i.rss.social
-              ul.article-list
-                if !column.articles.length
-                  .no 暂无文章
-                each article,i in column.articles
-                  - var showA = false;
-                  if article.is_publish
-                    showA = true
-                  else if locals.user && locals.user.id == article.user_id
-                    showA = true
-
-
-                  if showA
-                    article.post(id="post-#{article.id}",class="#{i%2==1?'yooo':''} ")
-                      .entry-title
-                        h2.title
-                          
-                          //- a.t-user(href="/user/#{article.user_id}",data-original-title="#{article.user_nick}")
-                          //-   img(src="#{article.user_headpic}",width="20")
-                          
-                          if  !locals.column&&article.column
-                            a(href="/article/column/#{article.column.id}") 【#{article.column.name}】
-                          a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
-                          if article.comment_count >=7 || article.is_hot
-                            span.label.tip.hot HOT
-                          else if article.sort == 10000
-                            span.label.tip.top 置顶
-                          if !article.is_publish
-                            span.label.tip 此文正在审核中
-                          
-                      //- .entry-content.clearfix 
-                      //-   if article.main_pic
-                      //-     img.main_pic(src="#{article.main_pic}")
-                      //-   |!{article.desc||article.html.replace(/<p>(.*?)<\/p>/g,"$1\n").replace(/<[^>]*?>/g,"").substr(0,300).replace(/([^\n])\n+([^\n])/g,"$1<br/>$2")}
-                      .entry-foot
-                        div.others
-                          span.author.vcard.item
-                            span.index 
-                              i.icon-user
-                            a.value.url.fn(rel='author', href='/user/#{article.user_id}') #{article.user_nick}
-                          
-                          
-                          span.time.item
-                            span.index 
-                              i.icon-clock
-                            a.value #{moment(article.publish_time*1000).fromNow()}
-                            
-                          if locals.user && (user.is_admin||user.id==article.user_id)
-                            span.views.item
-                              a.value(href="/article/#{article.id}/edit") 编辑
-                          span.right-foot
-                            span.views.item
-                              span.index 
-                                i.icon-comments
-                              a.value #{article.comment_count}
-                            span.views.item
-                              span.index 
-                                i.icon-signal
-                              a.value #{article.visit_count}
+      .columns-list.module
+        .hd 所有专栏
+        .bd
+          if locals.columns
+            each column in columns
+              .column
+                a.title(href="/article/column/#{column.id}") #{column.name}
+                .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
+                .user
+                  span 作者：
+                  a(href="/user/#{column.user.id}") #{column.user.nick}
+                .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
       include ../page
       
     

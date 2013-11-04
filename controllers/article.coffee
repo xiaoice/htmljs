@@ -234,6 +234,9 @@ module.exports.controllers =
             action_name:"【赞】了您的原创文章()"+req.body.score+")"
             target_path_name:article.title
         res.send result
+  "/column":
+    get:(req,res,next)->
+      res.render 'article/columns.jade'
   "/:id":
     "get":(req,res,next)->
       article = res.locals.article
@@ -260,6 +263,7 @@ module.exports.controllers =
               func_column.addCount article.column_id,"visit_count",()->
                 
             res.render 'article.jade'
+  
   "/column/add":
     get:(req,res,next)->
 
@@ -334,6 +338,8 @@ module.exports.filters =
     get:['freshLogin','getRecent','get_infos','article/get-article','article/this-column','article/comments','article/article_zan_logs']
   "/:id/zan":
     post:['checkLoginJson']
+  "/column":
+    get:['freshLogin','getRecent','get_infos','article/new-comments','article/index-columns']
   "/column/add":
     get:['checkLogin',"checkCard"]
     post:['checkLogin',"checkCard"]

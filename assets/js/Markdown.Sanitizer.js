@@ -10,6 +10,7 @@
         
     output.getSanitizingConverter = function () {
         var converter = new Converter();
+        Markdown.Extra.init(converter);
         converter.hooks.chain("postConversion", sanitizeHtml);
         converter.hooks.chain("postConversion", balanceTags);
         return converter;

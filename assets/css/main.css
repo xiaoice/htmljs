@@ -146,11 +146,15 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #books .book-list .item{width:205px;padding:10px;background:#fff;border-radius:5px;margin-right:10px;margin-bottom:20px;line-height:20px;display:inline-block;*float:left;vertical-align:top;}#books .book-list .item .pic{display:block;margin:0 auto;width:70px;float:left;}
 #books .book-list .item .infos{width:125px;float:left;margin-left:10px;color:#404040;font-size:12px;}#books .book-list .item .infos .action .btn{line-height:18px;padding:3px 5px;height:18px;font-size:12px;}
 #books .book-list .item .infos .action a{padding:0;}
-#ad{background:#efefef;}#ad .module .bd{padding:40px;}
+#ad{background:#efefef;}#ad .module .bd{padding:20px;}
 #ad .module .title{font-size:30px;color:#5bb793;line-height:50px;text-align:center;font-weight:bold;}
 #ad .module .item{font-size:18px;line-height:40px;text-align:center;}
-#ad .set .left,#ad .set .right{width:200px;text-align:center;padding:20px;font-size:30px;background:#eee;float:left;height:200px;border-radius:5px;line-height:160px;margin-left:100px;margin-top:40px;margin-bottom:40px;}
-#ad .set .right{float:right;margin-right:100px;margin-top:40px;margin-bottom:40px;}
+#ad .set .set-left,#ad .set .set-right{display:inline-block;vertical-align:top;width:48%;font-size:20px;text-align:center;line-height:50px;}
+#ad .his ul,#ad .his li{margin:0;}
+#ad .his .bd{padding:20px;}
+#ad .his .item{line-height:25px;font-size:13px;}
+#ad .his .his-left{display:inline-block;vertical-align:top;width:48%;}
+#ad .his .his-right{display:inline-block;vertical-align:top;width:48%;}
 .comment{margin-top:20px;margin-left:0px;font-size:12px;}.comment .publish textarea{height:50px;margin-top:10px;}
 .comment .comment-hd{font-size:14px;margin-bottom:8px;}
 .comment .comment-list{margin-top:20px;border-bottom:1px dotted #ddd;}.comment .comment-list .comment-item{border-bottom:1px dotted #ddd;padding:10px 0;position:relative;}.comment .comment-list .comment-item .headpic{float:left;}.comment .comment-list .comment-item .headpic img{width:25px;}
@@ -193,6 +197,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index .timeline-item .infos .desc .card .shanchang .key{float:left;}
 #index .timeline-item .infos .desc .card .shanchang .value{float:left;width:350px;}
 #index .timeline-item{padding:10px;padding-left:18px;position:relative;border-bottom:1px solid #eee;font-size:12px;}#index .timeline-item .entry-title{position:relative;}#index .timeline-item .entry-title .headpic{float:left;margin-right:20px;}
+#index .timeline-item .entry-title .suo{color:#999;font-size:12px;}
 #index .timeline-item .entry-title .title{font-size:15px;line-height:30px;margin:0;font-weight:bold;font-weight:normal;}#index .timeline-item .entry-title .title a{color:#333;}
 #index .timeline-item .entry-title .title{margin:0;}#index .timeline-item .entry-title .title a{line-height:30px;margin:0;color:#111;font-weight:normal;}
 #index .timeline-item .entry-title .title .real-title{margin-left:0px;}
@@ -387,6 +392,12 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .topactions{margin-bottom:10px;}
 #articles .my-columns a{margin-left:10px;color:#f27369;}
 #articles .actions{margin-bottom:10px;}#articles .actions a{margin-right:5px;}
+#articles .my_columns .bd{width:1100px;}
+#articles .my_columns .my_column{padding:5px 0;border-top:1px solid #eee;width:300px;margin-right:20px;display:inline-block;vertical-align:top;}#articles .my_columns .my_column .title{font-size:13px;color:#444;line-height:20px;font-weight:bold;}
+#articles .my_columns .my_column .desc{font-size:12px;line-height:18px;color:#aaa;margin:5px 0;}
+#articles .my_columns .my_column .user{font-size:12px;line-height:20px;color:#999;}
+#articles .my_columns .my_column .action{color:#999;font-size:12px;line-height:20px;}#articles .my_columns .my_column .action a{padding:0;}
+#articles .my_columns .my_column .action i{background:none;}
 #articles .recent_columns .recent_column{padding:5px 0;border-top:1px solid #eee;}#articles .recent_columns .recent_column .title{font-size:13px;color:#444;line-height:20px;font-weight:bold;}
 #articles .recent_columns .recent_column .desc{font-size:12px;line-height:18px;color:#aaa;margin:5px 0;}
 #articles .recent_columns .recent_column .user{font-size:12px;line-height:20px;color:#999;}

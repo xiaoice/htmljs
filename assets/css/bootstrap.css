@@ -6092,3 +6092,6 @@ a.thumbnail:focus {
 .affix {
   position: fixed;
 }
+#wmd-input,#wmd-preview-con{
+  width:650px;
+}

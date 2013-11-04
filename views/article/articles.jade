@@ -82,9 +82,16 @@ html(xmlns:wb='http://open.weibo.com/wb')
                   |已订阅
       .actions     
         a.btn(href="/article/column/add") <i class="icon-white icon-book-open"></i> 创建专栏
-        a.btn(href="/article/add",data-original-title="",style="margin-right:10px;") 
-          i.icon-plus.icon-white
-          |  发表文章      
+      if locals.my_columns && my_columns.length
+        .module.my_columns
+          .hd 我的专栏
+          .bd
+            each column in my_columns
+              .my_column
+                a.title(href="/article/column/#{column.id}") #{column.name}
+                .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
+                .action   
+                  a(href="/article/add?column_id=#{column.id}",data-original-title="",style="margin-right:10px;") 发表文章
       .content
         .left
 
@@ -142,6 +149,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                           a.value #{article.visit_count}
           include ../page
       .right
+        
         .module.recent_columns
           .hd 最近更新的专栏
           each column in recent_columns

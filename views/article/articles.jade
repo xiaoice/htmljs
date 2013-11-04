@@ -82,16 +82,20 @@ html(xmlns:wb='http://open.weibo.com/wb')
                   |已订阅
       .actions     
         a.btn(href="/article/column/add") <i class="icon-white icon-book-open"></i> 创建专栏
-      if locals.my_columns && my_columns.length
-        .module.my_columns
-          .hd 我的专栏
-          .bd
+      
+      .module.my_columns
+        .hd 我的专栏
+        .bd
+          if locals.my_columns && my_columns.length
             each column in my_columns
               .my_column
                 a.title(href="/article/column/#{column.id}") #{column.name}
                 .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
                 .action   
                   a(href="/article/add?column_id=#{column.id}",data-original-title="",style="margin-right:10px;") 发表文章
+          else
+            .no 还没有专栏，先创建专栏再发表原创文章吧！
+              a(href="/article/column/add") 创建专栏
       .content
         .left
 
@@ -155,11 +159,11 @@ html(xmlns:wb='http://open.weibo.com/wb')
           each column in recent_columns
             .recent_column
               a.title(href="/article/column/#{column.id}") #{column.name}
-              .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
+              //- .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
               .user
                 span 作者：
                 a(href="/user/#{column.user.id}") #{column.user.nick}
-              .time 更新时间：#{moment(column.last_article_time).fromNow()}
+              .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
         .module.recent
           .hd 近期评论
           .bd

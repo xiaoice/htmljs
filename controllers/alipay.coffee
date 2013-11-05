@@ -39,10 +39,13 @@ module.exports.controllers =
       console.log req.body
       alipayNotify = new AlipayNotify(alipay.alipay_config);
       alipayNotify.verifyReturn req.body, (verify_result)->
+        console.log verify_result
         if verify_result
           if req.body.trade_status == 'WAIT_SELLER_SEND_GOODS'
             func_payment.getByTradeNum req.body.out_trade_no,(error,payment)->
-              if error then res.end 'fail'
+              if error 
+                console.log error
+                res.end 'fail'
               else
                 payment.updateAttributes
                   status:2
@@ -50,7 +53,9 @@ module.exports.controllers =
                   pay_time:new Date()
                 .success ()->
                   func_user.getById payment.target_user_id,(error,user)->
-                    if error then res.end 'fail'
+                    if error 
+                      console.log error
+                      res.end 'fail'
                     else
                       func_act.addJoiner payment.target_uuid,user,(error,joiner)->
                         if error 
@@ -58,7 +63,8 @@ module.exports.controllers =
                           res.end 'fail'
                         else
                           res.end 'success'
-                .error ()->
+                .error (e)->
+                  console.log e
                   res.end 'fail'
         else
           res.end 'fail'

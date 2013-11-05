@@ -37,39 +37,39 @@ module.exports.controllers =
   "/trade_create_by_buyer/notify_url":
     post:(req,res,next)->
       console.log req.body
-      alipayNotify = new AlipayNotify(alipay.alipay_config);
-      alipayNotify.verifyReturn req.body, (verify_result)->
-        console.log verify_result
-        if true
-          if req.body.trade_status == 'WAIT_SELLER_SEND_GOODS'
-            func_payment.getByTradeNum req.body.out_trade_no,(error,payment)->
-              if error 
-                console.log error
+      # alipayNotify = new AlipayNotify(alipay.alipay_config);
+      # alipayNotify.verifyReturn req.body, (verify_result)->
+        # console.log verify_result
+      if true
+        if req.body.trade_status == 'WAIT_SELLER_SEND_GOODS'
+          func_payment.getByTradeNum req.body.out_trade_no,(error,payment)->
+            if error 
+              console.log error
+              res.end 'fail'
+            else
+              payment.updateAttributes
+                status:2
+                buyer_email:req.body.buyer_email
+                pay_time:new Date()
+              .success ()->
+                func_user.getById payment.target_user_id,(error,user)->
+                  if error 
+                    console.log error
+                    res.end 'fail'
+                  else
+                    func_act.addJoiner payment.target_uuid,user,(error,joiner)->
+                      if error 
+                        result.info = error.message
+                        res.end 'fail'
+                      else
+                        res.end 'success'
+              .error (e)->
+                console.log e
                 res.end 'fail'
-              else
-                payment.updateAttributes
-                  status:2
-                  buyer_email:req.body.buyer_email
-                  pay_time:new Date()
-                .success ()->
-                  func_user.getById payment.target_user_id,(error,user)->
-                    if error 
-                      console.log error
-                      res.end 'fail'
-                    else
-                      func_act.addJoiner payment.target_uuid,user,(error,joiner)->
-                        if error 
-                          result.info = error.message
-                          res.end 'fail'
-                        else
-                          res.end 'success'
-                .error (e)->
-                  console.log e
-                  res.end 'fail'
-          else if req.body.trade_status == 'WAIT_BUYER_PAY'
-            res.end 'success'
-        else
-          res.end 'fail'
+        else if req.body.trade_status == 'WAIT_BUYER_PAY'
+          res.end 'success'
+      else
+        res.end 'fail'
 
       
     get:(req,res,next)->

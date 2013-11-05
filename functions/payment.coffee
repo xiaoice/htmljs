@@ -14,7 +14,7 @@ func_payment =
         callback null,payment
     .error (e)->
       callback e
-
+      
 __FC func_payment,Trade,['get','add','update','delte']
 
 module.exports = func_payment

@@ -3,6 +3,7 @@ config = require './../config.coffee'
 
 Sina=require("./../lib/sdk/sina.js")
 moment =require 'moment'
+func_payment = __F 'payment'
 module.exports.controllers = 
   "/":
     get:(req,res,next)->
@@ -43,6 +44,17 @@ module.exports.controllers =
           func_act.getAllJoiners req.params.id,(error,joiners)->
             res.locals.joiners = joiners ||[]
             res.render 'act/act.jade'
+  "/u/:id":
+    get:(req,res,next)->
+      func_act.getByUUID req.params.id,(error,act)->
+        if error then next error
+        else
+          res.locals.act = act
+          func_act.addCount act.id,"visit_count",(error)->
+            
+          func_act.getAllJoiners act.id,(error,joiners)->
+            res.locals.joiners = joiners ||[]
+            res.render 'act/act.jade'
   "/:id/join":
     post:(req,res,next)->
 
@@ -58,24 +70,46 @@ module.exports.controllers =
         result.code = 102
         res.send result
         return
-      func_act.addJoiner req.params.id,res.locals.user,(error,joiner)->
-        if error 
-          result.info = error.message
-          res.send result
+      func_act.getById req.params.id,(error,act)->
+        if act.price 
+          func_payment.add
+            uuid:uuid.v4()
+            trade_num:uuid.v4().replace(/-/g,"")
+            trade_title:"前端乱炖活动付费："+act.title
+            target_uuid:act.uuid
+            trade_price:act.price
+            target_type:1
+            target_user_id:res.locals.user.id
+          ,(error,payment)->
+            if error 
+              result.info = error.message
+              res.send result
+            else
+              result.success = 1
+              result.redirect = "/alipay/create?trade_num="+payment.trade_num
+            res.send result
         else
-          func_act.getById req.params.id,(error,act)->
-            if not error
-              sina=new Sina(config.sdks.sina)
-              sina.statuses.update 
-                access_token:res.locals.user.weibo_token
-                status:"我在@前端乱炖 报名了【"+act.title+"】的活动，活动时间："+moment(act.time.getTime()-8000*60*60).format("LLL")+"，欢迎关注：http://www.html-js.com/act/"+req.params.id
-          
-          result.success = 1
-          result.data = joiner
-          res.send result
+          func_act.addJoiner req.params.id,res.locals.user,(error,joiner)->
+            if error 
+              result.info = error.message
+              res.send result
+            else
+              func_act.getById req.params.id,(error,act)->
+                if not error
+                  sina=new Sina(config.sdks.sina)
+                  sina.statuses.update 
+                    access_token:res.locals.user.weibo_token
+                    status:"我在@前端乱炖 报名了【"+act.title+"】的活动，活动时间："+moment(act.time.getTime()-8000*60*60).format("LLL")+"，欢迎关注：http://www.html-js.com/act/"+req.params.id
+              
+              result.success = 1
+              result.data = joiner
+              res.send result
+
 module.exports.filters = 
   "/":
     get:['freshLogin']
+  "/u/:id":
+    get:['freshLogin','act/comments']
   "/:id":
     get:['freshLogin','act/comments']
   "/add":

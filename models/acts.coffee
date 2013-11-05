@@ -10,6 +10,7 @@ module.exports =
   desc_md:"text"
   desc_html:"text"
   banner:"varchar(255)"
+  price:"double"
   comment_count:
     type:"int"
     defaultValue:0

@@ -57,5 +57,16 @@ func_act =
       callback null,ms
     .error (e)->
       callback e
+  getByUUID:(uuid,callback)->
+    Act.find
+      where:
+        uuid:uuid
+    .success (act)->
+      if not act
+        callback new Error '不存在的活动'
+      else
+        callback null,act
+    .error (e)->
+      callback e
 __FC func_act,Act,['delete','update','add','getById','count','addCount']
 module.exports = func_act

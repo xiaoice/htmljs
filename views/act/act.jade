@@ -128,8 +128,11 @@ html
       $("#join_submit").click(function(){
        
         HtmlJS.util.ajax("/act/#{act.id}/join",{},"post",function(data){
-              if(data.success){
-                alert("报名成功！")
+                if(data.redirect){
+                  alert("本活动需要付费，点确定去支付宝付款！")
+                  window.location.href=data.redirect;
+                }else if(data.success){
+                  alert("报名成功！")
                   window.location.href=window.location.href;
                 }else if(data.code==101){
                   alert(data.info);
@@ -141,10 +144,13 @@ html
                 alert(data.info)
                 }
             },function(){
-
+              
             },null,function(){
             HtmlJS.util.ajax("/act/#{act.id}/join",{},"post",function(data){
-              if(data.success){
+              if(data.redirect){
+                  alert("本活动需要付费，点确定去支付宝付款！")
+                  window.location.href=data.redirect;
+                }else if(data.success){
                 alert("报名成功！")
                   window.location.href=window.location.href;
                 }else if(data.code==101){

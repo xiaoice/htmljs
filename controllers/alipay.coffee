@@ -65,6 +65,10 @@ module.exports.controllers =
 
       
     get:(req,res,next)->
-      console.log req.query
+      # console.log req.query
   "/trade_create_by_buyer/return_url":
     get:(req,res,next)->
+      func_payment.getByTradeNum req.query.out_trade_no,(error,payment)->
+        if error then next error
+        else
+          res.redirect '/act/'+payment.target_uuid

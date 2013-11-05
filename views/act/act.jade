@@ -56,7 +56,7 @@ html
           .me-join
             if is_bao
               a.btn.disabled() 您已经成功报名！
-            if act.is_down
+            else if act.is_down
               a.btn.disabled() 活动已结束
             else
               if joiners.length >= act.person_limit

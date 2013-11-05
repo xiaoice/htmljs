@@ -66,6 +66,8 @@ module.exports.controllers =
                 .error (e)->
                   console.log e
                   res.end 'fail'
+          else if req.body.trade_status == 'WAIT_BUYER_PAY'
+            res.end 'success'
         else
           res.end 'fail'
 

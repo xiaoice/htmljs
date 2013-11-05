@@ -39,7 +39,10 @@ html
         .hd 报名（#{joiners.length}/#{act.person_limit}）
         .bd 
           .joiners.users
+            - locals.is_bao = false;
             for joiner in joiners
+              if locals.user.id && joiner.user.id == locals.user.id
+                - locals.is_bao = true;
               a.user(href="/user/#{joiner.user_id}",target="_blank",data-original-title="#{joiner.user_nick}")
                 img(src="#{joiner.user_headpic}",width=50,height=50)
                 if joiner.user
@@ -51,6 +54,8 @@ html
             if !joiners.length
               div 还没有人报名，快点抢占吧！
           .me-join
+            if is_bao
+              a.btn.disabled() 您已经成功报名！
             if act.is_down
               a.btn.disabled() 活动已结束
             else
@@ -144,7 +149,7 @@ html
                 alert(data.info)
                 }
             },function(){
-              
+
             },null,function(){
             HtmlJS.util.ajax("/act/#{act.id}/join",{},"post",function(data){
               if(data.redirect){

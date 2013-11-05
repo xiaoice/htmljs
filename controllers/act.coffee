@@ -73,10 +73,9 @@ module.exports.controllers =
       func_act.getById req.params.id,(error,act)->
         if act.price 
           func_payment.add
-            uuid:uuid.v4()
             trade_num:uuid.v4().replace(/-/g,"")
             trade_title:"前端乱炖活动付费："+act.title
-            target_uuid:act.uuid
+            target_uuid:act.id
             trade_price:act.price
             target_type:1
             target_user_id:res.locals.user.id

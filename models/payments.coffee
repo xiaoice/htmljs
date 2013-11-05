@@ -11,3 +11,5 @@ module.exports =
   status: #1 创建 2已付，等待确认收货 3已完成付款 4 确认收货
     defaultValue:1
     type:"int"
+  buyer_email:"varchar(100)"
+  pay_time:"datetime"

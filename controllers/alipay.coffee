@@ -1,5 +1,8 @@
 alipay = require('./../alipay_config').alipay
+AlipayNotify = require('./../alipay_config').AlipayNotify
 func_payment = __F 'payment'
+func_act = __F 'act'
+func_user = __F 'user'
 module.exports.controllers = 
   "/create":
     get:(req,res,next)->
@@ -19,7 +22,7 @@ module.exports.controllers =
             subject:payment.trade_title#req.body.WIDsubject 
             total_fee:payment.trade_price#req.body.WIDtotal_fee 
             body: payment.trade_title#req.body.WIDbody
-            show_url:"http://www.html-js.com/act/u/"+payment.target_uuid#req.body.WIDshow_url
+            show_url:"http://www.html-js.com/act/"+payment.target_uuid#req.body.WIDshow_url
             quantity  : "1"#req.body.WIDquantity,
             payment_type:"1"
             price:payment.trade_price
@@ -34,6 +37,33 @@ module.exports.controllers =
   "/trade_create_by_buyer/notify_url":
     post:(req,res,next)->
       console.log req.body
+      alipayNotify = new AlipayNotify(alipay.alipay_config);
+      alipayNotify.verifyReturn req.body, (verify_result)->
+        if verify_result
+          if req.body.trade_status == 'WAIT_SELLER_SEND_GOODS'
+            func_payment.getByTradeNum req.body.out_trade_no,(error,payment)->
+              if error then res.end 'fail'
+              else
+                payment.updateAttributes
+                  status:2
+                  buyer_email:req.body.buyer_email
+                  pay_time:new Date()
+                .success ()->
+                  func_user.getById payment.target_user_id,(error,user)->
+                    if error then res.end 'fail'
+                    else
+                      func_act.addJoiner payment.target_uuid,user,(error,joiner)->
+                        if error 
+                          result.info = error.message
+                          res.end 'fail'
+                        else
+                          res.end 'success'
+                .error ()->
+                  res.end 'fail'
+        else
+          res.end 'fail'
+
+      
     get:(req,res,next)->
       console.log req.query
   "/trade_create_by_buyer/return_url":

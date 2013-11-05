@@ -4,19 +4,8 @@ html
     include ./../head
     title #{topic.title} - 话题 - 前端乱炖
     link(href='#{assets_head}/css/Markdown.Editor.css?33', type='text/css', rel='stylesheet', charset='utf-8')
-    script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
-    script(src='#{assets_head}/js/bootstrap/bootstrap-transition.js')
-    script(src='#{assets_head}/js/bootstrap/bootstrap-modal.js')
-    script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
-    script(src='#{assets_head}/js/Markdown.Converter.js')
-    script(src='#{assets_head}/js/Markdown.Sanitizer.js')
-    script(src='#{assets_head}/js/Markdown.Editor.js')
+    include ../editor_head
     |<meta name="description" content="#{topic.html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,140)}">
-    style
-      #insertImageDialog { display:none; padding: 10px; position:absolute;width:400px;}
-      #insertImageDialog h4 { margin-bottom: 10px; }
-      #insertImageDialog input[type=text] { width: 260px; }
-      #insertImageDialog .loading-small { display:none; float: left; padding-right: 5px; }
    
   body#topic
     - locals.pageId=10;

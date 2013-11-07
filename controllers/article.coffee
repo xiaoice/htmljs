@@ -185,7 +185,7 @@ module.exports.controllers =
             target_path_name:article.title
         sina.statuses.update 
           access_token:res.locals.user.weibo_token
-          status:'我在@前端乱炖 发表了一篇原创文章【'+article.title+'】点击查看：'
+          status:'我在@前端乱炖 发表了一篇原创文章【'+article.title+'】点击查看：http://www.html-js.com/article/'+article.id
         
         res.send result
   "/:id/edit":

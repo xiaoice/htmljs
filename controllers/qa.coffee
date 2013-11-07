@@ -2,7 +2,9 @@ func_question = __F 'question'
 func_timeline = __F 'timeline'
 func_answer = __F 'answer'
 func_info = __F 'info'
+func_user = __F 'user'
 func_topic = __F 'topic'
+func_email = __F 'email'
 func_comment = __F 'comment'
 pagedown = require("pagedown")
 safeConverter = pagedown.getSanitizingConverter()
@@ -25,11 +27,13 @@ module.exports.controllers =
       req.body.user_id = res.locals.user.id
       req.body.user_headpic = res.locals.user.head_pic
       req.body.user_nick = res.locals.user.nick
+
       func_question.add req.body,(error,q)->
         if error 
           result.info = error.message
         else
           result.success = 1
+
           (__F 'index').add q.uuid
           if req.body.tags
             func_question.addTagsToQuestion q.id,req.body.tags.split(",")
@@ -46,7 +50,25 @@ module.exports.controllers =
             sina.statuses.update 
               access_token:res.locals.user.weibo_token
               status:'我在@前端乱炖 发起了一个问题，求解答：【'+q.title+'】，点击查看或者回答问题：'+q.html.replace(/<[^>]*>/g,"").substr(0,130).replace(/\s/g,"")+''
-            
+          if req.body.invites 
+            #发送邮件 
+            emails = []
+            func_user.getByUserIds req.body.invites.split(","),(error,users)->
+              if users
+                users.forEach (user)->
+                  func_info.add 
+                    target_user_id:user.user_id
+                    type:7
+                    source_user_id:q.user_id
+                    source_user_nick:q.user_nick
+                    time:new Date()
+                    target_path:"/qa/"+q.id
+                    action_name:"【邀请】您回答问题"
+                    target_path_name:q.title
+                  if user.card && user.card.email
+                    emails.push user.card.email.toString()
+              console.log emails
+              func_email.sendQAInvite q,emails.join(";")
         res.send result
   "/:id/comment":
     get:(req,res,next)->

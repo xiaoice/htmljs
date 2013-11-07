@@ -4,6 +4,8 @@ Card = __M 'cards'
 Card.sync()
 VisitLog = __M 'card_visit_log'
 VisitLog.sync()
+User.hasOne Card,{foreignKey:"user_id"}
+pinyin = require './../lib/Pinyin.js'
 cache = 
   allNames:
     data:[]
@@ -15,16 +17,26 @@ func_user =
       User.findAll
         order:'nick'
       .success (users)->
-        
-        cache.allNames.data = users
+        us = []
+        users.forEach (user)->
+          us.push {id:user.id,nick:user.nick,head_pic:user.head_pic,pinyin:pinyin(user.nick,{style: pinyin.STYLE_NORMAL}).join("")}
+        cache.allNames.data = us
         cache.allNames.time = nowTime
-        callback null,users
+        callback null,us
       .error (e)->
         callback null,[]
 
     else
       callback null,cache.allNames.data
-
+  getByUserIds:(ids,callback)->
+    User.findAll
+      where:
+        id:ids
+      include:[Card]
+    .success (users)->
+      callback null,users
+    .error (error)->
+      callback error
   getByWeiboId:(id,callback)->
     User.find
       where:

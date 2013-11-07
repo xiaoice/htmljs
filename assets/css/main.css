@@ -255,9 +255,12 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #qa-add .tags .label{float:left;margin:0px 3px;cursor:pointer;margin-bottom:5px;}
 #qa-add .tags a{float:left;margin:0px 3px;cursor:pointer;margin-bottom:5px;}
 #qa-add .reason{width:100%;}
-#qa-add .invite .invite-list{background:#eee;border:1px solid #ddd;padding:5px;}#qa-add .invite .invite-list .user{font-size:12px;width:250px;padding:5px;cursor:pointer;}#qa-add .invite .invite-list .user .headpic{float:left;}#qa-add .invite .invite-list .user .headpic img{width:30px;height:30px;}
-#qa-add .invite .invite-list .user .infos{width:190px;float:left;margin-left:10px;}#qa-add .invite .invite-list .user .infos .nick{font-weight:bold;line-height:15px;}
-#qa-add .invite .invite-list .user .infos .desc{color:#999;line-height:15px;}
+#qa-add .invite .invite-area{position:relative;}#qa-add .invite .invite-area input{width:350px;font-size:12px;}
+#qa-add .invite .invite-area .invite-user-dropdown{width:362px;border:1px solid #ddd;background:#fff;position:absolute;left:-25px;z-index:10000;top:30px;}#qa-add .invite .invite-area .invite-user-dropdown li{list-style:none;line-height:20px;font-size:13px;padding:5px;cursor:pointer;}
+#qa-add .invite .invite-area .invite-user-dropdown li:hover{background:#5bb793;color:#fff;}
+#qa-add .invite .invite-list{padding:10px 0;}#qa-add .invite .invite-list .user{font-size:12px;width:90px;background:#eee;border:1px solid #ddd;display:inline-block;margin-right:5px;vertical-align:top;padding:5px;cursor:pointer;}#qa-add .invite .invite-list .user .headpic{float:left;}#qa-add .invite .invite-list .user .headpic img{width:30px;height:30px;}
+#qa-add .invite .invite-list .user .infos{width:150px;float:left;margin-left:10px;margin-top:-5px;}#qa-add .invite .invite-list .user .infos .nick{font-weight:bold;line-height:20px;}
+#qa-add .invite .invite-list .user .infos .desc{color:#aaa;line-height:15px;}
 #qa-add .invite .invite-list .user:hover{background:#ddd;}
 #qa .right .module.count span{font-size:14px;color:#999;padding-right:10px;}
 #qa .right .edithistory .item{color:#999;}

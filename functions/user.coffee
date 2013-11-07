@@ -5,7 +5,7 @@ Card.sync()
 VisitLog = __M 'card_visit_log'
 VisitLog.sync()
 User.hasOne Card,{foreignKey:"user_id"}
-pinyin = require './../lib/Pinyin.js'
+pinyin = require './../lib/PinYin.js'
 cache = 
   allNames:
     data:[]

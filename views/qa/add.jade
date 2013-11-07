@@ -135,7 +135,7 @@ html
           $("#invite").val(invited.join(","))
         }
         })
-      $("#invite_input").keydown(function(){
+      $("#invite_input").keyup(function(){
         var keyword = $("#invite_input").val();
         var matchUsers = []
         users.forEach(function(u){

@@ -13,7 +13,14 @@ html(xmlns:wb='http://open.weibo.com/wb')
     - locals.pageId=1;
     include ../header
     #content.clearfix
-      
+      ul.breadcrumb
+        li
+          a(href="/") 首页
+          span.divider /
+        li.active
+          span 专栏文章
+          
+        
       if !locals.column
           //- .column-list.clearfix.module
           //-   .bd

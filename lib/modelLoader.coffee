@@ -105,13 +105,14 @@ global.__FC = (func,model,methods)->
           where:
             id:id
         .success (m)->
-          updates = {}
-          updates[field]=m[field]*1+1
-          m.updateAttributes(updates)
-          .success ()->
-            callback&&callback null,m
-          .error (error)->
-            callback&&callback error
+          if m
+            updates = {}
+            updates[field]=m[field]*1+1
+            m.updateAttributes(updates)
+            .success ()->
+              callback&&callback null,m
+            .error (error)->
+              callback&&callback error
         .error (error)->
           callback&&callback error
   # wrapper = {}

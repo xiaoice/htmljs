@@ -121,12 +121,14 @@ html
                     a.value.url.fn(rel='author', href='/user/{{user_id}}') {{user_nick}}：
                   | {{{html}}}
                 .time {{createdAt}}
-    include ../footer     
+    include ../footer   
+    - var share_txt = "@前端乱炖 又举办线下活动啦！"+moment(act.time.getTime()-8000*60*60).format('LLL')+"，一起来报名参加吧！【"+act.title+"】-----》"; 
+    - if(act.share_text){share_txt=act.share_text} 
     p.
       <script id="bdshare_js" data="type=tools&amp;uid=2555549" ></script>
       <script type="text/javascript" id="bdshell_js"></script>
       <script type="text/javascript">
-      var bds_config={"bdText":"@前端乱炖 又举办线下活动啦！#{moment(act.time.getTime()-8000*60*60).format('LLL')}，一起来报名参加吧！【#{act.title}】-----》","bdPic":"","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
+      var bds_config={"bdText":"#{share_txt}","bdPic":"","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
       document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
       </script>
     script

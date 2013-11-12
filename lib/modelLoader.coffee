@@ -90,13 +90,15 @@ global.__FC = (func,model,methods)->
           where:
             id:id
         .success (m)->
-          m.destroy()
-          .success ()->
-            callback null,m
-          .error (error)->
-            callback error
+          if not m then callback new Error '不存在'
+          else
+            m.destroy()
+            .success ()->
+              callback&&callback null,m
+            .error (error)->
+              callback&&callback error
         .error (error)->
-          callback error
+          callback&&callback error
     else if m == 'addCount'
       func.addCount = (id,field,callback)->
         model.find

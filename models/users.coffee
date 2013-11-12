@@ -15,4 +15,7 @@ module.exports =
   sex:"varchar(5)"
   weibo_name:"varchar(50)"
   desc:"varchar(300)"
+  bi:
+    type:"int"
+    defaultValue:5
   

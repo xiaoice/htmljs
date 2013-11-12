@@ -24,6 +24,85 @@
   position: fixed;
   top:0px;
 }
+
+#coin-fixed{
+  position: fixed;
+  bottom:0;
+  right:50px;
+  height:35px;
+  line-height: 35px;
+  border:1px solid #ddd;
+  background: #fff;
+
+  .coin-count {
+    padding:0 10px;
+    color:#fab019;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: top;
+    width:105px;
+    em{
+      font-style: normal;
+      color:@green;
+      padding-left: 5px;
+    }
+  }
+  .history-trigger{
+    border-left: 1px solid #ddd;
+    padding:0 5px;
+    width:90px;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: top;
+    color:#fff;
+    background: @green;
+    text-align: center;
+    i{
+      margin-left: 3px;
+      vertical-align: -3px;
+      color:#eee;
+       -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform: rotate(90deg);
+    }
+    position: relative;
+  }
+  .history-list{
+    width:226px;
+    position: absolute;
+    right:-1px;
+    bottom:25px;
+    background: #fff;
+    border:1px solid #ddd;
+    color:#444;
+    li{
+      border-bottom: 1px solid #eee;
+      font-size: 12px;
+      text-align: left;
+      padding:5px;
+      list-style: none;
+      .title{
+        color:#666;
+        font-size: 13px;
+      }
+      .desc{
+        color: #aaa;
+      }
+    }
+  }
+  #gotop{
+    width:40px;
+    height:40px;
+    line-height: 40px;
+    display: inline-block;
+    vertical-align: top;
+     cursor:pointer;
+     text-align: center;
+     color: #666;
+  }
+}
 .new-function{
   position: relative;
 
@@ -191,19 +270,7 @@ i{
   
 }
 
-#gotop{
-  position:fixed;
-  right:50px;
-  bottom:20px;
-  display:block;
-  width:50px;
-  height:50px;
-  background:#aaa;
-  color:#fff;
-  line-height:50px;
-  text-align: center;
-  cursor:pointer;
-}
+
 .group{margin-bottom:10px;}
 .group .label{margin:0 5px;}
 .group .label.active{}
@@ -921,14 +988,14 @@ margin:100px auto;
     .act-infos{
       font-size: 14px;
       padding:15px;
-      background: @green;
       color:#fff;
       .ln{
         line-height:20px;
         margin-bottom: 2px;
         font-size: 14px;
         a{
-          color:#fff;
+          color:#333;
+          font-weight:bold;
           text-decoration: none;
         }
       }
@@ -937,15 +1004,15 @@ margin:100px auto;
         line-height:30px;
       }
       .act-time{
-        color:#dedede;
+        color:#999;
          font-size: 12px;
       }
       .act-location{
-        color:#dedede;
+        color:#999;
         font-size: 12px;
       }
       .act-limit{
-        color:#dedede;
+        color:#999;
         font-size: 12px;
       }
       .act-action{
@@ -954,23 +1021,22 @@ margin:100px auto;
           font-weight: bold;
         }
         .btn{
-          background: #eee;
-          color:@green;
+          color:#fff;
           box-shadow: 1px 1px 2px #999;
         }
         .btn:hover{
-          background: #fff;
         }
       }
     }
   }
   .act-item.isdown{
     .act-infos{
-       background: #73b79c;
+       background: #ccc;
        .act-action{
           .btn{
-            background: #aaa;
+            background: #777;
             color:#eee;
+            border:none;
           }
        }
     }

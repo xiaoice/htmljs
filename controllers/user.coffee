@@ -6,6 +6,7 @@ config = require './../config.coffee'
 authorize=require("./../lib/sdk/authorize.js")
 Sina=require("./../lib/sdk/sina.js")
 func_timeline = __F 'timeline'
+func_bi = __F 'bi'
 md5 = require 'MD5'
 module.exports.controllers = 
   "/login":
@@ -125,6 +126,18 @@ module.exports.controllers =
   "/coinhis":
     get:(req,res,next)->
       res.render 'user/coinhis.jade'
+  "/bihis":
+    get:(req,res,next)->
+      result = 
+        success:0
+        info:''
+      func_bi.getAll 1,10,{user_id:res.locals.user.id},"id desc",(error,his)->
+        if error 
+          result.info = error.message
+        else
+          result.data = his
+          result.success = 1
+        res.send result
   "/myarticles":
     get:(req,res,next)->
       res.render 'user/myarticles.jade'
@@ -158,6 +171,8 @@ module.exports.filters =
     get:['checkLogin',"checkCard",'card/visitors','user/infos','user/article-count','user/qa-count']
   "/coinhis":
     get:['checkLogin',"checkCard",'card/visitors','user/coinhistories','user/article-count','user/qa-count']
+  "/bihis":
+    get:['checkLoginJson']
   "/myarticles":
     get:['checkLogin',"checkCard",'card/visitors','user/myarticles','user/article-count','user/qa-count']
   "/myqa":

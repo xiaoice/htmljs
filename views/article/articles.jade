@@ -138,7 +138,10 @@ html(xmlns:wb='http://open.weibo.com/wb')
                   .entry-content.clearfix 
                     if article.main_pic
                       img.main_pic(src="#{article.main_pic}")
-                    |!{article.desc.replace(/\s/g,"")!=""?article.desc:article.html}
+                    if article.desc
+                      |!{article.desc.replace(/\s/g,"")!=""?article.desc:article.html}
+                    else
+                      !{article.html}
                   .entry-foot
                     div.others
                       //- span.author.vcard.item
@@ -155,6 +158,15 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       if locals.user && (user.is_admin||user.id==article.user_id)
                         span.views.item
                           a.value(href="/article/#{article.id}/edit") 编辑
+                      if locals.user && user.is_admin && article.is_publish == 0
+                        span.views.item
+                          a.value(href="/article/#{article.id}/update?is_publish=1") 上线
+                      if locals.user && user.is_admin && article.is_publish == 1
+                        span.views.item
+                          a.value(href="/article/#{article.id}/update?is_publish=0") 下线
+                      if locals.user && user.is_admin
+                        span.views.item
+                          a.value(href="/article/#{article.id}/delete") 删除
                       span.right-foot
                         span.views.item
                           span.index 

@@ -4,6 +4,7 @@ func_info = __F 'info'
 func_timeline = __F 'timeline'
 func_column = __F 'column'
 func_card = __F 'card'
+func_bi = __F 'bi'
 config = require './../config.coffee'
 authorize=require("./../lib/sdk/authorize.js");
 md5 = require 'MD5'
@@ -19,6 +20,7 @@ module.exports.controllers =
     "get":(req,res,next)->
       
       res.render 'article/articles.jade'
+
   "/old":
     "get":(req,res,next)->
       condition = 
@@ -215,6 +217,26 @@ module.exports.controllers =
         else
           result.success = 1
         res.send result
+  "/:id/update":
+    get:(req,res,next)->
+      func_article.update req.params.id,req.query,(error,article)->
+        if error then next error
+        else
+          res.redirect 'back'
+  "/:id/delete":
+    get:(req,res,next)->
+      func_article.delete req.params.id,(error,article)->
+        if error then next error
+        else
+          func_bi.add 
+            user_id:article.user_id
+            count:__C.bi.article*-1
+            day:(new Date()).getTime()/1000*60*60*24
+            reason:"文章被删除"
+            from_title:null
+            from_user_nick:"管理员"
+          ,()->
+          res.redirect 'back'
   "/:id/zan":
     post:(req,res,next)->
       result = 
@@ -347,6 +369,10 @@ module.exports.filters =
     get:['freshLogin','getRecent','get_infos','article/new-comments','article/recent-columns',"article/get-column",'article/get-column-rss']
   "/column/:id/rss":
     get:['checkLogin','checkCard']
+  "/:id/update":
+    get:['checkLogin','checkAdmin']
+  "/:id/delete":
+    get:['checkLogin','checkAdmin']
 
 
 

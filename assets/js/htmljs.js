@@ -148,6 +148,25 @@ $(document).ready(function(){
             }
           });
   }
- 
-})
+ $("#gotop").click(function(){
+    $("html,body").animate({scrollTop:0})
+    })
+ $(".history-trigger").click(function(){
+  if($(".history-list").hasClass("hidden")){
+    $.ajax({
+      url:"/user/bihis",
+      dataType:"json",
+      type:"get",
+      success:function(hises){
+        $(".history-list").html("")
+        hises.data.forEach(function(his){
+          $(".history-list").append("<li>"+(his.from_title?("<div class=title>"+his.from_title+"</div>"):"")
+            +"<div class=desc>"+his.from_user_nick+" "+his.reason+" "+his.count+"炖币</div></li>")
+        })
+        $(".history-list").removeClass("hidden")
+      }
+    })
+  }
+ })
+});
 

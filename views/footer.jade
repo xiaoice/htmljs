@@ -66,7 +66,23 @@
         <iframe src="http://ghbtns.com/github-btn.html?user=xinyu198736&repo=htmljs&type=watch" allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe>
         <iframe src="http://ghbtns.com/github-btn.html?user=xinyu198736&type=follow" allowtransparency="true" frameborder="0" scrolling="0" width="150" height="20"></iframe>
 
-
+#coin-fixed
+  if locals.user
+    span.coin-count.hidden 
+      i.icon-coins
+      em #{user.bi}
+    span.history-trigger.hidden
+      |收支记录
+      i.icon-chevron-left
+      ul.history-list.hidden
+        li 
+          .title 在『文章标题文章标题』
+          .desc 芋头 赠送给你 10 炖币
+        li 
+          .title 在『文章标题文章标题』
+          .desc 芋头 赠送给你 10 炖币
+  span#gotop
+    i.icon-airplane
 script.
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-36222024-3']);
@@ -77,8 +93,5 @@ script.
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-#gotop TOP
-script
-  $("#gotop").click(function(){
-    $("html,body").animate({scrollTop:0})
-    })
+//- #gotop TOP
+  

@@ -13,3 +13,16 @@ module.exports =
         to:emails,
         html:buffer
       })
+  sendCardComment:(source_user_nick,card)->
+    if not card.email then return;
+    buffer = ""
+    card.source_user_nick = source_user_nick
+    mustache.compileAndRender('./views/mail/card-comment.html', card)
+    .on 'data',(c)->
+     buffer += c.toString()
+    .on 'end',()->
+      mail({
+        subject:source_user_nick+" 在 前端乱炖花名册 评论了你的名片",
+        to:card.email,
+        html:buffer
+      })

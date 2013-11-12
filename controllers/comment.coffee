@@ -4,6 +4,7 @@ func_article = __F 'article'
 func_card = __F 'card'
 func_user = __F 'user'
 func_question = __F 'question'
+func_email = __F 'email'
 pagedown = require("pagedown")
 safeConverter = pagedown.getSanitizingConverter()
 moment = require 'moment'
@@ -70,6 +71,7 @@ module.exports.controllers =
                   action_name:"【评论】了您的名片"
                   target_path_name:card.nick+"的名片"
                   content:req.body.html
+                func_email.sendCardComment res.locals.user.nick,card
           else if match = req.body.target_id.match(/^question_([0-9]*)$/)
             func_question.addComment(match[1])
             func_question.getById match[1],(error,question)->

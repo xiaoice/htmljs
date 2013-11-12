@@ -41,7 +41,7 @@ html
           .joiners.users
             - locals.is_bao = false;
             for joiner in joiners
-              if locals.user.id && joiner.user && joiner.user.id == locals.user.id
+              if locals.user && joiner.user && joiner.user.id == locals.user.id
                 - locals.is_bao = true;
               a.user(href="/user/#{joiner.user_id}",target="_blank",data-original-title="#{joiner.user_nick}")
                 img(src="#{joiner.user_headpic}",width=50,height=50)

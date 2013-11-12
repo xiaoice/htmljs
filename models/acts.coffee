@@ -25,3 +25,6 @@ module.exports =
     defaultValue:"0"
   uuid:"varchar(40)"
   share_text:"varchar(200)"
+  is_goods：
+    type:"tinyint"
+    defaultValue:"0"

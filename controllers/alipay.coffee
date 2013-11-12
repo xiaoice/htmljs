@@ -3,6 +3,7 @@ AlipayNotify = require('./../alipay_config').AlipayNotify
 func_payment = __F 'payment'
 func_act = __F 'act'
 func_user = __F 'user'
+Sina=require("./../lib/sdk/sina.js")
 module.exports.controllers = 
   "/create":
     get:(req,res,next)->
@@ -63,6 +64,14 @@ module.exports.controllers =
                         res.end 'fail'
                       else
                         res.end 'success'
+                        func_act.getById payment.target_uuid,(error,act)->
+                          if act
+                            sina=new Sina(__C.sdks.sina)
+                            sina.statuses.update 
+                              access_token:user.weibo_token
+                              status:"我在@前端乱炖 报名了【"+act.title+"】的活动，活动时间："+moment(act.time.getTime()-8000*60*60).format("LLL")+"，欢迎关注：http://www.html-js.com/act/"+req.params.id
+                    
+
               .error (e)->
                 console.log e
                 res.end 'fail'

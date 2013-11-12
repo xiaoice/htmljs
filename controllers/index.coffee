@@ -248,7 +248,7 @@ module.exports.controllers =
               time:new Date()
               target_path:"/card/"+req.params.id
               action_name:"【赞】了您的名片"
-              target_path_name:"我的名片"
+              target_path_name:card.nick+"的名片"
           result.zan_count = card.zan_count
         res.send result
   "/upload":

@@ -7,6 +7,8 @@ html
     script(src='#{assets_head}/js/bootstrap/bootstrap-transition.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-modal.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
+    style
+      #act_desc p{font-size:14px;line-height:20px;}
   body#act
     - locals.pageId=5;
     include ./../header
@@ -33,8 +35,6 @@ html
                 a.bds_douban
                 a.bds_renren
                 a.shareCount
-      #act_desc.module
-        .bd !{act.desc_html}
       #joiners.module
         .hd 报名（#{joiners.length}/#{act.person_limit}）
         .bd 
@@ -65,6 +65,9 @@ html
                 a#join_submit.btn(data-original-title="报名的前提是登录并且创建花名册并且具有手机，email等联系方式") 报名
             p
               .alert 希望报名后可以准时参加，现场会签到记录，不能参加提前告知。
+      #act_desc.module
+        .bd !{act.desc_html}
+      
       //
         #supporters.module
           .hd 赞助商

@@ -58,7 +58,7 @@ module.exports.controllers =
                 users.forEach (user)->
                   func_info.add 
                     target_user_id:user.user_id
-                    type:7
+                    type:10
                     source_user_id:q.user_id
                     source_user_nick:q.user_nick
                     time:new Date()

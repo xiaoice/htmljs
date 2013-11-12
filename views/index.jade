@@ -210,6 +210,14 @@ html
             .hd 微信公众账号
             .bd
               img(src="#{assets_head}/images/qrcode.jpg")
+        .module.top-users
+          .hd 最新动态
+          .bd
+            each active in locals.actives
+              .item 
+                a(href="/user/#{active.source_user_id}") #{active.source_user_nick} 
+                span #{active.action_name.replace("您的","").replace("您","")}
+                a(href="#{active.target_path}") #{active.target_path_name}
         if locals.top_users
           #fixed-modules
             .module.top-users
@@ -221,6 +229,7 @@ html
                       img(src="#{user.head_pic}",width="20")
                     a(href="/user/#{user.id}") #{user.nick} 
                     span #{user.coin}
+            
     include footer
     
     script

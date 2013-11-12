@@ -335,7 +335,7 @@ module.exports.filters =
   "/edit-card":
     get:['checkLogin',"checkCard"]
   "/":
-    get:['freshLogin','getRecent','user/top_user']
+    get:['freshLogin','getRecent','user/top_user',"index/actives"]
   "/card/:id/zan":
     post:['checkLoginJson']
   "/card/:id/bao":

@@ -69,7 +69,7 @@ module.exports.controllers =
                             sina=new Sina(__C.sdks.sina)
                             sina.statuses.update 
                               access_token:user.weibo_token
-                              status:"我在@前端乱炖 报名了【"+act.title+"】的活动，活动时间："+moment(act.time.getTime()-8000*60*60).format("LLL")+"，欢迎关注：http://www.html-js.com/act/"+req.params.id
+                              status:"我在@前端乱炖 报名了【"+act.title+"】的活动"+(if act.time then ("，活动时间："+moment(act.time.getTime()-8000*60*60).format("LLL")) else  "")+"，欢迎关注：http://www.html-js.com/act/"+req.params.id
                     
 
               .error (e)->

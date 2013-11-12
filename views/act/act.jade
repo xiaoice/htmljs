@@ -17,9 +17,10 @@ html
         .infos
           .inner
             h2.title #{act.title}
-            div.item 
-              span.key 时间：
-              span.value #{moment(act.time.getTime()-8000*60*60).format("LLL")}
+            if act.time.getTime()
+              div.item 
+                span.key 时间：
+                span.value #{moment(act.time.getTime()-8000*60*60).format("LLL")}
             div.item  
               span.key 地点：
               span.value #{act.location} 

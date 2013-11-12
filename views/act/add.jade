@@ -3,9 +3,9 @@ html
   head
     include ./../head
     title 前端乱炖-活动
-    include ./../editor_head
-    script(src='#{assets_head}/js/jquery.js')
     
+    script(src='#{assets_head}/js/jquery.js')
+    include ./../editor_head
   body#act-add
     - locals.pageId=5;
     include ./../header
@@ -27,12 +27,16 @@ html
           label 赞助商html
           textarea.input-xxlarge(placeholder="赞助商html",name="partners",value="#{locals.act&&act.partners}")
           label 介绍
-          .wmd-panel
-            #wmd-button-bar
-            textarea.wmd-input#wmd-input(name="desc_md") #{locals.act&&act.desc_md}
-            .wmd-panel.wmd-preview
-              div 预览
-              #wmd-preview
+          .control-group#wmd-editor-parent
+            .wmd-panel#wmd-editor-con
+              .padding
+                #wmd-bar-parent
+                  #wmd-button-bar
+                textarea.expand.wmd-input#wmd-input(name="desc_md",placeholder="文章内容，markdown语法。如果没有写完，可以直接关闭页面，下次打开内容仍然会在。") #{locals.act&&act.desc_md}
+          .control-group#wmd-preview-parent
+            .wmd-panel.wmd-preview#wmd-preview-con
+              .padding
+                #wmd-preview
           input#desc_html(type="hidden",name="desc_html",value="#{locals.act&&act.desc_html}")
 
           div

@@ -48,7 +48,6 @@ func_act =
       offset: (page - 1) * count
       limit: count
       order: order || "id desc"
-      include:[ActJoiner]
     if condition then query.where = condition
     if include then query.include = include
     Act.findAll(query)

@@ -24,3 +24,4 @@ module.exports =
     type:"tinyint"
     defaultValue:"0"
   uuid:"varchar(40)"
+  share_text:"varchar(200)"

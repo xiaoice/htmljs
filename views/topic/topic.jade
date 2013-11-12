@@ -25,9 +25,9 @@ html
           .module.main
             .topic-title
               h2.title 
-              if topic.topicTag
-                |「#{topic.topicTag.name}」
-              |#{topic.title}
+                if topic.topicTag
+                  |「#{topic.topicTag.name}」
+                |#{topic.title}
             .topic-content
               .desc !{topic.html.replace(/<code>/g,"<code class='language-javascript'>")}
             .topic-user.clearfix

@@ -52,6 +52,8 @@ module.exports.controllers =
                 status:2
                 buyer_email:req.body.buyer_email
                 pay_time:new Date()
+                buyer_id:req.body.buyer_id
+                trade_no:req.body.trade_no
               .success ()->
                 func_user.getById payment.target_user_id,(error,user)->
                   if error 

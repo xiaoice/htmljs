@@ -13,3 +13,5 @@ module.exports =
     type:"int"
   buyer_email:"varchar(100)"
   pay_time:"datetime"
+  buyer_id:"varchar(40)"
+  trade_no:"varchar(40)"

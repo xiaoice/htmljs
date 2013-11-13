@@ -217,7 +217,7 @@ html
               .item 
                 a(href="/user/#{active.source_user_id}") #{active.source_user_nick} 
                 span #{active.action_name.replace("您的","").replace("您","")}
-                a(href="#{active.target_path}") #{active.target_path_name.substr(0,40)}
+                a(href="#{active.target_path}") #{active.target_path_name.substr(0,20)}
         if locals.top_users
           #fixed-modules
             .module.top-users

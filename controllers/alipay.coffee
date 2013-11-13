@@ -3,6 +3,7 @@ AlipayNotify = require('./../alipay_config').AlipayNotify
 func_payment = __F 'payment'
 func_act = __F 'act'
 func_user = __F 'user'
+func_card = __F 'card'
 Sina=require("./../lib/sdk/sina.js")
 module.exports.controllers = 
   "/create":
@@ -18,23 +19,27 @@ module.exports.controllers =
       func_payment.getByTradeNum req.query.trade_num,(error,payment)->
         if error then next error
         else
-          data = 
-            out_trade_no:payment.trade_num#req.body.WIDout_trade_no 
-            subject:payment.trade_title#req.body.WIDsubject 
-            total_fee:payment.trade_price#req.body.WIDtotal_fee 
-            body: payment.trade_title#req.body.WIDbody
-            show_url:"http://www.html-js.com/act/"+payment.target_uuid#req.body.WIDshow_url
-            quantity  : "1"#req.body.WIDquantity,
-            payment_type:"1"
-            price:payment.trade_price
-            logistics_fee : "0"#req.body.WIDlogistics_fee,
-            logistics_type  : "POST"#req.body.WIDlogistics_type,
-            logistics_payment : "SELLER_PAY"#req.body.WIDlogistics_payment,
-            # receive_name  : "芋头"#req.body.WIDreceive_name,
-            # receive_address : "呵呵我是孙信宇"#req.body.WIDreceive_address,
-            # receive_zip : "123456"#req.body.WIDreceive_zip,
-            # receive_mobile  : "15967171060"#req.body.WIDreceive_mobile      
-          alipay.trade_create_by_buyer(data, res);
+          func_card.getByUserId payment.target_user_id,(error,card)->
+            if card
+              data = 
+                out_trade_no:payment.trade_num#req.body.WIDout_trade_no 
+                subject:payment.trade_title#req.body.WIDsubject 
+                total_fee:payment.trade_price#req.body.WIDtotal_fee 
+                body: payment.trade_title#req.body.WIDbody
+                show_url:"http://www.html-js.com/act/"+payment.target_uuid#req.body.WIDshow_url
+                quantity  : "1"#req.body.WIDquantity,
+                payment_type:"1"
+                price:payment.trade_price
+                logistics_fee : "0"#req.body.WIDlogistics_fee,
+                logistics_type  : "POST"#req.body.WIDlogistics_type,
+                logistics_payment : "SELLER_PAY"#req.body.WIDlogistics_payment,
+                receive_name  : card.nick#req.body.WIDreceive_name,
+                receive_address : card.address#req.body.WIDreceive_address,
+                receive_zip : "123456"#req.body.WIDreceive_zip,
+                receive_mobile  : card.tel#req.body.WIDreceive_mobile      
+              alipay.trade_create_by_buyer(data, res);
+            else
+              next new Error '信息不完整，不能付款'
   "/trade_create_by_buyer/notify_url":
     post:(req,res,next)->
       console.log req.body

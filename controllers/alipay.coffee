@@ -20,7 +20,7 @@ module.exports.controllers =
         if error then next error
         else
           func_card.getByUserId payment.target_user_id,(error,card)->
-            if card
+            if card && card.name && card.tel && card.address
               data = 
                 out_trade_no:payment.trade_num#req.body.WIDout_trade_no 
                 subject:payment.trade_title#req.body.WIDsubject 
@@ -33,13 +33,13 @@ module.exports.controllers =
                 logistics_fee : "0"#req.body.WIDlogistics_fee,
                 logistics_type  : "POST"#req.body.WIDlogistics_type,
                 logistics_payment : "SELLER_PAY"#req.body.WIDlogistics_payment,
-                receive_name  : card.nick#req.body.WIDreceive_name,
+                receive_name  : card.name#req.body.WIDreceive_name,
                 receive_address : card.address#req.body.WIDreceive_address,
                 receive_zip : "123456"#req.body.WIDreceive_zip,
                 receive_mobile  : card.tel#req.body.WIDreceive_mobile      
               alipay.trade_create_by_buyer(data, res);
             else
-              next new Error '信息不完整，不能付款'
+              next new Error '信息不完整，不能付款，需要在花名册中填写真实姓名，手机号，收货地址，<a href="/edit-card">编辑花名册</a>'
   "/trade_create_by_buyer/notify_url":
     post:(req,res,next)->
       console.log req.body

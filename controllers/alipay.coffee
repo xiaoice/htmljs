@@ -47,11 +47,13 @@ module.exports.controllers =
       # alipayNotify.verifyReturn req.body, (verify_result)->
         # console.log verify_result
       if true
-        if req.body.trade_status == 'WAIT_SELLER_SEND_GOODS'
+        if req.body.trade_status == 'WAIT_SELLER_SEND_GOODS' || req.body.trade_status == 'TRADE_FINISHED'
           func_payment.getByTradeNum req.body.out_trade_no,(error,payment)->
             if error 
               console.log error
               res.end 'fail'
+            else if payment.status == 2
+              res.end 'success'
             else
               payment.updateAttributes
                 status:2

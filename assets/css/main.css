@@ -7,6 +7,7 @@
 .breadcrumb{background:#fff;}
 #fixed-modules{position:relative;width:270px;}
 #fixed-modules.fixed{position:fixed;top:0px;}
+#content .empty-btn{background:none !important;color:#5bb793 !important;}
 #coin-fixed{position:fixed;bottom:0;right:50px;height:35px;line-height:35px;border:1px solid #ddd;background:#fff;}#coin-fixed .coin-count{padding:0 10px;color:#fab019;font-weight:bold;display:inline-block;vertical-align:top;width:105px;}#coin-fixed .coin-count em{font-style:normal;color:#5bb793;padding-left:5px;}
 #coin-fixed .history-trigger{border-left:1px solid #ddd;padding:0 5px;width:90px;font-size:14px;display:inline-block;vertical-align:top;color:#fff;background:#5bb793;text-align:center;position:relative;}#coin-fixed .history-trigger i{margin-left:3px;vertical-align:-3px;color:#eee;-moz-transform:rotate(90deg);-webkit-transform:rotate(90deg);-o-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);}
 #coin-fixed .history-list{width:226px;position:absolute;right:-1px;bottom:25px;background:#fff;border:1px solid #ddd;color:#444;}#coin-fixed .history-list li{border-bottom:1px solid #eee;font-size:12px;text-align:left;padding:5px;list-style:none;}#coin-fixed .history-list li .title{color:#666;font-size:13px;}
@@ -456,6 +457,9 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .article-list{margin:0;padding:0;}
 #article .right .module.count span{padding-right:10px;color:#999;}
 #article .right .module.user .item{margin-top:10px;font-size:12px;color:#999;}
+#article #fav .btn{line-height:28px;}
+#article #fav .my{margin-left:10px;line-height:30px;}
+#article #fav .fav-list{margin-top:10px;}#article #fav .fav-list a{margin-right:5px;}
 #article .post .entry-title{border-bottom:1px solid #eee;padding-bottom:10px;}#article .post .entry-title .headpic{float:left;margin-right:20px;margin-top:10px;}
 #article .post .entry-title .title{font-size:20px;line-height:30px;margin:0;color:#404040;font-weight:normal;}
 #article .post .entry-title .item{font-size:12px;margin-right:20px;}#article .post .entry-title .item .index{color:#aaa;}

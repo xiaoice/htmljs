@@ -173,7 +173,7 @@ module.exports.controllers =
         info_id:req.body.uuid
       ,(error,fav)->
         if error
-          error.info = error.message
+          result.info = error.message
         else
           result.success = 1
         res.send result
@@ -210,7 +210,7 @@ module.exports.filters =
     get:['freshLogin']
   "/fav":
     get:['checkLogin']
-    post:['checkLogin']
+    post:['checkLoginJson']
   "/connet-card":
     post:['checkLoginJson',"checkCard"]
   "/update":

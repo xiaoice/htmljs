@@ -125,9 +125,10 @@ html
                 a.bds_renren
                 a.shareCount
             .module#fav
-              a#add_fav
-                i.icon-tag
-                |  点此收藏此文
+              a.btn.empty-btn#add_fav
+                i.icon-heart
+                |  收藏
+              a.my(href="") 我的收藏
               .fav-list
                 if locals.favs
                   each fav in favs

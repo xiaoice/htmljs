@@ -17,6 +17,21 @@ func_fav =
       callback null,favs
     .error (e)->
       callback e
+  add:(data,callback)->
+  	Fav.find
+  		where:
+  			info_id:data.info_id
+  	.success (fav)->
+  		if fav
+  			callback new Error '已经收藏过'
+  		else
+  			Fav.create(data)
+  			.success (fav)->
+  				callback null,fav
+  			.error (e)->
+  				callback e
+  	.error (e)->
+  		callback e
   getAll:(page,count,callback)->
     #select * from favs  left join articles  on articles.uuid = favs.info_id left join questions on questions.uuid = favs.info_id;
     sequelize.query("select fav.createdAt AS createdAt,fav.sort AS sort,fav.id AS id,
@@ -68,5 +83,5 @@ func_fav =
       callback null,data
     .error (e)->
       callback e
-__FC func_fav,Fav,['add']
+__FC func_fav,Fav,[]
 module.exports = func_fav

@@ -124,6 +124,17 @@ html
                 a.bds_douban
                 a.bds_renren
                 a.shareCount
+            .module#fav
+              a#add_fav
+                i.icon-tag
+                |  点此收藏此文
+              .fav-list
+                if locals.favs
+                  each fav in favs
+                    if fav&&fav.user
+                      a.user(style="display:inline-block;",href="/user/#{fav.user.id}",data-original-title="#{fav.user.nick}") 
+                        img(src="#{fav.user.head_pic}",width="20")
+                          
             .module#score(style="margin-top:10px;")
               .hd 评价
               .bd(class="#{zan_guo?'marked':''}")
@@ -323,5 +334,20 @@ html
           })
           $('.user').tooltip({
           placement:"bottom"
+          });
+          $("#add_fav").click(function(){
+            HtmlJS.util.ajax("/user/fav",{
+              uuid:"#{article.uuid}"
+            },"post",function(data){
+                loadingTip.hide()
+                if(data.success){
+                  messageTip.show("收藏成功！")
+                }else{
+                  alert(data.info)
+                }
+            },function(){
+
+            
           })
+            })
           

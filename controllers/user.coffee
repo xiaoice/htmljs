@@ -2,6 +2,7 @@ func_user = __F 'user'
 func_card = __F 'card'
 func_info = __F 'info'
 func_index = __F 'index'
+func_fav = __F 'user/fav'
 config = require './../config.coffee'
 authorize=require("./../lib/sdk/authorize.js")
 Sina=require("./../lib/sdk/sina.js")
@@ -148,6 +149,34 @@ module.exports.controllers =
     get:(req,res,next)->
       func_user.getAllNames (error,usernames)->
         res.send usernames
+  "/fav":
+    get:(req,res,next)->
+      page = req.query.page || 1
+      count = req.query.count || 30
+      func_fav.count (error,_count)->
+        if error then next error
+        else
+          res.locals.total=_count
+          res.locals.totalPage=Math.ceil(_count/count)
+          res.locals.page = (req.query.page||1)
+          func_fav.getAll page,count,(error,timelines)->
+            if error then next error
+            else
+              res.locals.timelines = timelines
+              res.render 'user/favs.jade'
+    post:(req,res,next)->
+      result = 
+        success:0
+        info:""
+      func_fav.add
+        user_id:res.locals.user.id
+        info_id:req.body.uuid
+      ,(error,fav)->
+        if error
+          error.info = error.message
+        else
+          result.success = 1
+        res.send result
   "/":
     get:(req,res,next)->
       
@@ -179,6 +208,9 @@ module.exports.filters =
     get:['checkLogin',"checkCard",'card/visitors','user/myqa','user/article-count','user/qa-count']
   "/:id":
     get:['freshLogin']
+  "/fav":
+    get:['checkLogin']
+    post:['checkLogin']
   "/connet-card":
     post:['checkLoginJson',"checkCard"]
   "/update":

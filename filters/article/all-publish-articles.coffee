@@ -1,5 +1,5 @@
 module.exports = (req,res,next)->
-  if not res.locals.user.is_admin
+  if res.locals.user && !res.locals.user.is_admin
     condition = 
       is_yuanchuang:1
   else

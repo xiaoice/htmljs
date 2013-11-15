@@ -36,7 +36,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
       .columns-list.module
         .hd 所有专栏
         .bd
-          if locals.columns
+          if locals.columns && columns.length
             each column in columns
               .column
                 a.title(href="/article/column/#{column.id}") #{column.name}

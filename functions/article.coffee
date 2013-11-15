@@ -138,7 +138,7 @@ func_article =
     Article.find
       where:
         id:id
-      include:[User,Column]
+      include:[User]
     .success (article)->
       callback null,article
     .error (error)->

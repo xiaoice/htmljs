@@ -165,7 +165,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
               .user
                 span 作者：
                 a(href="/user/#{column.user.id}") #{column.user.nick}
-              .time 更新时间：#{moment(column.last_article_time).fromNow()}
+              .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
         .module.recent
           .hd 近期文章
           .bd

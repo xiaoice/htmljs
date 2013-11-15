@@ -26,7 +26,7 @@
 .user .sex.nv{background:rgba(255, 255, 255, 0.9) url(../images/nv.png) no-repeat center center;background-size:80% 80%;}
 .module{background:#fff;border-radius:0px;padding:15px 20px;margin-bottom:10px;}.module .hd .right_more{font-size:12px;float:right;padding-right:10px;}
 .module .hd{line-height:30px;color:#333;font-size:16px;height:30px;font-weight:bold;color:#666;}
-.module .bd{font-size:12px;padding:0px;color:#666;}
+.module .bd{font-size:12px;padding:0px;color:#666;margin-top:10px;}
 body{background:url(../images/bg-repeat.png);background:#efefef;}
 #content{width:940px;margin:20px auto;}#content .btn{height:27px;border:none;line-height:30px;padding:0;background:#5bb793;background-image:-moz-linear-gradient(top, #5bb793, #3db284);background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#5bb793), to(#3db284));background-image:-webkit-linear-gradient(top, #5bb793, #3db284);background-image:-o-linear-gradient(top, #5bb793, #3db284);background-image:linear-gradient(to bottom, #5bb793, #3db284);padding-left:10px;padding-right:10px;display:inline-block;color:#fff;border:1px solid #5bb793;line-height:27px;}
 #content .btn:hover{background:#30b380;}
@@ -231,6 +231,13 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index .card-item .entry-name{top:12px;}
 #index .article-list{margin:0;padding:0;}
 #index .top-users .item{line-height:30px;}#index .top-users .item img{margin-right:5px;}
+#index .mod .bd{width:900px;}
+#index .mod .item{width:320px;margin-right:20px;display:inline-block;_float:left;border-bottom:1px dashed #eee;vertical-align:top;overflow:hidden;}#index .mod .item .title{color:#333;font-size:12px;line-height:30px;display:block;overflow:hidden;}
+#index .mod .item .desc{font-size:12px;color:#999;line-height:20px;}#index .mod .item .desc .user{margin-right:10px;color:#999;}
+#index .mod .item .desc .time{margin-right:10px;}
+#index .mod .item .desc .column{margin-right:10px;color:#999;}
+#index .mod .item .desc .desc-item{font-size:12px;margin-right:10px;}#index .mod .item .desc .desc-item .index{color:#aaa;font-size:12px;margin-right:3px;}#index .mod .item .desc .desc-item .index i{background:none;vertical-align:-2px;}
+#index .mod .item .desc .desc-item .value{color:#999;}
 #qas .actions{padding-bottom:10px;}#qas .actions .right-actions{float:right;}#qas .actions .right-actions a{padding:0 10px;line-height:30px;color:#5bb793;}
 #qas .actions .right-actions a.active,#qas .actions .right-actions a:hover{color:#666;}
 #qas .right a{color:#6fb79b;}

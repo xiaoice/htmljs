@@ -34,7 +34,7 @@ func_fav =
   		callback e
   getAll:(page,count,callback)->
     #select * from favs  left join articles  on articles.uuid = favs.info_id left join questions on questions.uuid = favs.info_id;
-    sequelize.query("select fav.createdAt AS createdAt,fav.sort AS sort,fav.id AS id,
+    sequelize.query("select fav.createdAt AS createdAt,fav.id AS id,
  article.id as article_id,
  article.user_id as article_user_id,
  article.user_nick as article_user_nick,
@@ -72,16 +72,16 @@ func_fav =
  act.comment_count as act_comment_count,
  act.visit_count as act_visit_count
 
- from favs fav
+ from user_favs fav
  left join articles  article on article.uuid = fav.info_id
  left join questions  question on question.uuid = fav.info_id 
  left join cards  card on card.uuid = fav.info_id 
  left join topics  topic on topic.uuid = fav.info_id 
  left join acts act on act.uuid = fav.info_id
- order by fav.sort desc,fav.createdAt desc limit "+(page-1)*count+","+count+";",null, {raw: true})
+ order by fav.createdAt desc limit "+(page-1)*count+","+count+";",null, {raw: true})
     .success (data)->
       callback null,data
     .error (e)->
       callback e
-__FC func_fav,Fav,[]
+__FC func_fav,Fav,['count']
 module.exports = func_fav

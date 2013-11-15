@@ -16,7 +16,9 @@ module.exports.controllers =
         app_key:config.sdks.sina.app_key,
         redirect_uri:config.sdks.sina.redirect_uri+(if req.query.redirect then ("?redirect="+req.query.redirect) else "?") + (if req.query.mini then "&mini=1" else "")
         client_id:config.sdks.sina.app_key
-      if req.query.mini 
+      if req.query.jump 
+        res.redirect res.locals.link
+      else if req.query.mini 
         res.render 'minilogin.jade'
       else
         res.render 'login.jade'
@@ -153,7 +155,7 @@ module.exports.controllers =
     get:(req,res,next)->
       page = req.query.page || 1
       count = req.query.count || 30
-      func_fav.count (error,_count)->
+      func_fav.count null,(error,_count)->
         if error then next error
         else
           res.locals.total=_count

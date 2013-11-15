@@ -297,7 +297,7 @@ module.exports.filters =
   "/answer/:id/update":
     get:['checkLogin','checkAdmin']
   "/:id":
-    get:['freshLogin','qa/get-question','qa/get-answers','qa/all-edit-history','qa/same-questions']
+    get:['freshLogin','qa/get-question','qa/get-answers','qa/all-edit-history','qa/same-questions','qa/favs']
   "/:id/edit":
     get:['checkLogin','tag/all-tags']
     post:['checkLogin']

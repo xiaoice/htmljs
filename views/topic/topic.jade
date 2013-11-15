@@ -117,10 +117,6 @@ html
                   <button class="btn btn-primary">插入</button>
                 </div>
       .right
-        .module.count
-          .bd
-            span 浏览数：#{topic.visit_count}
-            span 跟帖数：#{topic.comment_count}
         #fixed-modules
           .module.share
             .hd 分享
@@ -132,6 +128,12 @@ html
                 a.bds_douban
                 a.bds_renren
                 a.shareCount
+          .module.count
+            .bd
+              a#add_fav.action(href="javascript:void(0);") 收藏（#{locals.favs?locals.favs.length:0}）
+              a.action(href="#add_answer") 回答（#{topic.comment_count}）
+              span 跟帖：#{topic.visit_count}
+          
           .module.sametag_topics
             .hd 同类型的话题
             .bd
@@ -372,6 +374,33 @@ html
         })
         })
         })
+        $("#add_fav").click(function(){
+            HtmlJS.util.ajax("/user/fav",{
+              uuid:"#{topic.uuid}"
+            },"post",function(data){
+                loadingTip.hide()
+                if(data.success){
+                  messageTip.show("收藏成功！")
+                }else{
+                  alert(data.info)
+                }
+            },function(){
+            HtmlJS.util.ajax("/user/fav",{
+              uuid:"#{topic.uuid}"
+            },"post",function(data){
+                loadingTip.hide()
+                if(data.success){
+                  messageTip.show("收藏成功！")
+                }else{
+                  alert(data.info)
+                }
+            },function(){
+            
+            
+          })
+            
+          })
+            })
     p.
       <script id="bdshare_js" data="type=tools&amp;uid=2555549" ></script>
       <script type="text/javascript" id="bdshell_js"></script>

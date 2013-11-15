@@ -132,7 +132,7 @@ html
                               textarea.comment-content.input-block-level(placeholder="发表一些对此回答的看法",data-answer-id="#{ans.id}")
                               .btn.comment-submit(data-answer-id="#{ans.id}") 提交评论
                       
-          .add-answer.module
+          .add-answer.module#add_answer
             .hd 我来回答
             .publish.bd 
               form.form-horizontal#form(method='post')
@@ -189,10 +189,6 @@ html
                             textarea.comment-content.input-block-level(placeholder="发表一些对此回答的看法",data-answer-id="#{ans.id}")
                             .btn.comment-submit(data-answer-id="#{ans.id}") 提交评论
       .right
-        .module.count
-          .bd
-            span 浏览数：#{question.visit_count}
-            span 回答数：#{question.answer_count}
 
         if locals.ehis 
           .module.edithistory
@@ -205,6 +201,7 @@ html
               else
                 .item 暂无修改记录
         #fixed-modules
+          
           .module.share
             .hd 分享
             .bd 
@@ -215,6 +212,11 @@ html
                 a.bds_douban
                 a.bds_renren
                 a.shareCount
+          .module.count
+            .bd
+              a#add_fav.action(href="javascript:void(0);") 收藏（#{locals.favs?locals.favs.length:0}）
+              a.action(href="#add_answer") 回答（#{question.answer_count}）
+              span 浏览：#{question.visit_count}
           if locals.same_questions&&locals.same_questions.length
             .module.same_questions
               .hd 类似问题
@@ -513,6 +515,33 @@ html
             if (offset.top < scrollTop+40) $('#fixed-modules').addClass('fixed');
             else $('#fixed-modules').removeClass('fixed');
           });
+          $("#add_fav").click(function(){
+            HtmlJS.util.ajax("/user/fav",{
+              uuid:"#{question.uuid}"
+            },"post",function(data){
+                loadingTip.hide()
+                if(data.success){
+                  messageTip.show("收藏成功！")
+                }else{
+                  alert(data.info)
+                }
+            },function(){
+            HtmlJS.util.ajax("/user/fav",{
+              uuid:"#{question.uuid}"
+            },"post",function(data){
+                loadingTip.hide()
+                if(data.success){
+                  messageTip.show("收藏成功！")
+                }else{
+                  alert(data.info)
+                }
+            },function(){
+            
+            
+          })
+            
+          })
+            })
     p.
       <script id="bdshare_js" data="type=tools&amp;uid=2555549" ></script>
       <script type="text/javascript" id="bdshell_js"></script>

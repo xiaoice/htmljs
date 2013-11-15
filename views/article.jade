@@ -50,7 +50,7 @@ html
                   p 
                     a(href="#{article.card.alipay}",target="_blank") 点击这里用支付宝捐助
             
-            .comment.module
+            .comment.module#comment
               .hd 评论
               .bd
                 .publish 
@@ -106,14 +106,6 @@ html
                 if locals.user && (user.is_admin||user.id==article.user_id)
                   span.index 管理：
                   a.value(href="/article/#{article.id}/edit") 编辑
-          .module.count
-            .item
-              span.views
-                span.index View：
-                a.value #{article.visit_count}
-              span.views
-                span.index 评论：
-                a.value #{article.comment_count}
           #fixed-modules
             .module
               .hd 分享给好友
@@ -124,17 +116,20 @@ html
                 a.bds_douban
                 a.bds_renren
                 a.shareCount
-            .module#fav
-              a.btn.empty-btn#add_fav
-                i.icon-heart
-                |  收藏
-              a.my(href="") 我的收藏
-              .fav-list
-                if locals.favs
-                  each fav in favs
-                    if fav&&fav.user
-                      a.user(style="display:inline-block;",href="/user/#{fav.user.id}",data-original-title="#{fav.user.nick}") 
-                        img(src="#{fav.user.head_pic}",width="20")
+            .module.actions
+              .bd
+                a#add_fav.action(href="javascript:void(0);") 收藏（#{locals.favs?locals.favs.length:0}）
+                a.action(href="#comment") 评论（#{locals.comments?locals.comments.length:0}）
+                span.action
+                  span.index 浏览：
+                  span.value #{article.visit_count}
+                //
+                  .fav-list
+                    if locals.favs
+                      each fav in favs
+                        if fav&&fav.user
+                          a.user(style="display:inline-block;",href="/user/#{fav.user.id}",data-original-title="#{fav.user.nick}") 
+                            img(src="#{fav.user.head_pic}",width="20")
                           
             .module#score(style="margin-top:10px;")
               .hd 评价
@@ -347,7 +342,19 @@ html
                   alert(data.info)
                 }
             },function(){
-
+            HtmlJS.util.ajax("/user/fav",{
+              uuid:"#{article.uuid}"
+            },"post",function(data){
+                loadingTip.hide()
+                if(data.success){
+                  messageTip.show("收藏成功！")
+                }else{
+                  alert(data.info)
+                }
+            },function(){
+            
+            
+          })
             
           })
             })

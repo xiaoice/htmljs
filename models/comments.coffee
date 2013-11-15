@@ -10,3 +10,4 @@ module.exports =
   recomment_count:
     type:"int"
     defaultValue:0
+    

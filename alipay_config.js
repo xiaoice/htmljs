@@ -13,3 +13,4 @@ var config = {
 var Alipay = require('alipay').Alipay;
 
 exports.alipay = new Alipay(config);
+exports.AlipayNotify = require("alipay").AlipayNotify

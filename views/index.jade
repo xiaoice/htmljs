@@ -49,8 +49,8 @@ html
                   a.title(href="") #{article.title}
                   .desc 
                     a.user(href="/user/#{article.user_id}") #{article.user_nick}
-                    
-                    a.column(href="/article/column/#{article.column.id}") 「#{article.column.name}」
+                    if article.column
+                      a.column(href="/article/column/#{article.column.id}") 「#{article.column.name}」
                     span.time #{moment(article.createdAt).fromNow()}
           .module.mod
             .hd 最新的问题

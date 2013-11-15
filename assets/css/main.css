@@ -8,7 +8,10 @@
 #fixed-modules{position:relative;width:270px;}
 #fixed-modules.fixed{position:fixed;top:0px;}
 #content .empty-btn{background:none !important;color:#5bb793 !important;}
-#coin-fixed{position:fixed;bottom:0;right:50px;height:35px;line-height:35px;border:1px solid #ddd;background:#fff;}#coin-fixed .coin-count{padding:0 10px;color:#fab019;font-weight:bold;display:inline-block;vertical-align:top;width:105px;}#coin-fixed .coin-count em{font-style:normal;color:#5bb793;padding-left:5px;}
+#coin-fixed{position:fixed;bottom:0;right:50px;height:35px;line-height:35px;border:1px solid #ddd;background:#fff;}#coin-fixed .my-favs{padding:0 10px;color:#999;font-weight:bold;display:inline-block;vertical-align:top;}#coin-fixed .my-favs i{font-size:12px;background:none;}
+#coin-fixed .my-favs em{font-style:normal;color:#5bb793;padding-left:5px;}
+#coin-fixed .my-favs a{color:#999;}
+#coin-fixed .coin-count{padding:0 10px;color:#fab019;font-weight:bold;display:inline-block;vertical-align:top;width:105px;}#coin-fixed .coin-count em{font-style:normal;color:#5bb793;padding-left:5px;}
 #coin-fixed .history-trigger{border-left:1px solid #ddd;padding:0 5px;width:90px;font-size:14px;display:inline-block;vertical-align:top;color:#fff;background:#5bb793;text-align:center;position:relative;}#coin-fixed .history-trigger i{margin-left:3px;vertical-align:-3px;color:#eee;-moz-transform:rotate(90deg);-webkit-transform:rotate(90deg);-o-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);}
 #coin-fixed .history-list{width:226px;position:absolute;right:-1px;bottom:25px;background:#fff;border:1px solid #ddd;color:#444;}#coin-fixed .history-list li{border-bottom:1px solid #eee;font-size:12px;text-align:left;padding:5px;list-style:none;}#coin-fixed .history-list li .title{color:#666;font-size:13px;}
 #coin-fixed .history-list li .desc{color:#aaa;}

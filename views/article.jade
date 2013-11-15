@@ -103,6 +103,18 @@ html
                 if locals.user && (user.is_admin||user.id==article.user_id)
                   span.index 管理：
                   a.value(href="/article/#{article.id}/edit") 编辑
+          if locals.column
+            .module.columns
+              .hd 所属专栏
+              .bd
+                .column
+                  a.title(href="/article/column/#{column.id}") #{column.name}
+                  .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
+                  .user
+                    span 作者：
+                    a(href="/user/#{column.user.id}") #{column.user.nick}
+                    
+                  .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
           #fixed-modules
             
             .module
@@ -151,18 +163,7 @@ html
                       if zan&&zan.user
                         a.user(style="display:inline-block;",href="/user/#{zan.user.id}",data-original-title="#{zan.user.nick} #{zan.score}分") 
                           img(src="#{zan.user.head_pic}",width="20")
-            if column
-              .module.columns
-                .hd 所属专栏
-                .bd
-                  .column
-                    a.title(href="/article/column/#{column.id}") #{column.name}
-                    .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
-                    .user
-                      span 作者：
-                      a(href="/user/#{column.user.id}") #{column.user.nick}
-                      
-                    .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
+            
             if locals.column_articles
               .module.recent
                 .hd 本专栏其他文章

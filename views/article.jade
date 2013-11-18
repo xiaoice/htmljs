@@ -177,6 +177,10 @@ html
                   if locals.recents
                     each recent in recents
                       div.item <a href="/article/#{recent.id}">#{recent.title}</a>
+            .module
+              .hd 用手机访问
+              .bd
+                img(src="http://qr.liantu.com/api.php?text=http://www.html-js.com/article/#{article.id}&logo=http://htmljs.b0.upaiyun.com//images/icon.png")
           
       - locals.shareImgs = article.html.match(/img\s*?src=["|'](.*?)["|']/);
       p.

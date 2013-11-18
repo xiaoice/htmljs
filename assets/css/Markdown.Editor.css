@@ -18,8 +18,17 @@
 .wmd-prompt-dialog>form>input[type="button"]{border:1px solid #888888;font-family:trebuchet MS,helvetica,sans-serif;font-size:0.8em;font-weight:bold;}
 #content .btn-toolbar .btn{background:none;border:none;background-image:none;}
 #content .btn-toolbar{border-bottom:1px solid #eee;border:none;box-shadow: none;}
-#content .btn-toolbar .btn:hover{background:#eee;background-image:none;}
+
 #content .btn-toolbar .btn i{color:#777;background: none;}
+#content .btn-toolbar .btn{
+  color:#444;
+  background:#eee;
+  padding-left:7px;
+  padding-right:7px;
+  height:30px;
+  line-height:30px;
+}
+#content .btn-toolbar .btn:hover{background:#ddd;background-image:none;}
 #title{width:100%;}
 .wmd-input{margin-top:10px;}
 .wmd-preview{margin-top:10px;}

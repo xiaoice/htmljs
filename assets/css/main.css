@@ -232,7 +232,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index .article-list{margin:0;padding:0;}
 #index .top-users .item{line-height:30px;}#index .top-users .item img{margin-right:5px;}
 #index .mod .bd{width:900px;}
-#index .mod .item{width:320px;margin-right:20px;display:inline-block;_float:left;border-bottom:1px dashed #eee;vertical-align:top;overflow:hidden;}#index .mod .item .title{color:#333;font-size:12px;line-height:30px;display:block;overflow:hidden;}
+#index .mod .item{width:320px;margin-right:20px;display:inline-block;_float:left;border-bottom:1px dashed #eee;vertical-align:top;overflow:hidden;}#index .mod .item .title{color:#333;font-size:12px;line-height:30px;height:30px;display:block;overflow:hidden;}
 #index .mod .item .desc{font-size:12px;color:#999;line-height:20px;}#index .mod .item .desc .user{margin-right:10px;color:#999;}
 #index .mod .item .desc .time{margin-right:10px;}
 #index .mod .item .desc .column{margin-right:10px;color:#999;}
@@ -469,6 +469,11 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .article-list{margin:0;padding:0;}
 #article .right .module.count span{padding-right:10px;color:#999;}
 #article .right .module.user .item{margin-top:10px;font-size:12px;color:#999;}
+#article .right .column{padding:5px 0;border-top:1px solid #eee;display:inline-block;vertical-align:top;}#article .right .column .title{font-size:13px;color:#444;line-height:20px;font-weight:bold;}
+#article .right .column .desc{font-size:12px;line-height:18px;color:#aaa;margin:5px 0;}
+#article .right .column .user{font-size:12px;line-height:20px;color:#999;}
+#article .right .column .action{color:#999;font-size:12px;line-height:20px;}#article .right .column .action a{padding:0;}
+#article .right .column .action i{background:none;}
 #article .actions .btn{line-height:28px;}
 #article .actions .action{font-size:12px;margin-right:10px;}
 #article .actions .my{margin-left:10px;line-height:30px;}

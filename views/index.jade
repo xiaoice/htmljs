@@ -46,7 +46,7 @@ html
             .bd
               each article,i in articles
                 .item
-                  a.title(href="") #{article.title}
+                  a.title(href="/article/#{article.id}") #{article.title}
                   .desc 
                     a.user(href="/user/#{article.user_id}") #{article.user_nick}
                     if article.column
@@ -57,7 +57,7 @@ html
             .bd
               each question,i in questions
                 .item
-                  a.title(href="") #{question.title}
+                  a.title(href="/qa/#{question.id}") #{question.title}
                   .desc 
                     a.user(href="/user/#{question.user_id}") #{question.user_nick}
                     span.time #{moment(question.createdAt).fromNow()}
@@ -72,7 +72,7 @@ html
             .bd
               each topic,i in topics
                 .item
-                  a.title(href="") #{topic.title}
+                  a.title(href="/topic/#{topic.id}") #{topic.title}
                   .desc 
                     if topic.last_comment_user_id
                       | <a class="user" href="/user/#{topic.last_comment_user_id}">#{topic.last_comment_user_nick}</a>

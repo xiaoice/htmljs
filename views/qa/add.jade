@@ -172,15 +172,7 @@ html
       var editor1 = new Markdown.Editor(converter1);
 
       editor1.run();
-      var converter2 = new Markdown.Converter();
-      //- Markdown.Extra.init(converter2);
-      converter2.hooks.chain("preConversion", function (text) {
-          return text.replace(/\b(a\w*)/gi, "*$1*");
-      });
-      
-      converter2.hooks.chain("plainLinkText", function (url) {
-          return "This is a link to " + url.replace(/^https?:\/\//, "");
-      });
+     
       $("#form").submit(function(e){
         e.preventDefault()
           HtmlJS.util.ajax("/qa/add",$("#form").serialize(),"post",function(data){

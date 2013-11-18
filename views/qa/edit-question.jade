@@ -94,18 +94,12 @@ html
       $('.tags .label').tooltip({
           placement:"bottom"
       })
-      var converter1 = Markdown.getSanitizingConverter();
+      var converter1 =new  Markdown.Converter();
+      Markdown.Extra.init(converter1);
       var editor1 = new Markdown.Editor(converter1);
-      editor1.run();
-      var converter2 = new Markdown.Converter();
 
-      converter2.hooks.chain("preConversion", function (text) {
-          return text.replace(/\b(a\w*)/gi, "*$1*");
-      });
-      
-      converter2.hooks.chain("plainLinkText", function (url) {
-          return "This is a link to " + url.replace(/^https?:\/\//, "");
-      });
+      editor1.run();
+     
       //- $("#form").submit(function(e){
       //-   e.preventDefault()
       //-   $.ajax({

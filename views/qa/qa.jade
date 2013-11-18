@@ -3,7 +3,6 @@ html
   head
     include ./../head
     title #{question.title} 问答 - 前端乱炖
-    link(href='#{assets_head}/css/Markdown.Editor.css?33', type='text/css', rel='stylesheet', charset='utf-8')
     include ../editor_head
     |<meta name="description" content="#{question.html.replace(/<[^>]*>/g,"").replace(/\s/g,'').substr(0,140)}">
   body#qa
@@ -366,18 +365,12 @@ html
         $(".real-form").removeClass("hidden")
         $(".real-form textarea").focus();
       }
-      var converter1 = Markdown.getSanitizingConverter();
+      var converter1 =new  Markdown.Converter();
+      Markdown.Extra.init(converter1);
       var editor1 = new Markdown.Editor(converter1);
-      editor1.run();
-      var converter2 = new Markdown.Converter();
 
-      converter2.hooks.chain("preConversion", function (text) {
-          return text.replace(/\b(a\w*)/gi, "*$1*");
-      });
-      
-      converter2.hooks.chain("plainLinkText", function (url) {
-          return "This is a link to " + url.replace(/^https?:\/\//, "");
-      });
+      editor1.run();
+     
       $("#wmd-input").val(localStorage.getItem("textarea_qa_#{question.id}"))
       $("#wmd-input").keyup(function(){
         localStorage.setItem("textarea_qa_#{question.id}",this.value)

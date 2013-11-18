@@ -107,10 +107,10 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') &nbsp;&nbsp;&nbsp;#{article.title}
                       if !article.is_publish
                         span.label.tip 此文正在审核中
-                  .entry-content.clearfix 
-                    if article.main_pic
-                      img.main_pic(src="#{article.main_pic}")
-                    |!{article.desc.replace(/\s/g,"")!=""?article.desc:article.html}
+                  //- .entry-content.clearfix 
+                  //-   if article.main_pic
+                  //-     img.main_pic(src="#{article.main_pic}")
+                  //-   |!{article.desc.replace(/\s/g,"")!=""?article.desc:article.html}
                   //- .entry-content.clearfix 
                   //-   if article.main_pic
                   //-     img.main_pic(src="#{article.main_pic}")

@@ -110,6 +110,9 @@ html
         }
       }
       var invited=[]
+      $(document.body).click(function(){
+        $(".invite-user-dropdown").addClass("hidden")
+      })
       $(".invite-user-dropdown").click(function(e){
         var target=e.target;
         if($(target).hasClass("user")){
@@ -118,8 +121,9 @@ html
             $(".invite-list").append("<li class=user data-id="+$(target).attr("data-id")+" >"+$(target).html()+"</div>")
             invited.push($(target).attr("data-id"))
             $("#invite").val(invited.join(","))
+            $("#invite_input").val("");
           }
-        
+          
         }
         })
       $(".invite-list").click(function(e){
@@ -133,6 +137,7 @@ html
             }
           }
           $("#invite").val(invited.join(","))
+          
         }
         })
       $("#invite_input").keyup(function(){

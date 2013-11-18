@@ -92,6 +92,7 @@ func_article =
     Visit_log.findAll
       where:condition
       limit:count
+      order:"id desc"
     .success (logs)->
       callback null,logs
     .error (error)->

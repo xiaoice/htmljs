@@ -135,7 +135,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       a(href="/article/column/#{article.column.id}")  「#{article.column.name}」
                       |  专栏
                   
-                  .entry-content.clearfix 
+                  .entry-content.clearfix.hidden 
                     if article.main_pic
                       img.main_pic(src="#{article.main_pic}")
                     if article.desc

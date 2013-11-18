@@ -1347,7 +1347,8 @@
                 button.id = id + postfix;
                 button.appendChild(buttonImage);
                 button.title = title;
-                $(button).tooltip({placement: 'bottom'})
+                button.innerHTML=title;
+//                $(button).tooltip({placement: 'bottom'})
                 if (textOp)
                     button.textOp = textOp;
                 setupButton(button, true);
@@ -1367,41 +1368,46 @@
             }
 
             group1 = makeGroup(1);
-            buttons.bold = makeButton("wmd-bold-button", "Bold - Ctrl+B", "icon-bold", bindCommand("doBold"), group1);
-            buttons.italic = makeButton("wmd-italic-button", "Italic - Ctrl+I", "icon-italic", bindCommand("doItalic"), group1);
+            buttons.bold = makeButton("wmd-bold-button", "加粗", "icon-bold", bindCommand("doBold"), group1);
+            buttons.italic = makeButton("wmd-italic-button", "斜体", "icon-italic", bindCommand("doItalic"), group1);
             
             group2 = makeGroup(2);
-            buttons.link = makeButton("wmd-link-button", "插入链接 - Ctrl+L", "icon-link", bindCommand(function (chunk, postProcessing) {
+            buttons.link = makeButton("wmd-link-button", "链接", "icon-link", bindCommand(function (chunk, postProcessing) {
                 return this.doLinkOrImage(chunk, postProcessing, false);
             }), group2);
-            buttons.quote = makeButton("wmd-quote-button", "插入块 - Ctrl+Q", "icon-left-indent", bindCommand("doBlockquote"), group2);
-            buttons.code = makeButton("wmd-code-button", "插入代码 - Ctrl+K", "icon-embed", bindCommand("doCode"), group2);
-            buttons.image = makeButton("wmd-image-button", "插入图片 - Ctrl+G", "icon-picture", bindCommand(function (chunk, postProcessing) {
+            buttons.quote = makeButton("wmd-quote-button", "引用", "icon-left-indent", bindCommand("doBlockquote"), group2);
+            buttons.code = makeButton("wmd-code-button", "代码", "icon-embed", bindCommand("doCode"), group2);
+            buttons.jsfiddler = makeButton("wmd-jsfiddler-button", "jsfiddler", "icon-jsfiddler", bindCommand(function (chunk, postProcessing) {
+                return this.doJsFiddler(chunk, postProcessing, true);
+            }), group2);
+            buttons.image = makeButton("wmd-image-button", "图片", "icon-picture", bindCommand(function (chunk, postProcessing) {
                 return this.doLinkOrImage(chunk, postProcessing, true);
             }), group2);
+            
 
             group3 = makeGroup(3);
-            buttons.olist = makeButton("wmd-olist-button", "数字列表 - Ctrl+O", "icon-list", bindCommand(function (chunk, postProcessing) {
+            buttons.olist = makeButton("wmd-olist-button", "数字列表", "icon-list", bindCommand(function (chunk, postProcessing) {
                 this.doList(chunk, postProcessing, true);
             }), group3);
-            buttons.ulist = makeButton("wmd-ulist-button", "无序列表 - Ctrl+U", "icon-list", bindCommand(function (chunk, postProcessing) {
+            buttons.ulist = makeButton("wmd-ulist-button", "无序列表", "icon-list", bindCommand(function (chunk, postProcessing) {
                 this.doList(chunk, postProcessing, false);
             }), group3);
-            buttons.heading = makeButton("wmd-heading-button", "标题 - Ctrl+H", "icon-header", bindCommand("doHeading"), group3);
+            buttons.heading = makeButton("wmd-heading-button", "标题", "icon-header", bindCommand("doHeading"), group3);
            // buttons.hr = makeButton("wmd-hr-button", "插入一根虚线 - Ctrl+R", "icon-minus", bindCommand("doHorizontalRule"), group3);
             
             group4 = makeGroup(4);
-            buttons.undo = makeButton("wmd-undo-button", "Undo - Ctrl+Z", "icon-unshare", null, group4);
+            buttons.undo = makeButton("wmd-undo-button", "Undo", "icon-unshare", null, group4);
             buttons.undo.execute = function (manager) { if (manager) manager.undo(); };
 
             var redoTitle = /win/.test(nav.platform.toLowerCase()) ?
                 "Redo - Ctrl+Y" :
                 "Redo - Ctrl+Shift+Z"; // mac and other non-Windows platforms
 
-            buttons.redo = makeButton("wmd-redo-button", redoTitle, "icon-share", null, group4);
+            buttons.redo = makeButton("wmd-redo-button", "redo", "icon-share", null, group4);
             buttons.redo.execute = function (manager) { if (manager) manager.redo(); };
             group5 = makeGroup(5);
-            buttons.time = makeButton("wmd-time-button", "插入现在的时间", "icon-clock", bindCommand("nowTime"), group5);
+//            buttons.time = makeButton("wmd-time-button", "插入现在的时间", "icon-clock", bindCommand("nowTime"), group5);
+            
             if (helpOptions) {
                 group5 = makeGroup(5);
                 group5.className = group5.className + " pull-right";
@@ -1421,7 +1427,7 @@
                 buttons.help = helpButton;
             }
             if($("#fullscreen-editor").length){
-               buttons.fullscreen = makeButton("wmd-fullscreen-button", "全屏安静编辑模式", "icon-fullscreen", bindCommand("fullscreen"), group5);
+               buttons.fullscreen = makeButton("wmd-fullscreen-button", "全屏", "icon-fullscreen", bindCommand("fullscreen"), group5);
              
             }
             setUndoRedoButtonStates();
@@ -1692,6 +1698,73 @@
             else {
                 ui.prompt('Insert Link', linkDialogText, linkDefaultText, linkEnteredCallback);
             }
+            return true;
+        }
+    };
+    commandProto.doJsFiddler = function (chunk, postProcessing, isImage) {
+
+        chunk.trimWhitespace();
+        chunk.findTags(/\s*!?\[/, /\][ ]?(?:\n[ ]*)?(\[.*?\])?/);
+        var background;
+
+        if (chunk.endTag.length > 1 && chunk.startTag.length > 0) {
+
+            chunk.startTag = chunk.startTag.replace(/!?\[/, "");
+            chunk.endTag = "";
+            this.addLinkDef(chunk, null);
+
+        }
+        else {
+            
+            // We're moving start and end tag back into the selection, since (as we're in the else block) we're not
+            // *removing* a link, but *adding* one, so whatever findTags() found is now back to being part of the
+            // link text. linkEnteredCallback takes care of escaping any brackets.
+            chunk.selection = chunk.startTag + chunk.selection + chunk.endTag;
+            chunk.startTag = chunk.endTag = "";
+
+            if (/\n\n/.test(chunk.selection)) {
+                this.addLinkDef(chunk, null);
+                return;
+            }
+            var that = this;
+            // The function to be executed when you enter a link and press OK or Cancel.
+            // Marks up the link and adds the ref.
+            var linkEnteredCallback = function (link) {
+
+                if (link !== null) {
+                    // (                          $1
+                    //     [^\\]                  anything that's not a backslash
+                    //     (?:\\\\)*              an even number (this includes zero) of backslashes
+                    // )
+                    // (?=                        followed by
+                    //     [[\]]                  an opening or closing bracket
+                    // )
+                    //
+                    // In other words, a non-escaped bracket. These have to be escaped now to make sure they
+                    // don't count as the end of the link or similar.
+                    // Note that the actual bracket has to be a lookahead, because (in case of to subsequent brackets),
+                    // the bracket in one match may be the "not a backslash" character in the next match, so it
+                    // should not be consumed by the first match.
+                    // The "prepend a space and finally remove it" steps makes sure there is a "not a backslash" at the
+                    // start of the string, so this also works if the selection begins with a bracket. We cannot solve
+                    // this by anchoring with ^, because in the case that the selection starts with two brackets, this
+                    // would mean a zero-width match at the start. Since zero-width matches advance the string position,
+                    // the first bracket could then not act as the "not a backslash" for the second.
+                    chunk.selection = link;
+                    
+                    var linkDef = " [999]: " + properlyEncoded(link);
+
+                    var num = that.addLinkDef(chunk, linkDef);
+                    chunk.startTag ='<iframe width="100%" height="300" src="';
+                    chunk.endTag = '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>';
+
+                    
+                }
+                postProcessing();
+            };
+
+
+            ui.prompt('嵌入演示代码', "填写在 <a href='http://jsfiddle.net/' target='_blank'>http://jsfiddle.net/</a> 获取的嵌入链接(embed)", linkDefaultText, linkEnteredCallback);
             return true;
         }
     };

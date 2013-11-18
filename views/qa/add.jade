@@ -22,10 +22,7 @@ html
                       #wmd-bar-parent
                         #wmd-button-bar
                     textarea.expand.wmd-input#wmd-input(name="md",placeholder='详细问题',required)
-                .control-group#wmd-preview-parent
-                  .wmd-panel.wmd-preview#wmd-preview-con
-                    .padding
-                      #wmd-preview
+                
                 if locals.tags
                   .control-group
                     .tags
@@ -50,6 +47,10 @@ html
                     |分享到微博
                 .control-group
                   button.btn#submit(type='submit') 发表
+                .control-group#wmd-preview-parent
+                  .wmd-panel.wmd-preview#wmd-preview-con
+                    .padding
+                      #wmd-preview
             #myModal.modal.hide.fade.
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

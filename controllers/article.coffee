@@ -262,7 +262,7 @@ module.exports.controllers =
   "/:id":
     "get":(req,res,next)->
       article = res.locals.article
-      func_article.getVisitors req.params.id,(error,visitors)->
+      func_article.getVisitors req.params.id,10,(error,visitors)->
         if error then next error
         else
           res.locals.visitors = visitors

@@ -18,7 +18,6 @@ html
           //
             div.alert.alert-warning 本站第一次线下活动【中秋节杭州基层前端大聚会】，开始报名！<a href="/act/1">戳我去报名</a>！
           .module.search
-            .bd
               //- div.
               //-   <script>
               //-     (function() {
@@ -41,22 +40,38 @@ html
           //- .module
           //-   a(href="/act/6")
           //-     img(src="http://htmljs.b0.upaiyun.com/uploads/1384321856554-%E6%9C%AA%E6%A0%87%E9%A2%98-2.png")
-          .module.mod
+          .module.mod.recent_articles
             .hd 最新的专栏文章
             .bd
               each article,i in articles
-                .item
+                .item(class="#{article.visit_count<20?'new':''}")
                   a.title(href="/article/#{article.id}") #{article.title}
                   .desc 
-                    a.user(href="/user/#{article.user_id}") #{article.user_nick}
+                    
                     if article.column
                       a.column(href="/article/column/#{article.column.id}") 「#{article.column.name}」
+                    a.user(href="/user/#{article.user_id}") #{article.user_nick}
                     span.time #{moment(article.createdAt).fromNow()}
+              
+              .columns 
+                .hd 最近更新的专栏
+                each column in columns
+                  if column.user
+                    .column
+                      a(href="/user/#{column.user_id}",data-original-title="#{column.user.nick}")
+                        img(src="#{column.user.head_pic}")
+                      a.name(href="/article/column/#{column.id}",data-original-title="#{moment(column.last_article_time*1).fromNow()}") #{column.name.substr(0,16)}
+              .visitors
+                .hd 正在路过的
+                each visitor in article_visitors
+                  .visitor.user
+                    a(href="/user/#{visitor.user_id}",data-original-title="#{visitor.user_nick} #{moment(visitor.createdAt).fromNow()}")
+                      img(src="#{visitor.user_headpic}")
           .module.mod
             .hd 最新的问题
             .bd
               each question,i in questions
-                .item
+                .item(class="#{question.visit_count<20?'new':''}")
                   a.title(href="/qa/#{question.id}") #{question.title}
                   .desc 
                     a.user(href="/user/#{question.user_id}") #{question.user_nick}
@@ -71,7 +86,7 @@ html
             .hd 最新的话题
             .bd
               each topic,i in topics
-                .item
+                .item(class="#{topic.visit_count<20?'new':''}")
                   a.title(href="/topic/#{topic.id}") #{topic.title}
                   .desc 
                     if topic.last_comment_user_id
@@ -240,12 +255,12 @@ html
           .hd QQ群组
           .bd.
             <div class="textwidget">
-              <div>前端乱炖情感群:<em style="color:#ff6700;">46532005</em>（千）<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=785525cf168fab8c11415bd56f5602c3735497d10a66635115b300baf8769e65">加入</a></div>
-              <div>前端乱炖技术群：<em style="color:#ff6700;">227896607</em> <a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=9b89fe56ea2eb39e08003541dab7282679ba2f0c1fbec2abf1d00d1b7607b280">加入</a></div>
-              <div>NodeJS乱炖: <em style="color:#ff6700;">95323225</em>（千）<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=bcf7977843816c9dde25f8b8caae2d81675f2224a50545ea313e4e98e33c06dc">加入</a></div>
-              <div>自由职业者: <em style="color:#ff6700;"> 275182059</em> <a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=5fdf12b1a777677e8b1f25e32cec5cee7cfd59417cce2bd7bc46a8cac95972ea">加入</a></div>
-              <div>IOS 乱炖: <em style="color:#ff6700;"> 292062123</em> <a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=3f6b8c853435e0a68b1b86f036eb823a97488cd68c728c7dfe3569a3a9902f7e">加入</a></div>
-              <div>前端乱炖求职招聘群: <em style="color:#ff6700;"> 12892863</em> <a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=e941d6613691a264555ae3fe62168d2d56928bc2a7a7d53d80536ff44fdb63d3">加入</a></div>
+              <div>乱炖情感群:<em style="color:#ff6700;">46532005</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=785525cf168fab8c11415bd56f5602c3735497d10a66635115b300baf8769e65">加入</a></div>
+              <div>乱炖技术群：<em style="color:#ff6700;">227896607</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=9b89fe56ea2eb39e08003541dab7282679ba2f0c1fbec2abf1d00d1b7607b280">加入</a></div>
+              <div>NodeJS乱炖: <em style="color:#ff6700;">95323225</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=bcf7977843816c9dde25f8b8caae2d81675f2224a50545ea313e4e98e33c06dc">加入</a></div>
+              <div>自由职业者: <em style="color:#ff6700;"> 275182059</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=5fdf12b1a777677e8b1f25e32cec5cee7cfd59417cce2bd7bc46a8cac95972ea">加入</a></div>
+              <div>IOS 乱炖: <em style="color:#ff6700;"> 292062123</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=3f6b8c853435e0a68b1b86f036eb823a97488cd68c728c7dfe3569a3a9902f7e">加入</a></div>
+              <div>求职招聘群: <em style="color:#ff6700;"> 12892863</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=e941d6613691a264555ae3fe62168d2d56928bc2a7a7d53d80536ff44fdb63d3">加入</a></div>
               <div>站长的QQ: <em style="color:#ff6700;"> 676588498</em></div>
             </div>
         .module.text
@@ -276,6 +291,12 @@ html
     
     script
       $('.t-user').tooltip({
+          placement:"bottom"
+      })
+      $('.visitor a').tooltip({
+          placement:"bottom"
+      })
+      $('.column a').tooltip({
           placement:"bottom"
       })
       $("img").lazyload();

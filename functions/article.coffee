@@ -83,11 +83,15 @@ func_article =
             user_id:visitor.id
             user_nick:visitor.nick
             user_headpic:visitor.head_pic
-  getVisitors:(articleId,callback)->
-    Visit_log.findAll
-      where:
+  getVisitors:(articleId,count,callback)->
+  	if articleId
+      condition = 
         article_id:articleId
-      limit:10
+    else
+      condition = null
+    Visit_log.findAll
+      where:condition
+      limit:count
     .success (logs)->
       callback null,logs
     .error (error)->

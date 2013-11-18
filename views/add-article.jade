@@ -3,8 +3,6 @@ html
   head
     include head
     title 添加专栏文章
-    link(href='#{assets_head}/css/Markdown.Editor.css?dddddd', type='text/css', rel='stylesheet', charset='utf-8')
-    script(src='#{assets_head}/js/jquery.js')
     include editor_head
     script
       var article_id = #{locals.article?article.id:0}
@@ -27,12 +25,24 @@ html
                   input(type="hidden",name="id",value="#{article.id}")
                 .control-group
                   input#title(type='text', name='title', placeholder='文章标题',value="#{locals.article?article.title:''}")
-                .control-group#wmd-editor-parent
-                  .wmd-panel#wmd-editor-con
-                    .padding
-                      #wmd-bar-parent
-                        #wmd-button-bar
-                      textarea.expand.wmd-input#wmd-input(name="md",placeholder="文章内容，markdown语法。如果没有写完，可以直接关闭页面，下次打开内容仍然会在。") #{locals.article?article.md:''}
+                ul.editor-tab.nav.nav-tabs
+                  li.active
+                    a(data-toggle="tab",href="#markdowneditor") markdown编辑器
+                  li
+                    a(data-toggle="tab",href="#seeeditor") 可视化编辑器
+                .tab-content
+                  .tab-pane#markdowneditor.active
+                    .control-group#wmd-editor-parent
+                      .wmd-panel#wmd-editor-con
+                        .padding
+                          #wmd-bar-parent
+                            #wmd-button-bar
+                          textarea.expand.wmd-input#wmd-input(name="md",placeholder="文章内容，markdown语法。如果没有写完，可以直接关闭页面，下次打开内容仍然会在。") #{locals.article?article.md:''}
+                  .tab-pane#seeeditor
+                    .control-group
+                      script(type="text/plain",id="myEditor")
+                  
+                
                 .control-group
                   .columns
                     input#column(type="hidden",name="column_id",value="#{locals.article?article.column_id:column_id}")
@@ -40,13 +50,14 @@ html
                     div.bd 
                       each column,i in columns
                         span.label(data-id="#{column.id}",class="#{locals.article?(article.column_id==column.id?'label-success':''):(column.id==column_id?'label-success':'')}",data-original-title="#{column.desc_md&&column.desc_md.substr(0,100)}",title="#{column.desc_md&&column.desc_md.substr(0,100)}") #{column.name}
+                .control-group
+                  button.btn#submit(type='submit') 发表
                 .control-group#wmd-preview-parent
                   .wmd-panel.wmd-preview#wmd-preview-con
                     .padding
                       #wmd-preview
 
-                .control-group
-                  button.btn#submit(type='submit') 发表
+                
             #myModal.modal.hide.fade.
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -78,8 +89,18 @@ html
     script(src='#{assets_head}/js/loadingTip.js')
     script(src='#{assets_head}/js/messageTip.js')
     script
-      
-      
+      UE.getEditor('myEditor',{
+            //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
+            //focus时自动清空初始化时的内容
+            autoClearinitialContent:true,
+            //关闭字数统计
+            wordCount:false,
+            //关闭elementPath
+            elementPathEnabled:false,
+            //默认的编辑区域高度
+            initialFrameHeight:300
+            //更多其他参数，请参考ueditor.config.js中的配置项
+        })
       $(".columns .label").click(function(){
         $(".columns .label").removeClass("label-success")
         $(this).addClass("label-success");

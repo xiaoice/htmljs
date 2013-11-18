@@ -31,6 +31,8 @@ html
                       span.tags-bd 
                         each tag,i in tags
                           span.label(data-id="#{tag.id}",title="#{tag.name}",class="#{topic.tag_id==tag.id?'label-success':''}") #{tag.name}
+                .control-group
+                  button.btn#submit(type='submit') 发表
                 .wmd-panel.wmd-preview
                   div 预览
                   #wmd-preview
@@ -38,8 +40,7 @@ html
                 //-   label.checkbox
                 //-     input(type="checkbox",name="to_weibo",checked="false")
                 //-     |分享到微博
-                .control-group
-                  button.btn#submit(type='submit') 发表
+                
             #myModal.modal.hide.fade.
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

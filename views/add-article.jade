@@ -40,13 +40,14 @@ html
                     div.bd 
                       each column,i in columns
                         span.label(data-id="#{column.id}",class="#{locals.article?(article.column_id==column.id?'label-success':''):(column.id==column_id?'label-success':'')}",data-original-title="#{column.desc_md&&column.desc_md.substr(0,100)}",title="#{column.desc_md&&column.desc_md.substr(0,100)}") #{column.name}
+                .control-group
+                  button.btn#submit(type='submit') 发表
                 .control-group#wmd-preview-parent
                   .wmd-panel.wmd-preview#wmd-preview-con
                     .padding
                       #wmd-preview
 
-                .control-group
-                  button.btn#submit(type='submit') 发表
+                
             #myModal.modal.hide.fade.
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

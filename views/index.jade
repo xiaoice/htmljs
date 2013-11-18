@@ -44,7 +44,7 @@ html
             .hd 最新的专栏文章
             .bd
               each article,i in articles
-                .item(class="#{article.visit_count<20?'new':''}")
+                .item(class="#{article.visit_count<30?'new':''}")
                   a.title(href="/article/#{article.id}") #{article.title}
                   .desc 
                     
@@ -71,7 +71,7 @@ html
             .hd 最新的问题
             .bd
               each question,i in questions
-                .item(class="#{question.visit_count<20?'new':''}")
+                .item(class="#{question.visit_count<30?'new':''}")
                   a.title(href="/qa/#{question.id}") #{question.title}
                   .desc 
                     a.user(href="/user/#{question.user_id}") #{question.user_nick}
@@ -86,7 +86,7 @@ html
             .hd 最新的话题
             .bd
               each topic,i in topics
-                .item(class="#{topic.visit_count<20?'new':''}")
+                .item(class="#{topic.visit_count<30?'new':''}")
                   a.title(href="/topic/#{topic.id}") #{topic.title}
                   .desc 
                     if topic.last_comment_user_id

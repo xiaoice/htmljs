@@ -2,8 +2,6 @@
 html
   head
     include ../head
-    link(href='#{assets_head}/css/Markdown.Editor.css?3d3', type='text/css', rel='stylesheet', charset='utf-8')
-    script(src='#{assets_head}/js/jquery.js')
     include ../editor_head
     title 编辑回答-前端乱炖
    
@@ -61,8 +59,11 @@ html
     script
       $("#layer").css({width:$(document.body).width(),height:$(document.body).height()})
       $("#login_popup").css({left:$(window).width()/2-125})
-      var converter1 = Markdown.getSanitizingConverter();
+      var converter1 =new  Markdown.Converter();
+      Markdown.Extra.init(converter1);
       var editor1 = new Markdown.Editor(converter1);
+
+      editor1.run();
       editor1.run();
       var converter2 = new Markdown.Converter();
 

@@ -1,5 +1,5 @@
 pagedown = require("pagedown")
-safeConverter = pagedown.getSanitizingConverter()
+safeConverter =new pagedown.Converter()
 func_topic = __F 'topic'
 func_topic_comment = __F 'topic_comment'
 func_info = __F 'info'

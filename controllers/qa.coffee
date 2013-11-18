@@ -7,7 +7,7 @@ func_topic = __F 'topic'
 func_email = __F 'email'
 func_comment = __F 'comment'
 pagedown = require("pagedown")
-safeConverter = pagedown.getSanitizingConverter()
+safeConverter = new pagedown.Converter()
 
 moment = require 'moment'
 Sina=require("./../lib/sdk/sina.js")

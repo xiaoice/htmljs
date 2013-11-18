@@ -269,16 +269,16 @@ module.exports.controllers =
           func_card.getByUserId article.user_id,(error,card)->
             if card 
               article.card = card
-            if article.user_id && res.locals.user
-              func_info.add 
-                target_user_id:article.user_id
-                type:1
-                source_user_id:res.locals.user.id
-                source_user_nick:res.locals.user.nick
-                time:new Date()
-                target_path:req.originalUrl
-                action_name:"【访问】了您的原创文章"
-                target_path_name:article.title
+            # if article.user_id && res.locals.user
+            #   func_info.add 
+            #     target_user_id:article.user_id
+            #     type:1
+            #     source_user_id:res.locals.user.id
+            #     source_user_nick:res.locals.user.nick
+            #     time:new Date()
+            #     target_path:req.originalUrl
+            #     action_name:"【访问】了您的原创文章"
+            #     target_path_name:article.title
             res.locals.article = article
             func_article.addVisit req.params.id,res.locals.user||null
             if article.column_id

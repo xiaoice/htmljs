@@ -5,7 +5,7 @@ module.exports = (req,res,next)->
   else
     condition = null
   page = req.query.page || 1
-  count = req.query.count || 10
+  count = req.query.count || 20
   (__F 'article').count condition,(error,_count)->
     if error then next error
     else

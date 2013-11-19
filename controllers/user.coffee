@@ -155,13 +155,13 @@ module.exports.controllers =
     get:(req,res,next)->
       page = req.query.page || 1
       count = req.query.count || 30
-      func_fav.count null,(error,_count)->
+      func_fav.count {user_id:res.locals.user.id},(error,_count)->
         if error then next error
         else
           res.locals.total=_count
           res.locals.totalPage=Math.ceil(_count/count)
           res.locals.page = (req.query.page||1)
-          func_fav.getAll page,count,(error,timelines)->
+          func_fav.getAll page,count,{user_id:res.locals.user.id},(error,timelines)->
             if error then next error
             else
               res.locals.timelines = timelines

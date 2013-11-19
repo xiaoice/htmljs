@@ -32,7 +32,7 @@ func_fav =
   				callback e
   	.error (e)->
   		callback e
-  getAll:(page,count,callback)->
+  getAll:(page,count,user_id,callback)->
     #select * from favs  left join articles  on articles.uuid = favs.info_id left join questions on questions.uuid = favs.info_id;
     sequelize.query("select fav.createdAt AS createdAt,fav.id AS id,
  article.id as article_id,
@@ -72,7 +72,7 @@ func_fav =
  act.comment_count as act_comment_count,
  act.visit_count as act_visit_count
 
- from user_favs fav
+ from user_favs fav where user_fav.user_id = "+user_id+"
  left join articles  article on article.uuid = fav.info_id
  left join questions  question on question.uuid = fav.info_id 
  left join cards  card on card.uuid = fav.info_id 

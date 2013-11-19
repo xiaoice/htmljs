@@ -25,11 +25,11 @@ html
                   input(type="hidden",name="id",value="#{article.id}")
                 .control-group
                   input#title(type='text', name='title', placeholder='文章标题',value="#{locals.article?article.title:''}")
-                ul.editor-tab.nav.nav-tabs
-                  li.active
-                    a(data-toggle="tab",href="#markdowneditor") markdown编辑器
-                  li
-                    a(data-toggle="tab",href="#seeeditor") 可视化编辑器
+                //- ul.editor-tab.nav.nav-tabs
+                //-   li.active
+                //-     a(data-toggle="tab",href="#markdowneditor") markdown编辑器
+                //-   li
+                //-     a(data-toggle="tab",href="#seeeditor") 可视化编辑器
                 .tab-content
                   .tab-pane#markdowneditor.active
                     .control-group#wmd-editor-parent
@@ -89,18 +89,18 @@ html
     script(src='#{assets_head}/js/loadingTip.js')
     script(src='#{assets_head}/js/messageTip.js')
     script
-      UE.getEditor('myEditor',{
-            //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
-            //focus时自动清空初始化时的内容
-            autoClearinitialContent:true,
-            //关闭字数统计
-            wordCount:false,
-            //关闭elementPath
-            elementPathEnabled:false,
-            //默认的编辑区域高度
-            initialFrameHeight:300
-            //更多其他参数，请参考ueditor.config.js中的配置项
-        })
+      //- UE.getEditor('myEditor',{
+      //-       //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
+      //-       //focus时自动清空初始化时的内容
+      //-       autoClearinitialContent:true,
+      //-       //关闭字数统计
+      //-       wordCount:false,
+      //-       //关闭elementPath
+      //-       elementPathEnabled:false,
+      //-       //默认的编辑区域高度
+      //-       initialFrameHeight:300
+      //-       //更多其他参数，请参考ueditor.config.js中的配置项
+      //-   })
       $(".columns .label").click(function(){
         $(".columns .label").removeClass("label-success")
         $(this).addClass("label-success");

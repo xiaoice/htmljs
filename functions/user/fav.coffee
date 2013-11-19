@@ -72,12 +72,13 @@ func_fav =
  act.comment_count as act_comment_count,
  act.visit_count as act_visit_count
 
- from user_favs fav where user_fav.user_id = "+user_id+"
+ from user_favs fav 
  left join articles  article on article.uuid = fav.info_id
  left join questions  question on question.uuid = fav.info_id 
  left join cards  card on card.uuid = fav.info_id 
  left join topics  topic on topic.uuid = fav.info_id 
  left join acts act on act.uuid = fav.info_id
+ where fav.user_id = "+user_id+" 
  order by fav.createdAt desc limit "+(page-1)*count+","+count+";",null, {raw: true})
     .success (data)->
       callback null,data

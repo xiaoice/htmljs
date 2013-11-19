@@ -213,7 +213,7 @@ html
                 a.shareCount
           .module.count
             .bd
-              a#add_fav.action(href="javascript:void(0);") 收藏（#{locals.favs?locals.favs.length:0}）
+              a#add_fav.action.new-function(href="javascript:void(0);") 收藏（#{locals.favs?locals.favs.length:0}）
               a.action(href="#add_answer") 回答（#{question.answer_count}）
               span 浏览：#{question.visit_count}
           if locals.same_questions&&locals.same_questions.length

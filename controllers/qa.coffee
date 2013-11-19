@@ -6,6 +6,7 @@ func_user = __F 'user'
 func_topic = __F 'topic'
 func_email = __F 'email'
 func_comment = __F 'comment'
+func_card = __F 'card'
 pagedown = require("pagedown")
 safeConverter = new pagedown.Converter()
 
@@ -245,6 +246,9 @@ module.exports.controllers =
             action_name:"【回答】了您提问的问题"
             target_path_name:q.title
             content:req.body.html
+          func_card.getByUserId q.user_id,(error,card)->
+          	if card
+              func_email.sendAnswer ans,q,card
         res.send result
   "/:question_id/good/:answer_id":
     get:(req,res,next)->

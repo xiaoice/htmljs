@@ -153,7 +153,7 @@ module.exports.controllers =
         user_headpic:res.locals.user.head_pic
         publish_time:new Date().getTime()/1000
         is_yuanchuang:1
-        is_publish:if res.locals.user.is_admin then 1 else 0
+        is_publish:1
         main_pic:if match then match[1] else null
         desc:safeConverter.makeHtml req.body.md.substr(0,600)
       if req.body.column_id

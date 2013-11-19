@@ -131,7 +131,7 @@ html
         
         HtmlJS.util.ajax("",$("#form").serialize(),"post",function(data){
             if(data.success){
-             if(!article_id) alert("发布成功，等待审核中")
+             if(!article_id) alert("发布成功")
              
              if($("#column").val()){
              window.location.href="/article/column/"+$("#column").val()

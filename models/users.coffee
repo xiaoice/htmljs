@@ -18,4 +18,4 @@ module.exports =
   bi:
     type:"int"
     defaultValue:5
-  
+  email:"varchar(100)"

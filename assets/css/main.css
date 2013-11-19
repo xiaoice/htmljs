@@ -168,6 +168,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 .comment .comment-list .comment-item .comment-right{float:left;margin-left:10px;}
 .comment .comment-list .comment-item .author a{font-size:12px;font-weight:bold;}
 .comment .comment-list .comment-item .con{color:#777;word-break:break-all;}.comment .comment-list .comment-item .con p{margin:0;display:inline;padding-right:10px;color:#777;line-height:25px;}
+.comment .comment-list .comment-item .con h1,.comment .comment-list .comment-item .con h2,.comment .comment-list .comment-item .con h3,.comment .comment-list .comment-item .con h4,.comment .comment-list .comment-item .con h5{font-size:14px;font-weight:bold;}
 .comment .comment-list .comment-item .con .html *{margin:0;display:inline;padding-right:10px;color:#777;}
 .comment .comment-list .comment-item .time{color:#999;display:inline;}
 .comment .comment-list .comment-item .reply{cursor:pointer;position:absolute;right:10px;top:15px;color:#999;font-size:12px;}.comment .comment-list .comment-item .reply i{background:none;vertical-align:-1px;}
@@ -179,6 +180,9 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #me .comment .comment-list .comment-item .con{width:500px;word-break:break-all;}
 #q_comment_list .comment-list .comment-item .comment-right{margin-left:0;}
 #q_comment_list .comment-item .con{width:530px;word-break:break-all;}
+#index .left{margin-right:230px;}
+#index .right{width:220px;margin-left:-220px;}
+#index #fixed-modules{width:220px;}
 #index .search{padding:0;overflow:hidden;padding-bottom:15px;}#index .search .adds a{margin-right:5px;}
 #index .search .bd{border-radius:5px;}
 #index .search .gsib_a{border:none;padding:0;}
@@ -232,12 +236,17 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index .article-list{margin:0;padding:0;}
 #index .top-users .item{line-height:30px;}#index .top-users .item img{margin-right:5px;}
 #index .mod .bd{width:900px;}
-#index .mod .item{width:320px;margin-right:20px;display:inline-block;_float:left;border-bottom:1px dashed #eee;vertical-align:top;overflow:hidden;}#index .mod .item .title{color:#333;font-size:12px;line-height:30px;height:30px;display:block;overflow:hidden;}
+#index .mod .item{width:350px;margin-right:20px;display:inline-block;_float:left;border-bottom:1px dashed #eee;vertical-align:top;overflow:hidden;}#index .mod .item .title{color:#333;font-size:13px;line-height:30px;height:30px;display:block;overflow:hidden;}
 #index .mod .item .desc{font-size:12px;color:#999;line-height:20px;}#index .mod .item .desc .user{margin-right:10px;color:#999;}
 #index .mod .item .desc .time{margin-right:10px;}
 #index .mod .item .desc .column{margin-right:10px;color:#999;}
 #index .mod .item .desc .desc-item{font-size:12px;margin-right:10px;}#index .mod .item .desc .desc-item .index{color:#aaa;font-size:12px;margin-right:3px;}#index .mod .item .desc .desc-item .index i{background:none;vertical-align:-2px;}
 #index .mod .item .desc .desc-item .value{color:#999;}
+#index .mod .item.new .title{color:#5bb793;font-weight:bold;}
+#index .recent_articles .columns{width:730px;margin-top:20px;}#index .recent_articles .columns .column{display:inline-block;vertical-align:top;margin-right:10px;margin-top:10px;border-bottom:1px solid #eee;background:#efefef;width:152px;height:30px;overflow:hidden;padding:0 10px;}#index .recent_articles .columns .column img{width:17px;}
+#index .recent_articles .columns .column .name{line-height:30px;font-size:12px;padding-left:10px;color:#444;}
+#index .recent_articles .columns .column .desc{color:#999;}#index .recent_articles .columns .column .desc *{margin:0;font-size:12px;}
+#index .visitors{margin-top:20px;}#index .visitors .visitor{display:inline-block;margin-right:5px;}#index .visitors .visitor img{width:25px;}
 #qas .actions{padding-bottom:10px;}#qas .actions .right-actions{float:right;}#qas .actions .right-actions a{padding:0 10px;line-height:30px;color:#5bb793;}
 #qas .actions .right-actions a.active,#qas .actions .right-actions a:hover{color:#666;}
 #qas .right a{color:#6fb79b;}
@@ -549,10 +558,10 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #card .post .entry-title .title{height:auto;}
 #card .post .entry-title .title .real-title{font-size:14px;}
 #talk{background:#efefef;}
-#topics .head{height:35px;line-height:35px;background:#fff;border-bottom:none;}#topics .head .tags{display:inline-block;vertical-align:top;padding-left:5px;}#topics .head .tags a{font-size:13px;color:#444;padding:0 15px;display:inline-block;height:27px;line-height:27px;margin-top:4px;}
+#topics .head{background:#fff;border-bottom:none;margin-bottom:10px;}#topics .head .tags{display:inline-block;vertical-align:top;padding:10px;}#topics .head .tags a{font-size:13px;color:#444;padding:0 15px;display:inline-block;vertical-align:top;height:27px;line-height:27px;margin-top:4px;}
 #topics .head .tags a.active{background:#eee;border-radius:3px;border-bottom:none;font-weight:bold;}
 #topics .head .tags a:first-child{border-left:none;}
-#topics .head .actions{width:100px;display:inline-block;vertical-align:top;float:right;padding-right:10px;}#topics .head .actions a{font-size:12px;line-height:35px;float:right;}
+#topics .head .actions{width:100px;margin-left:10px;padding-bottom:10px;}
 #topics .right a{color:#6fb79b;}
 #topics .right .recent_comments .item{border-bottom:1px solid #eee;padding:5px 0;}
 #topics .right .hot_questions .item{border-bottom:1px solid #eee;padding:5px 0;}
@@ -593,6 +602,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #topic .topic-title{border-bottom:1px solid #ddd;}#topic .topic-title .title{font-size:20px;line-height:50px;font-weight:normal;margin:0;padding:0;}
 #topic .topic-content{padding:10px;font-size:13px;color:#404040;}#topic .topic-content p{line-height:25px;margin:15px 0;}
 #topic .topic-content blockquote p{line-height:25px;margin:0;font-size:12px;}
+#topic .topic-content img{border:1px solid #ddd;margin:10px;}
 #topic .topic-user .action{float:left;}#topic .topic-user .action a{line-height:40px;margin-right:10px;color:#999;font-size:14px;}#topic .topic-user .action a i{-webkit-transform:scale(0.9);-moz-transform:scale(0.9);}
 #topic .topic-user .action .tags a{padding:1px 4px;margin-right:5px;color:#fff;font-weight:normal;font-size:12px;background:#aaa;}
 #topic .topic-user .action .tags a:hover{background:#5bb793;}

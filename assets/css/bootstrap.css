@@ -5260,8 +5260,6 @@ input[type="submit"].btn.btn-mini {
 }
 
 .tooltip.in {
-  opacity: 0.8;
-  filter: alpha(opacity=80);
 }
 
 .tooltip.top {
@@ -5290,7 +5288,7 @@ input[type="submit"].btn.btn-mini {
   color: #ffffff;
   text-align: center;
   text-decoration: none;
-  background-color: #f27369;
+  background-color: #5bb793;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
@@ -5308,7 +5306,7 @@ input[type="submit"].btn.btn-mini {
   bottom: 0;
   left: 50%;
   margin-left: -5px;
-  border-top-color: #f27369;
+  border-top-color: #5bb793;
   border-width: 5px 5px 0;
 }
 
@@ -5316,7 +5314,7 @@ input[type="submit"].btn.btn-mini {
   top: 50%;
   left: 0;
   margin-top: -5px;
-  border-right-color: #f27369;
+  border-right-color: #5bb793;
   border-width: 5px 5px 5px 0;
 }
 
@@ -5324,7 +5322,7 @@ input[type="submit"].btn.btn-mini {
   top: 50%;
   right: 0;
   margin-top: -5px;
-  border-left-color: #f27369;
+  border-left-color: #5bb793;
   border-width: 5px 0 5px 5px;
 }
 
@@ -5332,7 +5330,7 @@ input[type="submit"].btn.btn-mini {
   top: 0;
   left: 50%;
   margin-left: -5px;
-  border-bottom-color: #f27369;
+  border-bottom-color: #5bb793;
   border-width: 0 5px 5px;
 }
 

@@ -1,4 +1,15 @@
 #index{
+  .left{
+    margin-right:230px;
+  }
+  .right{
+    width:220px;
+    margin-left:-220px;
+  }
+  
+  #fixed-modules{
+    width:220px;
+  }
   .search{
     padding:0;
     overflow: hidden;
@@ -336,7 +347,7 @@
       width:900px;
     }
     .item{
-      width:320px;
+      width:350px;
       margin-right: 20px;
       display: inline-block;
       _float:left;
@@ -345,8 +356,9 @@
       overflow: hidden;
       .title{
         color:#333;
-        font-size: 12px;
+        font-size: 13px;
         line-height: 30px;
+        height:30px;
         display: block;
         overflow: hidden;
       }
@@ -381,6 +393,56 @@
           color:#999;
         }
       }
+      }
+    }
+    .item.new{
+      .title{
+        color:#5bb793;
+        font-weight:bold;
+      }
+    }
+  }
+  .recent_articles{
+    .columns{
+      width:730px;
+      margin-top:20px;
+      .column{
+        display:inline-block;
+        vertical-align:top;
+        margin-right:10px;
+        margin-top:10px;
+        border-bottom:1px solid #eee;
+        background:#efefef;
+        width:152px;
+        height:30px;
+        overflow:hidden;
+        padding:0 10px;
+        img{
+          width:17px;
+        }
+        .name{
+          line-height:30px;
+          font-size:12px;
+          padding-left:10px;
+          color:#444;
+        }
+        .desc{
+          color:#999;
+          *{
+            margin:0;
+            font-size:12px;
+          }
+        }
+      }
+    }
+  }
+  .visitors{
+    margin-top:20px;
+    .visitor{
+      display:inline-block;
+      margin-right:5px;
+      img{
+        width:25px;
       }
     }
   }

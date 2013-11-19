@@ -1,6 +1,6 @@
 var config = {
-    partner:'' //合作身份者id，以2088开头的16位纯数字
-    ,key:''//安全检验码，以数字和字母组成的32位字符
+    partner:'2088002381248026' //合作身份者id，以2088开头的16位纯数字
+    ,key:'f742yl8lm0an7xcr7qat2gswbos7nvqd'//安全检验码，以数字和字母组成的32位字符
     ,seller_email:'xinyu198736@126.com' //卖家支付宝帐户 必填 
     ,host:'www.html-js.com'
   ,cacert:'cacert.pem'//ca证书路径地址，用于curl中ssl校验 

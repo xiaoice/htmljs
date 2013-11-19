@@ -25,14 +25,14 @@ html
               each tag in tags
                 a(href="/topic?tag_id=#{tag.id}",class="#{locals.tag_id==tag.id?'active':''}") #{tag.name}
             .actions
-              a(href="/topic/add") 添加话题
+              a.btn(href="/topic/add") 添加话题
           if !(locals.topics&&topics.length)
             .topic-list
               .notopic 还没有话题，快去发表一个吧！
           else
             .topic-list
               each topic,i in topics
-                .topic-item(class="#{i%2==1?'':'yooo'} #{topic.answer_count==0?'':''}")
+                .topic-item(class="#{i%2==1?'':'yooo'} #{topic.answer_count==1?'':''}")
                   
                   
                   .entry-title

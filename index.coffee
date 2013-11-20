@@ -6,6 +6,21 @@ rainbow        = require './lib/rainbow.js'
 lessmiddle     = require 'less-middleware'
 less           = require 'less'
 module.exports = app = express()
+log4js = require('log4js')
+log4js.configure({
+  appenders: [
+    { type: 'console' }
+#    {
+#      type: 'file'
+#      filename: 'logs/access.log'
+#      maxLogSize: 1024
+#      backups:3
+#      category: 'normal' 
+#    }
+  ]
+})
+logger = log4js.getLogger('normal')
+logger.setLevel('INFO')
 app.configure ->
   app.set "port", config.run_port
   app.set "views", path.join __dirname, 'views'
@@ -15,11 +30,12 @@ app.configure ->
   app.use "/assets", express.static(__dirname+"/assets")
   app.use "/uploads", express.static(__dirname+"/uploads")
  
-  app.use express.logger("dev")
+#  app.use express.logger("dev")
   app.use express.bodyParser()
   app.use express.cookieParser()
   app.use express.cookieSession(secret: 'fd2afdsafdvcxzjaklfdsa')
   app.use express.methodOverride()
+  app.use(log4js.connectLogger(logger, {level:log4js.levels.INFO}))
   app.locals.assets_head = config.assets_head
   app.use (req,res,next)->
     res.locals.url = req.url

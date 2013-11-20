@@ -11,13 +11,13 @@ Topic.belongsTo Tag,{foreignKey:"tag_id"}
 Topic.sync()
 TopicComment.sync()
 func_topic = 
-  addComment:(data,callback)->
-    
   getById:(id,callback)->
     Topic.find
       where:
         id:id
+      raw:true
       include:[User,Tag]
+      
     .success (topic)->
       if not topic then callback new Error '不存在的话题'
       else
@@ -36,8 +36,9 @@ func_topic =
       offset: (page - 1) * count
       limit: count
       order: order || "id desc"
+      include:[Tag]
+      raw:true
     if condition then query.where = condition
-    query.include = [Tag]
     Topic.findAll(query)
     .success (ms)->
       callback null,ms

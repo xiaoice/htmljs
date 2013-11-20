@@ -6,6 +6,7 @@ func_info =
       where:
         is_read:0
         target_user_id:user_id
+      raw:true
     .success (infos)->
       callback null,infos
     .error (e)->

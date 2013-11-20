@@ -46,6 +46,7 @@ global.__FC = (func,model,methods)->
           offset: (page - 1) * count
           limit: count
           order: order || "id desc"
+          raw:true
         if condition then query.where = condition
         if include then query.include = include
         model.findAll(query)

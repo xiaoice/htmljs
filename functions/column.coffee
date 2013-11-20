@@ -26,6 +26,7 @@ func_column =
       limit: count
       order: order
       include:[User]
+      raw:true
     if condition then query.where = condition
     Column.findAll(query)
     .success (result_columns)->
@@ -48,6 +49,7 @@ func_column =
         where:
           column_id:ids
         order:"id desc"
+        raw:true
       .success (articles)->
         columns = []
         result_columns.forEach (col)->
@@ -63,6 +65,7 @@ func_column =
             where:
               column_id:ids
               user_id:user_id
+            raw:true
           .success (rss_logs)->
             rss_logs.forEach (log)->
               columns.forEach (col)->
@@ -82,6 +85,7 @@ func_column =
       where:
         id:id
       include:[User]
+      raw:true
     .success (column)->
       callback null,column
     .error (e)->
@@ -91,6 +95,7 @@ func_column =
       where:
         column_id:column_id
         user_id:user_id
+      raw:true
     .success (rss)->
       if rss
         callback new Error '已经订阅过此专栏'
@@ -109,6 +114,7 @@ func_column =
       where:
         column_id:column_id
       include:[Card]
+      raw:true
     .success (rsses)->
       callback null,rsses
     .error (e)->
@@ -118,6 +124,7 @@ func_column =
       where:
         column_id:column_id
         user_id:user_id
+      raw:true
     .success (rss)->
       if rss
         callback null,rss

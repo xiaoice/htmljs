@@ -8,6 +8,7 @@ func_comment =
       order: "id desc"
       where:
         target_id:target_id
+      raw:true
     if condition then query.where = condition
     Comment.findAll(query)
     .success (ms)->
@@ -20,6 +21,7 @@ func_comment =
       limit: count
       order: "id desc"
       where:["target_id like ?", "%"+filter+"%"]
+      raw:true
     Comment.findAll(query)
     .success (ms)->
       callback null,ms

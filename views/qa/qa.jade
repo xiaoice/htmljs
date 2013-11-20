@@ -88,7 +88,7 @@ html
                           - if(zanHistory.length>0){zanHistory=zanHistory.substr(0,zanHistory.length-1)}
                           a.zan(href="#",data-id="#{ans.id}",data-original-title="此回答被 #{zanHistory} 赞过") 
                             |<i class=""></i>
-                            em #{ans.zan_count||0}
+                            em #{ans.answerZanHistory.length}
                           if !question.good_answer_id 
                             if locals.user && (locals.user.id == question.user_id||user.is_admin)
                               a.btn.good(href="/qa/#{question.id}/good/#{ans.id}") 采纳
@@ -196,7 +196,8 @@ html
               if locals.ehis.length
                 each eh in ehis
                   .item
-                    span 此问题在 <em>#{moment(eh.createdAt).fromNow()}</em> 被 <em>#{eh.user.nick}</em> 修改。<br/>理由：<em>#{eh.reason}</em>
+                  - console.log(eh)
+                    span 此问题在 <em>#{moment(eh.createdAt).fromNow()}</em> 被 <em>#{eh['users.nick']}</em> 修改。<br/>理由：<em>#{eh.reason}</em>
               else
                 .item 暂无修改记录
         #fixed-modules

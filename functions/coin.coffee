@@ -7,6 +7,7 @@ func_coin =
       where:
         user_id:user_id
         day:(new Date()).getTime()/1000*60*60*24
+      raw:true
     .success (his)->
       if his 
         total = 0

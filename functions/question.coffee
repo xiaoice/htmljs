@@ -26,6 +26,7 @@ func_question =
         question_id:q_id
       order:"id desc"
       include:[User]
+      raw:true
     .success (his)->
       callback null,his
     .error (e)->
@@ -44,6 +45,7 @@ func_question =
       where:
         id:id
       include:[User]
+      raw:true
     .success (q)->
       if not q then callback new Error '不存在的问题'
       else
@@ -67,9 +69,13 @@ func_question =
       limit: count
       order: order || "id desc"
       include:[User,Answer]
+      raw:true
     if condition then query.where = condition
     Question.findAll(query)
     .success (ms)->
+      console.log ms[0]
+      console.log ms[0].users.id
+      console.log ms[0]['users.id']
       callback null,ms
     .error (e)->
       callback e

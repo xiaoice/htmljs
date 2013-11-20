@@ -24,12 +24,14 @@ html
                 if locals.article
                   input(type="hidden",name="id",value="#{article.id}")
                 .control-group
-                  input#title(type='text', name='title', placeholder='文章标题',value="#{locals.article?article.title:''}")
+                  input#title(type='text', name='title', placeholder='文章标题',value="#{locals.article?article.title:''}",required)
                 //- ul.editor-tab.nav.nav-tabs
                 //-   li.active
                 //-     a(data-toggle="tab",href="#markdowneditor") markdown编辑器
                 //-   li
                 //-     a(data-toggle="tab",href="#seeeditor") 可视化编辑器
+                .control-group
+                  textarea#desc(name="desc",placeholder="请用200字以内简单描述此文内容",required)
                 .tab-content
                   .tab-pane#markdowneditor.active
                     .control-group#wmd-editor-parent

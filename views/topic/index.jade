@@ -37,10 +37,10 @@ html
                   
                   .entry-title
                     h2.title
-                      if topic.topicTag
+                      if topic['topic_tags.name']
                         |[
                         a.tag(href="/topic/?tag_id=#{topic.tag_id}")
-                          |#{topic.topicTag.name}
+                          |#{topic['topic_tags.name']}
                         |] 
                       a(href='/topic/#{topic.id}', title='#{topic.title}', rel='bookmark') 
 

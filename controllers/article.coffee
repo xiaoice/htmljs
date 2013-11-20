@@ -155,7 +155,7 @@ module.exports.controllers =
         is_yuanchuang:1
         is_publish:1
         main_pic:if match then match[1] else null
-        desc:safeConverter.makeHtml req.body.md.substr(0,600)
+        desc:req.body.desc
       if req.body.column_id
         func_column.update req.body.column_id,{last_article_time:(new Date()).getTime()},()->
 

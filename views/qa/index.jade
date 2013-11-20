@@ -25,7 +25,6 @@ html
           .actions
             a.btn(href="/qa/add") <i class="icon-plus icon-white"></i> 我要提问
             .right-actions
-              - console.log(locals.filter_is_answered*1===1);
               a(class="#{(locals.filter_answer_count===undefined&&locals.filter_user_id==undefined)?'active':''}",href="/qa") 全部问题
               a(class="#{locals.filter_answer_count==='0'?'active':''}",href="/qa?filter=answer_count|0") 未回答
               if locals.user
@@ -74,20 +73,21 @@ html
                           a(href="/qa/#{question.id}/update?is_hot=0") nohot
                           a(href="/qa/#{question.id}/move_to_topic") 变话题
                     div.user
-                      a(data-original-title="#{question.user_nick}",href="/user/#{question.user.id}")
+                      a(data-original-title="#{question.user_nick}",href="/user/#{question.users_id}")
                         img(src="#{question.user_headpic}")
-                        if question.user&&question.user.sex
-                          if question.user.sex == '男'
+                        
+                        if question['users.sex']
+                          if question['users.sex'] == '男'
                             .sex.nan
                           else
                             .sex.nv
-                    if question.answer
+                    if question.answers.id
                       div.answer.clearfix
                         .answer-user
-                          a(data-original-title="#{question.answer.user_nick}")
-                            img(src="#{question.answer.user_headpic}")
-                        .answer-con !{question.answer.html.replace(/<[^>]*>/g,"").substr(0,100)}
-                          |<a href="/qa/#{question.id}#answer-#{question.answer.id}">阅读更多</a>
+                          a(data-original-title="#{question.answers.user_nick}")
+                            img(src="#{question.answers.user_headpic}")
+                        .answer-con !{question.answers.html.replace(/<[^>]*>/g,"").substr(0,100)}
+                          |<a href="/qa/#{question.id}#answer-#{question.answers.id}">阅读更多</a>
             include ../page
       .right
         .module

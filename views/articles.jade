@@ -102,8 +102,8 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       //- a.t-user(href="/user/#{article.user_id}",data-original-title="#{article.user_nick}")
                       //-   img(src="#{article.user_headpic}",width="20")
                       
-                      if  !locals.column&&article.column
-                        a(href="/article/column/#{article.column.id}") 【#{article.column.name}】
+                      if  article.columns
+                        a(href="/article/column/#{article.columns.id}") 【#{article.columns.name}】
                       a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') &nbsp;&nbsp;&nbsp;#{article.title}
                       if !article.is_publish
                         span.label.tip 此文正在审核中
@@ -164,7 +164,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
               .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
               .user
                 span 作者：
-                a(href="/user/#{column.user.id}") #{column.user.nick}
+                a(href="/user/#{column['user.id']}") #{column['user.nick']}
               .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
         .module.recent
           .hd 近期文章

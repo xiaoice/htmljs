@@ -75,6 +75,7 @@ func_answer =
         answer_id:answer_id
       order:"id"
       include:[User]
+      raw:true
     .success (answers)->
       callback null,answers
     .error (e)->
@@ -96,6 +97,7 @@ func_answer =
       Card.findAll
         where:
           user_id:answerUserIDs
+        raw:true
       .success (cards)->
         cards.forEach (card)->
           answers.forEach (ans)->
@@ -137,6 +139,7 @@ func_answer =
       limit: count
       order: order || "id desc"
       include:[Question]
+      raw:true
     if condition then query.where = condition
     Ans.findAll(query)
     .success (answers)->
@@ -148,6 +151,7 @@ func_answer =
       where:
         id:id
       include:[Question]
+      raw:true
     .success (ans)->
       if not ans then callback new Error '不存在的回答'
       else
@@ -158,7 +162,6 @@ func_answer =
     AnsZanHistory.findAll
       where:
         answer_id:answerId
-      include:[User]
     .success (his)->
       callback null,his
     .error (e)->

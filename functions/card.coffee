@@ -21,6 +21,7 @@ func_card =
     Card.find
       where:
         user_id:id
+      raw:true
     .success (card)->
       callback null,card
     .error (error)->
@@ -30,6 +31,7 @@ func_card =
       where:
         uuid:id
       include:[User]
+      raw:true
     .success (card)->
       callback null,card
     .error (error)->
@@ -63,6 +65,7 @@ func_card =
         card_id:cardId
       limit:30
       order: "updatedAt desc"
+      raw:true
     .success (logs)->
       callback null,logs
     .error (error)->
@@ -73,6 +76,7 @@ func_card =
         card_id:cardId
       limit:50
       include:[User]
+      raw:true
     .success (zans)->
       callback null,zans
     .error (e)->
@@ -82,6 +86,7 @@ func_card =
       where:
         card_id:cardId
         user_id:userId
+      raw:true
     .success (his)->
       if his
         callback new Error '已经给这位【大叔/阿姨】点过赞了，如果你点上瘾了，那为毛放弃治疗！'
@@ -113,6 +118,7 @@ func_card =
       offset: 0
       limit: 10
       order: "visit_count desc"
+      raw:true
     .success (cards)->
       callback null,cards
     .error (error)->
@@ -122,6 +128,7 @@ func_card =
       offset: 0
       limit: 10
       order: "id desc"
+      raw:true
     .success (cards)->
       callback null,cards
     .error (error)->
@@ -132,6 +139,7 @@ func_card =
       limit: count
       order: "users.coin desc,cards.zan_count+cards.visit_count desc"
       include:[User]
+      raw:true
     if condition then query.where = condition
     Card.findAll(query)
     .success (ms)->

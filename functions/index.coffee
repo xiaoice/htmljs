@@ -79,7 +79,7 @@ module.exports =
  left join cards  card on card.uuid = indexinfo.info_id 
  left join topics  topic on topic.uuid = indexinfo.info_id 
  left join acts act on act.uuid = indexinfo.info_id
- order by indexinfo.sort desc,indexinfo.createdAt desc limit "+(page-1)*count+","+count+";",null, {raw: true})
+ order by indexinfo.sort desc,indexinfo.createdAt desc limit "+(page-1)*count+","+count+";",null, {raw: true,redis:10000})
     .success (data)->
       callback null,data
     .error (e)->

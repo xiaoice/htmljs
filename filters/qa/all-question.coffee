@@ -15,6 +15,7 @@ module.exports = (req,res,next)->
   page = req.query.page || 1
   count = req.query.count || 20
   (__F 'question').count condition,(error,_count)->
+    console.log _count
     if error then next error
     else
       res.locals.total=_count

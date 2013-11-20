@@ -24,6 +24,7 @@ func_article =
       limit: count
       order: "sort desc,id desc"
       include:[User,Column]
+      raw:true
     if condition then query.where = condition
     Article.findAll(query)
     .success (articles)->
@@ -39,6 +40,7 @@ func_article =
         is_publish:1
       order: "id desc"
       limit:20
+      raw:true
     .success (articles)->
       callback null,articles
     .error (error)->
@@ -47,6 +49,7 @@ func_article =
     Article.find
       where:
         quote_url:url
+      raw:true
     .success (article)->
       callback null,article
     .error (error)->
@@ -135,6 +138,7 @@ func_article =
         is_publish:1
       order: "id desc"
       limit:10
+      raw:true
     .success (articles)->
       callback null,articles
     .error (error)->
@@ -144,6 +148,7 @@ func_article =
       where:
         id:id
       include:[User]
+      raw:true
     .success (article)->
       callback null,article
     .error (error)->
@@ -154,6 +159,7 @@ func_article =
         article_id:article_id
       include:[User]
       order:"id desc"
+      raw:true
     .success (logs)->
       callback null,logs
     .error (e)->

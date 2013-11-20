@@ -53,6 +53,26 @@ global.__FC = (func,model,methods)->
           callback null,ms
         .error (e)->
           callback e
+    else if m == 'getAllAndCount'
+      func.getAllAndCount = (page,count,condition,order,include,callback)->
+        if arguments.length == 4
+          callback = order
+          order = null
+          include = null
+        else if arguments.length == 5
+          callback = include
+          include = null
+        query = 
+          offset: (page - 1) * count
+          limit: count
+          order: order || "id desc"
+        if condition then query.where = condition
+        if include then query.include = include
+        model.findAndCountAll(query)
+        .success (ms)->
+          callback null,ms.count,ms.rows
+        .error (e)->
+          callback e
     else if m == 'add'
       func.add = (data,callback)->
         data.uuid = uuid.v4()
@@ -67,8 +87,12 @@ global.__FC = (func,model,methods)->
           where:
             id:id
         .success (m)->
+          
           if m
-            m.updateAttributes(data)
+            fields = []
+            for k,v of data
+              fields.push k
+            m.updateAttributes(data,fields)
             .success ()->
               callback&&callback null,m
             .error (error)->
@@ -108,44 +132,12 @@ global.__FC = (func,model,methods)->
           if m
             updates = {}
             updates[field]=m[field]*1+1
-            m.updateAttributes(updates)
+            m.updateAttributes(updates,[field])
             .success ()->
               callback&&callback null,m
             .error (error)->
               callback&&callback error
         .error (error)->
           callback&&callback error
-  # wrapper = {}
-  # for k,v of func
-  #   ((i)-> 
-  #     wrapper[i]= ()->
-  #       args = []
-  #       argstr = []
-  #       cache_key = ""
-  #       _arguments = arguments
-  #       if func.path
-  #         func_path = func.path.replace(__C.base_path,"")+"/"+i
-  #         for e in arguments
-  #           args.push e
-  #           if e && typeof e != 'function'
-  #             argstr.push e.toString().replace(/\s/g,"")
-  #         cache_key = func_path+argstr.join("-")
-  #         if __C.cache.indexOf func_path !=0
-  #           # client.set(func_path+arguments.join("-"))
-  #           args[args.length-1]=()->
-  #             client.set(cache_key,JSON.stringify(arguments[1]))
-  #             _arguments[_arguments.length-1].apply(this,arguments)
-  #           client.get cache_key,(error,value)->
-  #             if value
-  #               datas = JSON.parse value
-  #               console.log datas
-  #               _arguments[_arguments.length-1].call(this,null,datas)
-  #               console.log "from redis"
-  #             else
-  #               func[i].apply(this,args)
-  #           return;
-  #       func[i].apply(this,args)
-  #   )(k)
-    
-  # return wrapper
+ 
   return func

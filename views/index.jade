@@ -60,7 +60,7 @@ html
                     .column
                       a(href="/user/#{column.user_id}",data-original-title="#{column.user.nick}")
                         img(src="#{column.user.head_pic}")
-                      a.name(href="/article/column/#{column.id}",data-original-title="#{moment(column.last_article_time*1).fromNow()}") #{column.name.substr(0,16)}
+                      a.name(href="/article/column/#{column.id}",data-original-title="#{column.name}  #{moment(column.last_article_time*1).fromNow()}") #{column.name.substr(0,16)}
               .visitors
                 .hd 正在路过的
                 each visitor in article_visitors

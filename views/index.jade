@@ -108,7 +108,7 @@ html
                 .topic_tags
                   .hd 话题类型
                   each tag in topic_tags
-                    a(href="/topic?tag_id=#{tag.id}") #{tag.name}
+                    a(href="/topic?tag_id=#{tag.id}",class="#{tag.important?'important':''}") #{tag.name}
           p.
             <script type="text/javascript">
              /*自定义标签云，创建于2013-11-21*/

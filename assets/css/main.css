@@ -251,6 +251,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index .tags a:hover{background:#5bb793;color:#fff;}
 #index .topic_tags{width:700px;margin-top:20px;}#index .topic_tags a{padding:0 12px;color:#666;background:#eee;border-radius:10px;line-height:20px;display:inline-block;margin-top:10px;margin-right:10px;text-decoration:none;}
 #index .topic_tags a:hover{background:#5bb793;color:#fff;}
+#index .topic_tags a.important{color:#f27369;font-weight:bold;}
 #qas .actions{padding-bottom:10px;}#qas .actions .right-actions{float:right;}#qas .actions .right-actions a{padding:0 10px;line-height:30px;color:#5bb793;}
 #qas .actions .right-actions a.active,#qas .actions .right-actions a:hover{color:#666;}
 #qas .right a{color:#6fb79b;}
@@ -565,6 +566,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #topics .head{background:#fff;border-bottom:none;margin-bottom:10px;}#topics .head .tags{display:inline-block;vertical-align:top;padding:10px;}#topics .head .tags a{font-size:13px;color:#444;padding:0 15px;display:inline-block;vertical-align:top;height:27px;line-height:27px;margin-top:4px;}
 #topics .head .tags a.active{background:#eee;border-radius:3px;border-bottom:none;font-weight:bold;}
 #topics .head .tags a:first-child{border-left:none;}
+#topics .head .tags a.important{color:#f27369;font-weight:bold;}
 #topics .head .actions{width:100px;margin-left:10px;padding-bottom:10px;}
 #topics .right a{color:#6fb79b;}
 #topics .right .recent_comments .item{border-bottom:1px solid #eee;padding:5px 0;}

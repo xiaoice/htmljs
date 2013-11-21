@@ -23,7 +23,7 @@ html
             .tags
               a(href="/topic",class="#{!locals.tag_id?'active':''}") 全部
               each tag in tags
-                a(href="/topic?tag_id=#{tag.id}",class="#{locals.tag_id==tag.id?'active':''}") #{tag.name}
+                a(href="/topic?tag_id=#{tag.id}",class="#{locals.tag_id==tag.id?'active':''} #{tag.important?'important':''}") #{tag.name}
             .actions
               a.btn(href="/topic/add#{locals.tag_id?('?tag_id='+locals.tag_id):''}") 添加话题
           if !(locals.topics&&topics.length)

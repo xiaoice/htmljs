@@ -49,10 +49,14 @@ html
                     a.title(href="/article/#{article.id}") #{article.title}
                     .desc 
                       
-                      if article.column
-                        a.column(href="/article/column/#{article.column.id}") 「#{article.column.name}」
                       a.user(href="/user/#{article.user_id}") #{article.user_nick}
                       span.time #{moment(article.createdAt).fromNow()}
+                      span.desc-item
+                        span.index 浏览
+                        a.value #{article.visit_count}
+                      span.desc-item
+                        span.index 回答
+                        a.value #{article.comment_count}
                 
                 .columns 
                   .hd 最近更新的专栏

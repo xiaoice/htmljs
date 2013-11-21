@@ -14,26 +14,27 @@ html
     - locals.pageId=8;
     include ../header
     #content.clearfix
-      .left
-        .module
-          form.form-horizontal#form(method='post')
-            fieldset
-              legend #{locals.tag?"编辑标签":"添加标签"}
-              if locals.tag
-                input(type="hidden",name="id",value="#{tag.id}")
-              .control-group
-                input#title(type='text', value = "#{locals.tag?tag.name:''}",name='name', placeholder='标签名',disabled=locals.tag)
-              .control-group
-                input#keywords(type='text',value = "#{locals.tag?tag.keywords:''}", name='keywords', placeholder='关键词（英文逗号分隔）')
-              .control-group
-                .wmd-panel
-                  #wmd-button-bar
-                  textarea.wmd-input#wmd-input(name="desc_md",placeholder='标签描述') #{locals.tag?tag.desc_md:''}
-                  .wmd-panel.wmd-preview
-                    div 预览
-                    #wmd-preview
-              .control-group
-                button.btn(type='submit') #{locals.tag?"更新":"添加"}
+      .content
+        .left
+          .module
+            form.form-horizontal#form(method='post')
+              fieldset
+                legend #{locals.tag?"编辑标签":"添加标签"}
+                if locals.tag
+                  input(type="hidden",name="id",value="#{tag.id}")
+                .control-group
+                  input#title(type='text', value = "#{locals.tag?tag.name:''}",name='name', placeholder='标签名',disabled=locals.tag)
+                .control-group
+                  input#keywords(type='text',value = "#{locals.tag?tag.keywords:''}", name='keywords', placeholder='关键词（英文逗号分隔）')
+                .control-group
+                  .wmd-panel
+                    #wmd-button-bar
+                    textarea.wmd-input#wmd-input(name="desc_md",placeholder='标签描述') #{locals.tag?tag.desc_md:''}
+                    .wmd-panel.wmd-preview
+                      div 预览
+                      #wmd-preview
+                .control-group
+                  button.btn(type='submit') #{locals.tag?"更新":"添加"}
           
       .right 
         .module

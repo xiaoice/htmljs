@@ -53,5 +53,5 @@ func_tag =
       .error (e)->
         callback e
       
-__FC func_tag,Tag,['getAll','add','update','getById']
+__FC func_tag,Tag,['getAll','add','update','getById','addCount']
 module.exports = func_tag

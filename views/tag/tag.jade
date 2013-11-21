@@ -9,68 +9,68 @@ html
     - locals.pageId=8;
     include ./../header
     #content.clearfix
-      .left
-        .module
-          h1.tag-name(href="") #{tag.name}
-            a.tag-edit(href="/tag/#{tag.id}/edit") <i class="icon-edit icon-gray" style="background:none;font-size:13px;"></i>
-          .tag-keywords 别名：#{tag.keywords}
-          .tag-desc !{tag.desc}
-          .tag-action
-        .module
-          .hd 相关问题   
-          .bd 
-            if locals.qts
-              .qa-list
-                each qt,i in qts
-                  .qa-item(class="#{i%2==1?'yooo':''} #{qt.question.answer_count==0?'unanswered':''}")
-                    .entry-title
-                      h2.title
-                        a(href='/qa/#{qt.question.id}', title='#{qt.question.title}', rel='bookmark') 
-                          |#{qt.question.title}
-                      div.others
-                        //
-                          span.author.vcard.item
-                            span.index 提问者：
-                            a.value.url.fn(rel='author', href='/user/#{qt.question.user_id}') #{qt.question.user_nick}
-                        
-                        span.views.item
-                          span.index View：
-                          a.value #{qt.question.visit_count}
-                        span.views.item
-                          span.index 回答：
-                          a.value #{qt.question.answer_count}
-                        if qt.question.tagNames
-                          - var tags = qt.question.tagNames.split(",")
-                          span.tags.item
-                            each tag in tags
-                              a.value(href="/tag/n/#{tag}") #{tag}
-                        span.time.item
-                          a.value #{moment(qt.question.createdAt).fromNow()}
-                      div.user
-                        a(data-original-title="#{qt.question.user_nick}")
-                          img(src="#{qt.question.user_headpic}")  
-        .module.comment
-          .hd 讨论
-          .bd
-            .publish 
-              textarea.input-block-level#comment-text(placeholder="参与讨论。支持markdown语法")
-              .btn.comment-submit#comment-submit 发表评论
-            .comment-list
-        .comment-layer.hidden
-          span.count
-            i.icon-comment
-            |#{tag.comment_count}
-          span.input 看着不错？点评几句把，TA需要您的鼓励和支持。      
-            script#comment-tpl(type="text/template")
-              .comment-item.clearfix
-                a.headpic
-                  img(src="{{user_headpic}}",width=70,height=70)
-                .comment-right
-                  div.con 
-                    span.author.vcard.item
-                      a.value.url.fn(rel='author', href='/user/{{user_id}}') {{user_nick}}：
-                    | {{{html}}}
-                  .time {{createdAt}}     
+      .content
+          .module
+            h1.tag-name(href="") #{tag.name}
+              a.tag-edit(href="/tag/#{tag.id}/edit") <i class="icon-edit icon-gray" style="background:none;font-size:13px;"></i>
+            .tag-keywords 别名：#{tag.keywords}
+            .tag-desc !{tag.desc}
+            .tag-action
+          .module
+            .hd 相关问题   
+            .bd 
+              if locals.qts
+                .qa-list
+                  each qt,i in qts
+                    .qa-item(class="#{i%2==1?'yooo':''} #{qt.question.answer_count==0?'unanswered':''}")
+                      .entry-title
+                        h2.title
+                          a(href='/qa/#{qt.question.id}', title='#{qt.question.title}', rel='bookmark') 
+                            |#{qt.question.title}
+                        div.others
+                          //
+                            span.author.vcard.item
+                              span.index 提问者：
+                              a.value.url.fn(rel='author', href='/user/#{qt.question.user_id}') #{qt.question.user_nick}
+                          
+                          span.views.item
+                            span.index View：
+                            a.value #{qt.question.visit_count}
+                          span.views.item
+                            span.index 回答：
+                            a.value #{qt.question.answer_count}
+                          if qt.question.tagNames
+                            - var tags = qt.question.tagNames.split(",")
+                            span.tags.item
+                              each tag in tags
+                                a.value(href="/tag/n/#{tag}") #{tag}
+                          span.time.item
+                            a.value #{moment(qt.question.createdAt).fromNow()}
+                        div.user
+                          a(data-original-title="#{qt.question.user_nick}")
+                            img(src="#{qt.question.user_headpic}")  
+          .module.comment
+            .hd 讨论
+            .bd
+              .publish 
+                textarea.input-block-level#comment-text(placeholder="参与讨论。支持markdown语法")
+                .btn.comment-submit#comment-submit 发表评论
+              .comment-list
+          .comment-layer.hidden
+            span.count
+              i.icon-comment
+              |#{tag.comment_count}
+            span.input 看着不错？点评几句把，TA需要您的鼓励和支持。      
+              script#comment-tpl(type="text/template")
+                .comment-item.clearfix
+                  a.headpic
+                    img(src="{{user_headpic}}",width=70,height=70)
+                  .comment-right
+                    div.con 
+                      span.author.vcard.item
+                        a.value.url.fn(rel='author', href='/user/{{user_id}}') {{user_nick}}：
+                      | {{{html}}}
+                    .time {{createdAt}}     
 
     include ../footer  
     script

@@ -247,6 +247,8 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index .recent_articles .columns .column .name{line-height:30px;font-size:12px;padding-left:10px;color:#444;}
 #index .recent_articles .columns .column .desc{color:#999;}#index .recent_articles .columns .column .desc *{margin:0;font-size:12px;}
 #index .visitors{margin-top:20px;}#index .visitors .visitor{display:inline-block;margin-right:5px;}#index .visitors .visitor img{width:25px;}
+#index .tags{width:700px;margin-top:20px;}#index .tags a{padding:0 12px;color:#666;background:#eee;border-radius:10px;line-height:20px;display:inline-block;margin-top:10px;margin-right:10px;text-decoration:none;}
+#index .tags a:hover{background:#5bb793;color:#fff;}
 #qas .actions{padding-bottom:10px;}#qas .actions .right-actions{float:right;}#qas .actions .right-actions a{padding:0 10px;line-height:30px;color:#5bb793;}
 #qas .actions .right-actions a.active,#qas .actions .right-actions a:hover{color:#666;}
 #qas .right a{color:#6fb79b;}
@@ -335,7 +337,6 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #tags .tag-item .tag-edit{padding-left:10px;}
 #tags .tag-item .tag-keywords{color:#999;line-height:20px;}
 #tags .tag-item .tag-desc{color:#666;font-size:12px;margin-top:5px;height:180px;overflow:hidden;}
-#tag #content{width:700px;}
 #tag .tag-name{font-size:20px;font-weight:bold;line-height:30px;color:#404040;color:#5bb793;}
 #tag .tag-edit{padding-left:10px;}
 #tag .tag-keywords{color:#999;line-height:20px;}
@@ -470,7 +471,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .post .entry-title .tags a{margin-right:5px;}
 #articles .post .entry-title .user{position:absolute;right:10px;top:7px;}#articles .post .entry-title .user a{display:block;}
 #articles .post .entry-title .user img{width:40px;height:40px;}
-#articles .post .entry-content{padding:10px 20px;word-break:break-all;color:#404040;overflow:hidden;}#articles .post .entry-content h1,#articles .post .entry-content h2,#articles .post .entry-content h3,#articles .post .entry-content h4,#articles .post .entry-content h5{font-size:14px;margin:10px 0;line-height:20px;}
+#articles .post .entry-content{padding:10px 10px;word-break:break-all;color:#666;overflow:hidden;font-size:12px;}#articles .post .entry-content h1,#articles .post .entry-content h2,#articles .post .entry-content h3,#articles .post .entry-content h4,#articles .post .entry-content h5{font-size:14px;margin:10px 0;line-height:20px;}
 #articles .post .entry-content p{font-size:14px;line-height:20px;margin:10px 0;color:#404040;}
 #articles .post .entry-foot{line-height:40px;}#articles .post .entry-foot .item{font-size:12px;margin-right:20px;}#articles .post .entry-foot .item .index{color:#bbb;}
 #articles .post .entry-foot .item .value{color:#bbb;}

@@ -6,6 +6,7 @@ func_user = __F 'user'
 func_topic = __F 'topic'
 func_email = __F 'email'
 func_comment = __F 'comment'
+func_tag = __F 'tag'
 func_card = __F 'card'
 pagedown = require("pagedown")
 safeConverter = new pagedown.Converter()
@@ -38,15 +39,8 @@ module.exports.controllers =
           (__F 'index').add q.uuid
           if req.body.tags
             func_question.addTagsToQuestion q.id,req.body.tags.split(",")
+            
           (__F 'coin').add 20,res.locals.user.id,"发布了一条问题"
-          func_timeline.add 
-            who_id:res.locals.user.id
-            who_headpic:res.locals.user.head_pic
-            who_nick:res.locals.user.nick
-            target_url:"/qa/"+q.id
-            target_name:q.title
-            action:"发起了一个提问："
-            desc:q.html.replace(/<p>(.*?)<\/p>/g,"$1\n").replace(/<[^>]*?>/g,"").substr(0,300).replace(/([^\n])\n+([^\n])/g,"$1<br/>$2")
           if req.body.to_weibo
             sina.statuses.update 
               access_token:res.locals.user.weibo_token

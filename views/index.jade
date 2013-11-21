@@ -82,6 +82,10 @@ html
                     span.desc-item
                       span.index 回答
                       a.value #{question.answer_count}
+              .tags
+                .hd 问题标签
+                each tag,i in tags
+                  a(href="/tag/#{tag.id}") #{tag.name}
           .module.mod
             .hd 最新的话题
             .bd
@@ -98,6 +102,12 @@ html
                     span.desc-item
                       span.index 跟帖
                       a.value #{topic.comment_count}
+          p.
+            <script type="text/javascript">
+             /*自定义标签云，创建于2013-11-21*/
+             var cpro_id = "u1416856";
+            </script>
+            <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
           .module.timelines
             each timeline in timelines
               if timeline.card_id

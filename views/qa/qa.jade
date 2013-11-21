@@ -227,11 +227,11 @@ html
       .comment-item.clearfix
         div.con 
           span.author.vcard.item
-            a.value.url.fn(rel='author', href='/user/{{user.id}}') {{user.nick}}：
+            a.value.url.fn(rel='author', href='/user/{{user.id}}') {{user_nick}}：
           span.content {{{content}}}
           span.time {{createdAt}}
           span.action 
-            a.reply(data-nick="{{user.nick}}") 回复
+            a.reply(data-nick="{{user_nick}}") 回复
     script#comment-tpl-q(type="text/template")
       .comment-item.clearfix
         .comment-right

@@ -59,8 +59,7 @@ func_article =
     Article.create(data)
     .success (article)->
       
-      article.updateAttributes
-        sort:article.id
+      article.updateAttributes {sort:article.id},['sort']
       callback null,article
     .error (error)->
       callback error
@@ -78,8 +77,7 @@ func_article =
         id:articleId
     .success (article)->
       if article
-        article.updateAttributes
-          visit_count: if article.visit_count then (article.visit_count+1) else 1
+        article.updateAttributes {visit_count: if article.visit_count then (article.visit_count+1) else 1},['visit_count']
         if visitor
           Visit_log.create
             article_id:articleId

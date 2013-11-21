@@ -73,9 +73,6 @@ func_question =
     if condition then query.where = condition
     Question.findAll(query)
     .success (ms)->
-      console.log ms[0]
-      console.log ms[0].users.id
-      console.log ms[0]['users.id']
       callback null,ms
     .error (e)->
       callback e

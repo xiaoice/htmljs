@@ -40,68 +40,71 @@ html
           //- .module
           //-   a(href="/act/6")
           //-     img(src="http://htmljs.b0.upaiyun.com/uploads/1384321856554-%E6%9C%AA%E6%A0%87%E9%A2%98-2.png")
-          .module.mod.recent_articles
-            .hd 最新的专栏文章
-            .bd
-              each article,i in articles
-                .item(class="#{article.visit_count<60?'new':''}")
-                  a.title(href="/article/#{article.id}") #{article.title}
-                  .desc 
-                    
-                    if article.column
-                      a.column(href="/article/column/#{article.column.id}") 「#{article.column.name}」
-                    a.user(href="/user/#{article.user_id}") #{article.user_nick}
-                    span.time #{moment(article.createdAt).fromNow()}
-              
-              .columns 
-                .hd 最近更新的专栏
-                each column in columns
-                  if column.users.id
-                    .column
-                      a(href="/user/#{column.user_id}",data-original-title="#{column.users.nick}")
-                        img(src="#{column.users.head_pic}")
-                      a.name(href="/article/column/#{column.id}",data-original-title="#{column.name}  #{moment(column.last_article_time*1).fromNow()}") #{column.name.substr(0,16)}
-              .visitors
-                .hd 正在路过的
-                each visitor in article_visitors
-                  .visitor.user
-                    a(href="/user/#{visitor.user_id}",data-original-title="#{visitor.user_nick} #{moment(visitor.createdAt).fromNow()}")
-                      img(src="#{visitor.user_headpic}")
-          .module.mod
-            .hd 最新的问题
-            .bd
-              each question,i in questions
-                .item(class="#{question.visit_count<30?'new':''}")
-                  a.title(href="/qa/#{question.id}") #{question.title}
-                  .desc 
-                    a.user(href="/user/#{question.user_id}") #{question.user_nick}
-                    span.time #{moment(question.createdAt).fromNow()}
-                    span.desc-item
-                      span.index 浏览
-                      a.value #{question.visit_count}
-                    span.desc-item
-                      span.index 回答
-                      a.value #{question.answer_count}
-              .tags
-                .hd 问题标签
-                each tag,i in tags
-                  a(href="/tag/#{tag.id}") #{tag.name}
-          .module.mod
-            .hd 最新的话题
-            .bd
-              each topic,i in topics
-                .item(class="#{topic.visit_count<30?'new':''}")
-                  a.title(href="/topic/#{topic.id}") #{topic.title}
-                  .desc 
-                    if topic.last_comment_user_id
-                      | <a class="user" href="/user/#{topic.last_comment_user_id}">#{topic.last_comment_user_nick}</a>
-                    span.time #{moment(topic.last_comment_time).fromNow()}
-                    span.desc-item
-                      span.index 浏览
-                      a.value #{topic.visit_count}
-                    span.desc-item
-                      span.index 跟帖
-                      a.value #{topic.comment_count}
+          if locals.articles
+            .module.mod.recent_articles
+              .hd 最新的专栏文章
+              .bd
+                each article,i in articles
+                  .item(class="#{article.visit_count<60?'new':''}")
+                    a.title(href="/article/#{article.id}") #{article.title}
+                    .desc 
+                      
+                      if article.column
+                        a.column(href="/article/column/#{article.column.id}") 「#{article.column.name}」
+                      a.user(href="/user/#{article.user_id}") #{article.user_nick}
+                      span.time #{moment(article.createdAt).fromNow()}
+                
+                .columns 
+                  .hd 最近更新的专栏
+                  each column in columns
+                    if column.users.id
+                      .column
+                        a(href="/user/#{column.user_id}",data-original-title="#{column.users.nick}")
+                          img(src="#{column.users.head_pic}")
+                        a.name(href="/article/column/#{column.id}",data-original-title="#{column.name}  #{moment(column.last_article_time*1).fromNow()}") #{column.name.substr(0,16)}
+                .visitors
+                  .hd 正在路过的
+                  each visitor in article_visitors
+                    .visitor.user
+                      a(href="/user/#{visitor.user_id}",data-original-title="#{visitor.user_nick} #{moment(visitor.createdAt).fromNow()}")
+                        img(src="#{visitor.user_headpic}")
+          if locals.questions
+            .module.mod
+              .hd 最新的问题
+              .bd
+                each question,i in questions
+                  .item(class="#{question.visit_count<30?'new':''}")
+                    a.title(href="/qa/#{question.id}") #{question.title}
+                    .desc 
+                      a.user(href="/user/#{question.user_id}") #{question.user_nick}
+                      span.time #{moment(question.createdAt).fromNow()}
+                      span.desc-item
+                        span.index 浏览
+                        a.value #{question.visit_count}
+                      span.desc-item
+                        span.index 回答
+                        a.value #{question.answer_count}
+                .tags
+                  .hd 问题标签
+                  each tag,i in tags
+                    a(href="/tag/#{tag.id}") #{tag.name}
+          if locals.topics
+            .module.mod
+              .hd 最新的话题
+              .bd
+                each topic,i in topics
+                  .item(class="#{topic.visit_count<30?'new':''}")
+                    a.title(href="/topic/#{topic.id}") #{topic.title}
+                    .desc 
+                      if topic.last_comment_user_id
+                        | <a class="user" href="/user/#{topic.last_comment_user_id}">#{topic.last_comment_user_nick}</a>
+                      span.time #{moment(topic.last_comment_time).fromNow()}
+                      span.desc-item
+                        span.index 浏览
+                        a.value #{topic.visit_count}
+                      span.desc-item
+                        span.index 跟帖
+                        a.value #{topic.comment_count}
           p.
             <script type="text/javascript">
              /*自定义标签云，创建于2013-11-21*/

@@ -14,7 +14,7 @@ module.exports.controllers =
 
   "/add":
     get:(req,res,next)->
-
+      res.locals.tag_id = req.query.tag_id
       res.render 'topic/add.jade'
 
     post:(req,res,next)->

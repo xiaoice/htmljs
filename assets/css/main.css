@@ -247,7 +247,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index .recent_articles .columns .column .name{line-height:30px;font-size:12px;padding-left:10px;color:#444;}
 #index .recent_articles .columns .column .desc{color:#999;}#index .recent_articles .columns .column .desc *{margin:0;font-size:12px;}
 #index .visitors{margin-top:20px;}#index .visitors .visitor{display:inline-block;margin-right:5px;}#index .visitors .visitor img{width:25px;}
-#index .tags{width:700px;margin-top:20px;}#index .tags a{padding:0 12px;color:#666;background:#eee;border-radius:10px;line-height:20px;display:inline-block;margin-top:10px;margin-right:10px;text-decoration:none;}
+#index .tags{width:700px;margin-top:20px;}#index .tags a{padding:0 12px;color:#666;background:#eee;border-radius:5px;line-height:20px;display:inline-block;margin-top:10px;margin-right:10px;text-decoration:none;}
 #index .tags a:hover{background:#5bb793;color:#fff;}
 #qas .actions{padding-bottom:10px;}#qas .actions .right-actions{float:right;}#qas .actions .right-actions a{padding:0 10px;line-height:30px;color:#5bb793;}
 #qas .actions .right-actions a.active,#qas .actions .right-actions a:hover{color:#666;}

@@ -25,7 +25,7 @@ html
               each tag in tags
                 a(href="/topic?tag_id=#{tag.id}",class="#{locals.tag_id==tag.id?'active':''}") #{tag.name}
             .actions
-              a.btn(href="/topic/add") 添加话题
+              a.btn(href="/topic/add#{locals.tag_id?('?tag_id='+locals.tag_id):''}") 添加话题
           if !(locals.topics&&topics.length)
             .topic-list
               .notopic 还没有话题，快去发表一个吧！

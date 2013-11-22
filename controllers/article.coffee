@@ -5,6 +5,7 @@ func_timeline = __F 'timeline'
 func_column = __F 'column'
 func_card = __F 'card'
 func_bi = __F 'bi'
+func_email = __F 'email'
 config = require './../config.coffee'
 authorize=require("./../lib/sdk/authorize.js");
 md5 = require 'MD5'
@@ -156,9 +157,7 @@ module.exports.controllers =
         is_publish:1
         main_pic:if match then match[1] else null
         desc:req.body.desc
-      if req.body.column_id
-        func_column.update req.body.column_id,{last_article_time:(new Date()).getTime()},()->
-
+      
       result = 
         success:0
       func_article.add data,(error,article)->
@@ -168,26 +167,18 @@ module.exports.controllers =
           result.success = 1
           (__F 'index').add article.uuid
           (__F 'coin').add 40,article.user_id,"发表了一篇专栏文章"
-          func_timeline.add 
-            who_id:res.locals.user.id
-            who_headpic:res.locals.user.head_pic
-            who_nick:res.locals.user.nick
-            target_url:"/article/"+article.id
-            target_name:article.title
-            action:"发表了专栏文章："
-            desc:(if article.main_pic then "<img src='"+article.main_pic+"' class='main_pic'/>" else "")+article.desc
-        func_info.add 
-            target_user_id:1
-            type:8
-            source_user_id:res.locals.user.id
-            source_user_nick:res.locals.user.nick
-            time:new Date()
-            target_path:'/article/'+article.id
-            action_name:"发表了一篇文章待审核"
-            target_path_name:article.title
-        sina.statuses.update 
-          access_token:res.locals.user.weibo_token
-          status:'我在@前端乱炖 发表了一篇原创文章【'+article.title+'】点击查看：http://www.html-js.com/article/'+article.id
+          if req.body.column_id
+            func_column.update req.body.column_id,{last_article_time:(new Date()).getTime()},()->
+            func_column.getRsses req.body.column_id,(error,rsses)->
+              if rsses && rsses.length>0
+                emails = ''
+                rsses.forEach (rss)->
+                  if rss.cards&&rss.cards.email
+                    emails+=rss.cards.email
+                func_email.sendArticleRss data,emails
+          sina.statuses.update 
+            access_token:res.locals.user.weibo_token
+            status:'我在@前端乱炖 发表了一篇原创文章【'+article.title+'】点击查看：http://www.html-js.com/article/'+article.id
         
         res.send result
   "/:id/edit":
@@ -363,7 +354,7 @@ module.exports.filters =
     get:['checkLogin',"checkCard"]
     post:['checkLogin',"checkCard"]
   "/column/:id":
-    get:['freshLogin','getRecent','get_infos','article/new-comments','article/recent-columns',"article/get-column",'article/get-column-rss']
+    get:['freshLogin','getRecent','get_infos','article/new-comments','article/recent-columns',"article/get-column",'article/get-column-rss','article/get-rsses']
   "/column/:id/rss":
     get:['checkLogin','checkCard']
   "/:id/update":

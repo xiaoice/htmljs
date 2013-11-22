@@ -39,3 +39,14 @@ module.exports =
         to:card.email,
         html:buffer
       })
+  sendArticleRss:(article,emails)->
+    buffer = ""
+    mustache.compileAndRender('./views/mail/article-rss.html', {title:article.title,html:article.html.substr(0,500)+"......"})
+    .on 'data',(c)->
+      buffer += c.toString()
+    .on 'end',()->
+      mail({
+        subject:"你在前端乱炖订阅的专栏更新了一篇文章",
+        to:emails,
+        html:buffer
+      })

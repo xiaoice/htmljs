@@ -7,7 +7,6 @@ Column.belongsTo User,{foreignKey:"user_id"}
 Column.hasMany Article,{foreignKey:"column_id",as:"articles"}
 Column.sync()
 ColumnRss = __M 'column_rsses'
-Card.hasOne ColumnRss,{foreignKey:"user_id"}
 ColumnRss.belongsTo Card,{foreignKey:"user_id"}
 ColumnRss.sync()
 
@@ -110,13 +109,9 @@ func_column =
     .error (e)->
       callback e
   getRsses:(column_id,callback)->
-    ColumnRss.findAll
-      where:
-        column_id:column_id
-      include:[Card]
-      raw:true
-    .success (rsses)->
-      callback null,rsses
+    sequelize.query("SELECT `column_rsses`.*, `cards`.`email` AS `cards.email`,`cards`.`nick` AS `cards.nick` FROM `column_rsses` LEFT OUTER JOIN `cards` AS `cards` ON `cards`.`user_id` = `column_rsses`.`user_id` WHERE `column_rsses`.`column_id`='"+column_id+"';",null, {raw: true,redis:10000})
+    .success (data)->
+      callback null,data
     .error (e)->
       callback e
   getUsersRss:(column_id,user_id,callback)->

@@ -66,20 +66,25 @@ html(xmlns:wb='http://open.weibo.com/wb')
                 a.bds_douban
                 a.bds_renren
                 a.shareCount
-            
             .col-action
               if column.is_public || (locals.user&&user.id==column.user_id)
                 a.btn(href="/article/add?column_id=#{column.id}",data-original-title="",style="margin-right:10px;") 
                   i.icon-plus.icon-white
                   |  在此专栏发表文章
+              rss_his = '订阅者：'
+              if locals.rsses
+                each his in locals.rsses
+                  if his.cards
+                    - rss_his+=his.cards.nick+"，";
               if !locals.is_rssed
-                a.btn(href="/article/column/#{column.id}/rss") 
+              
+                a.btn.tip-trigger(href="/article/column/#{column.id}/rss",data-original-title="#{rss_his}") 
                   i.icon-message-plus
-                  |  订阅此专栏
+                  |  订阅此专栏（#{locals.rsses?locals.rsses.length:''}）
                 
               else
-                a.btn.disabled
-                  |已订阅
+                a.btn.disabled.tip-trigger(data-original-title="#{rss_his}")
+                  |已订阅（#{locals.rsses?locals.rsses.length:''}）
               
               
       .content
@@ -185,6 +190,9 @@ html(xmlns:wb='http://open.weibo.com/wb')
           placement:"bottom"
       })
       $('.t-user').tooltip({
+          placement:"bottom"
+      })
+      $(".tip-trigger").tooltip({
           placement:"bottom"
       })
       $("#info_read").click(function(e){

@@ -112,14 +112,10 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') &nbsp;&nbsp;&nbsp;#{article.title}
                       if !article.is_publish
                         span.label.tip 此文正在审核中
-                  //- .entry-content.clearfix 
-                  //-   if article.main_pic
-                  //-     img.main_pic(src="#{article.main_pic}")
-                  //-   |!{article.desc.replace(/\s/g,"")!=""?article.desc:article.html}
-                  //- .entry-content.clearfix 
-                  //-   if article.main_pic
-                  //-     img.main_pic(src="#{article.main_pic}")
-                  //-   |!{article.desc||article.html.replace(/<p>(.*?)<\/p>/g,"$1\n").replace(/<[^>]*?>/g,"").substr(0,300).replace(/([^\n])\n+([^\n])/g,"$1<br/>$2")}
+                  if article.desc
+                    .entry-content.clearfix 
+                      |!{article.desc.replace(/<[^>]*?>/g," ").substr(0,200)}
+                      a(href="/article/#{article.id}")  阅读更多>>
                   .entry-foot
                     div.others
                       span.author.vcard.item

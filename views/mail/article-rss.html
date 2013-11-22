@@ -4,72 +4,23 @@
 <a class="logo" style="float:left;font-size:25px;font-weigth:bold;color:#333;text-underline:none;" href="http://www.html-js.com">
 前端乱炖
 </a>
+<span style="margin-left:15px;font-size:16px;color:#5bb793;">通知</span>
 </div>
 <br style="clear:both; height:0">
 <div class="content" style="background: none repeat scroll 0 0 #FFFFFF; border: 1px solid #E9E9E9; margin: 2px 0 0; padding: 20px;">
-
-
-<p>您订阅的专栏 【<b>****专栏</b>】 增加了新文章</p>
-<p class="message" style="border-top: 1px solid #DDDDDD;margin: 15px 0 25px;padding: 15px;">点击这里查看原文：<br>
-<a href="http://zhihu.com/l/Bsdqb" target="_blank">http://www.html-js.com/article/123</a>
+<p style="border-bottom:1px solid #ddd;font-size:14px;line-height:30px;">你在前端乱炖订阅的专栏更新了一篇文章
 </p>
-<p style="border-bottom:1px solid #ddd;font-size:18px;padding-bottom:5px;">判断一个点是否在多边形内部</p>
-<p>前言：本文源于前几天看到的一条微博 <a href="http://weibo.com/1057676857/Adpfwwfsv">http://weibo.com/1057676857/Adpfwwfsv</a></p>
-
-<p><img src="http://htmljs.b0.upaiyun.com/uploads/1381825752885-0weibo.png" alt="enter image description here" title="" /></p>
-
-<p>对于 po 主的言论我并不赞同。我是学化学的，没有学过计算机专业的课程，但凭直觉我认为这应该也是计算机图形学里面比较常见的一类问题。并且我认为这并不需要多么高端的计算机专业知识，只要中学数学没有全还给老师，就应该能给出至少一种解法。下面就试着解一下这个题吧。</p>
-
-<p>比如说，我就随便涂了一个多边形和一个点，现在我要给出一种通用的方法来判断这个点是不是在多边形内部（别告诉我用肉眼观察……）。</p>
-
-<p><img src="http://htmljs.b0.upaiyun.com/uploads/1381825769226-1problem.png" alt="enter image description here" title="" /></p>
-
-<p>首先想到的一个解法是从这个点做一条射线，计算它跟多边形边界的交点个数，如果交点个数为奇数，那么点在多边形内部，否则点在多边形外。</p>
-
-<p><img src="http://htmljs.b0.upaiyun.com/uploads/1381825786628-2solution.png" alt="enter image description here" title="" /></p>
-
-<p>这个结论很简单，那它是怎么来的？下面就简单讲解一下。</p>
-
-<p>首先，对于平面内任意闭合曲线，我们都可以直观地认为，曲线把平面分割成了内、外两部分，其中“内”就是我们所谓的多边形区域。</p>
-
-<p><img src="http://htmljs.b0.upaiyun.com/uploads/1381825821339-3polygon.png" alt="enter image description here" title="" /></p>
-
-<p>基于这一认识，对于平面内任意一条直线，我们可以得出下面这些结论：</p>
-
-<ul>
-<li>直线穿越多边形边界时，有且只有两种情况：进入多边形或穿出多边形。</li>
-<li>在不考虑非欧空间的情况下，直线不可能从内部再次进入多边形，或从外部再次穿出多边形，即连续两次穿越边界的情况必然成对。</li>
-<li>直线可以无限延伸，而闭合曲线包围的区域是有限的，因此最后一次穿越多边形边界，一定是穿出多边形，到达外部。</li>
-</ul>
-
-<p><img src="http://htmljs.b0.upaiyun.com/uploads/1381825860760-4cross.png" alt="enter image description here" title="" /></p>
-
-<p>现在回到我们最初的题目。假如我们从一个给定的点做射线，还可以得出下面两条结论：</p>
-
-<ul>
-<li>如果点在多边形内部，射线第一次穿越边界一定是穿出多边形。</li>
-<li>如果点在多边形外部，射线第一次穿越边界一定是进入多边形。</li>
-</ul>
-
-<p><img src="http://htmljs.b0.upaiyun.com/uploads/1381825876059-5first.png" alt="enter image description here" title="" /></p>
-
-<p>把上面这些结论综合起来，我们可以归纳出：</p>
-
-<ul>
-<li>当射线穿越多边形边界的次数为偶数时，所有第偶数次（包括最后一次）穿越都是穿出，因此所有第奇数次（包括第一次）穿越为穿入，由此可推断点在多边形外部。
-<img src="http://htmljs.b0.upaiyun.com/uploads/1381825919448-6out.png" alt="enter image description here" title="" /></li>
-<li>当射线穿越多边形边界的次数为奇数时，所有第奇数次（包括第一次和最后一次）穿越都是穿出，由此可推断点在多边形内部。
-<img src="http://htmljs.b0.upaiyun.com/uploads/1381825927564-7in.png" alt="enter image description here" title="" /></li>
-</ul>
-
-<p>到这里，我们已经了解了这个解法的思路，大家可以试着自己写一个实现出来。关于算法实现中某些具体问题和边界条件的处理，下次接着写，这次画图已经画够了……</p>
-
-<p>后记：给出这个解法后，我简单搜了一下，原来这种算法就叫做射线法（ray casting）或者奇偶规则法（even odd rule），是一种早已被广泛应用的算法。后面还打算介绍另一种通过回转数（winding number，拓扑学的一个概念）解这个问题的思路。</p>
-<p class="message" style="border-top: 1px solid #DDDDDD;margin: 15px 0 25px;padding: 15px;">点击这里查看原文：<br>
-<a href="http://zhihu.com/l/Bsdqb" target="_blank">http://www.html-js.com/article/123</a>
-</p>
-<p style="border-top:1px solid #ddd;font-size:16px;padding-top:10px;">@前端乱炖</p>
-
+<div style="padding:10px 0;">
+<p style="font-size:16px;">你在前端乱炖订阅的专栏更新了一篇文章 《<a href="http://www.html-js.com/article/{{id}}">{{title}}</a>》</p>
+</div>
+<div style="padding:10px 20px;">
+<p style="font-size:16px;color:#666;">{{{html}}}</p>
+</div>
+<div style="padding:10px">
+因为邮箱限制，这里只显示部分内容，如需查看原文，点此查看：<a href="http://www.html-js.com/article/{{id}}">{{title}}</a>
+</div>
+<p style="border-top:1px solid #ddd;font-size:12px;padding-top:10px;color:#999;"><a href="http://www.html-js.com">@前端乱炖 </a> 是一个功能丰富的提供高质量内容的技术社区</p>
+<p style="border-top:1px solid #ddd;font-size:12px;padding-top:5px;color:#999;">为了确保您能收到及时的通知，请将 postmaster@htmljs.sendcloud.org 添加为联系人。</p>
 </div>
 </div>
 </div>

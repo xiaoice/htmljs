@@ -185,6 +185,10 @@ html(xmlns:wb='http://open.weibo.com/wb')
                 span 作者：
                 a(href="/user/#{column['users.id']}") #{column['users.nick']}
               .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
+              .actions
+                a(href="javascript:void(0);")
+                  i.rss.social
+                  |  订阅（#{column.rss_count}）
         .module.recent
           .hd 近期评论
           .bd

@@ -79,8 +79,8 @@ html(xmlns:wb='http://open.weibo.com/wb')
               if !locals.is_rssed
               
                 a.btn.tip-trigger(href="/article/column/#{column.id}/rss",data-original-title="#{rss_his}") 
-                  i.icon-message-plus
-                  |  订阅此专栏（#{locals.rsses?locals.rsses.length:''}）
+                  i.rss.social
+                  |   有更新邮件通知我（#{locals.rsses?locals.rsses.length:''}）
                 
               else
                 a.btn.disabled.tip-trigger(data-original-title="#{rss_his}")
@@ -107,9 +107,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       //- a.t-user(href="/user/#{article.user_id}",data-original-title="#{article.user_nick}")
                       //-   img(src="#{article.user_headpic}",width="20")
                       
-                      if  article.columns
-                        a(href="/article/column/#{article.columns.id}") 【#{article.columns.name}】
-                      a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') &nbsp;&nbsp;&nbsp;#{article.title}
+                      a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
                       if !article.is_publish
                         span.label.tip 此文正在审核中
                   if article.desc

@@ -1,11 +1,12 @@
 require './../lib/modelLoader.coffee'
 require './../lib/functionLoader.coffee'
 
-func_card = __F 'card'
-func_user = __F 'user'
+func_column = __F 'column'
+func_article = __F 'article'
 
-func_card.getAll 1,1000,null,(error,cards)->
-  cards.forEach (card)->
-    if card.user_id
-      func_user.update card.user_id,{desc:card.desc,sex:card.sex},()->
-        console.log card.nick
+func_column.getAll 1,1000,null,(error,columns)->
+  columns.forEach (column)->
+    func_article.getAll 1,1000,{column_id:column.id},(error,articles)->
+      if error then console.log error
+      else
+        func_column.update column.id,{article_count:articles.length},()->

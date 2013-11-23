@@ -27,4 +27,9 @@ module.exports =
   tagNames:"varchar(255)"
   uuid:"varchar(40)"
   good_answer_id:"int"
-  
+  is_closed:
+    type:"tinyint"
+    defaultValue:0
+  is_admin: #是否是官方问题
+    type:"tinyint"
+    defaultValue:0

@@ -138,7 +138,7 @@ html
                 a.shareCount
             .module.actions
               .bd
-                a#add_fav.action.new-function(href="javascript:void(0);") 收藏（#{locals.favs?locals.favs.length:0}）
+                a#add_fav.action(href="javascript:void(0);") 收藏（#{locals.favs?locals.favs.length:0}）
                 a.action(href="#comment") 评论（#{locals.comments?locals.comments.length:0}）
                 span.action
                   span.index 浏览：

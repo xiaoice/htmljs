@@ -130,7 +130,7 @@ html
                 a.shareCount
           .module.count
             .bd
-              a#add_fav.action.new-function(href="javascript:void(0);") 收藏（#{locals.favs?locals.favs.length:0}）
+              a#add_fav.action(href="javascript:void(0);") 收藏（#{locals.favs?locals.favs.length:0}）
               span 跟帖：#{topic.visit_count}
           
           .module.sametag_topics

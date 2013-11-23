@@ -169,6 +169,7 @@ module.exports.controllers =
           (__F 'coin').add 40,article.user_id,"发表了一篇专栏文章"
           if req.body.column_id
             func_column.update req.body.column_id,{last_article_time:(new Date()).getTime()},()->
+            func_column.addCount req.body.column_id,"article_count",(error)->
             func_column.getRsses req.body.column_id,(error,rsses)->
               if rsses && rsses.length>0
                 emails = ''
@@ -341,7 +342,7 @@ module.exports.filters =
     post:['checkLoginJson',"checkCard"]
   
   "/":
-    get:['freshLogin','getRecent','get_infos','article/new-comments','article/my-columns','article/recent-columns','article/all-publish-articles']
+    get:['freshLogin','get_infos','article/new-comments','article/my-columns','article/recent-columns','article/all-publish-articles']
   "/old":
     get:['freshLogin','getRecent','get_infos','article/new-comments']
   "/:id":

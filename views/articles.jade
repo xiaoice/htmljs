@@ -80,7 +80,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
               
                 a.btn.tip-trigger(href="/article/column/#{column.id}/rss",data-original-title="#{rss_his}") 
                   i.rss.social
-                  |   有更新邮件通知我（#{locals.rsses?locals.rsses.length:''}）
+                  |   邮件订阅（#{locals.rsses?locals.rsses.length:''}）
                 
               else
                 a.btn.disabled.tip-trigger(data-original-title="#{rss_his}")
@@ -155,16 +155,16 @@ html(xmlns:wb='http://open.weibo.com/wb')
               p NodeJS乱炖: 95323225（千人群）
               p 自由职业者: 275182059
               p IOS 乱炖: 292062123
-        .module.recent_columns
-          .hd 其他专栏
-          each column in recent_columns
-            .recent_column
-              a.title(href="/article/column/#{column.id}") #{column.name}
-              .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
-              .user
-                span 作者：
-                a(href="/user/#{column['user.id']}") #{column['user.nick']}
-              .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
+        //- .module.recent_columns
+        //-   .hd 其他专栏
+        //-   each column in recent_columns
+        //-     .recent_column
+        //-       a.title(href="/article/column/#{column.id}") #{column.name}
+        //-       .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
+        //-       .user
+        //-         span 作者：
+        //-         a(href="/user/#{column['users.id']}") #{column['users.nick']}
+        //-       .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
         .module.recent
           .hd 近期文章
           .bd

@@ -15,10 +15,10 @@ func_info =
     if data.target_user_id == data.source_user_id
       return
     Info.create(data)
-      .success (info)->
-        callback&&callback null,info
-      .error (e)->
-        callback&&callback e
+    .success (info)->
+      callback&&callback null,info
+    .error (e)->
+      callback&&callback e
   read:(user_id,callback)->
     sequelize.query 'update infos set is_read = 1 where target_user_id = ?', null, {raw: true},[user_id]
 __FC func_info,Info,['getAll','getById','delete','update','count']

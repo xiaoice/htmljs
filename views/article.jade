@@ -115,6 +115,10 @@ html
                     a(href="/user/#{column.user.id}") #{column.user.nick}
                     
                   .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
+                  .actions
+                    a(href="/article/column/#{column.id}/rss")
+                      i.rss.social
+                      |  邮件订阅（#{column.rss_count}）
           .module
             .hd 用手机访问
             .bd(style="height:230px;")

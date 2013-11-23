@@ -326,9 +326,20 @@ module.exports.controllers =
       if not res.locals.card then next new Error '请先添加花名册并且填写正确的邮箱地址才能使用此功能！'
       else if not res.locals.card.email then next new Error '请先添加花名册并且填写正确的邮箱地址才能使用此功能！'
       else
-        func_column.addRss req.params.id,res.locals.user.id,(error)->
+        func_column.addRss req.params.id,res.locals.user.id,(error,rss)->
           if error then next error
           else
+            func_column.getById req.params.id,(error,column)->
+              if column
+                func_info.add 
+                  target_user_id:column.user_id
+                  type:10
+                  source_user_id:res.locals.user.id
+                  source_user_nick:res.locals.user.nick
+                  time:new Date()
+                  target_path:'/article/column/'+column.id
+                  action_name:"订阅了您的专栏"
+                  target_path_name:column.name
             res.redirect 'back'
 module.exports.filters = 
   "/add":

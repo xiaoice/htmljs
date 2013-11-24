@@ -44,7 +44,7 @@ module.exports.controllers =
           if req.body.to_weibo
             sina.statuses.update 
               access_token:res.locals.user.weibo_token
-              status:'我在@前端乱炖 发起了一个问题，求解答：【'+q.title+'】，点击查看或者回答问题：'+q.html.replace(/<[^>]*>/g,"").substr(0,130).replace(/\s/g,"")+''
+              status:'我在@前端乱炖 发起了一个问题，求解答：【'+q.title+'】，点击查看或者回答问题：http://www.html-js.com/qa/'+q.id
           if req.body.invites 
             #发送邮件 
             emails = []

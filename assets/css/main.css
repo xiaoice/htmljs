@@ -135,8 +135,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #acts .act-item .act-infos .act-time{color:#999;font-size:12px;}
 #acts .act-item .act-infos .act-location{color:#999;font-size:12px;}
 #acts .act-item .act-infos .act-limit{color:#999;font-size:12px;}
-#acts .act-item .act-infos .act-action{margin-top:10px;}#acts .act-item .act-infos .act-action a{font-weight:bold;}
-#acts .act-item .act-infos .act-action .btn{color:#fff;box-shadow:1px 1px 2px #999;}
+#acts .act-item .act-infos .act-action{margin-top:10px;}#acts .act-item .act-infos .act-action a{font-weight:bold;color:#fff;}
 #acts .act-item.isdown .act-infos{background:#ccc;}#acts .act-item.isdown .act-infos .act-action .btn{background:#777;color:#eee;border:none;}
 #books{background:#efefef;}#books ul,#books li{list-style:none;padding:0;margin:0;}
 #books .alert{margin:10px 0;padding:10px;}#books .alert em{color:#999;}

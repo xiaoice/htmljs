@@ -361,7 +361,7 @@ module.exports.filters =
   "/:id/zan":
     post:['checkLoginJson']
   "/column":
-    get:['freshLogin','getRecent','get_infos','article/new-comments','article/my-columns','article/index-columns']
+    get:['freshLogin','getRecent','get_infos','article/new-comments','article/my-columns','article/index-columns','article/checkRss']
   "/column/add":
     get:['checkLogin',"checkCard"]
     post:['checkLogin',"checkCard"]

@@ -429,7 +429,8 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .columns-list .column{padding:5px 0;border-top:1px solid #eee;width:300px;margin-right:20px;display:inline-block;vertical-align:top;}#articles .columns-list .column .title{font-size:13px;color:#444;line-height:20px;font-weight:bold;}
 #articles .columns-list .column .desc{font-size:12px;line-height:18px;color:#aaa;margin:5px 0;}
 #articles .columns-list .column .user{font-size:12px;line-height:20px;color:#999;}
-#articles .columns-list .column .actions{margin-bottom:0;margin-top:5px;}#articles .columns-list .column .actions a{font-size:12px;color:#5bb793;}#articles .columns-list .column .actions a i:before{color:#5bb793;}
+#articles .columns-list .column .actions{margin-bottom:0;margin-top:5px;}#articles .columns-list .column .actions a{font-size:12px;color:#5bb793;padding:5px 0;}#articles .columns-list .column .actions a i:before{color:#5bb793;font-size:14px;}
+#articles .columns-list .column .actions span{color:#aaa;}#articles .columns-list .column .actions span i:before{font-size:14px;color:#aaa;}
 #articles .my_columns .bd{width:1000px;}
 #articles .my_columns .my_column{background:#eee;margin-right:20px;display:inline-block;line-height:27px;margin-bottom:10px;padding:0px 10px;}#articles .my_columns .my_column .title{font-size:12px;color:#777;line-height:20px;}
 #articles .my_columns .btn{height:24px;line-height:24px;font-size:12px;}
@@ -454,6 +455,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .column-list .column-item{display:inline-block;border-radius:3px;margin-bottom:10px;margin-right:10px;vertical-align:top;width:488px;border:1px solid #e1e1e1;}#articles .column-list .column-item .head{background:#fff;padding:0px 15px;border-bottom:1px solid #efefef;line-height:40px;}#articles .column-list .column-item .head a{color:#f27369;font-size:14px;}
 #articles .column-list .column-item .head i{font-size:12px;margin-left:10px;color:#999;}
 #articles .column-list .column-item .head .actions{float:right;}#articles .column-list .column-item .head .actions a{margin-left:4px;margin-right:0;width:20px;height:20px;padding:0;}#articles .column-list .column-item .head .actions a i{margin:0;padding:0;vertical-align:0;color:#fff;}
+#articles .column-list .column-item .head .actions span{color:#aaa;}#articles .column-list .column-item .head .actions span i{color:#aaa;}
 #articles .column-list .column-item .title{font-size:14px;}
 #articles .column-list .column-item .user{line-height:25px;}
 #articles .column-list .column-item .others{color:#ccc;font-size:12px;opacity:0.8;margin-left:-2px;}#articles .column-list .column-item .others .item{margin-right:10px;}#articles .column-list .column-item .others .item i{transform:scale(0.8);-webkit-transform:scale(0.8);-moz-transform:scale(0.8);-ms-transform:scale(0.8);-o-transform:scale(0.8);vertical-align:-2px;padding-right:2px;}
@@ -488,6 +490,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #article .right .column .desc{font-size:12px;line-height:18px;color:#aaa;margin:5px 0;}
 #article .right .column .user{font-size:12px;line-height:20px;color:#999;}
 #article .right .column .actions{margin-bottom:0;margin-top:5px;}#article .right .column .actions a{font-size:12px;color:#5bb793;}#article .right .column .actions a i:before{color:#5bb793;}
+#article .right .column .actions span{color:#aaa;}#article .right .column .actions span i{color:#aaa;}
 #article .actions .btn{line-height:28px;}
 #article .actions .action{font-size:12px;margin-right:10px;}
 #article .actions .my{margin-left:10px;line-height:30px;}

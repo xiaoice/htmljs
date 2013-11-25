@@ -32,7 +32,7 @@ func_column =
       callback null,result_columns
     .error (e)->
       callback e
-
+  
   getAllWithArticle:(page,count,condition,desc,user_id,callback)->
     query = 
       offset: (page - 1) * count
@@ -112,6 +112,15 @@ func_column =
     sequelize.query("SELECT `column_rsses`.*, `cards`.`email` AS `cards.email`,`cards`.`nick` AS `cards.nick` FROM `column_rsses` LEFT OUTER JOIN `cards` AS `cards` ON `cards`.`user_id` = `column_rsses`.`user_id` WHERE `column_rsses`.`column_id`='"+column_id+"';",null, {raw: true,redis:10000})
     .success (data)->
       callback null,data
+    .error (e)->
+      callback e
+  getRssesByUserId:(user_id,callback)->
+    ColumnRss.findAll
+      where:
+        user_id:user_id
+      raw:true
+    .success (rsses)->
+      callback null,rsses
     .error (e)->
       callback e
   getUsersRss:(column_id,user_id,callback)->

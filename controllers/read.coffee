@@ -28,7 +28,7 @@ module.exports.controllers =
           #     target_path:req.originalUrl
           #     action_name:"【访问】了您收藏的文章"
           #     target_path_name:article.title
-          # res.locals.article = article
+          res.locals.article = article
           # func_article.addVisit req.params.id,res.locals.user||null
           res.render 'read.jade'
   "/add/recommend":

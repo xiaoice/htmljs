@@ -428,7 +428,8 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .columns-list .bd{width:1100px;}
 #articles .columns-list .column{padding:5px 0;border-top:1px solid #eee;width:300px;margin-right:20px;display:inline-block;vertical-align:top;}#articles .columns-list .column .title{font-size:13px;color:#444;line-height:20px;font-weight:bold;}
 #articles .columns-list .column .desc{font-size:12px;line-height:18px;color:#aaa;margin:5px 0;}
-#articles .columns-list .column .user{font-size:12px;line-height:20px;color:#999;}
+#articles .columns-list .column .user{font-size:12px;line-height:20px;color:#999;}#articles .columns-list .column .user a{color:#999;}
+#articles .columns-list .column .time{color:#999;}
 #articles .columns-list .column .actions{margin-bottom:0;margin-top:5px;}#articles .columns-list .column .actions a{font-size:12px;color:#5bb793;padding:5px 0;}#articles .columns-list .column .actions a i:before{color:#5bb793;font-size:14px;}
 #articles .columns-list .column .actions span{color:#aaa;}#articles .columns-list .column .actions span i:before{font-size:14px;color:#aaa;}
 #articles .my_columns .bd{width:1000px;}

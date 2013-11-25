@@ -42,7 +42,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
           if locals.columns && columns.length
             each column in columns
               .column
-                a.title(href="/article/column/#{column.id}") #{column.name}
+                a.title(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
                 .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
                 .user
                   span 作者：

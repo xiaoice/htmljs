@@ -54,7 +54,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       i.rss.social
                       |  已订阅（#{column.rss_count}）
                   else
-                    a(href="/article/column/#{column.id}/rss")
+                    a.rss-btn(href="/article/column/#{column.id}/rss")
                       i.rss.social
                       |  邮件订阅（#{column.rss_count}）
       include ../page
@@ -69,6 +69,8 @@ html(xmlns:wb='http://open.weibo.com/wb')
           var bds_config={"bdText":"分享一个@前端乱炖 的系列文章专栏【#{column.name}】，所有者：@#{column.user.nick}，专栏简介：#{column.desc_md.replace(/\s/g,'')}","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
           document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
         </script>
+    script(src="#{assets_head}/js/messageTip.js")
+    script(src="#{assets_head}/js/loadingTip.js")
     script
       $(document).ready(function(){
          $('.column-list').masonry({
@@ -76,7 +78,35 @@ html(xmlns:wb='http://open.weibo.com/wb')
                    columnWidth :510
                 });
         })
-     
+      $(".rss-btn").click(function(e){
+        e.preventDefault();
+        var href= $(this).attr("href")
+        HtmlJS.util.ajax(href,{
+              
+            },"post",function(data){
+                loadingTip.hide()
+                if(data.success){
+                  messageTip.show("订阅成功！")
+                }else{
+                  alert(data.info)
+                }
+            },function(){
+              HtmlJS.util.ajax(href,{
+               
+              },"post",function(data){
+                  loadingTip.hide()
+                  if(data.success){
+                    messageTip.show("订阅成功！")
+                  }else{
+                    alert(data.info)
+                  }
+              },function(){
+              
+              
+            })
+            
+          })
+        })
       $('.actions a').tooltip({
           placement:"bottom"
       })

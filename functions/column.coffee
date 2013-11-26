@@ -150,5 +150,6 @@ func_column =
           .success (card)->
             if card && card.email
               func_email.sendColumnNotify column,card
+              column.updateAttributes({last_notify_time:nowtime})
 __FC func_column,Column,['delete','add','addCount','count','update']
 module.exports = func_column

@@ -67,11 +67,11 @@ html
                           img(src="#{column.users.head_pic}")
                         a.name.tooltip-trigger(href="/article/column/#{column.id}",data-original-title="#{column.name}  #{moment(column.last_article_time*1).fromNow()}") #{column.name.substr(0,16)}
                         if column.is_rssed
-                          span.rssed(data-original-title="已订阅")
-                            i.rss.social.tooltip-trigger
+                          span.rssed.tooltip-trigger(data-original-title="已订阅")
+                            i.rss.social
                         else
-                          a.rss(href="/article/column/#{column.id}/rss",data-original-title="订阅此专栏")
-                            i.rss.social.tooltip-trigger
+                          a.rss.tooltip-trigger(href="/article/column/#{column.id}/rss",data-original-title="订阅此专栏")
+                            i.rss.social
                 .visitors
                   .hd 正在路过的
                   each visitor in article_visitors

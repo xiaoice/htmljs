@@ -6,7 +6,7 @@ html
     link(href='#{assets_head}/css/Markdown.Editor.css?33', type='text/css', rel='stylesheet', charset='utf-8')
     include ../editor_head
     |<meta name="description" content="#{topic.html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,140)}">
-   
+    script(src='#{assets_head}/js/jquery.githubRepoWidget.min.js')
   body#topic
     - locals.pageId=10;
     include ./../header

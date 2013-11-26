@@ -21,6 +21,8 @@ log4js.configure({
 })
 logger = log4js.getLogger('normal')
 logger.setLevel('INFO')
+black = ['DNSPod','monitor']
+_ = require 'underscore'
 app.configure ->
   app.set "port", config.run_port
   app.set "views", path.join __dirname, 'views'
@@ -39,6 +41,14 @@ app.configure ->
   app.locals.assets_head = config.assets_head
   app.use (req,res,next)->
     res.locals.url = req.url
+    agent = req.get("user-agent")
+    if agent == ""
+      res.end ' hello robot 1'
+      return
+    for i in [0...black.length]
+      if agent.indexOf(black[i]) != -1
+        res.end ' hello robot 2'
+        return
     next()
   app.use app.router
   rainbow.route(app, {  

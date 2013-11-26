@@ -340,7 +340,38 @@ module.exports.controllers =
                   target_path:'/article/column/'+column.id
                   action_name:"订阅了您的专栏"
                   target_path_name:column.name
+            func_column.checkNotify req.params.id
             res.redirect 'back'
+    post:(req,res,next)->
+      result = 
+        success:0
+        info:""
+      if !res.locals.card
+        result.info = '请先添加花名册并且填写正确的邮箱地址才能使用此功能！'
+        res.send result
+      else if not res.locals.card.email 
+        result.info = '请先添加花名册并且填写正确的邮箱地址才能使用此功能！'
+        res.send result
+      else
+        func_column.addRss req.params.id,res.locals.user.id,(error,rss)->
+          if error 
+            result.info = error.message
+            res.send result
+          else
+            func_column.getById req.params.id,(error,column)->
+              if column
+                func_info.add 
+                  target_user_id:column.user_id
+                  type:10
+                  source_user_id:res.locals.user.id
+                  source_user_nick:res.locals.user.nick
+                  time:new Date()
+                  target_path:'/article/column/'+column.id
+                  action_name:"订阅了您的专栏"
+                  target_path_name:column.name
+            func_column.checkNotify req.params.id
+            result.success = 1
+            res.send result
 module.exports.filters = 
   "/add":
     get:['checkLogin',"checkCard","article/all-pub-columns"]
@@ -369,6 +400,7 @@ module.exports.filters =
     get:['freshLogin','getRecent','get_infos','article/new-comments','article/recent-columns',"article/get-column",'article/get-column-rss','article/get-rsses']
   "/column/:id/rss":
     get:['checkLogin','checkCard']
+    post:['checkLoginJson','checkCard']
   "/:id/update":
     get:['checkLogin','checkAdmin']
   "/:id/delete":

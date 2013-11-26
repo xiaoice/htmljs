@@ -23,3 +23,6 @@ module.exports =
   rss_count:
     defaultValue:0
     type:"int"
+  last_notify_time:
+    type:"bigint"
+    defaultValue:0

@@ -242,9 +242,11 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index .mod .item .desc .desc-item{font-size:12px;margin-right:10px;}#index .mod .item .desc .desc-item .index{color:#aaa;font-size:12px;margin-right:3px;}#index .mod .item .desc .desc-item .index i{background:none;vertical-align:-2px;}
 #index .mod .item .desc .desc-item .value{color:#999;}
 #index .mod .item.new .title{color:#5bb793;font-weight:bold;}
-#index .recent_articles .columns{width:730px;margin-top:20px;}#index .recent_articles .columns .column{display:inline-block;vertical-align:top;margin-right:10px;margin-top:10px;border-bottom:1px solid #eee;background:#efefef;width:152px;height:30px;overflow:hidden;padding:0 10px;}#index .recent_articles .columns .column img{width:17px;}
+#index .recent_articles .columns{width:730px;margin-top:20px;}#index .recent_articles .columns .column{display:inline-block;vertical-align:top;margin-right:10px;margin-top:10px;border-bottom:1px solid #eee;background:#efefef;width:152px;height:30px;overflow:hidden;padding:0 10px;position:relative;}#index .recent_articles .columns .column img{width:17px;}
 #index .recent_articles .columns .column .name{line-height:30px;font-size:12px;padding-left:10px;color:#444;}
 #index .recent_articles .columns .column .desc{color:#999;}#index .recent_articles .columns .column .desc *{margin:0;font-size:12px;}
+#index .recent_articles .columns .column .rss{position:absolute;right:2px;top:2px;z-index:1000;padding:4px;background:#efefef;}#index .recent_articles .columns .column .rss i:before,#index .recent_articles .columns .column .rss i{color:#5bb793;font-size:16px;}
+#index .recent_articles .columns .column .rssed{position:absolute;right:2px;top:2px;z-index:1000;padding:4px;background:#efefef;}#index .recent_articles .columns .column .rssed i:before,#index .recent_articles .columns .column .rssed i{color:#ccc;font-size:16px;}
 #index .visitors{margin-top:20px;}#index .visitors .visitor{display:inline-block;margin-right:5px;}#index .visitors .visitor img{width:25px;}
 #index .tags{width:700px;margin-top:20px;}#index .tags a{padding:0 12px;color:#666;background:#eee;border-radius:10px;line-height:20px;display:inline-block;margin-top:10px;margin-right:10px;text-decoration:none;}
 #index .tags a:hover{background:#5bb793;color:#fff;}

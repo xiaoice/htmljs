@@ -66,6 +66,12 @@ html
                         a(href="/user/#{column.user_id}",data-original-title="#{column.users.nick}")
                           img(src="#{column.users.head_pic}")
                         a.name(href="/article/column/#{column.id}",data-original-title="#{column.name}  #{moment(column.last_article_time*1).fromNow()}") #{column.name.substr(0,16)}
+                        if column.is_rssed
+                          span.rssed
+                            i.rss.social
+                        else
+                          a.rss(href="/article/column/#{column.id}/rss")
+                            i.rss.social
                 .visitors
                   .hd 正在路过的
                   each visitor in article_visitors
@@ -309,8 +315,38 @@ html
                     span #{user.coin}
             
     include footer
-    
+    script(src="#{assets_head}/js/messageTip.js")
+    script(src="#{assets_head}/js/loadingTip.js")
     script
+      $(".rss").click(function(e){
+        e.preventDefault();
+        var href= $(this).attr("href")
+        HtmlJS.util.ajax(href,{
+              
+            },"post",function(data){
+                loadingTip.hide()
+                if(data.success){
+                  messageTip.show("订阅成功！")
+                }else{
+                  alert(data.info)
+                }
+            },function(){
+              HtmlJS.util.ajax(href,{
+               
+              },"post",function(data){
+                  loadingTip.hide()
+                  if(data.success){
+                    messageTip.show("订阅成功！")
+                  }else{
+                    alert(data.info)
+                  }
+              },function(){
+              
+              
+            })
+            
+          })
+        })
       $('.t-user').tooltip({
           placement:"bottom"
       })

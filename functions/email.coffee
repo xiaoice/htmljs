@@ -50,3 +50,14 @@ module.exports =
         to:emails,
         html:buffer
       })
+  sendColumnNotify:(column,card)->
+    buffer = ""
+    mustache.compileAndRender('./views/mail/column-notify.html', column)
+    .on 'data',(c)->
+      buffer += c.toString()
+    .on 'end',()->
+      mail({
+        subject:"您的专栏被订阅了，但是您已经超过5天没有更新了",
+        to:card.email,
+        html:buffer
+      })

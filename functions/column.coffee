@@ -9,7 +9,7 @@ Column.sync()
 ColumnRss = __M 'column_rsses'
 ColumnRss.belongsTo Card,{foreignKey:"user_id"}
 ColumnRss.sync()
-
+func_email = __F 'email'
 
 func_column = 
   getAll:(page,count,condition,order,include,callback)->
@@ -136,5 +136,20 @@ func_column =
         callback new Error '没有订阅过此专栏'
     .error (e)->
       callback e
+  checkNotify:(column_id)->
+    return
+    Column.find
+      where:
+        id:column_id
+    .success (column)->
+      if column
+        nowtime = new Date().getTime()
+        if nowtime -column.last_notify_time >1000*60*60*24 && nowtime - column.last_article_time >1000*60*60*24*5
+          Card.find
+            where:
+              user_id:column.user_id
+          .success (card)->
+            if card && card.email
+              func_email.sendColumnNotify column,card
 __FC func_column,Column,['delete','add','addCount','count','update']
 module.exports = func_column

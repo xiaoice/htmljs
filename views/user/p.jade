@@ -29,41 +29,62 @@ html
           //-       //-     a.bds_douban
           //-       //-     a.bds_renren
           //-       //-     a.shareCount
-          .his-infos
+          .his-infos.mod
             if locals.his_articles && locals.his_articles.length 
               .his-info.module
                 .hd 他的专栏文章
                 .bd
                   ul.article-list
                     each article,i in his_articles
-                      article.post(class="#{i%4>=2?'yooo':''} ")
-                        .entry-title
-                          h2.title
-                            a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
-                            if  !locals.column&&article.column
-                              a(href="/article/column/#{article.column.id}") 【#{article.column.name}】
+                      .item(class="#{article.visit_count<60?'new':''}")
+                        a.title(href="/article/#{article.id}") #{article.title}
+                        .desc 
+                          
+                          a.user(href="/user/#{article.user_id}") #{article.user_nick}
+                          span.time #{moment(article.createdAt).fromNow()}
+                          span.desc-item
+                            span.index 浏览
+                            a.value #{article.visit_count}
+                          span.desc-item
+                            span.index 回答
+                            a.value #{article.comment_count}
+                    
             if locals.his_questions && locals.his_questions.length
               .his-info.module
                 .hd 他提问的问题
                 .bd
                   ul.article-list
-                    each article,i in his_questions
-                      article.post(class="#{i%4>=2?'yooo':''} ")
-                        .entry-title
-                          h2.title
-                            a.real-title(href='/qa/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                    each question,i in his_questions
+                      .item(class="#{question.visit_count<30?'new':''}")
+                        a.title(href="/qa/#{question.id}") #{question.title}
+                        .desc 
+                          a.user(href="/user/#{question.user_id}") #{question.user_nick}
+                          span.time #{moment(question.createdAt).fromNow()}
+                          span.desc-item
+                            span.index 浏览
+                            a.value #{question.visit_count}
+                          span.desc-item
+                            span.index 回答
+                            a.value #{question.answer_count}
             if locals.his_topics && locals.his_topics.length
               .his-info.module
                 .hd TA发起的话题
                 .bd
                 
                   ul.article-list
-                    each article,i in his_topics
-                      article.post(class="#{i%4>=2?'yooo':''} ")
-                        .entry-title
-                          h2.title
-                            a.real-title(href='/topic/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
-                                                            
+                    each topic,i in his_topics
+                      .item(class="#{topic.visit_count<30?'new':''}")
+                        a.title(href="/topic/#{topic.id}") #{topic.title}
+                        .desc 
+                          if topic.last_comment_user_id
+                            | <a class="user" href="/user/#{topic.last_comment_user_id}">#{topic.last_comment_user_nick}</a>
+                          span.time #{moment(topic.last_comment_time).fromNow()}
+                          span.desc-item
+                            span.index 浏览
+                            a.value #{topic.visit_count}
+                          span.desc-item
+                            span.index 跟帖
+                            a.value #{topic.comment_count}                              
           .comment.module#comment-module
             .hd 评论
             .bd

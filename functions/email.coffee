@@ -50,7 +50,7 @@ module.exports =
         to:emails,
         html:buffer
       })
-  sendColumnNotify:(column,card)->
+  sendColumnNotify:(column,card,rsses)->
     buffer = ""
     mustache.compileAndRender('./views/mail/column-notify.html', column)
     .on 'data',(c)->

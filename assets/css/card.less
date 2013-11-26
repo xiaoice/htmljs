@@ -164,9 +164,70 @@ width:310px;
 }
 
 #card{
+  .mod{
+    .bd{
+      width:900px;
+    }
+    .item{
+      width:350px;
+      margin-right: 20px;
+      display: inline-block;
+      _float:left;
+      border-bottom: 1px dashed #eee;
+      vertical-align: top;
+      overflow: hidden;
+      .title{
+        color:#333;
+        font-size: 13px;
+        line-height: 30px;
+        height:30px;
+        display: block;
+        overflow: hidden;
+      }
+      .desc{
+        font-size: 12px;
+        color:#999;
+        line-height: 20px;
+        .user{
+          margin-right: 10px;
+          color:#999;
+        }
+        .time{
+          margin-right: 10px;
+        }
+        .column{
+          margin-right: 10px;
+          color:#999;
+        }
+        .desc-item{
+        font-size: 12px;
+        margin-right: 10px;
+        .index{
+          color:#aaa;
+          font-size: 12px;
+          i{
+            background: none;
+            vertical-align: -2px;
+          }
+          margin-right: 3px;
+        }
+        .value{
+          color:#999;
+        }
+      }
+      }
+    }
+    .item.new{
+      .title{
+        color:#5bb793;
+        font-weight:bold;
+      }
+    }
+  }
   .his-infos{
     margin: 20px 0;
     position: relative;
+    ul,li{margin:0;}
     .his-info{
       background: #fff;
       .post{
@@ -178,6 +239,8 @@ width:310px;
           line-height: 30px;
           overflow: hidden;
           font-size: 13px;
+          font-weight: normal;
+          margin:0;
         }
       }
     }

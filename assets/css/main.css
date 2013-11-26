@@ -549,7 +549,16 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #cards .count-infos em,#me .count-infos em{font-style:normal;padding:0 5px;}
 #cards .count-infos span,#me .count-infos span{padding:0 5px;}
 #card .bao .actions a,#me .bao .actions a{margin-right:20px;}
-#card .his-infos{margin:20px 0;position:relative;}#card .his-infos .his-info{background:#fff;}#card .his-infos .his-info .post{width:440px;display:inline-block;vertical-align:top;}#card .his-infos .his-info .post .title{height:30px;line-height:30px;overflow:hidden;font-size:13px;}
+#card .mod .bd{width:900px;}
+#card .mod .item{width:350px;margin-right:20px;display:inline-block;_float:left;border-bottom:1px dashed #eee;vertical-align:top;overflow:hidden;}#card .mod .item .title{color:#333;font-size:13px;line-height:30px;height:30px;display:block;overflow:hidden;}
+#card .mod .item .desc{font-size:12px;color:#999;line-height:20px;}#card .mod .item .desc .user{margin-right:10px;color:#999;}
+#card .mod .item .desc .time{margin-right:10px;}
+#card .mod .item .desc .column{margin-right:10px;color:#999;}
+#card .mod .item .desc .desc-item{font-size:12px;margin-right:10px;}#card .mod .item .desc .desc-item .index{color:#aaa;font-size:12px;margin-right:3px;}#card .mod .item .desc .desc-item .index i{background:none;vertical-align:-2px;}
+#card .mod .item .desc .desc-item .value{color:#999;}
+#card .mod .item.new .title{color:#5bb793;font-weight:bold;}
+#card .his-infos{margin:20px 0;position:relative;}#card .his-infos ul,#card .his-infos li{margin:0;}
+#card .his-infos .his-info{background:#fff;}#card .his-infos .his-info .post{width:440px;display:inline-block;vertical-align:top;}#card .his-infos .his-info .post .title{height:30px;line-height:30px;overflow:hidden;font-size:13px;font-weight:normal;margin:0;}
 #card .top-info{background:#fff;border-radius:5px;}#card .top-info .left{float:left;width:700px;margin-right:0;}
 #card .top-info .right{float:left;width:250px;margin-left:10px;}
 #card .top-info .module{border:none;}

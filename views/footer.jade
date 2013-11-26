@@ -84,6 +84,12 @@
   span#gotop
     i.icon-airplane
 script.
+  try{
+    $('.tooltip-trigger').tooltip({
+          placement:"bottom"
+          });
+  }catch(e){}
+  
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-36222024-3']);
   _gaq.push(['_trackPageview']);

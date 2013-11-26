@@ -39,7 +39,11 @@ html
                 a.btn.gray(href="/article/add") <i class="icon-book-open"></i> 发表原创文章
           .module
             a(href="/article/column")
-              img(src="http://htmljs.b0.upaiyun.com/uploads/1385393277562-%E6%9C%AA%E6%A0%87%E9%A2%98-4.png")
+              - var randomnum = Math.random();
+              if randomnum>0.5
+                img(src="http://htmljs.b0.upaiyun.com/uploads/1385393277562-%E6%9C%AA%E6%A0%87%E9%A2%98-4.png")
+              else
+                img(src="http://htmljs.b0.upaiyun.com/uploads/1385467035624-%E6%9C%AA%E6%A0%87%E9%A2%98-22.png")
           if locals.articles
             .module.mod.recent_articles
               .hd 最新的专栏文章

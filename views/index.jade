@@ -44,9 +44,23 @@ html
                 img(src="http://htmljs.b0.upaiyun.com/uploads/1385393277562-%E6%9C%AA%E6%A0%87%E9%A2%98-4.png")
               else
                 img(src="http://htmljs.b0.upaiyun.com/uploads/1385467035624-%E6%9C%AA%E6%A0%87%E9%A2%98-22.png")
+          .module.mod.recent_cards
+              a.hd(href="/article") 花名册新人
+              .bd
+                each card,i in cards
+                  .card.user
+                    .pic
+                      a.tooltip-trigger(href="/card/#{card.id}",data-original-title="#{card.desc}")
+                        img(src="#{card.head_pic}")
+                        if card.sex == '男'
+                          .sex.nan
+                        else
+                          .sex.nv
+                    .name
+                      a(href="/card/#{card.id}")  #{card.nick}
           if locals.articles
             .module.mod.recent_articles
-              .hd 最新的专栏文章
+              a.hd(href="/article") 最新的专栏文章
               .bd
                 each article,i in articles
                   .item(class="#{article.visit_count<60?'new':''}")
@@ -63,7 +77,7 @@ html
                         a.value #{article.comment_count}
                 
                 .columns 
-                  .hd 最近更新的专栏
+                  a.hd(href="/article/column") 最近更新的专栏
                   each column in columns
                     if column.users.id
                       .column
@@ -77,14 +91,14 @@ html
                           a.rss.tooltip-trigger(href="/article/column/#{column.id}/rss",data-original-title="订阅此专栏")
                             i.rss.social
                 .visitors
-                  .hd 正在路过的
+                  a.hd(href="/cards") 正在路过的
                   each visitor in article_visitors
                     .visitor.user
                       a(href="/user/#{visitor.user_id}",data-original-title="#{visitor.user_nick} #{moment(visitor.createdAt).fromNow()}")
                         img(src="#{visitor.user_headpic}")
           if locals.questions
             .module.mod
-              .hd 最新的问题
+              a.hd(href="/qa") 最新的问题
               .bd
                 each question,i in questions
                   .item(class="#{question.visit_count<30?'new':''}")
@@ -99,12 +113,12 @@ html
                         span.index 回答
                         a.value #{question.answer_count}
                 .tags
-                  .hd 问题标签
+                  a.hd(href="/tag") 问题标签
                   each tag,i in tags
-                    a(href="/tag/#{tag.id}") #{tag.name}
+                    a.tag(href="/tag/#{tag.id}") #{tag.name}
           if locals.topics
             .module.mod
-              .hd 最新的话题
+              a.hd(href="/topic") 最新的话题
               .bd
                 each topic,i in topics
                   .item(class="#{topic.visit_count<30?'new':''}")
@@ -122,7 +136,7 @@ html
                 .topic_tags
                   .hd 话题类型
                   each tag in topic_tags
-                    a(href="/topic?tag_id=#{tag.id}",class="#{tag.important?'important':''}") #{tag.name}
+                    a.tag(href="/topic?tag_id=#{tag.id}",class="#{tag.important?'important':''}") #{tag.name}
           p.
             <script type="text/javascript">
              /*自定义标签云，创建于2013-11-21*/

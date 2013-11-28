@@ -20,8 +20,7 @@
               li.hidden(class="#{locals.pageId==8?'active':''}",pageId="8")
                 a(href="/tag") 标签
             
-              li.hidden(class="#{locals.pageId==4?'active':''}",pageId="4")
-                a(href="/read") <i class="icon-bookmark"></i>阅读
+              
               
 
               
@@ -47,7 +46,8 @@
                   a(href="/user/login?redirect=#{encodeURIComponent(locals.url)}") 登录
               li(class="#{locals.pageId==2?'':''}",pageId="2")
                 a(href="/cards") <i class="icon-nameplate hidden"></i>花名册
-              
+              li(class="#{locals.pageId==4?'':''}",pageId="4")
+                a(href="/read") 阅读
               li(class="#{locals.pageId==9?'':''}",pageId="9")
                 a(href="/tools") <i class="icon-classic-hammer hidden"></i>常用工具
 

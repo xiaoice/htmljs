@@ -14,15 +14,15 @@ html
         p.alert 不存在的阅读篇章
       else
         ul.breadcrumb
-        li
-          a(href="/") 首页
-          span.divider /
-        li
-          a(href="/read") 阅读
-          span.divider /
-        li.active
-          span #{article.title}
-        .left
+          li
+            a(href="/") 首页
+            span.divider /
+          li
+            a(href="/read") 阅读
+            span.divider /
+          li.active
+            span #{article.title}
+        .content
           article.post(id="post-#{article.id}")
             .entry-title
               a.headpic
@@ -58,11 +58,6 @@ html
                 textarea.input-block-level#comment-text(placeholder="参与讨论，共创奇迹。支持markdown语法")
                 .btn.comment-submit#comment-submit 发表评论
               .comment-list
-          .comment-layer
-            span.count
-              i.icon-comment
-              |#{article.comment_count}
-            span.input 看着不错？点评几句把，TA需要您的鼓励和支持。      
               script#comment-tpl(type="text/template")
                 .comment-item.clearfix
                   a.headpic

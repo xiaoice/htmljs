@@ -41,6 +41,7 @@ module.exports =
       })
   sendArticleRss:(article,emails)->
     buffer = ""
+    console.log emails
     mustache.compileAndRender('./views/mail/article-rss.html', {id:article.id,title:article.title,html:article.html.substr(0,500)+"......"})
     .on 'data',(c)->
       buffer += c.toString()

@@ -11,6 +11,12 @@ html(xmlns:wb='http://open.weibo.com/wb')
     - locals.pageId=4;
     include header
     #content.clearfix
+      ul.breadcrumb
+        li
+          a(href="/") 首页
+          span.divider /
+        li.active
+          span 阅读
       //- .my-reads
       //-   .hd 我的阅读
       //-   .bd
@@ -52,10 +58,9 @@ html(xmlns:wb='http://open.weibo.com/wb')
       .all-reads.clearfix
         #canvas
          
-        ul.article-list.left-list
+        ul.article-list
           if my_reads.length
             each article,index in my_reads
-              if index%2==1
                 article.post(id="post-#{article.id}",class="#{index%2==1?'left-post':'right-post'}")
                   .entry-title
                     h3.title
@@ -77,32 +82,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                     a(href="/user/#{article.user_id}",data-original-title="#{article.user_nick}")
                       img(src="#{article.user_headpic}")
                     .time #{moment(article.createdAt).fromNow()}
-        ul.article-list.right-list
-          if my_reads.length
-            each article,index in my_reads
-              if index%2==0
-                article.post(id="post-#{article.id}",class="#{index%2==1?'left-post':'right-post'}")
-                  .entry-title
-                    h3.title
-                      a(href='/read/#{article.id}', title='#{article.title}', rel='bookmark') 
-                        |#{article.title}
-                  .entry-content
-                    div !{article.desc||article.html.replace(/<p>(.*?)<\/p>/g,"$1\n").replace(/<[^>]*?>/g,"").substr(0,300)}
-                  .entry-others
-                    if article.quote_url
-                      span.views.item
-                        a.value(href="#{article.quote_url}",target="_blank") 原文链接
-                    span.views.item
-                        span.index View：
-                        a.value #{article.visit_count}
-                    span.views.item
-                      span.index 评论：
-                      a.value #{article.comment_count}
-                  .user(data-left="0")
-                    a(href="/user/#{article.user_id}",data-original-title="#{article.user_nick}")
-                      img(src="#{article.user_headpic}")
-                    .time #{moment(article.createdAt).fromNow()}
-
+        
       include page
     script(src="#{assets_head}/js/queuedo.js")
     script(src="#{assets_head}/js/svg.js") 

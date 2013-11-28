@@ -133,11 +133,15 @@ func_card =
       callback null,cards
     .error (error)->
       callback error
-  getAll:(page,count,condition,callback)->
+  getAll:(page,count,condition,desc,callback)->
+    if arguments.length == 4
+      callback = desc
+      
+      desc = "users.coin desc,cards.zan_count+cards.visit_count desc"
     query = 
       offset: (page - 1) * count
       limit: count
-      order: "users.coin desc,cards.zan_count+cards.visit_count desc"
+      order: desc
       include:[User]
       raw:true
     if condition then query.where = condition

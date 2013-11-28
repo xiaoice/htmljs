@@ -52,9 +52,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
           li
             a(href="/read/me") 我的收藏
         .right-actions
-          a.btn(href="javascript:window.location.href='http://www.html-js.com/read/add/recommend?url='+encodeURIComponent(window.location.href);",data-original-title="收集按钮，拖动到浏览器收藏栏，看到喜欢的文章点击即可收藏") 
-            i.icon-plus.icon-white
-            |添加收藏
+          a.btn.tooltip-trigger(data-original-title="在微博发现好文，转发并且带有 “@前端乱炖 mark” 即可收藏到本站") 如何收藏？
       .all-reads.clearfix
         #canvas
         ul.article-list

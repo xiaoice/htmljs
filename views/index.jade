@@ -37,13 +37,15 @@ html
                 a.btn.gray(href="/qa/add") <i class="icon-lightbulb"></i> 提问问题
                 a.btn.gray(href="/topic/add") <i class="icon-conversation"></i> 发起话题
                 a.btn.gray(href="/article/add") <i class="icon-book-open"></i> 发表原创文章
-          .module
-            a(href="/article/column")
+          div(style="margin-bottom:10px;")
+            
               - var randomnum = Math.random();
               if randomnum>0.5
-                img(src="http://htmljs.b0.upaiyun.com/uploads/1385393277562-%E6%9C%AA%E6%A0%87%E9%A2%98-4.png")
+                a(href="/article/column")
+                  img(src="http://htmljs.b0.upaiyun.com/uploads/1385393277562-%E6%9C%AA%E6%A0%87%E9%A2%98-4.png")
               else
-                img(src="http://htmljs.b0.upaiyun.com/uploads/1385467035624-%E6%9C%AA%E6%A0%87%E9%A2%98-22.png")
+                a(href="/act/7")
+                  img(src="http://htmljs.b0.upaiyun.com/uploads/1385640368372-%E6%9C%AA%E6%A0%87%E9%A2%98-1.png")
           .module.mod.recent_cards
               a.hd(href="/cards") 花名册新人
               .bd

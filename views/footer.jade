@@ -77,6 +77,8 @@
         <iframe src="http://ghbtns.com/github-btn.html?user=xinyu198736&type=follow" allowtransparency="true" frameborder="0" scrolling="0" width="150" height="20"></iframe>
 
 #coin-fixed
+  span#gotop
+    i.icon-airplane
   if locals.user
     span.coin-count.hidden 
       i.icon-coins
@@ -88,8 +90,7 @@
   span.my-favs
     i.icon-heart
     a(href="/user/fav")  我的收藏      
-  span#gotop
-    i.icon-airplane
+  
 script.
   try{
     $('.tooltip-trigger').tooltip({

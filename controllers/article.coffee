@@ -172,11 +172,11 @@ module.exports.controllers =
             func_column.addCount req.body.column_id,"article_count",(error)->
             func_column.getRsses req.body.column_id,(error,rsses)->
               if rsses && rsses.length>0
-                emails = ''
+                emails = []
                 rsses.forEach (rss)->
                   if rss.cards&&rss.cards.email
-                    emails+=rss.cards.email
-                func_email.sendArticleRss data,emails
+                    emails.push rss.cards.email
+                func_email.sendArticleRss data,emails.join(";")
           sina.statuses.update 
             access_token:res.locals.user.weibo_token
             status:'我在@前端乱炖 发表了一篇原创文章【'+article.title+'】点击查看：http://www.html-js.com/article/'+article.id

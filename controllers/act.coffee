@@ -79,6 +79,7 @@ module.exports.controllers =
             trade_price:act.price
             target_type:1
             target_user_id:res.locals.user.id
+            need_address:act.need_address
           ,(error,payment)->
             if error 
               result.info = error.message

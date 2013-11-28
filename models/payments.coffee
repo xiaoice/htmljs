@@ -15,3 +15,6 @@ module.exports =
   pay_time:"datetime"
   buyer_id:"varchar(40)"
   trade_no:"varchar(40)"
+  need_address:
+    type:"tinyint"
+    defaultValue:0

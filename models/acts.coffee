@@ -28,3 +28,6 @@ module.exports =
   is_goods:
     type:"tinyint"
     defaultValue:"0"
+  need_address:
+    type:'tinyint'
+    defaultValue:0

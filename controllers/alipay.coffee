@@ -86,10 +86,9 @@ module.exports.controllers =
                             share_txt = "我在@前端乱炖 报名了【"+act.title+"】的活动，欢迎关注：http://www.html-js.com/act/"+req.params.id
                             if act.share_text
                               share_txt = act.share_text
-                            sina.statuses.upload 
+                            sina.statuses.update 
                               access_token:user.weibo_token
                               status:share_txt
-                              pic:"/home/wwwroot/htmljs/assets/shenruqianchu.jpg"
                         res.end 'success'
 
               .error (e)->

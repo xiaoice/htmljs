@@ -92,12 +92,12 @@ html
                         else
                           a.rss.tooltip-trigger(href="/article/column/#{column.id}/rss",data-original-title="订阅此专栏")
                             i.rss.social
-                .visitors
-                  a.hd(href="/cards") 正在路过的
-                  each visitor in article_visitors
-                    .visitor.user
-                      a(href="/user/#{visitor.user_id}",data-original-title="#{visitor.user_nick} #{moment(visitor.createdAt).fromNow()}")
-                        img(src="#{visitor.user_headpic}")
+                //- .visitors
+                //-   a.hd(href="/cards") 正在路过的
+                //-   each visitor in article_visitors
+                //-     .visitor.user
+                //-       a(href="/user/#{visitor.user_id}",data-original-title="#{visitor.user_nick} #{moment(visitor.createdAt).fromNow()}")
+                //-         img(src="#{visitor.user_headpic}")
           if locals.questions
             .module.mod
               a.hd(href="/qa") 最新的问题

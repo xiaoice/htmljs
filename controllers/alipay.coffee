@@ -37,7 +37,7 @@ module.exports.controllers =
                 logistics_type  : "POST"#req.body.WIDlogistics_type,
                 logistics_payment : "SELLER_PAY"#req.body.WIDlogistics_payment,
                 receive_name  : card.name#req.body.WIDreceive_name,
-                receive_address : card.address#req.body.WIDreceive_address,
+                receive_address : if card.address then card.address else '无'#req.body.WIDreceive_address,
                 receive_zip : "123456"#req.body.WIDreceive_zip,
                 receive_mobile  : card.tel#req.body.WIDreceive_mobile      
               alipay.trade_create_by_buyer(data, res);

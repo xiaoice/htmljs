@@ -21,6 +21,7 @@ func_fav =
   	Fav.find
   		where:
   			info_id:data.info_id
+  			user_id:data.user_id
   	.success (fav)->
   		if fav
   			callback new Error '已经收藏过'

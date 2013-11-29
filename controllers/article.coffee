@@ -176,7 +176,7 @@ module.exports.controllers =
                 rsses.forEach (rss)->
                   if rss.cards&&rss.cards.email
                     emails.push rss.cards.email
-                func_email.sendArticleRss data,emails.join(";")
+                func_email.sendArticleRss article,emails.join(";")
           sina.statuses.update 
             access_token:res.locals.user.weibo_token
             status:'我在@前端乱炖 发表了一篇原创文章【'+article.title+'】点击查看：http://www.html-js.com/article/'+article.id

@@ -21,7 +21,7 @@ log4js.configure({
 })
 logger = log4js.getLogger('normal')
 logger.setLevel('INFO')
-black = ['DNSPod','monitor']
+black = ['DNSPod','monitor','snarfware']
 _ = require 'underscore'
 app.configure ->
   app.set "port", config.run_port

@@ -38,7 +38,7 @@ html
                   .entry-title
                     h2.title
                       if question.is_jing
-                        img(src="/assets/images/jing.png",width="18",height="18")
+                        img(src="#{assets_head}/images/jing.png",width="18",height="18")
                       a(href='/qa/#{question.id}', title='#{question.title}', rel='bookmark') 
                         |#{question.title}
                       if question.answer_count == 0
@@ -79,7 +79,7 @@ html
                           a(href="/qa/#{question.id}/move_to_topic") 变话题
                           if question.is_jing
                             a(href="/qa/#{question.id}/update?is_jing=0") 去精
-                          else
+                          elseqa
                             a(href="/qa/#{question.id}/update?is_jing=1") 变精
                     div.user
                       a(data-original-title="#{question.user_nick}",href="/user/#{question.users_id}")

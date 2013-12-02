@@ -31,7 +31,7 @@
 #coin-fixed{
   position: fixed;
   bottom:0;
-  right:50px;
+  right:100px;
   height:35px;
   line-height: 35px;
   border:1px solid #ddd;
@@ -116,9 +116,9 @@
   #gotop{
     width:40px;
     height:40px;
-    line-height: 40px;
+    line-height: 37px;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
      cursor:pointer;
      text-align: center;
      color: #666;
@@ -467,13 +467,20 @@ i{
         display: inline-block;
         padding:0;
       }
+      img{
+        width:26px;
+        height:26px;
+        vertical-align: top;
+        margin-top:-1px;
+        border:2px solid #fff;
+      }
       .unread{
     display: inline-block;
     height:15px;
     padding: 0 5px;
     background: #ef5e5e;
     color: #fff;
-    border-radius: 20px;
+    border-radius: 30px;
     font-size: 12px;
     line-height: 15px;
     text-align: center;
@@ -1009,8 +1016,10 @@ margin:100px auto;
     background: #fff;
     margin-bottom:20px;
     display: inline-block;
+    vertical-align: top;
     width:450px;
     margin-right: 10px;
+    height:166px;
     .act-infos{
       font-size: 14px;
       padding:15px;
@@ -1052,11 +1061,14 @@ margin:100px auto;
     }
   }
   .act-item.isdown{
+    .act-title {
+      color: #aaa;
+      }
     .act-infos{
-       background: #ccc;
+       background: #ddd;
        .act-action{
           .btn{
-            background: #777;
+            background: #bbb;
             color:#eee;
             border:none;
           }

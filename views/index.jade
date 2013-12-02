@@ -2,7 +2,7 @@
 html
   head
     include head
-    title 前端乱炖
+    title 前端乱炖, 前端, 前端开发
     |<meta name="description" content="前端乱炖，这里是最专业的前端知识平台，汇集国内大部分前端开发人员的前端花名册，最精彩的原创文章专栏，最专业的问答平台，最火热的话题频道，最丰富的线下线上活动。html,js,css,nodejs,前端开发,前端招聘,jquery">
     style
       #bdshare a{}
@@ -48,7 +48,8 @@ html
                   img(src="http://htmljs.b0.upaiyun.com/uploads/1385640368372-%E6%9C%AA%E6%A0%87%E9%A2%98-1.png")
           if locals.cards
             .module.mod.recent_cards
-              a.hd(href="/cards") 花名册新人
+              .hd
+                a(href="/cards") 花名册新人（#{locals.all_count?all_count.card:0}）
               .bd
                 each card,i in cards
                   .card.user
@@ -63,7 +64,8 @@ html
                       a(href="/card/#{card.id}")  #{card.nick}
           if locals.articles
             .module.mod.recent_articles
-              a.hd(href="/article") 最新的专栏文章
+              .hd
+                a(href="/article") 最新的专栏文章（#{locals.all_count?all_count.article:0}）
               .bd
                 each article,i in articles
                   .item(class="#{article.visit_count<60?'new':''}")
@@ -80,7 +82,8 @@ html
                         a.value #{article.comment_count}
                 
                 .columns 
-                  a.hd(href="/article/column") 最近更新的专栏
+                  .hd
+                    a(href="/article/column") 最近更新的专栏（#{locals.all_count?all_count.column:0}）
                   each column in columns
                     if column.users.id
                       .column
@@ -101,7 +104,8 @@ html
                 //-         img(src="#{visitor.user_headpic}")
           if locals.questions
             .module.mod
-              a.hd(href="/qa") 最新的问题
+              .hd
+                a(href="/qa") 最新的问题（#{locals.all_count?all_count.question:0}）
               .bd
                 each question,i in questions
                   .item(class="#{question.visit_count<30?'new':''}")
@@ -121,7 +125,8 @@ html
                     a.tag(href="/tag/#{tag.id}") #{tag.name}
           if locals.topics
             .module.mod
-              a.hd(href="/topic") 最新的话题
+              .hd
+                a(href="/topic") 最新的话题（#{locals.all_count?all_count.topic:0}）
               .bd
                 each topic,i in topics
                   .item(class="#{topic.visit_count<30?'new':''}")

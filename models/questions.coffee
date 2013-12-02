@@ -33,3 +33,6 @@ module.exports =
   is_admin: #是否是官方问题
     type:"tinyint"
     defaultValue:0
+  is_jing:
+    type:"tinyint"
+    defaultValue:0

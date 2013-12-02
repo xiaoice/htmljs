@@ -1,0 +1,10 @@
+module.exports = 
+  id:"int"
+  udid:"varchar(40)"
+  card_count:"int"
+  user_count:"int"
+  article_count:"int"
+  column_count:"int"
+  question_count:"int"
+  topic_count:"int"
+  

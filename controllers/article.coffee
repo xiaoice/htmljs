@@ -248,6 +248,10 @@ module.exports.controllers =
             action_name:"【赞】了您的原创文章()"+req.body.score+")"
             target_path_name:article.title
         res.send result
+  "/:id/create_pic":
+    get:(req,res,next)->
+      (__F 'create_thumbnail').create_article req.params.id
+      res.redirect 'back'
   "/column":
     get:(req,res,next)->
       res.render 'article/columns.jade'
@@ -272,8 +276,10 @@ module.exports.controllers =
         func_article.addVisit req.params.id,res.locals.user||null
         if article.column_id
           func_column.addCount article.column_id,"visit_count",()->
-            
-        res.render 'article.jade'
+        if req.query.is_clear 
+          res.render 'article/clear-article.jade'
+        else
+          res.render 'article.jade'
   
   "/column/add":
     get:(req,res,next)->

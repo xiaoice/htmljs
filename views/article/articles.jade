@@ -162,6 +162,8 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       if locals.user && user.is_admin
                         span.views.item
                           a.value(href="/article/#{article.id}/delete") 删除
+                        span.views.item
+                          a.value(href="/article/#{article.id}/create_pic") 生成缩略图
                       span.right-foot
                         span.views.item
                           span.index 

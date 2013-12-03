@@ -54,7 +54,6 @@ html(xmlns:wb='http://open.weibo.com/wb')
         .right-actions
           a.btn.tooltip-trigger(data-original-title="在微博发现好文，转发并且带有 “@前端乱炖 mark” 即可收藏到本站") 如何收藏？
       .all-reads.clearfix
-        #canvas
         ul.article-list
             each article,index in all_reads
                 article.post(id="post-#{article.id}",class="#{index%2==1?'left-post':'right-post'}")

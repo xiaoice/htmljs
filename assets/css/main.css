@@ -411,10 +411,11 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #reads .all-reads .post .user img{width:30px;height:30px;border-radius:40px;background:#fff;border:2px solid #5bb793;display:block;margin:0 auto;}
 #reads .all-reads .post .user .time{font-size:12px;color:#999;line-height:30px;text-align:center;}
 #reads .all-reads .entry-title{margin-left:60px;}#reads .all-reads .entry-title .title{margin:0;font-size:14px;line-height:30px;font-weight:normal;}
+#reads .all-reads .entry-title a{color:#444;}
 #reads .all-reads .entry-content{font-size:12px;color:#999;line-height:18px;overflow:hidden;margin:10px 0;margin-left:60px;}
-#reads .all-reads .entry-others{font-size:12px;color:#999;margin:10px 0;margin-left:60px;}#reads .all-reads .entry-others .item{margin-right:10px;}#reads .all-reads .entry-others .item a{color:#999;}
-#reads .all-reads .entry-others .item .index{color:#999;}
+#reads .all-reads .entry-others{font-size:12px;color:#999;margin:10px 0;margin-left:60px;}#reads .all-reads .entry-others .item{margin-right:10px;}#reads .all-reads .entry-others .item .index{color:#999;}
 #reads .all-reads .entry-others .item .value{color:#666;}
+#reads .all-reads .entry-others .item a{color:#5bb793 !important;font-weight:bold;}
 #read article.post{border-radius:5px;padding:20px;background:#fff;}#read article.post .share{margin-top:0 !important;}
 #read article.post .entry-title{height:70px;}#read article.post .entry-title .headpic{float:left;margin-right:20px;}
 #read article.post .entry-title .title{font-size:18px;line-height:30px;margin:0;color:#b2571a;font-weight:normal;}

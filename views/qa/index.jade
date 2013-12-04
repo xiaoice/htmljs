@@ -82,7 +82,7 @@ html
                           elseqa
                             a(href="/qa/#{question.id}/update?is_jing=1") 变精
                     div.user
-                      a(data-original-title="#{question.user_nick}",href="/user/#{question.users_id}")
+                      a(data-original-title="#{question.user_nick}",href="/user/#{question.user_id}")
                         img(src="#{question.user_headpic}")
                         
                         if question['users.sex']

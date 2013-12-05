@@ -6,6 +6,7 @@ func_topic_comment = __F 'topic_comment'
 func_info = __F 'info'
 func_topic_tag = __F 'topic/tag'
 func_user = __F 'user'
+func_search = __F 'search'
 moment = require 'moment'
 module.exports.controllers = 
   "/":
@@ -33,6 +34,7 @@ module.exports.controllers =
           result.success = 1
           (__F 'index').add topic.uuid
           (__F 'coin').add 20,res.locals.user.id,"发布了一个话题"
+          func_search.add {type:"topic","pid":topic.uuid,"title":topic.title,"html":topic.html.replace(/<[^>]*>/g,""),"udid":topic.uuid,"id": topic.id},()->
         res.send result
   "/:id":
     get:(req,res,next)->

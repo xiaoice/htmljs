@@ -8,6 +8,7 @@ func_email = __F 'email'
 func_comment = __F 'comment'
 func_tag = __F 'tag'
 func_card = __F 'card'
+func_search = __F 'search'
 pagedown = require("pagedown")
 safeConverter = new pagedown.Converter()
 pagedown.Extra.init(safeConverter);
@@ -64,6 +65,7 @@ module.exports.controllers =
                     emails.push user.card.email.toString()
               console.log emails
               func_email.sendQAInvite q,emails.join(";")
+          func_search.add {type:"qa","pid":q.uuid,"title":q.title,"html":q.html.replace(/<[^>]*>/g,""),"udid":q.uuid,"id": q.id},()->
         res.send result
   "/:id/comment":
     get:(req,res,next)->
@@ -240,9 +242,12 @@ module.exports.controllers =
             action_name:"【回答】了您提问的问题"
             target_path_name:q.title
             content:req.body.html
+
           func_card.getByUserId q.user_id,(error,card)->
           	if card
               func_email.sendAnswer ans,q,card
+
+          search.add {parent_id:ans.question_id,type:"answer","pid":'answer_'+ans.id,"title":q.title+"的回答","html":ans.html.replace(/<[^>]*>/g,""),"udid":'',"id": ans.id},()->
         res.send result
   "/:question_id/good/:answer_id":
     get:(req,res,next)->

@@ -6,6 +6,7 @@ func_column = __F 'column'
 func_card = __F 'card'
 func_bi = __F 'bi'
 func_email = __F 'email'
+func_search = __F 'search'
 config = require './../config.coffee'
 authorize=require("./../lib/sdk/authorize.js");
 md5 = require 'MD5'
@@ -182,7 +183,7 @@ module.exports.controllers =
           sina.statuses.update 
             access_token:res.locals.user.weibo_token
             status:'我在@前端乱炖 发表了一篇原创文章【'+article.title+'】点击查看：http://www.html-js.com/article/'+article.id
-        
+          func_search.add {type:"article","pid":article.uuid,"title":article.title,"html":article.html.replace(/<[^>]*>/g,""),"udid":article.uuid,"id": article.id},()->
         res.send result
   "/:id/edit":
     "get":(req,res,next)->

@@ -4,6 +4,7 @@ config = require './../config.coffee'
 Sina=require("./../lib/sdk/sina.js")
 moment =require 'moment'
 func_payment = __F 'payment'
+func_search = __F 'search'
 module.exports.controllers = 
   "/":
     get:(req,res,next)->
@@ -20,6 +21,7 @@ module.exports.controllers =
       func_act.add req.body,(error,act)->
         if error then next error
         else
+          func_search.add {"pid":act.uuid,"title":act.title,"html":act.desc_html.replace(/<[^>]*>/g,""),"udid":act.uuid,"id": act.id},()->
           res.redirect '/act'
   "/:id/edit":
     get:(req,res,next)->

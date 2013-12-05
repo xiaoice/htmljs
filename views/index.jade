@@ -6,6 +6,9 @@ html
     |<meta name="description" content="前端乱炖，这里是最专业的前端知识平台，汇集国内大部分前端开发人员的前端花名册，最精彩的原创文章专栏，最专业的问答平台，最火热的话题频道，最丰富的线下线上活动。html,js,css,nodejs,前端开发,前端招聘,jquery">
     style
       #bdshare a{}
+      #content .search input{height:22px;width:630px;}
+      #content .search button{height:32px;width:80px;}
+      .search a{margin-right:10px;}
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
     script(src='#{assets_head}/js/lazyload.js')
   body#index
@@ -18,21 +21,12 @@ html
           //
             div.alert.alert-warning 本站第一次线下活动【中秋节杭州基层前端大聚会】，开始报名！<a href="/act/1">戳我去报名</a>！
           .module.search
-              //- div.
-              //-   <script>
-              //-     (function() {
-              //-       var cx = '004549130280129344040:hye4d842ysg';
-              //-       var gcse = document.createElement('script');
-              //-       gcse.type = 'text/javascript';
-              //-       gcse.async = true;
-              //-       gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-              //-           '//www.google.com/cse/cse.js?cx=' + cx;
-              //-       var s = document.getElementsByTagName('script')[0];
-              //-       s.parentNode.insertBefore(gcse, s);
-              //-     })();
-              //-   </script>
-              //-   <gcse:search></gcse:search>
-              div.adds(style="padding:15px;padding-bottom:0;")
+              form(action="/search",method="get",style="margin:0;")
+                fieldset
+                  .input-append(style="margin:0;")
+                    input#keyword.span2.input-large(type="text",name="q",placeholder="请输入关键词查询全站内容")
+                    button.btn 搜索
+              div.adds(style="padding-top:15px;padding-bottom:0;")
                 |快速入口：
                 a.btn.gray(href="/qa/add") <i class="icon-lightbulb"></i> 提问问题
                 a.btn.gray(href="/topic/add") <i class="icon-conversation"></i> 发起话题

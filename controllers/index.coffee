@@ -7,6 +7,7 @@ func_timeline = __F 'timeline'
 func_index = __F 'index'
 func_column = __F 'column'
 config = require './../config.coffee'
+func_search = __F 'search'
 authorize=require("./../lib/sdk/authorize.js");
 #md5 = require 'MD5'
 Sina=require("./../lib/sdk/sina.js")
@@ -166,7 +167,8 @@ module.exports.controllers =
           sina.friendships.create {access_token:res.locals.user.weibo_token,screen_name:"前端乱炖"},(error,info)->
             console.log error
             console.log info
-
+          func_search.add {type:"card","pid":card.uuid,"title":card.nick+"的花名册","html":card.nick+"的花名册 简介："+card.desc,"udid":card.uuid,"id": card.id},()->
+      
   "/edit-card":
     get:(req,res,next)-> 
       if not res.locals.card
@@ -315,9 +317,32 @@ module.exports.controllers =
   "/ad":
     "get":(req,res,next)->
       res.render 'ad.jade'
+  "/search":
+    "get":(req,res,next)->
+      if not req.query.q
+        res.render 'search.jade'
+        return
+      res.locals.q = req.query.q
+      func_search.query {"query":req.query.q,"limit":10,"offset":((req.query.page||1)-1)*10},(error,data)->
+        if error 
+          next error
+        else
+          data = JSON.parse data
+
+          res.locals.results = data.data
+          res.locals.total=data.total_count
+          res.locals.totalPage=Math.ceil(data.total_count/10)
+          res.locals.page = (req.query.page||1)
+          res.locals.relative_words = data.relative
+          func_search.getAll 1,20,null,'count desc',(error,hot)->
+            res.locals.hot_words = hot
+            func_search.getAll 1,30,null,'createdAt desc',(error,recent)->
+              res.locals.recent_words = recent
+              res.render 'search.jade'
   "/robots.txt":
     "get":(req,res,next)->
       res.end "
+  
 User-agent: *\n
 Disallow: /user/login\n
 Disallow: /talk/\n

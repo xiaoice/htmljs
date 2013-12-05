@@ -13,6 +13,8 @@ Sina=require("./../lib/sdk/sina.js")
 sina=new Sina(config.sdks.sina)
 pagedown = require("pagedown")
 safeConverter = new pagedown.Converter()
+console.log pagedown.Converter.Extra
+pagedown.Extra.init(safeConverter);
 read = require("readability")
 request = require 'request'
 rss = require 'rss'

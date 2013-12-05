@@ -1,5 +1,6 @@
 pagedown = require("pagedown")
 safeConverter =new pagedown.Converter()
+pagedown.Extra.init(safeConverter);
 func_topic = __F 'topic'
 func_topic_comment = __F 'topic_comment'
 func_info = __F 'info'

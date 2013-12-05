@@ -10,7 +10,7 @@ func_tag = __F 'tag'
 func_card = __F 'card'
 pagedown = require("pagedown")
 safeConverter = new pagedown.Converter()
-
+pagedown.Extra.init(safeConverter);
 moment = require 'moment'
 Sina=require("./../lib/sdk/sina.js")
 sina=new Sina(__C.sdks.sina)

@@ -317,6 +317,16 @@ module.exports.controllers =
   "/ad":
     "get":(req,res,next)->
       res.render 'ad.jade'
+  "/search-his":
+    "get":(req,res,next)->
+      
+      func_search.count null,(error,count)->
+        res.locals.total=count
+        res.locals.totalPage=Math.ceil(count/100)
+        res.locals.page = (req.query.page||1)
+        func_search.getAll (req.query.page||1),100,null,'updatedAt desc',(error,recent)->
+          res.locals.recent_words = recent
+          res.render 'search_his.jade'
   "/search":
     "get":(req,res,next)->
       if not req.query.q
@@ -336,7 +346,7 @@ module.exports.controllers =
           res.locals.relative_words = data.relative
           func_search.getAll 1,20,null,'count desc',(error,hot)->
             res.locals.hot_words = hot
-            func_search.getAll 1,30,null,'createdAt desc',(error,recent)->
+            func_search.getAll 1,30,null,'updatedAt desc',(error,recent)->
               res.locals.recent_words = recent
               res.render 'search.jade'
   "/robots.txt":

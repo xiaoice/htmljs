@@ -27,7 +27,7 @@ search  =
       console.log stdout
       callback(stderr,stdout)
 
-__FC search,SearchHis,['getAll']      
+__FC search,SearchHis,['getAll','count']      
 
 
 module.exports = search

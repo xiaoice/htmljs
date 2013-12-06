@@ -322,9 +322,9 @@ module.exports.controllers =
       
       func_search.count null,(error,count)->
         res.locals.total=count
-        res.locals.totalPage=Math.ceil(count/100)
+        res.locals.totalPage=Math.ceil(count/500)
         res.locals.page = (req.query.page||1)
-        func_search.getAll (req.query.page||1),100,null,'updatedAt desc',(error,recent)->
+        func_search.getAll (req.query.page||1),500,null,'updatedAt desc',(error,recent)->
           res.locals.recent_words = recent
           res.render 'search_his.jade'
   "/search":

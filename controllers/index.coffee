@@ -349,6 +349,9 @@ module.exports.controllers =
             func_search.getAll 1,30,null,'updatedAt desc',(error,recent)->
               res.locals.recent_words = recent
               res.render 'search.jade'
+  "/google72b29f4df6c0059b.html":
+    get:(req,res,next)->
+      res.end 'google-site-verification: google72b29f4df6c0059b.html'
   "/robots.txt":
     "get":(req,res,next)->
       res.end "

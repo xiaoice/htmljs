@@ -247,7 +247,7 @@ module.exports.controllers =
           	if card
               func_email.sendAnswer ans,q,card
 
-          search.add {parent_id:ans.question_id,type:"answer","pid":'answer_'+ans.id,"title":q.title+"的回答","html":ans.html.replace(/<[^>]*>/g,""),"udid":'',"id": ans.id},()->
+          func_search.add {parent_id:ans.question_id,type:"answer","pid":'answer_'+ans.id,"title":q.title+"的回答","html":ans.html.replace(/<[^>]*>/g,""),"udid":'',"id": ans.id},()->
         res.send result
   "/:question_id/good/:answer_id":
     get:(req,res,next)->

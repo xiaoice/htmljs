@@ -60,7 +60,7 @@ html
                 a.tooltip-trigger.kai(data-id="#{card.id}",data-original-title="催促作者开通专栏，对方会收到邮件，一天只会发送一次") 想看他写专栏
           .right-info
             p.line
-              if locals.user.is_admin
+              if locals.user && locals.user.is_admin
                 span.item
                   span.key 真名
                   span.value #{card.name}
@@ -89,19 +89,19 @@ html
             p.line
               span.item
                 span.key email
-                if locals.user.is_admin
+                if locals.user && locals.user.is_admin
                   span.value #{card.email}
                 else
                   span.value #{card.email?card.email.replace(/^.*@/,"****@"):"*********"}
               span.item
                 span.key QQ
-                if locals.user.is_admin
+                if locals.user && locals.user.is_admin
                   span.value #{card.qq}
                 else
                   span.value #{card.qq?card.qq.substr(0,4)+"******":"*********"}
               span.item
                 span.key 手机号
-                if locals.user.is_admin
+                if locals.user && locals.user.is_admin
                   span.value #{card.tel}
                 else
                   span.value #{card.tel?card.tel.substr(0,4)+"*******":"***********"}

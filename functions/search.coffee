@@ -1,6 +1,8 @@
 SearchHis = __M 'search_his'
 SearchHis.sync()
 config = require './../config.coffee'
+hises = {}
+hisestime = 0
 search  = 
   add:(data,callback)->
     childProcess = require('child_process')
@@ -39,7 +41,33 @@ search  =
           word:data.word
           count:1
         })
-__FC search,SearchHis,['getAll','count']      
+  getAll:(page,count,condition,order,include,callback)->
+    if arguments.length == 4
+      callback = order
+      order = null
+      include = null
+    else if arguments.length == 5
+      callback = include
+      include = null
+    query = 
+      offset: (page - 1) * count
+      limit: count
+      order: order || "id desc"
+      raw:true
+    if condition then query.where = condition
+    if include then query.include = include
+    nowtime = new Date().getTime()
+    if nowtime- hisestime <1000*60*60*24 && hises[page]
+      callback null,hises[page]
+    else
+      hisestime = nowtime
+      SearchHis.findAll(query)
+      .success (ms)->
+        hises[page] = ms
+        callback null,ms
+      .error (e)->
+        callback e
+__FC search,SearchHis,['count']      
 
 
 module.exports = search

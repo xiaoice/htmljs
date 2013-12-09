@@ -18,6 +18,8 @@ path = require 'path'
 fs = require 'fs'
 request = require 'request'
 UPYun=require("./../lib/upyun.js").UPYun
+fs = require 'fs'
+searchStatic = {}
 md5 = (string)->
     crypto = require('crypto')
     md5sum = crypto.createHash('md5')
@@ -332,6 +334,13 @@ module.exports.controllers =
       if not req.query.q
         res.render 'search.jade'
         return
+      nowtime = new Date().getTime()
+      console.log searchStatic
+      if searchStatic[req.originalUrl] && (nowtime - searchStatic[req.originalUrl] < 1000*60*60*24)
+        console.log 'read from static'
+        res.send fs.readFileSync './static/'+encodeURIComponent(req.originalUrl)+".html"
+        return
+
       res.locals.q = req.query.q
       func_search.query {"query":req.query.q,"limit":10,"offset":((req.query.page||1)-1)*10},(error,data)->
         if error 
@@ -348,7 +357,12 @@ module.exports.controllers =
             res.locals.hot_words = hot
             func_search.getAll 1,30,null,'updatedAt desc',(error,recent)->
               res.locals.recent_words = recent
-              res.render 'search.jade'
+              res.render 'search.jade',null,(error,html)->
+                fs.writeFileSync './static/'+encodeURIComponent(req.originalUrl)+".html",html,'utf-8'
+                searchStatic[req.originalUrl] = nowtime
+                res.send html
+
+                
   "/google72b29f4df6c0059b.html":
     get:(req,res,next)->
       res.end 'google-site-verification: google72b29f4df6c0059b.html'

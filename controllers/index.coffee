@@ -336,7 +336,7 @@ module.exports.controllers =
         return
       nowtime = new Date().getTime()
       console.log searchStatic
-      if searchStatic[req.originalUrl] && (nowtime - searchStatic[req.originalUrl] < 1000*60*60*24)
+      if searchStatic[req.originalUrl] && (nowtime - searchStatic[req.originalUrl] < 1000*60*60*24*5)
         console.log 'read from static'
         res.send fs.readFileSync './static/'+encodeURIComponent(req.originalUrl)+".html"
         return

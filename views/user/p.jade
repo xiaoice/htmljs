@@ -12,46 +12,164 @@ html
     - locals.pageId=2;
     include ../header
     #content.clearfix
+
         if !locals.card
           p.alert.alert-warnint 此用户还没有创建名片
         else
-          include card_topinfo
-          //- if locals.card
-          //-   div.module.actions
-          //-     .bd.clearfix
-          //-       .item
-          //-         a 私信联系
-          //-       //- .item
-          //-       //-   span.share#bdshare.bdshare_t.bds_tools.get-codes-bdshare.clearfix
-          //-       //-     a.bds_tsina
-          //-       //-     a.bds_qzone
-          //-       //-     a.bds_tqq
-          //-       //-     a.bds_douban
-          //-       //-     a.bds_renren
-          //-       //-     a.shareCount
+          .left-info
+            
+            .base-info
+              .my_card
+                if locals.card
+                  .top.clearfix
+
+                    .head-pic.user
+                      img(src="#{card.head_pic}",width="80",height="80")
+                      if card.sex == '男'
+                        .sex.nan
+                      else
+                        .sex.nv
+                    .nick #{card.nick}
+                    .coin 经验值：#{card_user.coin}
+
+                  hr
+                  .desc #{card.desc}
+                  .item 
+                    if card.blog || card.github || card.weibo
+                      span.key 个人网站：
+                      span.sns
+                        if card.blog
+                          a.blog(href='#{card.blog}', target='_blank',title="博客地址") blog
+                        if card.github
+                          a.github(href='#{card.github}', target='_blank',title="github地址") github
+                        if card.weibo
+                          a.weibo(href='#{card.weibo}', target='_blank',title="微博地址") weibo
+            p.actions.clearfix
+              span.item
+                i.icon-heart 
+                - var usss = [];
+                if locals.zans
+                  each zan in zans
+                    if zan&&zan.users
+                      - usss.push(zan.users.nick);
+
+                a.zan.tooltip-trigger(data-id="#{card.id}",data-original-title="#{usss.join('，')}") 赞（#{card.zan_count||0}）
+                
+              span.item
+                i.icon-message-lock
+                a.tooltip-trigger.kai(data-id="#{card.id}",data-original-title="催促作者开通专栏，对方会收到邮件，一天只会发送一次") 想看他写专栏
+          .right-info
+            p.line
+              if locals.user.is_admin
+                span.item
+                  span.key 真名
+                  span.value #{card.name}
+              span.item
+                span.key 昵称
+                span.value #{card.nick}
+              span.item
+                span.key 感情状况
+                span.value #{card.is_dan?card.is_dan:"不明"}
+           
+            p.line
+              span.item
+                span.key 城市
+                span.value #{card.city}
+              span.item
+                span.key 职位
+                span.value #{card.zhiwei}
+            p.line
+              span.item
+                span.key 公司
+                span.value #{card.gongsi}
+              if card.shijian
+                span.item
+                  span.key 每天工作时长
+                  span.value #{card.shijian?card.shijian:"无"}
+            p.line
+              span.item
+                span.key email
+                if locals.user.is_admin
+                  span.value #{card.email}
+                else
+                  span.value #{card.email?card.email.replace(/^.*@/,"****@"):"*********"}
+              span.item
+                span.key QQ
+                if locals.user.is_admin
+                  span.value #{card.qq}
+                else
+                  span.value #{card.qq?card.qq.substr(0,4)+"******":"*********"}
+              span.item
+                span.key 手机号
+                if locals.user.is_admin
+                  span.value #{card.tel}
+                else
+                  span.value #{card.tel?card.tel.substr(0,4)+"*******":"***********"}
+            p.line
+              span.item
+                span.key 特长
+                span.value #{card.techang}
+            if  card.alipay
+              p.line
+                span.item
+                  span.key 支付宝收款主页
+                  a.value(href="#{card.alipay}") #{card.alipay}
+          .visit-info.module
+            .hd 最近访问（#{locals.card&&card.visit_count||1}）
+            .bd.clearfix
+              div 
+                if locals.visitors
+                  each visitor in locals.visitors
+                    div.visitor
+                      a(href="/user/#{visitor.user_id}",title="#{visitor.user_nick}",data-original-title="#{visitor.user_nick}")
+                        img(src="#{visitor.user_headpic}")
+          .columns-list.module.my_columns
+            .hd TA的专栏
+            .bd
+              if locals.my_columns && my_columns.length
+                each column in my_columns
+                  .column
+                    a.title(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
+                    .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
+                    .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
+                    .action
+                      if column.is_rssed
+                        span
+                          i.rss.social
+                          |  已订阅（#{column.rss_count}）
+                      else
+                        a.rss-btn(href="/article/column/#{column.id}/rss")
+                          i.rss.social
+                          |  邮件订阅（#{column.rss_count}）
+              else
+                .noitem TA还没有开通任何专栏，
+                  a.tooltip-trigger.kai(data-id="#{card.id}",data-original-title="催促作者开通专栏，对方会收到邮件，一天只会发送一次") 我想看他写的专栏
           .his-infos.mod
-            if locals.his_articles && locals.his_articles.length 
-              .his-info.module
-                .hd 他的专栏文章
+            
+              .his-info.module.mod
+                .hd TA的专栏文章
                 .bd
-                  ul.article-list
-                    each article,i in his_articles
-                      .item(class="#{article.visit_count<60?'new':''}")
-                        a.title(href="/article/#{article.id}") #{article.title}
-                        .desc 
-                          
-                          a.user(href="/user/#{article.user_id}") #{article.user_nick}
-                          span.time #{moment(article.createdAt).fromNow()}
-                          span.desc-item
-                            span.index 浏览
-                            a.value #{article.visit_count}
-                          span.desc-item
-                            span.index 回答
-                            a.value #{article.comment_count}
+                  if locals.his_articles && locals.his_articles.length 
+                    ul.article-list
+                      each article,i in his_articles
+                        .item(class="#{article.visit_count<60?'new':''}")
+                          a.title(href="/article/#{article.id}") #{article.title}
+                          .desc 
+                            
+                            a.user(href="/user/#{article.user_id}") #{article.user_nick}
+                            span.time #{moment(article.createdAt).fromNow()}
+                            span.desc-item
+                              span.index 浏览
+                              a.value #{article.visit_count}
+                            span.desc-item
+                              span.index 回答
+                              a.value #{article.comment_count}
+                  else
+                    .noitem 暂无文章，去订阅TA的专栏会触发催促作者写文章哦~~~
                     
             if locals.his_questions && locals.his_questions.length
-              .his-info.module
-                .hd 他提问的问题
+              .his-info.module.mod
+                .hd TA提问的问题
                 .bd
                   ul.article-list
                     each question,i in his_questions
@@ -67,7 +185,7 @@ html
                             span.index 回答
                             a.value #{question.answer_count}
             if locals.his_topics && locals.his_topics.length
-              .his-info.module
+              .his-info.module.mod
                 .hd TA发起的话题
                 .bd
                 
@@ -149,7 +267,7 @@ html
           var self=this;
           HtmlJS.util.ajax("/card/"+id+"/zan",{},"post",function(data){
               if(data.success){
-                messageTip.show("Great!")
+                messageTip.show("赞过!")
                 $("em",$(self)).html(data.zan_count)
               }else{
                 alert(data.info)
@@ -170,6 +288,62 @@ html
           
           })
          
+        })
+        $("a.kai").click(function(){
+        var id = $(this).data("id");
+          var self=this;
+          HtmlJS.util.ajax("/card/"+id+"/kai",{},"post",function(data){
+              if(data.success){
+                messageTip.show("成功鸟!好兴奋~~~")
+                $("em",$(self)).html(data.zan_count)
+              }else{
+                alert(data.info)
+              }
+            },function(){
+              
+            },null,function(){
+            HtmlJS.util.ajax("/card/"+id+"/kai",{},"post",function(data){
+                if(data.success){
+                  messageTip.show("Great!")
+                  $("em",$(self)).html(data.zan_count)
+                }else{
+                }
+              },function(){
+                alert(data.info)
+              })
+           
+          
+          })
+         
+        })
+        $(".rss-btn").click(function(e){
+        e.preventDefault();
+        var href= $(this).attr("href")
+        HtmlJS.util.ajax(href,{
+              
+            },"post",function(data){
+                loadingTip.hide()
+                if(data.success){
+                  messageTip.show("订阅成功！")
+                }else{
+                  alert(data.info)
+                }
+            },function(){
+              HtmlJS.util.ajax(href,{
+               
+              },"post",function(data){
+                  loadingTip.hide()
+                  if(data.success){
+                    messageTip.show("订阅成功！")
+                  }else{
+                    alert(data.info)
+                  }
+              },function(){
+              
+              
+            })
+            
+          })
         })
       script(src="#{assets_head}/js/mustache.js")
       script

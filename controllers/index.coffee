@@ -255,6 +255,26 @@ module.exports.controllers =
               target_path_name:card.nick+"的名片"
           result.zan_count = card.zan_count
         res.send result
+  "/card/:id/kai":
+    post:(req,res,next)->
+      result = 
+        success:1
+      func_card.getById req.params.id,(error,card)->
+        if error 
+          result.info = error.message
+          result.success = 0
+        else
+          if card.user_id
+            func_info.add 
+              target_user_id:card.user_id
+              type:11
+              source_user_id:res.locals.user.id
+              source_user_nick:res.locals.user.nick
+              time:new Date()
+              target_path:"/article/column/add"
+              action_name:"【希望】您开通技术专栏分享经验和技术知识"
+              target_path_name:"点击这里开通专栏"
+        res.send result
   "/upload":
     "post":(req,res,next)->
       result = 
@@ -381,7 +401,7 @@ module.exports.filters =
   "/cards":
     get:['freshLogin',"checkCard","card_recent","card/new-comments"]
   "/card/:id":
-    get:['freshLogin','card/get-card','card/comments','card/zans','card/his-articles','card/his-question','card/his-topic','card/his-answer']
+    get:['freshLogin','card/get-card','card/comments','card/zans','card/his-columns','card/his-articles','card/his-question','card/his-topic','card/his-answer']
   "/add-card":
     get:['checkLogin',"checkCard"]
     post:['checkLogin']
@@ -390,6 +410,8 @@ module.exports.filters =
   "/":
     get:['freshLogin','getRecent','user/top_user',"index/actives","index/recent_articles","index/recent_questions","index/recent_topics",'index/recent_columns',"index/all_tags",'index/all_topic_tags','article/checkRss','index/recent_users','all_count']
   "/card/:id/zan":
+    post:['checkLoginJson']
+  "/card/:id/kai":
     post:['checkLoginJson']
   "/card/:id/bao":
     post:['checkLogin',"checkCard"]

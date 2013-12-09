@@ -4,4 +4,6 @@ module.exports = (req,res,next)->
     else if not card then next new Error '不存在的名片'
     else  
       res.locals.card = card
-      next()
+      (__F 'user').getById card.user_id,(error,user)->
+        res.locals.card_user = user
+        next()

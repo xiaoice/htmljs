@@ -57,13 +57,13 @@ search  =
     if condition then query.where = condition
     if include then query.include = include
     nowtime = new Date().getTime()
-    if nowtime- hisestime <1000*60*60*24 && hises[page]
-      callback null,hises[page]
+    if nowtime- hisestime <1000*60*60*24 && hises[page*count]
+      callback null,hises[page*count]
     else
       hisestime = nowtime
       SearchHis.findAll(query)
       .success (ms)->
-        hises[page] = ms
+        hises[page*count] = ms
         callback null,ms
       .error (e)->
         callback e

@@ -15,6 +15,7 @@ pagedown.Extra.init(safeConverter);
 moment = require 'moment'
 Sina=require("./../lib/sdk/sina.js")
 sina=new Sina(__C.sdks.sina)
+en_func = require './../lib/translate.coffee'
 module.exports.controllers = 
   "/":
     get:(req,res,next)->
@@ -66,6 +67,8 @@ module.exports.controllers =
               console.log emails
               func_email.sendQAInvite q,emails.join(";")
           func_search.add {type:"qa","pid":q.uuid,"title":q.title,"html":q.html.replace(/<[^>]*>/g,""),"udid":q.uuid,"id": q.id},()->
+          en_func q.title,(en)->
+            func_question.update  q.id,{pinyin:en}
         res.send result
   "/:id/comment":
     get:(req,res,next)->

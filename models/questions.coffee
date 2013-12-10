@@ -36,3 +36,4 @@ module.exports =
   is_jing:
     type:"tinyint"
     defaultValue:0
+  pinyin:"varchar(1500)"

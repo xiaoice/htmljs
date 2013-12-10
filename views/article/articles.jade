@@ -121,7 +121,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       
                       
                       
-                      a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                      a.real-title(href='/article/#{article.pinyin?article.pinyin:article.id}', title='#{article.title}', rel='bookmark') #{article.title}
                       if !article.is_publish
                         span.label.tip 此文正在审核中
                     a.t-user(href="/user/#{article.user_id}",data-original-title="#{article.user_nick}")

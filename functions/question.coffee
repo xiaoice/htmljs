@@ -52,6 +52,18 @@ func_question =
         callback null,q
     .error (e)->
       callback e
+  getByPinyin:(pinyin,callback)->
+    Question.find
+      where:
+        pinyin:pinyin
+      include:[User]
+      raw:true
+    .success (q)->
+      if not q then callback new Error '不存在的问题'
+      else
+        callback null,q
+    .error (e)->
+      callback e
   addTagsToQuestion:(question_id,tagIds)->
     QuestionTag.findAll
       where:

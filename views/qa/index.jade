@@ -39,7 +39,7 @@ html
                     h2.title
                       if question.is_jing
                         img(src="#{assets_head}/images/jing.png",width="18px",height="18px")
-                      a(href='/qa/#{question.id}', title='#{question.title}', rel='bookmark') 
+                      a(href='/qa/#{question.pinyin?question.pinyin:question.id}', title='#{question.title}', rel='bookmark') 
                         |#{question.title}
                       if question.answer_count == 0
                         span.label.tip.new 求回答

@@ -33,3 +33,4 @@ module.exports =
   score:
     defaultValue:0
     type:"double"
+  pinyin:"varchar(1000)"

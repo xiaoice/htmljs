@@ -4,6 +4,18 @@ Column = __M 'columns'
 User = __M "users"
 Card = __M 'cards'
 Visit_log = __M 'article_visit_logs'
+request = require 'request'
+pinyin = require ("./../lib/PinYin.js")
+en_func = (text,callback)->
+  request.get "http://openapi.baidu.com/public/2.0/bmt/translate?client_id=HtiSPl1lCtzy0IBuWhuh2VHw&from=zh&to=en&q="+text,(e,r,body)->
+    console.log body
+    en = null
+    try
+      result = JSON.parse body
+      en = result.trans_result[0].dst
+    catch e
+      en = pinyin(text,{heteronym: false,style: pinyin.STYLE_NORMAL}).join("")
+    callback en
 Visit_log.sync()
 User.hasOne Article,{foreignKey:"user_id"}
 Article.belongsTo User,{foreignKey:"user_id"}
@@ -56,10 +68,21 @@ func_article =
       callback error
   add:(data,callback)->
     data.uuid = uuid.v4()
+    
     Article.create(data)
     .success (article)->
       
       article.updateAttributes {sort:article.id},['sort']
+      Column.find
+        where:
+          id:article.column_id
+      .success (column)->
+        if column && column.name
+          title = column.name+" "+ article.title
+        else
+          title = article.title
+        en_func article.title,(en)->
+          article.updateAttributes {pinyin:en},['pinyin']
       callback null,article
     .error (error)->
       callback error
@@ -149,6 +172,19 @@ func_article =
       raw:true
     .success (article)->
       callback null,article
+    .error (error)->
+      callback error
+  getByPinyin:(pinyin,callback)->
+    Article.find
+      where:
+        pinyin:pinyin
+      include:[User]
+      raw:true
+    .success (article)->
+      if not article 
+        callback new Error '不存在的文章'
+      else
+        callback null,article
     .error (error)->
       callback error
   getZansByArticleId:(article_id,callback)->

@@ -57,7 +57,7 @@ html
               .bd
                 each article,i in articles
                   .item(class="#{article.visit_count<60?'new':''}")
-                    a.title(href="/article/#{article.id}") #{article.title}
+                    a.title(href="/article/#{article.pinyin?article.pinyin:article.id}") #{article.title}
                     .desc 
                       
                       a.user(href="/user/#{article.user_id}") #{article.user_nick}
@@ -97,7 +97,7 @@ html
               .bd
                 each question,i in questions
                   .item(class="#{question.visit_count<30?'new':''}")
-                    a.title(href="/qa/#{question.id}") #{question.title}
+                    a.title(href="/qa/#{question.pinyin?question.pinyin:question.id}") #{question.title}
                     .desc 
                       a.user(href="/user/#{question.user_id}") #{question.user_nick}
                       span.time #{moment(question.createdAt).fromNow()}

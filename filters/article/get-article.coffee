@@ -13,5 +13,6 @@ module.exports = (req,res,next)->
       if error then next error
       else if not article then next new Error '不存在的文章'
       else
+        req.params.id = article.id
         res.locals.article = article
         next()

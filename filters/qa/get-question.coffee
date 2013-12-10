@@ -15,6 +15,7 @@ module.exports = (req,res,next)->
       if error then next error
       else if not question then next new Error '不存在的问题'
       else
+        req.params.id = question.id
         res.locals.question = question
         func_comment.getAllByTargetId 'question_'+question.id,1,10,null,(error,comments)->
           res.locals.question_comments = comments

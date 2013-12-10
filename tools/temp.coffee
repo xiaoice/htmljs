@@ -4,27 +4,14 @@ en_func = require './../lib/translate.coffee'
 func_column = __F 'column'
 func_article = __F 'article'
 queuedo = require 'queuedo'
-func_article.getAll 1,600,null,(error,articles)->
+func_article.getAll 1,1000,null,(error,articles)->
   queuedo articles,(article,next,context)->
-    func_column.getById article.column_id,(error,column)->
-      if column && column.name
-        title = column.name+" "+ article.title
-      else
-        title = article.title
-      en_func title,(en)->
-        if en
-          func_article.update article.id,
-            pinyin:en
-          .success ()->
-            setTimeout ()->
-              next.call(context)
-            ,300
-          .error ()->
-            next.call(context)
-        else
-          next.call(context)
+    func_article.update {pinyin:article.pinyin.replace(/ /g,"-")}
   ,()->
-
+(__F 'question').getAll 1,1000,null,(error,qas)->
+  queuedo qas,(qa,next,context)->
+    (__F 'question').update {pinyin:qa.pinyin.replace(/ /g,"-")}
+  ,()->
 # (__F 'question').getAll 1,50,null,(error,articles)->
 #   queuedo articles,(qa,next,context)->
 #     en_func qa.title,(en)->

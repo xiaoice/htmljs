@@ -61,9 +61,11 @@ app.configure ->
       res.send page,404
   app.use (err, req, res, next)->
     console.trace err
-    res.render 'error.jade'
+    res.render 'error.jade',
       error:err.message
       code:err.code
+    ,{status: 404},(error,page)->
+      res.send page,404
   
   app.locals.moment= require 'moment'
   app.locals.moment.lang('zh-cn');

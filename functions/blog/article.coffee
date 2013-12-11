@@ -1,8 +1,41 @@
 Articles = __M 'blog/articles'
 Articles.sync()
-
-func_article = {}
-
-__FC func_article,Articles,['add','getById','getAll','update','count','addCount','delete']
+Blog = __M 'blog/blogs'
+Blog.hasOne Articles,{foreignKey:"blog_id"}
+Articles.belongsTo Blog,{foreignKey:"blog_id"}
+func_article = 
+  getAll:(page,count,condition,order,include,callback)->
+    if arguments.length == 4
+      callback = order
+      order = null
+      include = null
+    else if arguments.length == 5
+      callback = include
+      include = null
+    query = 
+      offset: (page - 1) * count
+      limit: count
+      order: order || "id desc"
+      raw:true
+      include:[Blog]
+    if condition then query.where = condition
+    if include then query.include = include
+    Articles.findAll(query)
+    .success (ms)->
+      callback null,ms
+    .error (e)->
+      callback e
+  getByUrl:(url,callback)->
+    Articles.find
+      where:
+        url:url
+    .success (article)->
+      if article
+        callback null,article
+      else
+        callback new Error '不存在的博文'
+    .error (e)->
+      callback e
+__FC func_article,Articles,['add','getById','update','count','addCount','delete']
 
 module.exports = func_article

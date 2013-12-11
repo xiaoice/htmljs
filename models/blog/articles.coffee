@@ -10,4 +10,4 @@ module.exports =
     type:"int"
     defaultValue:0
   user_id:"int"
-  
+  time:"varchar(40)"

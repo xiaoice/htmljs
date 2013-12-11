@@ -20,8 +20,8 @@ module.exports.controllers =
           res.send result
         else
           func_article.getByUrl req.body.url,(error,article)->
-            if not article
-              result.info = error.message
+            if article
+              result.info = "error"
               res.send result
             else
               func_article.add

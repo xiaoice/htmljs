@@ -1,6 +1,6 @@
 func_article = __F 'blog/article'
 func_blog = __F 'blog/blog'
-
+moment = require 'moment'
 module.exports.controllers = 
   "/":
     get:(req,res,next)->

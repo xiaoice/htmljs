@@ -54,9 +54,9 @@ html
             .module.mod.recent_articles
               .hd
                 a(href="/article") 最新的专栏文章（#{locals.all_count?all_count.article:0}）
-              .bd
+              .bd(role="list")
                 each article,i in articles
-                  .item(class="#{article.visit_count<60?'new':''}")
+                  .item(class="#{article.visit_count<60?'new':''}",role="listitem")
                     a.title(href="/article/#{article.pinyin?article.pinyin:article.id}") #{article.title}
                     .desc 
                       

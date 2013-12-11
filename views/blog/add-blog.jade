@@ -26,13 +26,11 @@ html
                 .control-group
                   input#title(type='text', value = "",name='name', placeholder='blog名称,使用尽量少的字描述',required)
                 .control-group
-                  input(type='text', value = "",name='logo', placeholder='logo地址',required)
-                .control-group
                   input(type='text', value = "",name='url', placeholder='url地址',required)
                 .control-group
-                  input(type='text', value = "",name='user_id', placeholder='作者id',required)
+                  input(type='text', value = "",name='user_id', placeholder='作者id')
                 .control-group#wmd-editor-parent
-                    textarea(name="desc",placeholder='描述',required)
+                    textarea(name="desc",placeholder='描述',required,style="width:98%")
                 .control-group
                   button.btn(type='submit') 添加
           

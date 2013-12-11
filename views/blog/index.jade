@@ -2,7 +2,7 @@
 html(xmlns:wb='http://open.weibo.com/wb')
   head
     include ../head
-    title 博 - 前端乱炖
+    title 博集 - 前端乱炖
     |<meta name="description" content="">
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
   body#blogs
@@ -14,19 +14,28 @@ html(xmlns:wb='http://open.weibo.com/wb')
           a(href="/") 首页
           span.divider /
         li.active
-          span 博
+          span 博集
       .blog-list.module
         .hd 收录博客列表
         .bd
           each blog in blogs
             .blog
-              a.user 
-                img(src="#{blog.users.head_pic}",width=70,height=70)
               .others
-                .title #{blog.name}
-                .desc #{blog.desc.length>60?(blog.desc.substr(0,60)+"..."):blog.desc}
-                .url 地址：
-                  a(href="#{blog.url}",target="_blank") #{blog.url}
+                a.title(href="#{blog.url}",target="_blank") 
+                  img(src="http://g.etfv.co/#{blog.url}",width="15",height="15",style="margin-right:5px;")
+                  | #{blog.name}(#{blog.article_count})
+                .hidden.desc #{blog.desc.length>60?(blog.desc.substr(0,30)+"..."):blog.desc}
+      .article-list.module
+        .hd 最近更新的博文
+        .bd 
+          each article in articles
+            .article
+              .title 
+                img(src="http://g.etfv.co/#{article.blog_blogs.url}",width="15",height="15",style="margin-right:5px;")
+                a(href="#{article.url}") #{article.title}
+              .desc #{article.content.replace(/<[^>]*?>/g,"").substr(0,60)+"..."}
+              .time #{article.time?moment(article.time).format("YYYY-MM-DD"):''}
+          include ../page
       
     include ../simple-footer
     

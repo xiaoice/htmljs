@@ -93,11 +93,16 @@ html(xmlns:wb='http://open.weibo.com/wb')
       .module.my_columns
         .hd 我的专栏
         .bd
+          - var now = new Date().getTime();
           if locals.my_columns && my_columns.length
             each column in my_columns
               .my_column
-                a.title(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
-            a.btn(href="/article/column/add") 创建新专栏
+                .title 
+                  a(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
+                .time 最后更新：<span class="#{now-column.last_article_time>1000*60*60*24*5?'imp':''}">#{moment(column.last_article_time).fromNow()} </span>
+                  a.go(href="/article/add?column_id=#{column.id}") 去更新
+            div
+              a.btn(href="/article/column/add") 创建新专栏
           else
             .no 还没有专栏，先创建专栏再发表原创文章吧！
               a(href="/article/column/add") 创建专栏

@@ -686,7 +686,9 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #topic .publish legend{margin:0;}
 #topic .publish .control-group{margin-top:10px;}
 #topic .publish .fake-form{padding-top:10px;}#topic .publish .fake-form textarea{width:600px;border-radius:3px;}
-#blogs .blog-list .blog{width:300px;display:inline-block;vertical-align:top;margin-right:20px;background:#eee;padding:10px;}#blogs .blog-list .blog .user{float:left;width:40px;padding-top:10px;}#blogs .blog-list .blog .user img{width:40px;}
-#blogs .blog-list .blog .others{float:left;width:240px;margin-left:10px;}
+#blogs .blog-list .blog{display:inline-block;vertical-align:top;margin-right:20px;padding:0 10px;}#blogs .blog-list .blog .user{float:left;width:40px;padding-top:0px;}#blogs .blog-list .blog .user img{width:40px;}
+#blogs .blog-list .blog .others{float:left;}
 #blogs .blog-list .blog .title{font-weight:bold;color:#333;line-height:30px;}
-#blogs .blog-list .blog .desc{color:#999;line-height:20px;font-size:12px;}
+#blogs .blog-list .blog .desc{color:#999;line-height:20px;font-size:12px;height:40px;}
+#blogs .article-list .article{margin:10px;}#blogs .article-list .article .title{line-height:30px;font-size:14px;}#blogs .article-list .article .title a{color:#444;}
+#blogs .article-list .article .desc{color:#aaa;}

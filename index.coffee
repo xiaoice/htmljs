@@ -36,13 +36,12 @@ app.configure ->
   app.use express.bodyParser()
   app.use express.cookieParser()
   app.use express.cookieSession(secret: 'fd2afdsafdvcxzjaklfdsa')
-  app.use express.methodOverride()
   app.use(log4js.connectLogger(logger, {level:log4js.levels.INFO}))
   app.locals.assets_head = config.assets_head
   app.use (req,res,next)->
     res.locals.url = req.url
     agent = req.get("user-agent")
-    if agent == ""
+    if !agent
       res.end ' hello robot 1'
       return
     for i in [0...black.length]
@@ -61,6 +60,7 @@ app.configure ->
     res.render '404.jade',{status: 404},(error,page)->
       res.send page,404
   app.use (err, req, res, next)->
+    console.trace err
     res.render 'error.jade'
       error:err.message
       code:err.code

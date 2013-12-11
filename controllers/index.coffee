@@ -82,7 +82,7 @@ module.exports.controllers =
         site_url: 'http://www.html-js.com',
         image_url: 'http://www.html-js.com/icon.png',
         author: "芋头"
-      func_article.getAll 1,20,null,(error,articles)->
+      func_article.getAll 1,20,{is_yuanchuang:1},'id desc',(error,articles)->
         if error then next error
         else
           articles.forEach (article)->

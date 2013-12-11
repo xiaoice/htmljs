@@ -19,11 +19,14 @@ ArticleZanLogs.sync()
 cache = 
   recent:[]
 func_article =  
-  getAll:(page,count,condition,callback)->
+  getAll:(page,count,condition,order,callback)->
+    if not callback
+      callback = order
+      order = "sort desc,id desc"
     query = 
       offset: (page - 1) * count
       limit: count
-      order: "sort desc,id desc"
+      order: order
       include:[User,Column]
       raw:true
     if condition then query.where = condition

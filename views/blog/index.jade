@@ -33,7 +33,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
               .title 
                 img(src="http://g.etfv.co/#{article.blog_blogs.url}",width="15",height="15",style="margin-right:5px;")
                 a(href="#{article.url}") #{article.title}
-              .desc #{article.content.replace(/<[^>]*?>/g,"").substr(0,Math.floor(Math.random()*40+60)+"..."}
+              .desc #{article.content.replace(/<[^>]*?>/g,"").substr(0,Math.floor(Math.random()*40+60))+"..."}
               .time #{article.time?moment(article.time*1).format("YYYY-MM-DD"):''}
           include ../page
       

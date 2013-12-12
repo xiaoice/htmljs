@@ -34,7 +34,7 @@ module.exports.controllers =
                   content:req.body.content
                   user_id:blog.user_id
                   url:req.body.url
-                  time:moment(req.body.time).valueOf()
+                  time:moment(req.body.time.replace(/年|月|日/g,'')).valueOf()
                 ,(error,article)->
                   if error 
                     result.info = error.message

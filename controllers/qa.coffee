@@ -266,7 +266,7 @@ module.exports.controllers =
                 source_user_id:res.locals.user.id
                 source_user_nick:res.locals.user.nick
                 time:new Date()
-                target_path:"/qa/"+question.question_id+"#answer-"+answer.id
+                target_path:"/qa/"+question.id+"#answer-"+answer.id
                 action_name:"【采纳】了你的回答，获得 20 经验值"
                 target_path_name:answer.md.substr(0,100)
             res.redirect 'back'

@@ -110,10 +110,10 @@ html(xmlns:wb='http://open.weibo.com/wb')
                       if !article.is_publish
                         span.label.tip 此文正在审核中
                   if article.desc
-                    .entry-content.clearfix 
+                    .entry-content.hidden.clearfix 
                       |!{article.desc.replace(/<[^>]*?>/g," ").substr(0,200)}
                       a(href="/article/#{article.id}")  阅读更多>>
-                  .entry-foot
+                  .entry-foothidden.
                     div.others
                       span.author.vcard.item
                         span.index 

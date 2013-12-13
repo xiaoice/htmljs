@@ -31,7 +31,7 @@ html
                 //-   li
                 //-     a(data-toggle="tab",href="#seeeditor") 可视化编辑器
                 .control-group
-                  textarea#desc(name="desc",placeholder="请用200字以内简单描述此文内容",required) #{locals.article?article.desc.replace(/<[^>]*?>/g,'').replace(/\s/g,''):''}
+                  textarea#desc(name="desc",placeholder="请用200字以内简单描述此文内容",required) !{locals.article?article.desc.replace(/<[^>]*?>/g,'').replace(/\s/g,''):''}
                 .tab-content
                   .tab-pane#markdowneditor.active
                     .control-group#wmd-editor-parent

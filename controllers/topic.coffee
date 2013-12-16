@@ -38,6 +38,7 @@ module.exports.controllers =
         res.send result
   "/:id":
     get:(req,res,next)->
+      res.locals.is_clear = req.query.is_clear 
       func_topic.addCount req.params.id,'visit_count'
       res.render 'topic/topic.jade'
   "/:id/edit":

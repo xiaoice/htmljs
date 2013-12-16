@@ -9,17 +9,19 @@ html
     script(src='#{assets_head}/js/jquery.githubRepoWidget.min.js')
   body#topic
     - locals.pageId=10;
-    include ./../header
+    if !locals.is_clear
+      include ./../header
     #content.clearfix
-      ul.breadcrumb
-        li
-          a(href="/") 首页
-          span.divider /
-        li
-          a(href="/topic") 话题
-          span.divider /
-        li.active
-          span #{topic.title}
+      if !locals.is_clear
+        ul.breadcrumb
+          li
+            a(href="/") 首页
+            span.divider /
+          li
+            a(href="/topic") 话题
+            span.divider /
+          li.active
+            span #{topic.title}
       .content
         .left
           .module.main
@@ -116,7 +118,7 @@ html
                   <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
                   <button class="btn btn-primary">插入</button>
                 </div>
-      .right
+      .right(class="#{locals.is_clear?'hidden':''}")
         #fixed-modules
           .module.share
             .hd 分享
@@ -407,4 +409,5 @@ html
       var bds_config={"bdText":"分享自@前端乱炖 的精彩话题【#{topic.title}】@#{topic.user_nick}：#{topic.md.substr(0,100).replace(/\s/g,"")}","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
       document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
       </script>
-    include ../footer
+    if !locals.is_clear
+      include ../footer

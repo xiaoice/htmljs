@@ -50,6 +50,12 @@ html
                           .sex.nv
                     .name
                       a(href="/card/#{card.id}")  #{card.nick}
+          .module.
+            <script type="text/javascript">
+            /*728*90，创建于2013-12-16*/
+            var cpro_id = "u1435510";
+            </script>
+            <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
           if locals.articles
             .module.mod.recent_articles
               .hd
@@ -133,12 +139,6 @@ html
                   .hd 话题类型
                   each tag in topic_tags
                     a.tag(href="/topic?tag_id=#{tag.id}",class="#{tag.important?'important':''}") #{tag.name}
-          p.
-            <script type="text/javascript">
-             /*自定义标签云，创建于2013-11-21*/
-             var cpro_id = "u1416856";
-            </script>
-            <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
           .module.timelines
             each timeline in timelines
               if timeline.card_id

@@ -119,6 +119,11 @@ html
                   <button class="btn btn-primary">插入</button>
                 </div>
       .right(class="#{locals.is_clear?'hidden':''}")
+        .module
+          .hd 用手机访问（用微信扫描）
+          .bd(style="height:230px;")
+            img(width="230",height="230",src="http://qr.liantu.com/api.php?text=http://www.html-js.com/topic/#{topic.id}&logo=http://htmljs.b0.upaiyun.com//images/icon.png")
+        
         #fixed-modules
           .module.share
             .hd 分享

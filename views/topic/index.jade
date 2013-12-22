@@ -53,7 +53,7 @@ html
                             a.t(href="/topic/#{t.id}") #{t.title}
                             //- span (#{moment(t.createdAt).format("MM-DD")})
                         a.more(href="/topic?tag_id=#{tag.id}") 更多话题 >>
-            else
+            else if locals.tag
               .now-tag
                 a.name(href="/topic?tag_id=#{tag.id}",class="#{locals.tag_id==tag.id?'active':''} #{tag.important?'important':''}") #{tag.name}
                 .others

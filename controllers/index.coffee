@@ -45,9 +45,6 @@ module.exports.controllers =
               else
                 res.locals.timelines = timelines
                 res.render 'index.jade'
-  "/search/:key":
-    get:(req,res,next)->
-      func_index.searchAll req.params.key.split(" "),1,20,(error)->
 
   "/index/:id/update":
     get:(req,res,next)->
@@ -355,20 +352,20 @@ module.exports.controllers =
         res.render 'search.jade'
         return
       nowtime = new Date().getTime()
-      console.log searchStatic
-      if searchStatic[req.originalUrl] && (nowtime - searchStatic[req.originalUrl] < 1000*60*60*24*5)
-        console.log 'read from static'
-        res.set('Content-Type', 'text/html');
-        res.send fs.readFileSync './static/'+encodeURIComponent(req.originalUrl)+".html"
-        return
-
+      try
+        if searchStatic[req.originalUrl] && (nowtime - searchStatic[req.originalUrl] < 1000*60*60*24*10)
+          console.log 'read from static'
+          res.set('Content-Type', 'text/html');
+          res.send fs.readFileSync './static/'+encodeURIComponent(req.originalUrl)+".html"
+          return
+      catch e
       res.locals.q = req.query.q
       func_search.query {"query":req.query.q,"limit":10,"offset":((req.query.page||1)-1)*10},(error,data)->
         if error 
           next error
         else
-          data = JSON.parse data
-
+          try
+            data = JSON.parse data
           res.locals.results = data.data
           res.locals.total=data.total_count
           res.locals.totalPage=Math.ceil(data.total_count/10)
@@ -379,7 +376,9 @@ module.exports.controllers =
             func_search.getAll 1,30,null,'updatedAt desc',(error,recent)->
               res.locals.recent_words = recent
               res.render 'search.jade',null,(error,html)->
-                fs.writeFileSync './static/'+encodeURIComponent(req.originalUrl)+".html",html,'utf-8'
+                try
+                  fs.writeFileSync './static/'+encodeURIComponent(req.originalUrl)+".html",html,'utf-8'
+                catch e
                 searchStatic[req.originalUrl] = nowtime
                 res.send html
 

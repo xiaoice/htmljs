@@ -35,11 +35,15 @@ module.exports.controllers =
           (__F 'index').add topic.uuid
           (__F 'coin').add 20,res.locals.user.id,"发布了一个话题"
           func_search.add {type:"topic","pid":topic.uuid,"title":topic.title,"html":topic.html.replace(/<[^>]*>/g,""),"udid":topic.uuid,"id": topic.id},()->
+          if req.body.tag_id
+            func_topic_tag.addCount req.body.tag_id,'topic_count'
         res.send result
   "/:id":
     get:(req,res,next)->
       res.locals.is_clear = req.query.is_clear 
       func_topic.addCount req.params.id,'visit_count'
+      if res.locals.topic.tag_id
+        func_topic_tag.addCount res.locals.topic.tag_id,'visit_count'
       res.render 'topic/topic.jade'
   "/:id/edit":
     get:(req,res,next)->

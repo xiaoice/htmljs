@@ -19,3 +19,6 @@ module.exports =
     type:"int"
     defaultValue:5
   email:"varchar(100)"
+  is_block:
+    type:"tinyint"
+    defaultValue:0

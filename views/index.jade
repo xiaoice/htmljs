@@ -24,11 +24,7 @@ html
                   .input-append(style="margin:0;")
                     input#keyword.span2.input-large(type="text",name="q",placeholder="请输入关键词查询全站内容")
                     button.btn 搜索
-              div.adds(style="padding-top:15px;padding-bottom:0;")
-                |快速入口：
-                a.btn.gray(href="/qa/add") <i class="icon-lightbulb"></i> 提问问题
-                a.btn.gray(href="/topic/add") <i class="icon-conversation"></i> 发起话题
-                a.btn.gray(href="/article/add") <i class="icon-book-open"></i> 发表原创文章
+              
           div.hidden(style="margin-bottom:10px;")
             
               - var randomnum = Math.random();
@@ -286,23 +282,27 @@ html
         //-   .hd 公告
         //-   .bd
         .module
-          .hd 公告
+          .hd 乱炖是什么？
           .bd
-            p 赞助本站：
-              a(href="/ad") 企业或个人赞助
-            p 
-              a(href="http://www.html-js.com/qa/75") 给本站提意见
+            .desc 乱炖是做一个前端知识平台。它可以支撑我们的线下活动（活动频道），可以提供一个展示自己的平台（专栏频道），可以解答疑惑（问答频道），也可以讨论感兴趣的话题（话题频道）。<br/>我们将其的定位是知识社区，以内容为主，内容来自于目标用户，然后也使目标用户受益。
+            a(href="http://www.html-js.com/topic/115") 更多信息
+        .module.quick-go
+          .hd 快速入口
+          .bd
+              a.btn(href="/qa/add") 提问
+              a.btn(href="/article/add") 发表文章
+              a.btn(href="/topic/add") 发起话题
         .module
           .hd QQ群组
           .bd.
             <div class="textwidget">
-              <div>乱炖情感群:<em style="color:#ff6700;">46532005</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=785525cf168fab8c11415bd56f5602c3735497d10a66635115b300baf8769e65">加入</a></div>
-              <div>乱炖技术群：<em style="color:#ff6700;">227896607</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=9b89fe56ea2eb39e08003541dab7282679ba2f0c1fbec2abf1d00d1b7607b280">加入</a></div>
-              <div>NodeJS乱炖: <em style="color:#ff6700;">95323225</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=bcf7977843816c9dde25f8b8caae2d81675f2224a50545ea313e4e98e33c06dc">加入</a></div>
-              <div>自由职业者: <em style="color:#ff6700;"> 275182059</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=5fdf12b1a777677e8b1f25e32cec5cee7cfd59417cce2bd7bc46a8cac95972ea">加入</a></div>
-              <div>IOS 乱炖: <em style="color:#ff6700;"> 292062123</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=3f6b8c853435e0a68b1b86f036eb823a97488cd68c728c7dfe3569a3a9902f7e">加入</a></div>
-              <div>求职招聘群: <em style="color:#ff6700;"> 12892863</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=e941d6613691a264555ae3fe62168d2d56928bc2a7a7d53d80536ff44fdb63d3">加入</a></div>
-              <div>站长的QQ: <em style="color:#ff6700;"> 676588498</em></div>
+              <div>乱炖情感群:<em style=";">46532005</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=785525cf168fab8c11415bd56f5602c3735497d10a66635115b300baf8769e65">加入</a></div>
+              <div>乱炖技术群：<em style=";">227896607</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=9b89fe56ea2eb39e08003541dab7282679ba2f0c1fbec2abf1d00d1b7607b280">加入</a></div>
+              <div>NodeJS乱炖: <em style=";">95323225</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=bcf7977843816c9dde25f8b8caae2d81675f2224a50545ea313e4e98e33c06dc">加入</a></div>
+              <div>自由职业者: <em style=";"> 275182059</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=5fdf12b1a777677e8b1f25e32cec5cee7cfd59417cce2bd7bc46a8cac95972ea">加入</a></div>
+              <div>IOS 乱炖: <em style=";"> 292062123</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=3f6b8c853435e0a68b1b86f036eb823a97488cd68c728c7dfe3569a3a9902f7e">加入</a></div>
+              <div>求职招聘群: <em style=";"> 12892863</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=e941d6613691a264555ae3fe62168d2d56928bc2a7a7d53d80536ff44fdb63d3">加入</a></div>
+              <div>站长的QQ: <em style=";"> 676588498</em></div>
             </div>
         .module.text
             .hd 微信公众账号

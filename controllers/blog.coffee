@@ -51,6 +51,14 @@ module.exports.controllers =
         if error then next error
         else
           res.redirect '/blog'
+  "/:id":
+    get:(req,res,next)->
+      func_article.getById req.params.id,(error,blog)->
+        if error then next error
+        else
+          res.locals.blog = blog
+          func_article.addCount req.params.id,'visit_count',()->
+          res.render 'blog/jump.jade'
 module.exports.filters =
   "/":
     get:['freshLogin','blog/get-all-blogs','blog/get-all-articles']

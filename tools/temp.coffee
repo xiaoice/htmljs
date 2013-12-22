@@ -12,14 +12,7 @@ func_article.getAll 1,1000,null,(error,articles)->
     else
       next.call(context)
   ,()->
-(__F 'question').getAll 1,1000,null,(error,qas)->
-  queuedo qas,(qa,next,context)->
-    if qa.pinyin
-      (__F 'question').update qa.id,{pinyin:qa.pinyin.replace( /\s+?/g,"-")},()->
-        next.call(context)
-    else
-      next.call(context)
-  ,()->
+
 # (__F 'question').getAll 1,50,null,(error,articles)->
 #   queuedo articles,(qa,next,context)->
 #     en_func qa.title,(en)->

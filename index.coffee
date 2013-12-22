@@ -65,6 +65,7 @@ app.configure ->
       res.send page,404
   
   app.locals.moment= require 'moment'
+  app.locals.stringUtil = require './lib/string-util.coffee'
   app.locals.moment.lang('zh-cn');
   app.locals.assets_head = config.assets_head
   app.locals.assets_tm = "8-23"

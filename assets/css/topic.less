@@ -8,17 +8,36 @@
     .tags{
       display: inline-block;
       vertical-align: top;
-      padding:10px;
-      a{
-        font-size: 13px;
+      padding:20px;
+      width:110%;
+      .tag{
+        display:inline-block;
+        vertical-align: top;
+        margin-right: 10px;
+        margin-bottom:10px;
+        // background: #f3f3f3;
+        border-bottom: 1px solid #efefef;
+        width:450px;
+        padding:10px;
+        padding-top:5px;
+        height:270px;
+      }
+      a.name{
+        font-size: 16px;
         color:#444;
-        padding:0 15px;
         display: inline-block;
         vertical-align:top;
+
+        line-height: 20px;
         
-        height:27px;
-        line-height: 27px;
         margin-top: 4px;
+      }
+      .desc{
+        font-size: 12px;
+        color:#aaa;
+        line-height: 20px;
+        margin-top:5px;
+        height:20px;
       }
       a.active{
         background: #eee;
@@ -34,12 +53,78 @@
       color:@red;
       font-weight:bold;
     }
+    .topics{
+      margin:10px 0;
+      .t {
+        font-size: 13px;
+        line-height: 25px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        display: inline-block;
+        height:25px;
+         white-space: nowrap;
+      overflow: hidden;             
+      width:405px;
+      -o-text-overflow: ellipsis;    /* Opera */
+      text-overflow:    ellipsis;
+      color: @green;
+      vertical-align: top;
+      margin-left: 5px;
+      }
+      span{
+          color:#999;
+          font-size: 12px;
+          line-height: 25px;
+          display: inline-block;
+          vertical-align: top;
+        }
+    }
+    .item{
+        font-size: 12px;
+        margin-right: 20px;
+        .index{
+          color:#888;
+        }
+        .value{
+          color:@green;
+        }
+      }
     }
     .actions{
       width:100px;
-      margin-left:10px;
-      padding-bottom:10px;
-      a{
+      margin-top: 10px;
+    }
+    a.more{
+      font-size: 12px;
+      line-height: 25px;
+      color:#999;
+      float:right;
+    }
+    .now-tag{
+      a.name{
+        font-size: 16px;
+        color:#444;
+        line-height: 30px;
+        margin-top: 4px;
+      }
+      .desc{
+        font-size: 12px;
+        color:#aaa;
+        line-height: 20px;
+        margin-top:5px;
+        height:20px;
+      }
+      padding:15px;
+      .item{
+        font-size: 12px;
+        margin-right: 20px;
+        .index{
+          color:#888;
+        }
+        .value{
+          color:@green;
+        }
       }
     }
   }
@@ -306,7 +391,7 @@
   }
   .topic-content{
     padding:10px;
-    font-size: 13px;
+    font-size: 14px;
         color:#404040;
         
         

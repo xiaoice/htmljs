@@ -85,6 +85,8 @@ html(xmlns:wb='http://open.weibo.com/wb')
               else
                 a.btn.disabled.tip-trigger(data-original-title="#{rss_his}")
                   |已订阅（#{locals.rsses?locals.rsses.length:''}）
+              if locals.user && locals.user.id == column.user_id
+                a.btn(href="/article/column/#{column.id}/edit",style="margin-left:10px;") 编辑
               
               
       .content

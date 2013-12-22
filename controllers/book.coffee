@@ -53,7 +53,11 @@ module.exports.controllers =
           result.info = e.message
         else
           result.success = 1
-          result.data = JSON.parse body
+          try
+            result.data = JSON.parse body
+          catch e
+            result.info = e.message
+            result.success = 0
         res.send result
 module.exports.filters = 
   "/":

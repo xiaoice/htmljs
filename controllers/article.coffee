@@ -313,6 +313,21 @@ module.exports.controllers =
             action_name:"请求开通专栏"
             target_path_name:column.name
           res.redirect '/article/column/'+column.id
+  "/column/:id/edit":
+    get:(req,res,next)->
+
+      res.render 'article/add-column.jade'
+    post:(req,res,next)->
+      if not req.body.desc_md 
+        next new Error '必须填写简介'
+      req.body.desc_html = safeConverter.makeHtml req.body.desc_md
+      req.body.user_id = res.locals.user.id
+      req.body.is_publish = 1
+      
+      func_column.update req.body.id,req.body,(error,column)->
+        if error then next error
+        else 
+          res.redirect '/article/column/'+column.id
   "/column/:id":
     get:(req,res,next)->
       condition = 
@@ -414,6 +429,9 @@ module.exports.filters =
     get:['checkLogin','checkAdmin']
   "/:id/delete":
     get:['checkLogin','checkAdmin']
+  "/column/:id/edit":
+    get:['checkLogin','checkCard',"article/get-column"]
+    post:['checkLogin','checkCard']
 
 
 

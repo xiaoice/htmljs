@@ -30,7 +30,7 @@ html
                       else
                         .sex.nv
                     .nick #{card.nick}
-                    .coin 经验值：#{card_user.coin}
+                    .coin 经验值：#{locals.card_user?card_user.coin:""}
 
                   hr
                   .desc #{card.desc}

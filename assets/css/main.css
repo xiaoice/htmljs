@@ -33,6 +33,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #content .btn.gray{background:#ddd;color:#666;border:1px solid #ccc;}
 #content .btn.gray:hover{background:#ccc;color:#666;border:1px solid #ccc;}
 #content .btn.blue{background:#68a4d1;}
+#content .small-btn{font-size:12px;height:23px;line-height:23px;padding:0 7px;}
 .group{margin-bottom:10px;}
 .group .label{margin:0 5px;}
 .pagination{margin-bottom:5px;margin-left:0;}.pagination ul{display:inline-block;}
@@ -254,6 +255,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index #content .search input{height:22px;width:630px;}
 #index #content .search button{height:32px;width:80px;}
 #index .search a{margin-right:10px;}
+#index .quick-go .btn{font-size:12px;padding:2px 5px;line-height:20px;height:20px;margin-right:5px;}
 #qas .actions{padding-bottom:10px;}#qas .actions .right-actions{float:right;}#qas .actions .right-actions a{padding:0 10px;line-height:30px;color:#5bb793;}
 #qas .actions .right-actions a.active,#qas .actions .right-actions a:hover{color:#666;}
 #qas .right a{color:#6fb79b;}
@@ -507,7 +509,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #article .post .entry-title .title{font-size:20px;line-height:30px;margin:0;color:#404040;font-weight:normal;}
 #article .post .entry-title .item{font-size:12px;margin-right:20px;}#article .post .entry-title .item .index{color:#aaa;}
 #article .post .entry-title .item .value{color:#888;}
-#article .post .entry-content{color:#555;padding:20px 0;font-size:13px;line-height:25px;word-wrap:break-word;word-break:break-all;}#article .post .entry-content h1,#article .post .entry-content h2,#article .post .entry-content h3,#article .post .entry-content h4,#article .post .entry-content h5{font-size:1.5em;}
+#article .post .entry-content{color:#555;padding:20px 0;font-size:14px;line-height:25px;word-wrap:break-word;word-break:break-all;}#article .post .entry-content h1,#article .post .entry-content h2,#article .post .entry-content h3,#article .post .entry-content h4,#article .post .entry-content h5{font-size:1.5em;}
 #article .post .entry-content p{line-height:25px;margin:20px 0;}
 #article .post .entry-content img{display:block;}
 #article .post .entry-content blockquote p{line-height:25px;margin:0;font-size:12px;}
@@ -610,11 +612,22 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #card .my_columns .column .action{margin-bottom:0;margin-top:5px;}#card .my_columns .column .action a{font-size:12px;color:#5bb793;padding:5px 0;}#card .my_columns .column .action a i:before{color:#5bb793;font-size:14px;}
 #card .my_columns .column .action span{color:#aaa;}#card .my_columns .column .action span i:before{font-size:14px;color:#aaa;}
 #talk{background:#efefef;}
-#topics .head{background:#fff;border-bottom:none;margin-bottom:10px;}#topics .head .tags{display:inline-block;vertical-align:top;padding:10px;}#topics .head .tags a{font-size:13px;color:#444;padding:0 15px;display:inline-block;vertical-align:top;height:27px;line-height:27px;margin-top:4px;}
+#topics .head{background:#fff;border-bottom:none;margin-bottom:10px;}#topics .head .tags{display:inline-block;vertical-align:top;padding:20px;width:110%;}#topics .head .tags .tag{display:inline-block;vertical-align:top;margin-right:10px;margin-bottom:10px;border-bottom:1px solid #efefef;width:450px;padding:10px;padding-top:5px;height:270px;}
+#topics .head .tags a.name{font-size:16px;color:#444;display:inline-block;vertical-align:top;line-height:20px;margin-top:4px;}
+#topics .head .tags .desc{font-size:12px;color:#aaa;line-height:20px;margin-top:5px;height:20px;}
 #topics .head .tags a.active{background:#eee;border-radius:3px;border-bottom:none;font-weight:bold;}
 #topics .head .tags a:first-child{border-left:none;}
 #topics .head .tags a.important{color:#f27369;font-weight:bold;}
-#topics .head .actions{width:100px;margin-left:10px;padding-bottom:10px;}
+#topics .head .tags .topics{margin:10px 0;}#topics .head .tags .topics .t{font-size:13px;line-height:25px;display:inline-block;height:25px;white-space:nowrap;overflow:hidden;width:405px;-o-text-overflow:ellipsis;text-overflow:ellipsis;color:#5bb793;vertical-align:top;margin-left:5px;}
+#topics .head .tags .topics span{color:#999;font-size:12px;line-height:25px;display:inline-block;vertical-align:top;}
+#topics .head .tags .item{font-size:12px;margin-right:20px;}#topics .head .tags .item .index{color:#888;}
+#topics .head .tags .item .value{color:#5bb793;}
+#topics .head .actions{width:100px;margin-top:10px;}
+#topics .head a.more{font-size:12px;line-height:25px;color:#999;float:right;}
+#topics .head .now-tag{padding:15px;}#topics .head .now-tag a.name{font-size:16px;color:#444;line-height:30px;margin-top:4px;}
+#topics .head .now-tag .desc{font-size:12px;color:#aaa;line-height:20px;margin-top:5px;height:20px;}
+#topics .head .now-tag .item{font-size:12px;margin-right:20px;}#topics .head .now-tag .item .index{color:#888;}
+#topics .head .now-tag .item .value{color:#5bb793;}
 #topics .right a{color:#6fb79b;}
 #topics .right .recent_comments .item{border-bottom:1px solid #eee;padding:5px 0;}
 #topics .right .hot_questions .item{border-bottom:1px solid #eee;padding:5px 0;}
@@ -653,7 +666,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #topic .main .comment .comment-item{padding-bottom:5px;}
 #topic .main .comment .comment-publish{margin-top:10px;}
 #topic .topic-title{border-bottom:1px solid #ddd;}#topic .topic-title .title{font-size:20px;line-height:50px;font-weight:normal;margin:0;padding:0;}
-#topic .topic-content{padding:10px;font-size:13px;color:#404040;}#topic .topic-content p{line-height:25px;margin:15px 0;}
+#topic .topic-content{padding:10px;font-size:14px;color:#404040;}#topic .topic-content p{line-height:25px;margin:15px 0;}
 #topic .topic-content blockquote p{line-height:25px;margin:0;font-size:12px;}
 #topic .topic-content img{border:1px solid #ddd;margin:10px;}
 #topic .topic-user .action{float:left;}#topic .topic-user .action a{line-height:40px;margin-right:10px;color:#999;font-size:14px;}#topic .topic-user .action a i{-webkit-transform:scale(0.9);-moz-transform:scale(0.9);}

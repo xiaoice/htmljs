@@ -53,6 +53,7 @@ html
                       else
                         - var link = "/"+result.type+"/"+result.id;
                       h2.title 
+                        - console.log (result)
                         a(href="#{link}") 
                           if result.type == 'article'
                             |「专栏」
@@ -64,6 +65,8 @@ html
                             |「话题」
                           else if result.type == 'answer'
                             |「回答」
+                          else if result.type == 'blog'
+                            |「站外博客」
                           | !{result.title}
                       div
                         a(href="#{link}",style="color:#5bb793;") http://www.html-js.com#{link}

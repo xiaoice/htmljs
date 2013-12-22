@@ -1,6 +1,7 @@
 func_article = __F 'blog/article'
 func_blog = __F 'blog/blog'
 moment = require 'moment'
+func_search = __F 'search'
 module.exports.controllers = 
   "/":
     get:(req,res,next)->
@@ -41,6 +42,7 @@ module.exports.controllers =
                   else
                     func_blog.addCount req.body.blog_id,'article_count',()->
                     result.success = 1
+                    func_search.add {type:"blog","pid":article.uuid,"title":article.title,"html":article.content.replace(/<[^>]*>/g,""),"udid":article.uuid,"id": article.id},()->
                   res.send result
   "/add-blog":
     get:(req,res,next)->

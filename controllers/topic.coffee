@@ -11,7 +11,7 @@ moment = require 'moment'
 module.exports.controllers = 
   "/":
     get:(req,res,next)->
-
+      res.locals.page = req.query.page
       res.render 'topic/index.jade'
 
   "/add":

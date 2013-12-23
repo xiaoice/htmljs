@@ -104,7 +104,7 @@ module.exports.controllers =
               atname = atname[1]
               func_user.getByNick atname,(error,user)->
                 if user
-                  func_topic_comment.update comment.id,{html:html.replace("@"+atname,"<a href='/user/"+user.id+"'>@"+atname+"</a>")}
+                  func_topic_comment.update comment.id,{html:coment.html.replace("@"+atname,"<a href='/user/"+user.id+"'>@"+atname+"</a>")}
                   func_info.add 
                     target_user_id:user.id
                     type:6

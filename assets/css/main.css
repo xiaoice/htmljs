@@ -249,8 +249,12 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index .topic_tags a:hover{background:#5bb793;color:#fff;}
 #index .topic_tags a.important{color:#f27369;font-weight:bold;}
 #index .recent_cards .card{display:inline-block;vertical-align:top;margin-right:5px;width:50px;}#index .recent_cards .card img{width:40px;height:40px;}
-#index .recent_cards .card .pic{width:40px;margin:0 auto;position:relative;}#index .recent_cards .card .pic a{display:block;}
+#index .recent_cards .card .pic{width:40px;margin:0 auto;position:relative;border-radius:100px;border:1px solid #aaa;}#index .recent_cards .card .pic img{display:block;width:36px;height:36px;border-radius:100px;border:2px solid #fff;}
+#index .recent_cards .card a{display:block;}
+#index .recent_cards .card .sex{border-radius:20px;border:1px solid #aaa;width:12px;height:12px;}
 #index .recent_cards .card .name{line-height:25px;text-align:center;height:25px;overflow:hidden;width:50px;margin:0 auto;}#index .recent_cards .card .name a{color:#666;}
+#index .recent_cards .nv-user .pic{border:1px solid #f27369;}#index .recent_cards .nv-user .pic img{border:2px solid #fff;}
+#index .recent_cards .nv-user .sex{border:1px solid #f27369;}
 #index #content .search .input-append{display:block;}
 #index #content .search input{height:22px;width:630px;}
 #index #content .search button{height:32px;width:80px;}

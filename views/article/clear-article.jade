@@ -5,9 +5,21 @@ html
     title #{locals.article&&article.title} - 专栏 - 前端乱炖
     |<meta name="description" content="#{locals.article?article.html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,100):""}">
     style
+      html,body{
+      margin:0;
+      background:#fff;
+      }
+      #content{
+      margin:0;
+      background:#fff;
+      }
       #bdshare a{}
       #article #content{
       width:440px;
+      }
+      #article .module{
+      margin:0;
+      margin-bottom:5px;
       }
       #article #content .column{
       width:auto;
@@ -18,26 +30,11 @@ html
       #article #content .post .entry-content div{font-size:16px;line-height:30px;}
       #article #content .post .entry-content pre{font-size:16px;line-height:30px;}
       #article #content .post .entry-content code{font-size:16px;line-height:30px;}
-  body#article
+  body#article.clear-article
     - locals.pageId=1;
     #content.clearfix.right.left
       
-      if locals.column
-        .module.columns
-          .hd 所属专栏
-          .bd
-            .column
-              a.title(href="/article/column/#{column.id}") #{column.name}
-              .desc !{column.desc_html}
-              .user
-                span 作者：
-                a(href="/user/#{column.user.id}") #{column.user.nick}
-                
-              .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
-              .actions
-                a(href="/article/column/#{column.id}/rss")
-                  i.rss.social
-                  |  邮件订阅（#{column.rss_count}）
+      
       article.post.module(id="post-#{article.id}")
         .entry-title
           
@@ -66,6 +63,18 @@ html
             if locals.user && (user.is_admin||user.id==article.user_id)
               span.index 管理：
               a.value(href="/article/#{article.id}/edit") 编辑
+      if locals.column
+        .module.columns
+          .hd 所属专栏
+          .bd
+            .column
+              a.title(href="/article/column/#{column.id}") #{column.name}
+              .desc !{column.desc_html}
+              .user
+                span 作者：
+                a(href="/user/#{column.user.id}") #{column.user.nick}
+                
+              .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
             
           
           

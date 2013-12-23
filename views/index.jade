@@ -36,7 +36,7 @@ html
                 a(href="/cards") 花名册新人（#{locals.all_count?all_count.card:0}）
               .bd
                 each card,i in cards
-                  .card.user
+                  .card.user(class="#{card.sex=='男'?'nan-user':'nv-user'}")
                     .pic
                       a.tooltip-trigger(href="/card/#{card.id}",data-original-title="#{card.desc}")
                         img(src="#{card.head_pic}")

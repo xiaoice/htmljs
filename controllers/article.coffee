@@ -17,6 +17,7 @@ safeConverter = new pagedown.Converter()
 console.log pagedown.Converter.Extra
 pagedown.Extra.init(safeConverter);
 read = require("readability")
+path = require 'path'
 request = require 'request'
 rss = require 'rss'
 module.exports.controllers = 
@@ -180,10 +181,13 @@ module.exports.controllers =
                   if rss.cards&&rss.cards.email
                     emails.push rss.cards.email
                 func_email.sendArticleRss article,emails.join(";")
-          sina.statuses.update 
-            access_token:res.locals.user.weibo_token
-            status:'我在@前端乱炖 发表了一篇原创文章【'+article.title+'】点击查看：http://www.html-js.com/article/'+article.id
           func_search.add {type:"article","pid":article.uuid,"title":article.title,"html":article.html.replace(/<[^>]*>/g,""),"udid":article.uuid,"id": article.id},()->
+          (__F 'create_thumbnail').create_article article.id,()->
+            sina.statuses.upload 
+              access_token:res.locals.user.weibo_token
+              pic:path.join __dirname,"../uploads/article_thumb/"+article.id+".png"
+              status:'我在@前端乱炖 发表了一篇原创文章【'+article.title+'】点击查看：http://www.html-js.com/article/'+article.id
+            
         res.send result
   "/:id/edit":
     "get":(req,res,next)->

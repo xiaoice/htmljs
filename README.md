@@ -6,7 +6,7 @@ htmljs
 约定模式：
 ==
 * 整个系统从数据到最终逻辑分为五层：1.models，2.functions，3.filters，4.routes，5.views
-
+d
 各部分的功能：
 ==
 * models，使用sequelize将数据库操作抽象化，使用其规定格式定义数据对象，完全不需要关心数据库的问题。

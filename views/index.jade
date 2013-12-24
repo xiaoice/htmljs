@@ -390,7 +390,7 @@ html
           top:0,
           background:"#000",
           opacity:0.7,
-          zIndex:1000000
+          zIndex:10000
           })
         $(container).on("click",function(){
           $(container).addClass("hidden")
@@ -515,7 +515,7 @@ html
       var is_max = false;
       function render() {
 
-         camera.position.x += ( mouseX - camera.position.x ) * .03;
+         camera.position.x += ( mouseX - camera.position.x ) * .01;
          //- camera.position.y += ( - mouseY - camera.position.y ) * .05;
         // camera.lookAt( scene.position );
         t+=0.4;

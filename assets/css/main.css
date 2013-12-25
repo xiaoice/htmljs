@@ -542,7 +542,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .columns .actions{margin-bottom:0;}#articles .columns .actions a{font-size:12px;line-height:20px;color:#5bb793;}#articles .columns .actions a i:before{color:#5bb793;}
 #articles .columns .actions span{font-size:12px;line-height:20px;color:#aaa;}#articles .columns .actions span i:before{color:#aaa;}
 #articles .columns article .entry-title{line-height:30px;margin:0;padding-left:10px;height:30px;overflow:hidden;}#articles .columns article .entry-title a{font-size:14px;color:#5bb793;}
-#articles .columns article .entry-foot{padding-left:10px;}#articles .columns article .entry-foot .others{padding-bottom:5px;}
+#articles .columns article .entry-foot{padding-left:10px;}#articles .columns article .entry-foot .others{padding-bottom:5px;padding-top:3px;}
 #articles .columns article .entry-foot .right-foot{float:right;}
 #articles .columns article .entry-foot .item{font-size:12px;line-height:25px;margin-right:10px;}#articles .columns article .entry-foot .item i{background:none;}
 #articles .columns article .entry-foot .item i:before{color:#aaa;background:none;}

@@ -147,9 +147,6 @@ module.exports.controllers =
         if error then next error
         else
           func_index.add card.uuid
-          sina.statuses.update 
-            access_token:res.locals.user.weibo_token
-            status:"我在@前端乱炖 的《前端花名册》添加了我的名片，欢迎收藏：http://www.html-js.com/user/"+res.locals.user.id
           (__F 'coin').add 40,res.locals.user.id,"创建了名片"
           func_timeline.add 
             who_id:res.locals.user.id
@@ -167,7 +164,12 @@ module.exports.controllers =
             console.log error
             console.log info
           func_search.add {type:"card","pid":card.uuid,"title":card.nick+"的花名册","html":card.nick+"的花名册 简介："+card.desc,"udid":card.uuid,"id": card.id},()->
-      
+          (__F 'create_thumbnail').create_card card.id,()->
+            sina.statuses.upload 
+              access_token:res.locals.user.weibo_token
+              pic:path.join __dirname,"../uploads/article_thumb/card-"+card.id+".png"
+              status:"我在@前端乱炖 的《前端花名册》添加了我的名片，欢迎收藏：http://www.html-js.com/user/"+res.locals.user.id+" "
+           
   "/edit-card":
     get:(req,res,next)-> 
       if not res.locals.card
@@ -187,6 +189,8 @@ module.exports.controllers =
           res.redirect '/user'
   "/card/:id":
     get:(req,res,next)->
+      if req.query&&req.query.is_clear
+        res.render 'user/p-clear.jade'
       func_card.getVisitors req.params.id,(error,visitors)->
         if error then next error
         else

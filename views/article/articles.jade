@@ -108,114 +108,105 @@ html(xmlns:wb='http://open.weibo.com/wb')
               a(href="/article/column/add") 创建专栏
         
       .content
-        .left
-
-          ul.article-list
-            each article,i in articles
-              - var showA = false;
-              if article.is_publish
-                showA = true
-              else if locals.user && locals.user.id == article.user_id
-                showA = true
-
-
-              if showA
-                article.post(id="post-#{article.id}",class="#{i%2==1?'yooo':''} ")
-                  .entry-title
-                    h2.title
-                      
-                      
-                      
-                      a.real-title(href='/article/#{article.pinyin?article.pinyin:article.id}', title='#{article.title}', rel='bookmark') #{article.title}
-                      if !article.is_publish
-                        span.label.tip 此文正在审核中
-                    a.t-user(href="/user/#{article.user_id}",data-original-title="#{article.user_nick}")
-                      img(src="#{article.user_headpic}",width="50")
-                  
-                  if article.desc
-                    .entry-content.clearfix 
-                      |!{article.desc.replace(/<[^>]*?>/g," ").substr(0,200)}
-                      a(href="/article/#{article.id}")  阅读更多>>
-                  .entry-foot
-                    div.others
-                      //- span.author.vcard.item
-                      //-   span.index 
-                      //-     i.icon-user
-                      //-   a.value.url.fn(rel='author', href='/user/#{article.user_id}') #{article.user_nick}
-                      
-                      
-                      //- span.time.item
-                      //-   span.index 
-                      //-     i.icon-clock
-                      //-   a.value #{moment(article.publish_time*1000).fromNow()}
-                      if  !locals.column&&article.columns
-                        span.entry-column 
-                          | #{moment(article.createdAt).fromNow()}
-                          a.value.url.fn(rel='author', href='/user/#{article.user_id}')  #{article.user_nick}
-                          |  发表于
-                          a(href="/article/column/#{article.columns.id}")  「#{article.columns.name}」
-                          |  专栏  
-                      if locals.user && (user.is_admin||user.id==article.user_id)
-                        span.views.item
-                          a.value(href="/article/#{article.id}/edit") 编辑
-                      if locals.user && user.is_admin && article.is_publish == 0
-                        span.views.item
-                          a.value(href="/article/#{article.id}/update?is_publish=1") 上线
-                      if locals.user && user.is_admin && article.is_publish == 1
-                        span.views.item
-                          a.value(href="/article/#{article.id}/update?is_publish=0") 下线
-                      if locals.user && user.is_admin
-                        span.views.item
-                          a.value(href="/article/#{article.id}/delete") 删除
-                        span.views.item
-                          a.value(href="/article/#{article.id}/create_pic") 生成缩略图
-                      span.right-foot
-                        span.views.item
-                          span.index 
-                            i.icon-comments
-                          a.value #{article.comment_count}
-                        span.views.item
-                          span.index 
-                            i.icon-signal
-                          a.value #{article.visit_count}
+          .columns
+            each column in columns
+              .column
+                .h
+                  a.title(href="/article/column/#{column.id}") #{column.name}
+                  .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
+                  .user.hidden
+                    span 作者：
+                    a(href="/user/#{column['users.id']}") #{column['users.nick']}
+                  .time 最后更新时间：#{moment(column.last_article_time*1).fromNow()}
+                  .actions
+                    if column.is_rssed
+                      span
+                        i.rss.social
+                        |  已订阅（#{column.rss_count}）
+                    else
+                      a.rss-btn(href="/article/column/#{column.id}/rss")
+                        i.rss.social
+                        |  邮件订阅（#{column.rss_count}）
+                    
+                if column.articles && column.articles.length
+                  .articles
+                    each article,i in column.articles
+                      article(id="post-#{article.id}",class="#{i%2==0?'yooo':''} ")
+                        h2.entry-title
+                            a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                        if article.desc
+                          .entry-content.hidden.clearfix 
+                            |!{article.desc.replace(/<[^>]*?>/g," ").substr(0,200)}
+                            a(href="/article/#{article.id}")  阅读更多>>
+                        .entry-foot
+                          div.others
+                            span.author.vcard.item
+                              span.index 
+                                i.icon-user
+                              a.value.url.fn(rel='author', href='/user/#{article.user_id}') #{article.user_nick}
+                            
+                            
+                            span.time.item
+                              span.index 
+                                i.icon-clock
+                              a.value #{moment(article.publish_time*1000).fromNow()}
+                              
+                            if locals.user && (user.is_admin||user.id==article.user_id)
+                              span.views.item
+                                a.value(href="/article/#{article.id}/edit") 编辑
+                            span.right-foot
+                              span.views.item
+                                span.index 
+                                  i.icon-comments
+                                a.value #{article.comment_count}
+                              span.views.item
+                                span.index 
+                                  i.icon-signal
+                                a.value #{article.visit_count}
+                else
+                  .articles 暂无文章
+                .more
+                  a(href="/article/column/#{column.id}") 查看更多文章（#{column.article_count}）
           include ../page
-      .right
+      //- .right
         
-        .module.recent_columns
-          .hd 最近更新的专栏
-            a.right_more(href="/article/column") 所有专栏
-          each column in recent_columns
-            .recent_column
-              a.title(href="/article/column/#{column.id}") #{column.name}
-              .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
-              .user
-                span 作者：
-                a(href="/user/#{column['users.id']}") #{column['users.nick']}
-              .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
-              .actions
-                a(href="/article/column/#{column.id}/rss")
-                  i.rss.social
-                  |  邮件订阅（#{column.rss_count}）
-        .module.recent
-          .hd 近期评论
-          .bd
-            if locals.comments
-              each comment in comments
-                div.item #{comment.user_nick}：<a href="/article/#{comment.target_id.split("_")[1]}">!{comment.md.substr(0,20)}</a>
-        //- .module.recent
-        //-   .hd 近期文章
-        //-   .bd
-        //-     if locals.recents
-        //-       each recent in recents
-        //-         div.item <a href="/article/#{recent.id}">#{recent.title}</a>
-        //
-          .module.text
-            .hd 微信公众账号
-            .bd
-              img(src="#{assets_head}/images/qrcode.jpg")
-          .module.text
-            .hd 广告
-            .bd 暂无
+      //-   .module.recent_columns
+      //-     .hd 最近更新的专栏
+      //-       a.right_more(href="/article/column") 所有专栏
+      //-     each column in recent_columns
+      //-       .recent_column
+      //-         a.title(href="/article/column/#{column.id}") #{column.name}
+      //-         .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
+      //-         .user
+      //-           span 作者：
+      //-           a(href="/user/#{column['users.id']}") #{column['users.nick']}
+      //-         .time 更新时间：#{moment(column.last_article_time*1).fromNow()}
+      //-         .actions
+      //-           a(href="/article/column/#{column.id}/rss")
+      //-             i.rss.social
+      //-             |  邮件订阅（#{column.rss_count}）
+      //-   .module.recent
+      //-     .hd 近期评论
+      //-     .bd
+      //-       if locals.comments
+      //-         each comment in comments
+      //-           div.item #{comment.user_nick}：<a href="/article/#{comment.target_id.split("_")[1]}">!{comment.md.substr(0,20)}</a>
+      //-   //- .module.recent
+      //-   //-   .hd 近期文章
+      //-   //-   .bd
+      //-   //-     if locals.recents
+      //-   //-       each recent in recents
+      //-   //-         div.item <a href="/article/#{recent.id}">#{recent.title}</a>
+      //-   //
+      //-     .module.text
+      //-       .hd 微信公众账号
+      //-       .bd
+      //-         img(src="#{assets_head}/images/qrcode.jpg")
+      //-     .module.text
+      //-       .hd 广告
+      //-       .bd 暂无
+    script(src="#{assets_head}/js/messageTip.js")
+    script(src="#{assets_head}/js/loadingTip.js")
     script
       $('.actions a').tooltip({
           placement:"bottom"
@@ -223,17 +214,33 @@ html(xmlns:wb='http://open.weibo.com/wb')
       $('.t-user').tooltip({
           placement:"bottom"
       })
-      $("#info_read").click(function(e){
+      $(".rss-btn").click(function(e){
         e.preventDefault();
-        $.ajax({
-          url:"/info/read",
-          type:"post",
-          success:function(){
-          setTimeout(function(){
-            window.location.href=window.location.href+"";
-            },5000)
-          
-          }
+        var href= $(this).attr("href")
+        HtmlJS.util.ajax(href,{
+              
+            },"post",function(data){
+                loadingTip.hide()
+                if(data.success){
+                  messageTip.show("订阅成功！")
+                }else{
+                  alert(data.info)
+                }
+            },function(){
+              HtmlJS.util.ajax(href,{
+               
+              },"post",function(data){
+                  loadingTip.hide()
+                  if(data.success){
+                    messageTip.show("订阅成功！")
+                  }else{
+                    alert(data.info)
+                  }
+              },function(){
+              
+              
+            })
+            
           })
         })
     include ../footer

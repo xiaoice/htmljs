@@ -186,7 +186,7 @@ module.exports.controllers =
             sina.statuses.upload 
               access_token:res.locals.user.weibo_token
               pic:path.join __dirname,"../uploads/article_thumb/"+article.id+".png"
-              status:'我在@前端乱炖 发表了一篇原创文章【'+article.title+'】点击查看：http://www.html-js.com/article/'+article.id
+              status:'我在#前端乱炖#发表了一篇原创文章【'+article.title+'】点击查看：http://www.html-js.com/article/'+article.id
             
         res.send result
   "/:id/edit":
@@ -412,7 +412,7 @@ module.exports.filters =
     post:['checkLoginJson',"checkCard"]
   
   "/":
-    get:['freshLogin','get_infos','article/new-comments','article/my-columns','article/recent-columns','article/all-publish-articles']
+    get:['freshLogin','get_infos','article/new-comments','article/my-columns','article/index-columns','article/column-articles','article/checkRss']
   "/old":
     get:['freshLogin','getRecent','get_infos','article/new-comments']
   "/:id":

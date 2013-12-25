@@ -110,7 +110,7 @@ html
                             if locals.user && (locals.user.id == ans.user_id||locals.user.is_admin)
                               a.edit(href="/qa/answer/#{ans.id}/edit") <i class="icon-pencil icon-gray"></i>编辑
                             a.add_comment(href="#",data-answer-id="#{ans.id}") <i class="icon-comment icon-gray"></i>评论 #{ans.comment_count}
-                            a(target="_blank",href="http://service.weibo.com/share/share.php?url=#{encodeURIComponent("http://www.html-js.com/qa/"+question.id+"#answer-"+ans.id)}&title=分享自@前端乱炖 的精彩回答【#{question.title}】#{ans.user_nick}：#{ans.md.substr(0,100)}&appkey=659341943") 分享
+                            a(target="_blank",href="http://service.weibo.com/share/share.php?url=#{encodeURIComponent("http://www.html-js.com/qa/"+question.id+"#answer-"+ans.id)}&title=分享自#前端乱炖#的精彩回答【#{question.title}】#{ans.user_nick}：#{ans.md.substr(0,100)}&appkey=659341943") 分享
                             if locals.user&&locals.user.is_admin
                               a(href="/qa/answer/#{ans.id}/update?is_unused=1") 无用
                           //- if ans.answerComment.length
@@ -551,7 +551,7 @@ html
       <script id="bdshare_js" data="type=tools&amp;uid=2555549" ></script>
       <script type="text/javascript" id="bdshell_js"></script>
       <script type="text/javascript">
-      var bds_config={"bdText":"【#{question.title}】分享自 @前端乱炖 问答频道，弱弱求回答：#{question.html?question.html.replace(/\s/g,"").replace(/<[^>]*>/g,"").substr(0,130):""}","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
+      var bds_config={"bdText":"【#{question.title}】分享自#前端乱炖#问答频道，弱弱求回答：#{question.html?question.html.replace(/\s/g,"").replace(/<[^>]*>/g,"").substr(0,130):""}","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
       document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
       </script>
     include ../footer

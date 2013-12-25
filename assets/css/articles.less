@@ -174,7 +174,6 @@ height: 30px;
         .imp{
           font-style: normal;
           font-weight: bold;
-          color:@red;
         }
 .go{
           margin-left: 10px;
@@ -423,7 +422,7 @@ color:@green;
     
   }
   .post{
-    padding:5px 15px;
+    padding:5px 10px;
     position: relative;
     padding-top: 10px;
     margin-bottom: 10px;
@@ -480,8 +479,6 @@ color:@green;
         }
     .entry-title{
       position: relative;
-      border-bottom:1px solid #ddd;
-      padding-bottom:10px;
       .headpic{
         float: left;
         margin-right: 20px;
@@ -490,9 +487,9 @@ color:@green;
       .title{
         margin:0;
         padding-right:80px;
-        line-height: 30px;
+        line-height: 20px;
         a{
-        line-height: 30px;
+        line-height: 20px;
         margin:0;
         color: #444;
         font-weight: normal;
@@ -827,6 +824,142 @@ color:@green;
   }
 }
 
-#article.clear-article{
-  
+#articles{
+  .columns{
+    width:1200px;
+    .column{
+        display:inline-block;
+        vertical-align: top;
+        margin-right: 10px;
+        margin-bottom:10px;
+        // background: #f3f3f3;
+        border-bottom: 1px solid #efefef;
+        width:495px;
+        height:462px;
+        padding:0;
+        .h{
+          padding:10px;
+          padding-bottom: 5px;
+        }
+        position: relative;
+      }
+      a.title{
+        font-size: 16px;
+        color:#444;
+        display: inline-block;
+        vertical-align:top;
+
+        line-height: 20px;
+        
+        margin-top: 4px;
+      }
+      .desc{
+        font-size: 12px;
+        color:#aaa;
+        line-height: 20px;
+        margin-top:5px;
+        height:40px;
+      }
+      .user{
+        font-size: 12px;
+        color:#999;
+        a{
+          
+        }
+        line-height: 20px;
+        margin-top:5px;
+      }
+      .time{
+        font-size: 12px;
+        color:#999;
+line-height: 20px;
+      }
+      .actions{
+        margin-bottom: 0;
+        a{
+          font-size: 12px;
+          line-height: 20px;
+          color: @green;
+          i:before{
+          color: @green;
+        }
+        }
+        span{
+          font-size: 12px;
+          line-height: 20px;
+          color: #aaa;
+          i:before{
+          color: #aaa;
+        }
+        }
+      }
+      .articles{
+
+      }
+      article{
+        .entry-title{
+          line-height: 30px;
+          margin:0;
+          padding-left: 10px;
+          height:30px;
+          overflow: hidden;
+          a{
+          
+          font-size: 14px;
+          color:@green;
+
+        }
+          } 
+          .entry-foot{
+            padding-left: 10px;
+            .others{
+              padding-bottom: 5px;
+            }
+            
+            .right-foot{
+              float: right;
+              .item{
+              }
+            }
+            .item{
+              font-size: 12px;
+              line-height: 25px;
+
+              margin-right: 10px;
+              i{
+                background: none;
+              }
+              i:before{
+                color: #aaa;
+                background: none;
+              }
+              a{
+                color:#aaa;
+              }
+              .index{
+
+                }
+                .value{
+
+              }
+            }
+          }
+      }
+      article.yooo{
+    background: #F7F7F7;
+  }
+  .more{
+    line-height: 30px;
+    padding-left:10px;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    a{
+      color:#666;
+      font-size: 12px;
+
+    }
+  }
+  }
+
 }

@@ -100,7 +100,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                 .title 
                   a(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
                 .time 最后更新：<span class="#{now-column.last_article_time>1000*60*60*24*5?'imp':''}">#{column.last_article_time?moment(column.last_article_time).fromNow():"从未更新"} </span>
-                  a.go(href="/article/add?column_id=#{column.id}") 去更新
+                  a.go(href="/article/add?column_id=#{column.id}") 添加文章
             div
               a.btn(href="/article/column/add") 创建新专栏
           else

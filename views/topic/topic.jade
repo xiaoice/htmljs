@@ -5,7 +5,7 @@ html
     title #{topic.title} - 话题 - 前端乱炖
     link(href='#{assets_head}/css/Markdown.Editor.css?33', type='text/css', rel='stylesheet', charset='utf-8')
     include ../editor_head
-    |<meta name="description" content="#{topic.html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,140)}">
+    |<meta name="description" content="#{topic.html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,140)} html,js,css,nodejs,前端开发,前端招聘,jquery,qianduan">
     script(src='#{assets_head}/js/jquery.githubRepoWidget.min.js')
   body#topic
     - locals.pageId=10;

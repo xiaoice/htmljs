@@ -128,6 +128,9 @@ module.exports.controllers =
               res.render 'cards.jade'
   "/add-card":
     get:(req,res,next)->
+      if res.locals.card
+        res.redirect '/edit-card'
+        return
       if res.locals.user
         sina.users.show
           access_token:res.locals.user.weibo_token

@@ -28,6 +28,7 @@
 .module .hd{line-height:30px;color:#333;font-size:16px;height:30px;font-weight:bold;color:#666;}
 .module .bd{font-size:12px;padding:0px;color:#666;margin-top:10px;}
 body{background:url(../images/bg-repeat.png);background:#efefef;}
+body{background-image:url(http://htmljs.b0.upaiyun.com/uploads/1388021731763-xmas_bg_n.gif);background-repeat:repeat-x;background-position:30px 30px;background-size:auto 30px;}
 #content{width:940px;margin:20px auto;}#content .btn{height:27px;border:none;padding:0;background:#5bb793;background-image:-moz-linear-gradient(top, #5bb793, #3db284);background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#5bb793), to(#3db284));background-image:-webkit-linear-gradient(top, #5bb793, #3db284);background-image:-o-linear-gradient(top, #5bb793, #3db284);background-image:linear-gradient(to bottom, #5bb793, #3db284);padding-left:10px;padding-right:10px;display:inline-block;color:#fff;border:1px solid #5bb793;line-height:27px;}#content .btn i{vertical-align:-1px;font-size:12px;}
 #content .btn:hover{background:#30b380;}
 #content .btn.gray{background:#ddd;color:#666;border:1px solid #ccc;}

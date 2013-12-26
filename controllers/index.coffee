@@ -282,7 +282,7 @@ module.exports.controllers =
         success:0
         info:""
       pack = req.files['pic']
-      if pack && (pack.type == 'image/jpeg'||pack.type == "image/jpg"||pack.type=="image/png")
+      if pack && (pack.type == 'image/jpeg'||pack.type == "image/jpg"||pack.type=="image/png"||pack.type=="image/gif")
         sourcePath = pack.path
         pack_name = (new Date()).getTime()+"-"+pack.name
         targetPath = config.upload_path+pack_name

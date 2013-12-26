@@ -26,8 +26,13 @@ html
                     button.btn 搜索
               
           div(style="margin-bottom:10px;")
-              a(href="/topic/136")
-                img(src="http://htmljs.b0.upaiyun.com/uploads/1387964257099-souche-1.png")
+            - var random = Math.random();
+              if random>0.5
+                a(href="/topic/136")
+                  img(src="http://htmljs.b0.upaiyun.com/uploads/1387964257099-souche-1.png")
+              else
+                a(href="/article/1498")
+                  img(src="http://htmljs.b0.upaiyun.com/uploads/1388068398976-bb.png")
           if locals.cards
             .module.mod.recent_cards
               .hd

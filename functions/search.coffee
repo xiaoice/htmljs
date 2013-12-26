@@ -36,7 +36,7 @@ search  =
       if w
         w.updateAttributes
           count:w.count+1
-      else
+      else if w.length>2
         SearchHis.create({
           word:data.word
           count:1

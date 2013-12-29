@@ -22,17 +22,17 @@ html
               form(action="/search",method="get",style="margin:0;")
                 fieldset
                   .input-append(style="margin:0;")
-                    input#keyword.span2.input-large(type="text",name="q",placeholder="请输入关键词查询全站内容")
+                    input#keyword.span2.input-large(type="text",name="q",placeholder="请输入关键词查询全站、站外内容")
                     button.btn 搜索
               
-          div(style="margin-bottom:10px;")
-            - var random = Math.random();
-              if random>0.5
-                a(href="/topic/136")
-                  img(src="http://htmljs.b0.upaiyun.com/uploads/1387964257099-souche-1.png")
-              else
-                a(href="/article/1498")
-                  img(src="http://htmljs.b0.upaiyun.com/uploads/1388068398976-bb.png")
+          //- div(style="margin-bottom:10px;")
+          //-   - var random = Math.random();
+          //-     if random>0.5
+          //-       a(href="/topic/136")
+          //-         img(src="http://htmljs.b0.upaiyun.com/uploads/1387964257099-souche-1.png")
+          //-     else
+          //-       a(href="/article/1498")
+          //-         img(src="http://htmljs.b0.upaiyun.com/uploads/1388068398976-bb.png")
           if locals.cards
             .module.mod.recent_cards
               .hd
@@ -291,19 +291,20 @@ html
         //- .module
         //-   .hd 公告
         //-   .bd
-        .module
-          .hd 乱炖是什么？
-          .bd
-            .desc 乱炖是做一个前端知识平台。它可以支撑我们的线下活动（活动频道），可以提供一个展示自己的平台（专栏频道），可以解答疑惑（问答频道），也可以讨论感兴趣的话题（话题频道）。<br/>我们将其的定位是知识社区，以内容为主，内容来自于目标用户，然后也使目标用户受益。
-            a(href="http://www.html-js.com/topic/115") 更多信息
         .module.quick-go
           .hd 快速入口
           .bd
               a.btn(href="/qa/add") 提问
               a.btn(href="/article/add") 发表文章
               a.btn(href="/topic/add") 发起话题
+        .module
+          .hd 乱炖是什么？
+          .bd
+            .desc 乱炖是做一个前端知识平台。它可以支撑我们的线下活动（活动频道），可以提供一个展示自己的平台（专栏频道），可以解答疑惑（问答频道），也可以讨论感兴趣的话题（话题频道）。<br/>我们将其的定位是知识社区，以内容为主，内容来自于目标用户，然后也使目标用户受益。
+            a(href="http://www.html-js.com/topic/115") 更多信息
+        
         .module.text
-            .hd 赞助本站（用支付宝扫描）
+            .hd 赞助本站（支付宝扫描）
             .bd
               img(src="http://htmljs.b0.upaiyun.com/uploads/1387784312296-%E5%89%8D%E7%AB%AF%E4%B9%B1%E7%82%96.png")
         .module
@@ -342,6 +343,14 @@ html
     include footer
     script(src="#{assets_head}/js/messageTip.js")
     script(src="#{assets_head}/js/loadingTip.js")
+    script
+      $.getScript("http://localhost:8765/assets/socket.io/socket.io.js",function(){
+        var socket = io.connect('http://localhost');
+        socket.on('news', function (data) {
+          console.log(data);
+          socket.emit('my other event', { my: 'data' });
+        });
+      }
     
 
       

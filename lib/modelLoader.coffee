@@ -133,7 +133,7 @@ global.__FC = (func,model,methods)->
         .success (m)->
           if m
             updates = {}
-            updates[field]=m[field]*1+2
+            updates[field]=m[field]*1+1
             m.updateAttributes(updates,[field])
             .success ()->
               callback&&callback null,m

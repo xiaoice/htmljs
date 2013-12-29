@@ -631,7 +631,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #card .my_columns .column .action{margin-bottom:0;margin-top:5px;}#card .my_columns .column .action a{font-size:12px;color:#5bb793;padding:5px 0;}#card .my_columns .column .action a i:before{color:#5bb793;font-size:14px;}
 #card .my_columns .column .action span{color:#aaa;}#card .my_columns .column .action span i:before{font-size:14px;color:#aaa;}
 #talk{background:#efefef;}
-#topics .head{background:#fff;border-bottom:none;margin-bottom:10px;}#topics .head .tags{display:inline-block;vertical-align:top;padding:20px;width:110%;}#topics .head .tags .tag{display:inline-block;vertical-align:top;margin-right:10px;margin-bottom:10px;border-bottom:1px solid #efefef;width:450px;padding:10px;padding-top:5px;height:270px;}
+#topics .head{background:#fff;border-bottom:none;margin-bottom:10px;}#topics .head .tags{display:inline-block;vertical-align:top;padding:20px;width:110%;}#topics .head .tags .tag{display:inline-block;vertical-align:top;margin-right:10px;margin-bottom:10px;border-bottom:1px solid #efefef;width:450px;padding:10px;padding-top:5px;}
 #topics .head .tags a.name{font-size:16px;color:#444;display:inline-block;vertical-align:top;line-height:20px;margin-top:4px;}
 #topics .head .tags .desc{font-size:12px;color:#aaa;line-height:20px;margin-top:5px;height:20px;}
 #topics .head .tags a.active{background:#eee;border-radius:3px;border-bottom:none;font-weight:bold;}

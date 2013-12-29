@@ -45,7 +45,7 @@ html
                         span.index 浏览：
                         a.value #{tag.visit_count}
                     .desc #{tag.desc}
-                    .topics
+                    .topics.hidden
                       if tag.topics
                         each t in tag.topics
                           .topic

@@ -38,6 +38,12 @@ html
               .hd
                 a(href="/cards") 花名册新人（#{locals.all_count?all_count.card:0}）
               .bd
+                .card.user(class="nan-user")
+                  .pic
+                    a.tooltip-trigger(href="/edit-card",data-original-title="加入花名册")
+                      img(src="http://htmljs.b0.upaiyun.com/uploads/1388023439858-ce.png")
+                  .name
+                    a(href="/edit-card")  我也加入
                 each card,i in cards
                   .card.user(class="#{card.sex=='男'?'nan-user':'nv-user'}")
                     .pic
@@ -49,12 +55,7 @@ html
                           .sex.nv
                     .name
                       a(href="/card/#{card.id}")  #{card.nick}
-                .card.user(class="nan-user")
-                    .pic
-                      a.tooltip-trigger(href="/edit-card",data-original-title="加入花名册")
-                        img(src="http://htmljs.b0.upaiyun.com/uploads/1388023439858-ce.png")
-                    .name
-                      a(href="/edit-card")  我也加入
+                
           
           if locals.articles
             .module.mod.recent_articles

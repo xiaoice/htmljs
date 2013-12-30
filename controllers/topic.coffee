@@ -102,7 +102,8 @@ module.exports.controllers =
               content:req.body.html
             if atnames = req.body.md.match(/\@([^\s]*)/g)
               atcount = atnames.length
-              html = comment.html
+              html = req.body.html
+              console.log atnames
               atnames.forEach (atname)->
                 atname = atname.replace("@","")
                 func_user.getByNick atname,(error,user)->

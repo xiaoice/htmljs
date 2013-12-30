@@ -100,21 +100,27 @@ module.exports.controllers =
               action_name:"【回复】了您的话题"
               target_path_name:topic.title
               content:req.body.html
-            if atname = req.body.md.match(/\@([^\s]*)/)
-              atname = atname[1]
-              func_user.getByNick atname,(error,user)->
-                if user
-                  func_topic_comment.update comment.id,{html:comment.html.replace("@"+atname,"<a href='/user/"+user.id+"'>@"+atname+"</a>")}
-                  func_info.add 
-                    target_user_id:user.id
-                    type:6
-                    source_user_id:res.locals.user.id
-                    source_user_nick:res.locals.user.nick
-                    time:new Date()
-                    target_path:"/topic/"+topic.id
-                    action_name:"在回帖中【提到】了你"
-                    target_path_name:topic.title
-                    content:req.body.html
+            if atnames = req.body.md.match(/\@([^\s]*)/g)
+              atcount = atnames.length
+              html = comment.html
+              atnames.forEach (atname)->
+                atname = atname.replace("@","")
+                func_user.getByNick atname,(error,user)->
+                  atcount--
+                  if user
+                    html = html.replace("@"+atname,"<a href='/user/"+user.id+"'>@"+atname+"</a>")
+                    if atcount==0
+                      func_topic_comment.update comment.id,{html:html}
+                    func_info.add 
+                      target_user_id:user.id
+                      type:6
+                      source_user_id:res.locals.user.id
+                      source_user_nick:res.locals.user.nick
+                      time:new Date()
+                      target_path:"/topic/"+topic.id
+                      action_name:"在回帖中【提到】了你"
+                      target_path_name:topic.title
+                      content:req.body.html
           res.send result
 module.exports.filters = 
   "/":

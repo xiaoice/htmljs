@@ -55,6 +55,8 @@ app.configure ->
     filters:'/filters/',      
     template:'/views/'   
   })
+  app.all 'adsense.txt',(req,res,next)->
+    res.end '本人 孙信宇（需要与您的账户收款人一致） 声明确认我对本网站的所有权，同时确认本网站遵守 Google AdSense 计划政策和条款。'
   #require('./alipay_config').alipay.route(app);
   app.all "*",(req, res, next)->
     res.render '404.jade',{status: 404},(error,page)->

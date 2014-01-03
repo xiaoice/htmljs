@@ -1,5 +1,6 @@
 func_article = __F 'article'
 module.exports = (req,res,next)->
+  console.log 'article'
   if /^[0-9]*$/.test(req.params.id)
 
     func_article.getById req.params.id,(error,article)->

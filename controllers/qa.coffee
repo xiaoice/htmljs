@@ -21,6 +21,9 @@ module.exports.controllers =
     get:(req,res,next)->
       
       res.render 'qa/index.jade'
+  "/user/:id":
+    get:(req,res,next)->
+      res.render 'qa/index.jade'
   "/add":
     get:(req,res,next)->
       res.render 'qa/add.jade'
@@ -295,6 +298,8 @@ module.exports.controllers =
 module.exports.filters = 
   "/":
     get:['freshLogin','qa/all-question','qa/hot-question','qa/recent-answers']
+  "/user/:id":
+    get:['freshLogin','who','qa/his-questions','qa/hot-question','qa/recent-answers']
   "/add":
     get:['checkLogin','tag/all-tags']
     post:['checkLoginJson']

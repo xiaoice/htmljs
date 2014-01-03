@@ -2,7 +2,7 @@
 html
   head
     include ./../head
-    title 问答 - 前端乱炖
+    title #{locals.who?(who.nick+"的"):""}问答 - 前端乱炖
     |<meta name="description" content="问答：如其名，用于提问专业问题，然后会有很多人来解答问题。">
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
     style
@@ -18,8 +18,11 @@ html
         li
           a(href="/") 首页
           span.divider /
+        li
+          a(href="/qa") 问答
+          span.divider /
         li.active
-          span 问答
+          span #{locals.who?(who.nick+"的"):""}问答
       .content
         .left
           .actions

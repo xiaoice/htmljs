@@ -25,7 +25,7 @@ module.exports.controllers =
     "get":(req,res,next)->
       
       res.render 'article/articles.jade'
-
+ 
   "/old":
     "get":(req,res,next)->
       condition = 
@@ -287,7 +287,9 @@ module.exports.controllers =
           res.render 'article/clear-article.jade'
         else
           res.render 'article.jade'
-  
+  "/user/:id":
+    "get":(req,res,next)->
+      res.render 'article/his-articles.jade'
   "/column/add":
     get:(req,res,next)->
 
@@ -410,13 +412,16 @@ module.exports.filters =
   "/add/recommend":
     get:['checkLogin',"checkCard"]
     post:['checkLoginJson',"checkCard"]
-  
+
   "/":
     get:['freshLogin','get_infos','article/new-comments','article/my-columns','article/index-columns','article/column-articles','article/checkRss']
+  "/user/:id":
+    get:['freshLogin','article/who','article/his-articles']
   "/old":
     get:['freshLogin','getRecent','get_infos','article/new-comments']
   "/:id":
     get:['freshLogin','getRecent','get_infos','article/get-article','article/get-article-column','article/this-column','article/comments','article/article_zan_logs','article/favs']
+  
   "/:id/zan":
     post:['checkLoginJson']
   "/column":

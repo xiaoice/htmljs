@@ -503,6 +503,8 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .post .entry-foot .item .value{color:#bbb;}
 #articles .post .entry-foot .right-foot{float:right;}#articles .post .entry-foot .right-foot .item{margin-right:0px;margin-left:10px;}
 #articles .article-list{margin:0;padding:0;}
+#article .daen{background:url(../images/daen.png) no-repeat;width:80px;height:90px;position:absolute;left:-57px;top:59px;}
+#article #content{overflow:visible;position:relative;}
 #article .right .module.count span{padding-right:10px;color:#999;}
 #article .right .module.user .item{margin-top:10px;font-size:12px;color:#999;}
 #article .right .column{padding:5px 0;border-top:1px solid #eee;display:inline-block;vertical-align:top;}#article .right .column .title{font-size:13px;color:#444;line-height:20px;font-weight:bold;}
@@ -588,12 +590,13 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #card .sns .github{background:url(http://htmljs.b0.upaiyun.com/images/github.png) no-repeat center center;height:15px;width:15px;display:inline-block;text-indent:-1000px;overflow:hidden;vertical-align:-3px;}
 #card .sns .weibo{background:url(http://htmljs.b0.upaiyun.com/images/icon-weibo.png?d) no-repeat center center;height:15px;width:15px;display:inline-block;text-indent:-1000px;overflow:hidden;vertical-align:-3px;}
 #card .head-pic{width:40px;height:40px;display:inline-block;margin-right:10px;float:left;}
-#card .my_card{background:#fff;border:1px solid #ddd;padding:10px;}#card .my_card .nick{font-style:normal;font-size:14px;line-height:23px;}
+#card .my_card{background:#fff;padding:10px;}#card .my_card .nick{font-style:normal;font-size:14px;line-height:23px;}
 #card .my_card .coin{color:#999;font-size:12px;}
 #card .my_card hr{margin:0;margin-top:8px;}
-#card .my_card .desc{line-height:25px;color:#999;font-size:12px;}
+#card .my_card .desc{line-height:25px;color:#999;font-size:12px;height:50px;}
+#card .my_card .item{margin-right:10px;}
 #card .left-info{width:310px;display:inline-block;vertical-align:top;}
-#card .right-info{width:658px;margin-left:10px;display:inline-block;vertical-align:top;background:#fff;padding:10px;}#card .right-info .item{margin-right:20px;}
+#card .right-info{width:658px;height:155px;margin-left:10px;display:inline-block;vertical-align:top;background:#fff;padding:10px;}#card .right-info .item{margin-right:20px;}
 #card .right-info .value{padding-left:0px;color:#aaa;}
 #card .actions{background:#fff;border:1px solid #ddd;padding:10px;margin-top:10px;}#card .actions .item{display:inline-block;width:auto;}
 #card .visit-info{margin-top:20px;}

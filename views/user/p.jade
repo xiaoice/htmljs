@@ -31,9 +31,17 @@ html
                         .sex.nv
                     .nick #{card.nick}
                     .coin 经验值：#{locals.card_user?card_user.coin:""}
-
+                  
                   hr
                   .desc #{card.desc}
+                  p.line
+                    if card.city
+                      span.item
+                        span.key 城市
+                        span.value #{card.city}
+                    span.item
+                      span.key 职业
+                      span.value #{card.zhiwei}
                   .item 
                     if card.blog || card.github || card.weibo
                       span.key 个人网站：
@@ -44,20 +52,20 @@ html
                           a.github(href='#{card.github}', target='_blank',title="github地址") github
                         if card.weibo
                           a.weibo(href='#{card.weibo}', target='_blank',title="微博地址") weibo
-            p.actions.clearfix
-              span.item
-                i.icon-heart 
-                - var usss = [];
-                if locals.zans
-                  each zan in zans
-                    if zan&&zan.users
-                      - usss.push(zan.users.nick);
+            //- p.actions.clearfix
+            //-   span.item
+            //-     i.icon-heart 
+            //-     - var usss = [];
+            //-     if locals.zans
+            //-       each zan in zans
+            //-         if zan&&zan.users
+            //-           - usss.push(zan.users.nick);
 
-                a.zan.tooltip-trigger(data-id="#{card.id}",data-original-title="#{usss.join('，')}") 赞（#{card.zan_count||0}）
+            //-     a.zan.tooltip-trigger(data-id="#{card.id}",data-original-title="#{usss.join('，')}") 赞（#{card.zan_count||0}）
                 
-              span.item
-                i.icon-message-lock
-                a.tooltip-trigger.kai(data-id="#{card.id}",data-original-title="催促作者开通专栏，对方会收到邮件，一天只会发送一次") 想看他写专栏
+            //-   span.item
+            //-     i.icon-message-lock
+            //-     a.tooltip-trigger.kai(data-id="#{card.id}",data-original-title="催促作者开通专栏，对方会收到邮件，一天只会发送一次") 想看他写专栏
           .right-info
             p.line
               if locals.user && locals.user.is_admin
@@ -71,13 +79,7 @@ html
                 span.key 感情状况
                 span.value #{card.is_dan?card.is_dan:"不明"}
            
-            p.line
-              span.item
-                span.key 城市
-                span.value #{card.city}
-              span.item
-                span.key 职位
-                span.value #{card.zhiwei}
+            
             p.line
               span.item
                 span.key 公司
@@ -120,8 +122,13 @@ html
                     div.visitor
                       a(href="/user/#{visitor.user_id}",title="#{visitor.user_nick}",data-original-title="#{visitor.user_nick}")
                         img(src="#{visitor.user_headpic}")
+          //- .github-repos.module
+          //-   .hd TA的github项目（共<em></em>个）
+          //-   .bd
+
+
           .columns-list.module.my_columns
-            .hd TA的专栏
+            .hd TA的专栏（#{locals.my_columns.length}）
             .bd
               if locals.my_columns && my_columns.length
                 each column in my_columns
@@ -144,7 +151,7 @@ html
           .his-infos.mod
             
               .his-info.module.mod
-                .hd TA的专栏文章
+                a.hd(href="/article/user/#{card.user_id}") TA的专栏文章（#{his_articles_count}）
                 .bd
                   if locals.his_articles && locals.his_articles.length 
                     ul.article-list
@@ -166,7 +173,7 @@ html
                     
             if locals.his_questions && locals.his_questions.length
               .his-info.module.mod
-                .hd TA提问的问题
+                a.hd(href="/qa/user/#{card.user_id}") TA提问的问题（#{his_questions_count}）
                 .bd
                   ul.article-list
                     each question,i in his_questions
@@ -183,7 +190,7 @@ html
                             a.value #{question.answer_count}
             if locals.his_topics && locals.his_topics.length
               .his-info.module.mod
-                .hd TA发起的话题
+                .hd TA发起的话题（#{his_topics_count}）
                 .bd
                 
                   ul.article-list
@@ -237,7 +244,9 @@ html
           
                           
                           
-          
+    script#repo-tpl(type="text/template")  
+      div.repo
+        .name {{name}}   
     include ../footer
     if locals.card
       //
@@ -252,7 +261,17 @@ html
       script(src='#{assets_head}/js/loadingTip.js')
       script(src='#{assets_head}/js/messageTip.js')
       script(src='#{assets_head}/js/card.js')
+      script(src="#{assets_head}/js/mustache.js")
       script
+        //- var repo_tpl = $("#repo-tpl").html();
+        //- $.getJSON("https://api.github.com/users/#{card.github.replace(/^.*\//,'')}/repos?type=owner&sort=updated&direction=desc",function(data){
+        //-   console.log(data)
+        //-     $(".github-repos .bd em").html(data.length)
+        //-     data.forEach(function(repo){
+        //-       $(".github-repos .bd").append(Mustache.render(repo_tpl,repo))
+        //-       })
+        //-   })
+
         //- $(document).ready(function(){
         //-  $('.his-infos').masonry({
         //-             itemSelector : '.his-info',
@@ -342,7 +361,7 @@ html
             
           })
         })
-      script(src="#{assets_head}/js/mustache.js")
+      
       script
         $(window).scroll(function(){
           if($(window).scrollTop()+$(window).height()>=$(".comment").offset().top){

@@ -63,7 +63,7 @@ func_card =
     Visit_log.findAll
       where:
         card_id:cardId
-      limit:30
+      limit:27
       order: "updatedAt desc"
       raw:true
     .success (logs)->

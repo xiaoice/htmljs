@@ -80,7 +80,7 @@ html
                       |<em>赞</em> <span>#{article.zan_count}</span>
                   a#bdshare.action.bdshare_t.bds_tools.get-codes-bdshare(href="#comment",style="float:none;") 
                     i.icon-new-window
-                    span.bds_more(style="background:none !important;float:none;display:inline;padding:0;") 分享
+                    em.bds_more(style="background:none !important;float:none;display:inline;padding:0;") 分享
             article.post(id="post-#{article.id}")
               .wrapper
                 
@@ -237,7 +237,7 @@ html
         <script id="bdshare_js" data="type=tools&amp;uid=2555549" ></script>
         <script type="text/javascript" id="bdshell_js"></script>
         <script type="text/javascript">
-        var bds_config={"bdText":"分享一篇来自#前端乱炖#专栏#{column?'「'+column.name+'」':''}的文章：《#{article.title}》@#{article.user_nick}：#{article.md?article.html.replace(/<[^>]*>/g,'').substr(0,130).replace(/\s/g,""):""}","bdPic":"http://www.html-js.com/uploads/article_thumb/#{article.id}.png","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
+        var bds_config={"bdText":"这篇文章不错，#前端乱炖##{column?'专栏「'+column.name+'」':''}的文章：《#{article.title}》@#{article.user_nick}：#{article.md?article.html.replace(/<[^>]*>/g,'').substr(0,130).replace(/\s/g,""):""}","bdPic":"http://www.html-js.com/uploads/article_thumb/#{article.id}.png","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
         document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
         </script>
       div.hidden.

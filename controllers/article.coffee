@@ -252,7 +252,7 @@ module.exports.controllers =
             source_user_nick:res.locals.user.nick
             time:new Date()
             target_path:"/article/"
-            action_name:"【赞】了您的原创文章()"+req.body.score+")"
+            action_name:"【赞】了您的原创文章"
             target_path_name:article.title
         res.send result
   "/:id/create_pic":
@@ -286,7 +286,7 @@ module.exports.controllers =
         if req.query.is_clear 
           res.render 'article/clear-article.jade'
         else
-          res.render 'article.jade'
+          res.render 'article/article.jade'
   "/user/:id":
     "get":(req,res,next)->
       res.render 'article/his-articles.jade'
@@ -420,7 +420,7 @@ module.exports.filters =
   "/old":
     get:['freshLogin','getRecent','get_infos','article/new-comments']
   "/:id":
-    get:['freshLogin','getRecent','get_infos','article/get-article','article/get-article-column','article/this-column','article/comments','article/article_zan_logs','article/favs']
+    get:['freshLogin','getRecent','get_infos','article/get-article','article/get-article-column','article/this-column','article/comments','article/check_zan_fav','article/favs']
   
   "/:id/zan":
     post:['checkLoginJson']

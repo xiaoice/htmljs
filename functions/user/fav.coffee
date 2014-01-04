@@ -17,6 +17,15 @@ func_fav =
       callback null,favs
     .error (e)->
       callback e
+  getByUUIDAndUserId:(uuid,user_id,callback)->
+    Fav.find
+      where:
+        info_id:uuid
+        user_id:user_id
+    .success (fav)->
+      callback null,fav
+    .error (e)->
+      callback e
   add:(data,callback)->
   	Fav.find
   		where:

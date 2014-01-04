@@ -129,7 +129,7 @@ func_article =
         article_id:article_id
         user_id:user_id
     .success (log)->
-      if log then callback new  Error '已经给本篇文章打过分了哦'
+      if log then callback new  Error '已经赞过这篇文章了哦'
       else
         Article.find
           where:
@@ -140,18 +140,23 @@ func_article =
             ArticleZanLogs.create({
               article_id:article_id
               user_id:user_id
-              score:parseInt(score)
             }).success (log)->
               article.updateAttributes
-                score: if article.score==0 then score else (article.score+score)/2
-              .success ()->
-                callback null,log,article
-              .error (e)->
-                callback e
+                zan_count:article.zan_count*1+1
+              callback null,log,article
             .error (e)->
               callback e
         .error (e)->
           callback e
+    .error (e)->
+      callback e
+  getZanByArticleIdAndUserId:(article_id,user_id,callback)->
+    ArticleZanLogs.find
+      where:
+        article_id:article_id
+        user_id:user_id
+    .success (log)->
+      callback null,log
     .error (e)->
       callback e
   getRecent:(callback)->

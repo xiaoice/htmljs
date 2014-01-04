@@ -1,5 +1,5 @@
-
-#articles,#article{
+@import 'article/article.less';
+#articles{
 
   .left{
     .infos{
@@ -609,197 +609,7 @@ color:@green;
   }
   
 }
-#article
-{
-  .daen{
-    background:url(../images/daen.png) no-repeat;
-    width: 80px;
-    height:90px;
-    position: absolute;
-    left:-57px;
-    top:59px;
-  }
-  #content{
-    overflow: visible;
-    position: relative;
-  }
-  .right{
-    .module.count{
-      span{
-        padding-right: 10px;
-        color: #999;
-      }
-    }
-    .module.user{
-      .item{
-        margin-top: 10px;
-        font-size: 12px;
-        color:#999;
-      }
-    }
-    .column{
-      padding:5px 0;
-      border-top: 1px solid #eee;
-      display: inline-block;
-      vertical-align: top;
-      .title{
-        font-size: 13px;
-        color:#444;
-        line-height: 20px;
-        font-weight: bold;
-      }
-      .desc{
-        font-size: 12px;
-        line-height: 18px;
-        color:#aaa;
-        margin:5px 0;
-      }
-      .user{
-        font-size: 12px;
-        line-height: 20px;
-        color:#999;
-      }
-      
-      .actions{
-        margin-bottom: 0;
-        margin-top: 5px;
-        a{
-          font-size: 12px;
-          color:@green;
-          i:before{
-            color:@green;
-          }
-        }
-        span{
-              color:#aaa;
-              i{
-                color: #aaa;
-              }
-            }
-      }
-    }
-  }
-  .actions{
-  	.btn{
-  		line-height:28px;
-  		i{
-  		}
-  	}
-  	.action{
-  	  font-size:12px;
-  	  margin-right:10px;
-  	}
-  	.my{margin-left:10px;line-height:30px;}
-  	.fav-list{
-  			margin-top:10px;
-  			a{
-  				margin-right:5px;
-  			}
-  	}
-  }
-  .post{
-    .entry-title{
-       border-bottom: 1px solid #eee;
-       padding-bottom: 10px;
-      .headpic{
-        float: left;
-        margin-right: 20px;
-        margin-top:10px;
-      }
-      .title{
-        font-size:20px;
-        line-height: 30px;
-        margin:0;
-        color: #404040;
-        font-weight: normal;
 
-      }
-      .item{
-        font-size: 12px;
-        margin-right: 20px;
-        .index{
-          color:#aaa;
-        }
-        .value{
-          color:#888;
-        }
-      }
-    }
-    .entry-content{
-      color:#555;
-      padding:20px 0;
-      font-size:14px;
-      line-height:25px;
-      h1,h2,h3,h4,h5{
-        font-size:1.5em;
-      }
-      word-wrap: break-word; 
-      word-break:break-all;
-      p{
-        
-        line-height:25px;
-        margin:20px 0;
-      }
-      img{
-        display: block;
-
-      }
-      blockquote p{
-          line-height: 25px;
-          margin:0;
-          font-size: 12px;
-        }
-    }
-    .entry-meta{
-      padding-top: 10px;
-      border-top: 1px solid #ddd;
-      color:#999;
-    }
-  }
-  #score{
-    .bd{
-      color:#999;
-
-    }
-    .mark{
-      i{
-        vertical-align: 0px;
-        
-        background: none;
-      }
-      
-    }
-    .zan-logs{
-      .user{
-        margin-right: 5px;
-      }
-    }
-    .mark-score{
-      padding-left: 10px;
-      font-size: 14px;
-      em{
-        font-style: normal;
-        color:@green;
-      }
-    }
-    .mark-already{
-      display: none;
-    }
-    .marked{
-      color:#ccc;
-      .mark-already{
-        display: block;
-      }
-      .mark-score{
-        color:#ccc;
-      }
-      i{
-        color:#ccc;
-      }
-    }
-  }
-
-}
 #add-article{
   background: #efefef;
   .left{
@@ -974,5 +784,310 @@ line-height: 20px;
     }
   }
   }
+
+}
+#article
+{
+   background: #fff;
+  article{
+    width:100%;
+    margin: 0 auto;
+    
+    .wrapper{
+      width:700px;
+      margin:0 auto;
+    }
+  }
+  .links{
+    display: none;
+  }
+  #footer{
+    margin-top: 20px;
+    .wrapper{
+      width:700px;
+    margin-left:auto;
+    margin-right: auto;
+    padding:0;
+    }
+    .module{
+      padding:0;
+    }
+    border-top:1px solid #ddd;
+  }
+  .title{
+    width:100%;
+    margin:0 auto;
+    background: #efefef;
+    padding-bottom: 20px;
+    padding-top: 40px;
+    .wrapper{
+      width:700px;
+      margin:0 auto;
+    }
+    h2{
+      font-size: 20px;
+      margin:0;
+      padding:0;
+    }
+    .info{
+      font-size: 12px;
+
+    }
+    .line{
+      margin-top: 10px;
+    }
+    .item{
+        font-size: 12px;
+        margin-right: 20px;
+        .index{
+          color:#aaa;
+        }
+        .value{
+          color:#888;
+        }
+      }
+      .rss{
+        background: @green;
+        color:#fff;
+        padding:2px 2px;
+        border-radius: 3px;
+        margin-left: 10px;
+      }
+
+      .actions{
+        margin-top: 20px;
+        .action{
+          color:#666;
+          font-size: 13px;
+          line-height: 30px;
+          text-decoration: none;
+          height:30px;
+          padding:0 10px;
+          display: inline-block;
+          background: #fff;
+          border-radius: 5px;
+          em{
+            font-style: normal;
+          }
+          span{
+            color:#aaa;
+            font-size: 12px;
+          }
+        }
+        i{
+          background: none;
+          font-size: 15px;
+          margin-right: 5px;
+          color:#aaa;
+        }
+      }
+  }
+  .daen{
+    background:url(../images/daen.png) no-repeat;
+    width: 80px;
+    height:90px;
+    position: absolute;
+    left:-57px;
+    top:59px;
+  }
+  #content{
+    overflow: visible;
+    position: relative;
+    width:100%;
+background: #fff;
+margin:0;
+  }
+  .breadcrumb{
+    width:1000px;
+    margin-left:auto;
+    margin-right: auto;
+  }
+  .comment{
+    width:700px;
+    margin-left:auto;
+    margin-right: auto;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding:0;
+  }
+  .donate{
+    padding:0;
+  }
+  .right{
+    .module.count{
+      span{
+        padding-right: 10px;
+        color: #999;
+      }
+    }
+    .module.user{
+      .item{
+        margin-top: 10px;
+        font-size: 12px;
+        color:#999;
+      }
+    }
+    .column{
+      padding:5px 0;
+      border-top: 1px solid #eee;
+      display: inline-block;
+      vertical-align: top;
+      .title{
+        font-size: 13px;
+        color:#444;
+        line-height: 20px;
+        font-weight: bold;
+      }
+      .desc{
+        font-size: 12px;
+        line-height: 18px;
+        color:#aaa;
+        margin:5px 0;
+      }
+      .user{
+        font-size: 12px;
+        line-height: 20px;
+        color:#999;
+      }
+      
+      .actions{
+        margin-bottom: 0;
+        margin-top: 5px;
+        a{
+          font-size: 12px;
+          color:@green;
+          i:before{
+            color:@green;
+          }
+        }
+        span{
+              color:#aaa;
+              i{
+                color: #aaa;
+              }
+            }
+      }
+    }
+  }
+  .actions{
+    .btn{
+      line-height:28px;
+      i{
+      }
+    }
+    .action{
+      font-size:12px;
+      margin-right:10px;
+    }
+    .my{margin-left:10px;line-height:30px;}
+    .fav-list{
+        margin-top:10px;
+        a{
+          margin-right:5px;
+        }
+    }
+  }
+  .post{
+    padding-bottom: 20px;
+    .entry-title{
+       border-bottom: 1px solid #eee;
+       padding-bottom: 10px;
+      .headpic{
+        float: left;
+        margin-right: 20px;
+        margin-top:10px;
+      }
+      .title{
+        font-size:20px;
+        line-height: 30px;
+        margin:0;
+        color: #404040;
+        font-weight: normal;
+
+      }
+      .item{
+        font-size: 12px;
+        margin-right: 20px;
+        .index{
+          color:#aaa;
+        }
+        .value{
+          color:#888;
+        }
+      }
+    }
+    .entry-content{
+      color:#555;
+      padding:20px 0;
+      font-size:14px;
+      line-height:25px;
+      h1,h2,h3,h4,h5{
+        font-size:1.5em;
+      }
+      word-wrap: break-word; 
+      word-break:break-all;
+      p{
+        
+        line-height:25px;
+        margin:20px 0;
+      }
+      img{
+        display: block;
+
+      }
+      blockquote p{
+          line-height: 25px;
+          margin:0;
+          font-size: 12px;
+        }
+    }
+    .entry-meta{
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+      color:#999;
+    }
+  }
+  // #score{
+  //   .bd{
+  //     color:#999;
+
+  //   }
+  //   .mark{
+  //     i{
+  //       vertical-align: 0px;
+        
+  //       background: none;
+  //     }
+      
+  //   }
+  //   .zan-logs{
+  //     .user{
+  //       margin-right: 5px;
+  //     }
+  //   }
+  //   .mark-score{
+  //     padding-left: 10px;
+  //     font-size: 14px;
+  //     em{
+  //       font-style: normal;
+  //       color:@green;
+  //     }
+  //   }
+  //   .mark-already{
+  //     display: none;
+  //   }
+  //   .marked{
+  //     color:#ccc;
+  //     .mark-already{
+  //       display: block;
+  //     }
+  //     .mark-score{
+  //       color:#ccc;
+  //     }
+  //     i{
+  //       color:#ccc;
+  //     }
+  //   }
+  // }
 
 }

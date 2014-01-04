@@ -12,6 +12,9 @@ module.exports =
   comment_count:
     defaultValue:0
     type:"int"
+  zan_count:
+    defaultValue:0
+    type:"int"
   publish_time:"int"
   is_publish:
     defaultValue:0

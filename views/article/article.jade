@@ -77,9 +77,9 @@ html
                       |<em>已赞</em> <span>#{article.zan_count}</span>
                     else
                       |<em>赞</em> <span>#{article.zan_count}</span>
-                  a.action(href="#comment") 
+                  a#bdshare.action.bdshare_t.bds_tools.get-codes-bdshare(href="#comment",style="float:none;") 
                     i.icon-new-window
-                    |分享
+                    span.bds_more(style="background:none !important;float:none;display:inline;padding:0;") 分享
             article.post(id="post-#{article.id}")
               .wrapper
                 

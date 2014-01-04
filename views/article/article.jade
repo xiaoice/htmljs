@@ -58,12 +58,13 @@ html
                     span.item
                       span.index view：
                       span.value #{article.visit_count}
-                  div.line
-                    span.item
-                      span.index 所属专栏：
-                      a.value(href="/article/column/#{column.id}") #{column.name}
-                      a.rss.hidden(href="/article/column/#{column.id}/rss")
-                        |  邮件订阅（#{column.rss_count}）
+                  if column
+                    div.line
+                      span.item
+                        span.index 所属专栏：
+                        a.value(href="/article/column/#{column.id}") #{column.name}
+                        a.rss.hidden(href="/article/column/#{column.id}/rss")
+                          |  邮件订阅（#{column.rss_count}）
                 .actions
                   a#add_fav.action(href="javascript:void(0);") 
                     i.icon-heart

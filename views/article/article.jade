@@ -351,6 +351,7 @@ html
                   
                   messageTip.show("成功！")
                     $("em",self).html("已赞")
+                    $("span",self).html($("span",self).html()*1+1)
                 }else{
                   alert(data.info)
                 }
@@ -364,6 +365,7 @@ html
                 if(data.success){
                   messageTip.show("成功！")
                     $("em",self).html("已赞")
+                    $("span",self).html($("span",self).html()*1+1)
                 }else{
                   alert(data.info)
                 }
@@ -386,6 +388,7 @@ html
                 if(data.success){
                   messageTip.show("收藏成功！")
                     $("em",self).html("已收藏")
+                     $("span",self).html($("span",self).html()*1+1)
                 }else{
                   alert(data.info)
                 }
@@ -397,6 +400,7 @@ html
                 if(data.success){
                   messageTip.show("收藏成功！")
                      $("em",self).html("已收藏")
+                      $("span",self).html($("span",self).html()*1+1)
                 }else{
                   alert(data.info)
                 }

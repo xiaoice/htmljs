@@ -28,7 +28,7 @@ func_article =
       limit: count
       order: order
       include:[User,Column]
-      raw:true
+      raw:false
     if condition then query.where = condition
     Article.findAll(query)
     .success (articles)->
@@ -174,7 +174,7 @@ func_article =
     Article.find
       where:
         id:id
-      include:[User]
+      include:[User,Column]
       raw:true
     .success (article)->
       callback null,article

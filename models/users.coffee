@@ -2,23 +2,36 @@ module.exports =
   id:"int"
   nick:"varchar(255)"
   head_pic:"varchar(255)"
-  weibo_id:"bigint"
-  weibo_token:"varchar(100)"
-  weibo_refresh:"varchar(100)"
-  card_id:"int"
+  weibo_id:
+    type:"bigint"
+    private:true
+  weibo_token:
+    type:"varchar(100)"
+    private:true
+  weibo_refresh:
+    type:"varchar(100)"
+    private:true
+  card_id:
+    type:"int"
+    private:true
   coin:
     type:"int"
     defaultValue:0
   is_admin:
     defaultValue:0
     type:"tinyint"
+    private:true
   sex:"varchar(5)"
   weibo_name:"varchar(50)"
   desc:"varchar(300)"
   bi:
     type:"int"
     defaultValue:5
-  email:"varchar(100)"
+    private:true
+  email:
+    type:"varchar(100)"
+    private:true
   is_block:
+    private:true
     type:"tinyint"
     defaultValue:0

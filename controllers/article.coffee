@@ -7,6 +7,7 @@ func_card = __F 'card'
 func_bi = __F 'bi'
 func_email = __F 'email'
 func_search = __F 'search'
+func_comment = __F 'comment'
 config = require './../config.coffee'
 authorize=require("./../lib/sdk/authorize.js");
 md5 = require 'MD5'
@@ -23,9 +24,30 @@ rss = require 'rss'
 module.exports.controllers = 
   "/":
     "get":(req,res,next)->
-      
       res.render 'article/articles.jade'
- 
+  ".json":
+    "get":(req,res,next)->
+      condition = 
+        is_yuanchuang:1
+      result = 
+        success:0
+        data:{}
+      func_article.count condition,(error,count)->
+        if error 
+          result.info = error.message
+        else
+          result.data.total=count
+          result.data.totalPage=Math.ceil(count/10)
+          result.data.page = (req.query.page||1)
+          func_article.getAll result.data.page,10,condition,(error,articles)->
+            if error 
+              result.info = error.message
+            else
+              result.success = 1
+              articles.forEach (a)->
+                delete a.html
+              result.data.articles = articles
+            res.send result
   "/old":
     "get":(req,res,next)->
       condition = 
@@ -262,13 +284,33 @@ module.exports.controllers =
   "/column":
     get:(req,res,next)->
       res.render 'article/columns.jade'
+  "/:id\.json":
+    get:(req,res,next)->
+      result = 
+        success:0
+        data:{}
+      func_article.getById req.params.id,(error,article)->
+        if error 
+          result.info = error.message
+          res.send result
+        else
+          
+          func_comment.getAllByTargetId "article_"+article.id,1,100,null,(error,comments)->
+            if error 
+              result.info = error.message
+              res.send result
+            else
+              result.data.article = article
+              result.data.comments = comments
+
+              res.send result
   "/:id":
     "get":(req,res,next)->
       article = res.locals.article
       
-      func_card.getByUserId article.user_id,(error,card)->
-        if card 
-          article.card = card
+      # func_card.getByUserId article.user_id,(error,card)->
+      #   if card 
+      #     article.card = card
         # if article.user_id && res.locals.user
         #   func_info.add 
         #     target_user_id:article.user_id
@@ -279,14 +321,15 @@ module.exports.controllers =
         #     target_path:req.originalUrl
         #     action_name:"【访问】了您的原创文章"
         #     target_path_name:article.title
-        res.locals.article = article
-        func_article.addVisit req.params.id,res.locals.user||null
-        if article.column_id
-          func_column.addCount article.column_id,"visit_count",()->
-        if req.query.is_clear 
-          res.render 'article/clear-article.jade'
-        else
-          res.render 'article/article.jade'
+      res.locals.article = article
+      func_article.addVisit req.params.id,res.locals.user||null
+      if article.column_id
+        func_column.addCount article.column_id,"visit_count",()->
+      if req.query.is_clear 
+        res.render 'article/clear-article.jade'
+      else
+        res.render 'article/article.jade'
+  
   "/user/:id":
     "get":(req,res,next)->
       res.render 'article/his-articles.jade'

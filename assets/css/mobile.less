@@ -5,7 +5,6 @@
 
   }
   body{
-    padding:10px;
   }
   #gotop{
     right:10px;
@@ -73,19 +72,19 @@ width:110%;
       li[pageId="4"]{
         display: none !important;
       }
+      li[pageId="5"]{
+        display: none !important;
+      }
+       li[pageId="2"]{
+        display: none !important;
+      }
       li[pageId="9"]{
         display: none !important;
       }
       i{
         display: none;
       }
-      .right-nav{
-        position: absolute;
-        right:0px;
-        top:30px;
-        background: @green;
-        padding-right:10px;
-      }
+      
     }
   }
   #articles{
@@ -112,5 +111,37 @@ width:110%;
         display: none;
       }
   }
+  }
+  #article{
+    padding:0;
+    .title{
+      overflow: hidden;
+      .wrapper{
+        padding:10px;
+        h2{
+          width:98%;
+        }
+      }
+    }
+    article{
+      width:98%;
+    }
+    .comment{
+      .wrapper{
+        width:auto;
+      }
+      width:100%;
+      padding:0;
+    }
+  }
+  #articles .my_columns .bd{
+    width:auto;
+  }
+  #articles .columns {
+    width:auto;
+    .column{
+      width:100%;
+      overflow: hidden;
+    }
   }
 }

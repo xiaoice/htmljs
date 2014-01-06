@@ -4,7 +4,9 @@ module.exports =
   user_nick:"varchar(100)"
   user_headpic:"varchar(255)"
   title:"varchar(255)"
-  md:"text"
+  md:
+    type:"text"
+    private:true
   html:"text"
   visit_count:
     defaultValue:0
@@ -19,21 +21,29 @@ module.exports =
   is_publish:
     defaultValue:0
     type:"tinyint"
+    private:true
   is_yuanchuang:
     defaultValue:0
     type:"tinyint"
+    private:true
   sort:"int"
   is_top:"tinyint"
   type:
     type:"int" 
     defaultValue:1
-  quote_url:"varchar(255)" #引用原文url
+    private:true
+  quote_url:
+    type:"varchar(255)" #引用原文url
+    private:true
   desc:"text"
   main_pic:"varchar(255)"
-  tagNames:"varchar(255)"
+  tagNames:
+    type:"varchar(255)"
+    private:true
   column_id:"int"
   uuid:"varchar(40)"
   score:
     defaultValue:0
     type:"double"
+    private:true
   pinyin:"varchar(1000)"

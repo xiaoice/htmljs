@@ -34,17 +34,7 @@ html
         p.alert 不存在的阅读篇章
       else
         .content
-            div.hidden
-                <script type="text/javascript"><!--
-                google_ad_client = "ca-pub-8166279959459646";
-                /* zhuanlan */
-                google_ad_slot = "7385625357";
-                google_ad_width = 728;
-                google_ad_height = 90;
-                //-->
-                </script>
-                <script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-                </script>
+            
             .title
               .wrapper
                 h2.title(href='http://p.html-js.com/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
@@ -94,7 +84,17 @@ html
                       p(style="color:#999;") 本站推荐按照您的情况，为作者捐助一下金额：1元，5元，10元，20元，或者更多。
                       p 
                         a(href="#{article.card.alipay}",target="_blank") 点击这里用支付宝捐助
-            
+            div
+                <script type="text/javascript"><!--
+                google_ad_client = "ca-pub-8166279959459646";
+                /* zhuanlan */
+                google_ad_slot = "7385625357";
+                google_ad_width = 728;
+                google_ad_height = 90;
+                //-->
+                </script>
+                <script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
             .comment.module#comment
               .hd 评论
               .bd
@@ -240,17 +240,7 @@ html
         var bds_config={"bdText":"这篇文章不错，#前端乱炖##{column?'专栏「'+column.name+'」':''}的文章：《#{article.title}》@#{article.user_nick}：#{article.md?article.html.replace(/<[^>]*>/g,'').substr(0,130).replace(/\s/g,""):""}","bdPic":"http://www.html-js.com/uploads/article_thumb/#{article.id}.png","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
         document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
         </script>
-      div.hidden.
-         <div itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
-          <span itemprop="itemreviewed">#{article.title}</span>
-          <img itemprop="photo" src="#{locals.shareImgs&&shareImgs[1]}" />
-          <span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating">
-            <span itemprop="average">#{article.score}</span>
-            分（满分为 <span itemprop="best">10 分</span>）
-          </span>
-          共 <span itemprop="votes">#{locals.zan_logs?zan_logs.length:0}</span> 个评分。
-          <span itemprop="count">#{article.comment_count}</span> 条用户评论。
-        </div>
+      
 
     include ../footer
     script(src="#{assets_head}/js/mustache.js")

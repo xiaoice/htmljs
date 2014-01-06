@@ -71,6 +71,8 @@ html
                   a#bdshare.action.bdshare_t.bds_tools.get-codes-bdshare(href="#comment",style="float:none;") 
                     i.icon-new-window
                     em.bds_more(style="background:none !important;float:none;display:inline;padding:0;") 分享
+                  if locals.user && (user.is_admin||user.id==article.user_id)
+                    a.action(href="/article/#{article.id}/edit") 编辑
             article.post(id="post-#{article.id}")
               .wrapper
                 

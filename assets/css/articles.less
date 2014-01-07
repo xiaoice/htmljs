@@ -147,16 +147,14 @@ height: 30px;
       width:1000px;
     }
     .my_column{
-        background: #eee;
         margin-right: 20px;
         display: inline-block;
         line-height: 27px;
         margin-bottom: 10px;
-        padding:10px 20px;
-        width:182px;
+        width:300px;
         vertical-align: top;
         .title{
-          font-size: 12px;
+          font-size: 13px;
         color:#777;
         line-height: 20px;
         height:20px;
@@ -164,62 +162,11 @@ height: 30px;
         a{
           color:#666;
         }
-        }
-        .time{
-          color:#999;
-          line-height: 20px;
-          font-size: 12px;
-
-        }
-        .imp{
-          font-style: normal;
-          font-weight: bold;
-        }
-.go{
-          margin-left: 10px;
+        .go{
           color: @green;
         }
-    }
-    .btn{
-          height:24px;
-          line-height:24px;
-          font-size: 12px;
         }
-    .column{
-      padding:5px 0;
-      border-top: 1px solid #eee;
-      width:300px;
-      margin-right: 20px;
-      display: inline-block;
-      vertical-align: top;
-      .title{
-        font-size: 13px;
-        color:#444;
-        line-height: 20px;
-        font-weight: bold;
-      }
-      .desc{
-        font-size: 12px;
-        line-height: 18px;
-        color:#aaa;
-        margin:5px 0;
-      }
-      .user{
-        font-size: 12px;
-        line-height: 20px;
-        color:#999;
-      }
-      .action{
-        color:#999;
-        font-size: 12px;
-        line-height: 20px;
-        a{
-          padding:0;
-        }
-        i{
-          background: none;
-        }
-      }
+        
     }
   }
    .recent_columns{
@@ -236,35 +183,20 @@ height: 30px;
         line-height: 20px;
         font-weight: bold;
       }
-      .desc{
-        font-size: 12px;
-        line-height: 18px;
-        color:#aaa;
-        margin:5px 0;
+      .go{
+        color: @green;
       }
-      .user{
-        font-size: 12px;
-        line-height: 20px;
-        color:#999;
-        a{
-          color:#666;
-        }
-      }
-      .time{
-        color:#999;
-        font-size: 12px;
-        line-height: 20px;
-      }
-      .actions{
-        margin-bottom: 0;
-        a{
-          font-size: 12px;
-color:@green;
-          i:before{
-            color:@green;
-          }
-        }
-      }
+      
+      // .actions{
+      //   margin-bottom: 0;
+      //   a{
+      //     font-size: 12px;
+      //     color:@green;
+      //     i:before{
+      //       color:@green;
+      //     }
+      //   }
+      // }
     }
   }
   .column{
@@ -647,6 +579,104 @@ color:@green;
 }
 
 #articles{
+  .articles{
+
+      }
+      article{
+        background: #fff;
+
+    padding:10px 15px;
+    position: relative;
+    border-bottom:1px solid #f1f1f1;
+    .lft{
+      display: inline-block;
+      height:50px;
+      width:50px;
+      color:#666;
+      border:1px solid #ddd;
+      vertical-align: top;
+      text-align: center;
+      margin-right: 10px;
+      line-height: 30px;
+      i{
+        background: none;
+      }
+      .count{
+        color:#999;
+        padding-left: 3px;
+      }
+    }
+    .rht{
+      display: inline-block;
+    }
+        .entry-title{
+          line-height: 30px;
+          margin:0;
+          height:30px;
+          overflow: hidden;
+            font-size:15px;
+        line-height: 30px;
+        font-weight: normal;
+        color:#444;
+        a{
+          color: #444;
+
+        }
+        .column-title{
+          font-size: 12px;
+          padding:0 2px;
+          color:#888;
+        }
+          
+          } 
+          .entry-foot{
+            
+            
+            .right-foot{
+              float: right;
+              .item{
+              }
+            }
+            .item{
+              font-size: 12px;
+              line-height: 25px;
+
+              margin-right: 10px;
+              i{
+                background: none;
+              }
+              i:before{
+                color: #aaa;
+                background: none;
+              }
+              a{
+                color:#aaa;
+              }
+              .index{
+
+                }
+                .value{
+
+              }
+            }
+          }
+          .user{
+        position: absolute;
+        right:7px;
+        top:15px;
+        a{
+          display: block;
+        }
+        img{
+          width:33px;
+          height:33px;
+        }
+      }
+      }
+
+      article.yooo{
+    background: #F7F7F7;
+  }
   .columns{
     width:1200px;
     .column{
@@ -715,62 +745,7 @@ line-height: 20px;
         }
         }
       }
-      .articles{
-
-      }
-      article{
-        .entry-title{
-          line-height: 30px;
-          margin:0;
-          padding-left: 10px;
-          height:30px;
-          overflow: hidden;
-          a{
-          
-          font-size: 14px;
-          color:@green;
-
-        }
-          } 
-          .entry-foot{
-            padding-left: 10px;
-            .others{
-              padding-bottom: 5px;
-              padding-top: 3px;
-            }
-            
-            .right-foot{
-              float: right;
-              .item{
-              }
-            }
-            .item{
-              font-size: 12px;
-              line-height: 25px;
-
-              margin-right: 10px;
-              i{
-                background: none;
-              }
-              i:before{
-                color: #aaa;
-                background: none;
-              }
-              a{
-                color:#aaa;
-              }
-              .index{
-
-                }
-                .value{
-
-              }
-            }
-          }
-      }
-      article.yooo{
-    background: #F7F7F7;
-  }
+      
   .more{
     line-height: 30px;
     padding-left:10px;

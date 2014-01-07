@@ -1,15 +1,15 @@
 !!! 5
 html
   head
-    include head
+    include ../head
     title 添加专栏文章
-    include editor_head
+    include ../editor_head
     script
       var article_id = #{locals.article?article.id:0}
   body#add-article
     - locals.pageId=1;
 
-    include header
+    include ../header
     #content
       .content
         .left
@@ -47,10 +47,14 @@ html
                 .control-group
                   .columns
                     input#column(type="hidden",name="column_id",value="#{locals.article?article.column_id:column_id}")
-                    div.hd 发表到何专栏：
+                    div.hd 发表到的专栏：
                     div.bd 
                       each column,i in columns
-                        span.label(data-id="#{column.id}",class="#{locals.article?(article.column_id==column.id?'label-success':''):(column.id==column_id?'label-success':'')}",data-original-title="#{column.desc_md&&column.desc_md.substr(0,100)}",title="#{column.desc_md&&column.desc_md.substr(0,100)}") #{column.name}
+                        if locals.article&&article.column_id
+                          if column.id==article.column_id
+                            span.label(data-id="#{column.id}",class="label-success",data-original-title="#{column.desc_md&&column.desc_md.substr(0,100)}",title="#{column.desc_md&&column.desc_md.substr(0,100)}") #{column.name}
+                        else if column.id==locals.column_id
+                          span.label(data-id="#{column.id}",class="label-success",data-original-title="#{column.desc_md&&column.desc_md.substr(0,100)}",title="#{column.desc_md&&column.desc_md.substr(0,100)}") #{column.name}
                 .control-group
                   button.btn#submit(type='submit') 发表
                 .control-group#wmd-preview-parent

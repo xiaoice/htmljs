@@ -24,7 +24,7 @@ rss = require 'rss'
 module.exports.controllers = 
   "/":
     "get":(req,res,next)->
-      res.render 'article/articles.jade'
+      res.render 'article/articles-list.jade'
   ".json":
     "get":(req,res,next)->
       condition = 
@@ -165,10 +165,11 @@ module.exports.controllers =
     "get":(req,res,next)->
       if not res.locals.card then next new Error '必须添加花名册后才能发表专栏文章！',100
       res.locals.column_id = if req.query.column_id then req.query.column_id else ""
-      res.render 'add-article.jade'
+      res.render 'article/add-article.jade'
     "post":(req,res,next)->
       html = safeConverter.makeHtml req.body.md
       match = html.match(/<img[^>]+?src="([^"]+?)"/)
+      console.log req.body
       data = 
         md:req.body.md
         html:html
@@ -218,7 +219,7 @@ module.exports.controllers =
         else if res.locals.user.is_admin!=1 && article.user_id != res.locals.user.id then next new Error '没有权限编辑此文章'
         else
           res.locals.article = article
-          res.render 'add-article.jade'
+          res.render 'article/add-article.jade'
     "post":(req,res,next)->
       html = safeConverter.makeHtml req.body.md
       match = html.match(/<img[^>]+?src="([^"]+?)"/)
@@ -457,7 +458,7 @@ module.exports.filters =
     post:['checkLoginJson',"checkCard"]
 
   "/":
-    get:['freshLogin','get_infos','article/new-comments','article/my-columns','article/index-columns','article/column-articles','article/checkRss']
+    get:['freshLogin','get_infos','article/new-comments','article/my-columns','article/public-columns','article/all-publish-articles']#'article/index-columns','article/column-articles','article/checkRss']
   "/user/:id":
     get:['freshLogin','article/who','article/his-articles']
   "/old":

@@ -394,7 +394,7 @@ module.exports.controllers =
             if error then next error
             else
               res.locals.articles = articles
-              res.render 'articles.jade'
+              res.render 'article/column.jade'
   "/column/:id/rss":
     get:(req,res,next)->
       if not res.locals.card then next new Error '请先添加花名册并且填写正确的邮箱地址才能使用此功能！'

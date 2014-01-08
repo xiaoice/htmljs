@@ -125,7 +125,7 @@ module.exports.controllers =
             if error then next error
             else
               res.locals.cards = cards
-              res.render 'cards.jade'
+              res.render 'card/cards.jade'
   "/add-card":
     get:(req,res,next)->
       if res.locals.card
@@ -139,9 +139,9 @@ module.exports.controllers =
         ,(error,data)->
           if !error
             res.locals.weibo_info = data
-            res.render 'add-card.jade'
+            res.render 'card/add-card.jade'
       else
-        res.render 'add-card.jade'
+        res.render 'card/add-card.jade'
     post:(req,res,next)->
       if res.locals.user.card_id
         next new Error '您已经拥有一个名片！'
@@ -178,7 +178,7 @@ module.exports.controllers =
       if not res.locals.card
         res.redirect '/add-card'
       else
-        res.render 'edit-card.jade'
+        res.render 'card/edit-card.jade'
     post:(req,res,next)->
       func_card.update req.body.id,req.body,(error,card)->
         if error then next error

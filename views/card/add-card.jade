@@ -1,7 +1,7 @@
 !!! 5
 html
   head
-    include head
+    include ../head
     style
       #content input{
       border-radius:3px;
@@ -11,7 +11,7 @@ html
       }
   body
     - locals.pageId=2;
-    include header
+    include ../header
     #content
       .module
         form.form-horizontal(method='post')

@@ -3,6 +3,8 @@ htmljs
 
 前端乱炖博客的repo。http://www.html-js.com
 
+本站代码仅供参考，缺少配置文件在本地不能运行，基于express，rainbow，sequelize，jade，coffeescript，less，moment等技术和框架。
+
 约定模式：
 ==
 * 整个系统从数据到最终逻辑分为五层：1.models，2.functions，3.filters，4.routes，5.views

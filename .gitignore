@@ -2,3 +2,4 @@ config.coffee
 .gitignore
 alipay_config.js
 node_modules
+.DS_Store

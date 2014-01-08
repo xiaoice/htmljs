@@ -1,13 +1,13 @@
 !!! 5
 html
   head
-    include head
+    include ../head
     title 前端花名册
     |<meta name="description" content="前端乱炖 花名册 是国内最大的前端人员信息库，而且规模在不断增加中。">
     script(src='#{assets_head}/js/lazyload.js')
   body#cards
     - locals.pageId=2;
-    include header
+    include ../header
     #content.clearfix
       .group 
         form.search(action="/search")
@@ -90,7 +90,7 @@ html
                       .icon-comments.icon
                       span #{card.comment_count||0}
                     
-            include page
+            include ../page
         .right
           if locals.comments
             .module
@@ -111,7 +111,7 @@ html
               .hd 广告位
               .bd
                 
-    include footer
+    include ../footer
     script(src="#{assets_head}/js/messageTip.js")
     script
       $("img.lazy").lazyload();

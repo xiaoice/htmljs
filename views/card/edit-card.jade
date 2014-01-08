@@ -3,17 +3,14 @@ html
   head
     meta(charset='utf-8')
     title 前端花名册
-    link(href='#{assets_head}/css/bootstrap.css', type='text/css', rel='stylesheet', charset='utf-8')
-    link(href='#{assets_head}/css/main.css', type='text/css', rel='stylesheet', charset='utf-8')
-    script(src='#{assets_head}/js/jquery.js')
+    include ../head
     script(src='#{assets_head}/js/lazyload.js')
     style
       
       
-    script(src='/google_analytics_auto.js')
   body
     - locals.pageId=2;
-    include header
+    include ../header
     #content.clearfix
       .module
         form.form-horizontal(method='post')

@@ -195,7 +195,7 @@ module.exports.controllers =
             if user.card_id
               res.redirect '/card/'+user.card_id
             else
-              res.render 'p.jade'
+              res.render 'user/p.jade'
     
 module.exports.filters = 
   "/":

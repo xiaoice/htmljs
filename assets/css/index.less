@@ -12,287 +12,318 @@
   }
    
   
-  .timeline-item{
-    font-size: 13px;
-    .user{
-      .headpic{
-        border-radius: 30px;
-        height:30px;
-        width:30px;
-        display: block;
-        border:2px solid #fff;
-        box-shadow: 0px 0px 3px #aaa;
-        img{
-          border-radius: 30px;
-          height:30px;
-          width:30px;
-        }
-      }
-      float:left;
-      width:50px;
-    }
-    .infos{
-      float:left;
-      width:550px;
-      .action{
-        line-height: 30px;
-        height:30px;
-        overflow: hidden;
-        color:#999;
-        .time{
-          padding-left: 10px;
-          color:#aaa;
-        }
-      }
-      .desc{
-        background: #f7f7f7;
-        border-radius: 5px;
-        padding:15px;
-        font-size: 12px;
-        color:#888;
-        h1,h2,h3,h4{font-size: 13px;line-height: 30px;margin:5px 0;}
-        .main_pic{
-          float:left;
-          max-width:250px;
-          max-height:250px;
-          margin-right:20px;
-           margin-bottom:20px;
-        }
-        .card{
-          position:relative;
-          background:#fff;
-          border-radius: 5px;
-          list-style: none;
-          margin:0;
-          padding:15px;
-          font-size:12px;
-          color:#666;
-          box-shadow: 2px 2px 2px #ddd;
-          .head_pic{
-            float:left;
-            width:80px;
-            img{
-              width:60px;
-              height:60px;
-            }
-          }
-          .car-infos{
-            float:left;
-            width:400px;
-          }
-          .renling{
-            position:absolute;
-            right:10px;
-            top:25px;
-          }
-          .sns{
-            margin-left: 10px;
-            a{padding-left:5px;}
-            .blog{
-              background: url(http://htmljs.b0.upaiyun.com/images/icon-blog.png) no-repeat center center;
-              height: 15px;
-              width:15px;
-              display: inline-block;
-              text-indent: -1000px;
-              overflow: hidden;
-            }
-            .github{
-              background: url(http://htmljs.b0.upaiyun.com/images/github.png) no-repeat center center;
-              height: 15px;
-              width:15px;
-              display: inline-block;
-              text-indent: -1000px;
-              overflow: hidden;
-            }
-            .weibo{
-              background: url(http://htmljs.b0.upaiyun.com/images/icon-weibo.png?d) no-repeat center center;
-              height: 15px;
-              width:15px;
-              display: inline-block;
-              text-indent: -1000px;
-              overflow: hidden;
-            }
-          }
+  // .timeline-item{
+  //   font-size: 13px;
+  //   .user{
+  //     .headpic{
+  //       border-radius: 30px;
+  //       height:30px;
+  //       width:30px;
+  //       display: block;
+  //       border:2px solid #fff;
+  //       box-shadow: 0px 0px 3px #aaa;
+  //       img{
+  //         border-radius: 30px;
+  //         height:30px;
+  //         width:30px;
+  //       }
+  //     }
+  //     float:left;
+  //     width:50px;
+  //   }
+  //   .infos{
+  //     float:left;
+  //     width:550px;
+  //     .action{
+  //       line-height: 30px;
+  //       height:30px;
+  //       overflow: hidden;
+  //       color:#999;
+  //       .time{
+  //         padding-left: 10px;
+  //         color:#aaa;
+  //       }
+  //     }
+  //     .desc{
+  //       background: #f7f7f7;
+  //       border-radius: 5px;
+  //       padding:15px;
+  //       font-size: 12px;
+  //       color:#888;
+  //       h1,h2,h3,h4{font-size: 13px;line-height: 30px;margin:5px 0;}
+  //       .main_pic{
+  //         float:left;
+  //         max-width:250px;
+  //         max-height:250px;
+  //         margin-right:20px;
+  //          margin-bottom:20px;
+  //       }
+  //       .card{
+  //         position:relative;
+  //         background:#fff;
+  //         border-radius: 5px;
+  //         list-style: none;
+  //         margin:0;
+  //         padding:15px;
+  //         font-size:12px;
+  //         color:#666;
+  //         box-shadow: 2px 2px 2px #ddd;
+  //         .head_pic{
+  //           float:left;
+  //           width:80px;
+  //           img{
+  //             width:60px;
+  //             height:60px;
+  //           }
+  //         }
+  //         .car-infos{
+  //           float:left;
+  //           width:400px;
+  //         }
+  //         .renling{
+  //           position:absolute;
+  //           right:10px;
+  //           top:25px;
+  //         }
+  //         .sns{
+  //           margin-left: 10px;
+  //           a{padding-left:5px;}
+  //           .blog{
+  //             background: url(http://htmljs.b0.upaiyun.com/images/icon-blog.png) no-repeat center center;
+  //             height: 15px;
+  //             width:15px;
+  //             display: inline-block;
+  //             text-indent: -1000px;
+  //             overflow: hidden;
+  //           }
+  //           .github{
+  //             background: url(http://htmljs.b0.upaiyun.com/images/github.png) no-repeat center center;
+  //             height: 15px;
+  //             width:15px;
+  //             display: inline-block;
+  //             text-indent: -1000px;
+  //             overflow: hidden;
+  //           }
+  //           .weibo{
+  //             background: url(http://htmljs.b0.upaiyun.com/images/icon-weibo.png?d) no-repeat center center;
+  //             height: 15px;
+  //             width:15px;
+  //             display: inline-block;
+  //             text-indent: -1000px;
+  //             overflow: hidden;
+  //           }
+  //         }
 
-          a{
-            word-wrap: normal;
-            word-break: break-all;
-          }
-          .key{color:#aaa;margin-left:10px;}
-          .key:first-child{margin-left: 0;}
-          .shanchang{
-            .key{
-              float:left;
-            }
-            .value{
-              float:left;
-              width:350px;
-            }
+  //         a{
+  //           word-wrap: normal;
+  //           word-break: break-all;
+  //         }
+  //         .key{color:#aaa;margin-left:10px;}
+  //         .key:first-child{margin-left: 0;}
+  //         .shanchang{
+  //           .key{
+  //             float:left;
+  //           }
+  //           .value{
+  //             float:left;
+  //             width:350px;
+  //           }
 
-          }
-        }
-      }
-    }
-  }
-  .timeline-item{
-    padding:10px;
-    padding-left: 18px;
-    position: relative;
-    border-bottom: 1px solid #eee;
-    font-size: 12px;
-    .entry-title{
-      position: relative;
-      .headpic{
-        float: left;
-        margin-right: 20px;
-      }
-      .suo{
-        color:#999;
-        font-size: 12px;
-      }
-      .title{
-        font-size:15px;
-        line-height: 30px;
-        margin:0;
-        font-weight: bold;
-        font-weight: normal;
-        a{
-          color: #333;
-        }
-      }
-      .title{
-        margin:0;
-        a{
-        line-height: 30px;
-        margin:0;
-        color: #111;
-        font-weight: normal;
-        }
-        .real-title{
-          margin-left: 0px;
-        }
-         .t-user{
-        display: inline-block;
-        float: right;
-        vertical-align: -4px;
-        background: #fff;
-        box-shadow: 1px 1px 1px #ddd;
-        width:20px;
-        height:20px;
-        img{
-          display: block;
-        }
-      }
-      }
-      .others{
-        margin-top: 10px;
-      }
-      .item{
-        font-size: 12px;
-        margin-right: 20px;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  // .timeline-item{
+  //   padding:10px;
+  //   padding-left: 18px;
+  //   position: relative;
+  //   border-bottom: 1px solid #eee;
+  //   font-size: 12px;
+  //   .entry-title{
+  //     position: relative;
+  //     .headpic{
+  //       float: left;
+  //       margin-right: 20px;
+  //     }
+  //     .suo{
+  //       color:#999;
+  //       font-size: 12px;
+  //     }
+  //     .title{
+  //       font-size:15px;
+  //       line-height: 30px;
+  //       margin:0;
+  //       font-weight: bold;
+  //       font-weight: normal;
+  //       a{
+  //         color: #333;
+  //       }
+  //     }
+  //     .title{
+  //       margin:0;
+  //       a{
+  //       line-height: 30px;
+  //       margin:0;
+  //       color: #111;
+  //       font-weight: normal;
+  //       }
+  //       .real-title{
+  //         margin-left: 0px;
+  //       }
+  //        .t-user{
+  //       display: inline-block;
+  //       float: right;
+  //       vertical-align: -4px;
+  //       background: #fff;
+  //       box-shadow: 1px 1px 1px #ddd;
+  //       width:20px;
+  //       height:20px;
+  //       img{
+  //         display: block;
+  //       }
+  //     }
+  //     }
+  //     .others{
+  //       margin-top: 10px;
+  //     }
+  //     .item{
+  //       font-size: 12px;
+  //       margin-right: 20px;
 
-        .index{
-          color:#aaa;
-        }
-        .value{
-          color:#aaa;
-        }
-        a.value{
-          color:@green;
-        }
-      }
-      .actions{
-        a{
-          margin-right: 5px;
-        }
-      }
-      .tags{
-        a{
-          margin-right: 5px;
-        }
-      }
-      .user{
-        position: absolute;
-        right:10px;
-        top:7px;
-        a{
-          display: block;
-        }
-        img{
-          width:40px;
-          height:40px;
-        }
-      }
-    }
-    .entry-content{
-      padding:20px 0;
-      word-break: break-all;
-      color:#404040;
-      h1,h2,h3,h4,h5{
-        font-size:1.5em;
-      }
-      p{
-        font-size:14px;
-        line-height:20px;
-        margin:10px 0;
-      }
-    }
-    .entry-foot{
-      line-height: 30px;
-      .item{
-        font-size: 12px;
-        margin-right: 20px;
-        .index{
-          color:#aaa;
-        }
-        .value{
-          color:#aaa;
-        }
-        a.value{
-          color:@blue;
-        }
-      }
-    }
-    .entry-name{
-      position: absolute;
-      top:17px;
-      left:-9px;
-      line-height: 18px;
-      font-size: 16px;
-      color:#aaa;
-      padding:0 5px;
-    }
-  }
-  .timeline-item.yooo{
-    background: #F7F7F7;
-  }
-  .card-item{
-    .t-user{
-      float:right;
-    }
-        .index{
-          color:#aaa;
-        }
-        .value{
-          color:#aaa;
-        }
-        a.value{
-          color:@blue;
-        }
-        .entry-name{
-          top:12px;
-        }
-  }
-  .article-list{
-    margin:0;
-    padding:0;
+  //       .index{
+  //         color:#aaa;
+  //       }
+  //       .value{
+  //         color:#aaa;
+  //       }
+  //       a.value{
+  //         color:@green;
+  //       }
+  //     }
+  //     .actions{
+  //       a{
+  //         margin-right: 5px;
+  //       }
+  //     }
+  //     .tags{
+  //       a{
+  //         margin-right: 5px;
+  //       }
+  //     }
+  //     .user{
+  //       position: absolute;
+  //       right:10px;
+  //       top:7px;
+  //       a{
+  //         display: block;
+  //       }
+  //       img{
+  //         width:40px;
+  //         height:40px;
+  //       }
+  //     }
+  //   }
+  //   .entry-content{
+  //     padding:20px 0;
+  //     word-break: break-all;
+  //     color:#404040;
+  //     h1,h2,h3,h4,h5{
+  //       font-size:1.5em;
+  //     }
+  //     p{
+  //       font-size:14px;
+  //       line-height:20px;
+  //       margin:10px 0;
+  //     }
+  //   }
+  //   .entry-foot{
+  //     line-height: 30px;
+  //     .item{
+  //       font-size: 12px;
+  //       margin-right: 20px;
+  //       .index{
+  //         color:#aaa;
+  //       }
+  //       .value{
+  //         color:#aaa;
+  //       }
+  //       a.value{
+  //         color:@blue;
+  //       }
+  //     }
+  //   }
+  //   .entry-name{
+  //     position: absolute;
+  //     top:17px;
+  //     left:-9px;
+  //     line-height: 18px;
+  //     font-size: 16px;
+  //     color:#aaa;
+  //     padding:0 5px;
+  //   }
+  // }
+  // .timeline-item.yooo{
+  //   background: #F7F7F7;
+  // }
+  // .card-item{
+  //   .t-user{
+  //     float:right;
+  //   }
+  //       .index{
+  //         color:#aaa;
+  //       }
+  //       .value{
+  //         color:#aaa;
+  //       }
+  //       a.value{
+  //         color:@blue;
+  //       }
+  //       .entry-name{
+  //         top:12px;
+  //       }
+  // }
+  // .article-list{
+  //   margin:0;
+  //   padding:0;
   
-  }
-  .article-item{
+  // }
+  // .article-item{
 
-  }
-  .question-item{
+  // }
+  // .question-item{
 
+  // }
+  .top{
+    .banner{
+      width:600px;
+      float:left;
+      padding:0;
+    }
+    .about{
+      float:left;
+      width:350px;
+      font-size:12px;
+      margin-right:10px;
+      color:#999;
+      span{
+        margin-right: 10px;
+        em{
+          color:#444;
+        }
+      }
+      a{
+        margin-right: 10px;
+        color:#444;
+
+        
+      }
+    }
+    .qqs{
+      float: left;
+      width:360px;
+      font-size: 12px;
+    }
   }
   .top-users{
     .item{

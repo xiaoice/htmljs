@@ -182,49 +182,10 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index .left{margin-right:230px;}
 #index .right{width:220px;margin-left:-220px;}
 #index #fixed-modules{width:220px;}
-#index .timeline-item{font-size:13px;}#index .timeline-item .user{float:left;width:50px;}#index .timeline-item .user .headpic{border-radius:30px;height:30px;width:30px;display:block;border:2px solid #fff;box-shadow:0px 0px 3px #aaa;}#index .timeline-item .user .headpic img{border-radius:30px;height:30px;width:30px;}
-#index .timeline-item .infos{float:left;width:550px;}#index .timeline-item .infos .action{line-height:30px;height:30px;overflow:hidden;color:#999;}#index .timeline-item .infos .action .time{padding-left:10px;color:#aaa;}
-#index .timeline-item .infos .desc{background:#f7f7f7;border-radius:5px;padding:15px;font-size:12px;color:#888;}#index .timeline-item .infos .desc h1,#index .timeline-item .infos .desc h2,#index .timeline-item .infos .desc h3,#index .timeline-item .infos .desc h4{font-size:13px;line-height:30px;margin:5px 0;}
-#index .timeline-item .infos .desc .main_pic{float:left;max-width:250px;max-height:250px;margin-right:20px;margin-bottom:20px;}
-#index .timeline-item .infos .desc .card{position:relative;background:#fff;border-radius:5px;list-style:none;margin:0;padding:15px;font-size:12px;color:#666;box-shadow:2px 2px 2px #ddd;}#index .timeline-item .infos .desc .card .head_pic{float:left;width:80px;}#index .timeline-item .infos .desc .card .head_pic img{width:60px;height:60px;}
-#index .timeline-item .infos .desc .card .car-infos{float:left;width:400px;}
-#index .timeline-item .infos .desc .card .renling{position:absolute;right:10px;top:25px;}
-#index .timeline-item .infos .desc .card .sns{margin-left:10px;}#index .timeline-item .infos .desc .card .sns a{padding-left:5px;}
-#index .timeline-item .infos .desc .card .sns .blog{background:url(http://htmljs.b0.upaiyun.com/images/icon-blog.png) no-repeat center center;height:15px;width:15px;display:inline-block;text-indent:-1000px;overflow:hidden;}
-#index .timeline-item .infos .desc .card .sns .github{background:url(http://htmljs.b0.upaiyun.com/images/github.png) no-repeat center center;height:15px;width:15px;display:inline-block;text-indent:-1000px;overflow:hidden;}
-#index .timeline-item .infos .desc .card .sns .weibo{background:url(http://htmljs.b0.upaiyun.com/images/icon-weibo.png?d) no-repeat center center;height:15px;width:15px;display:inline-block;text-indent:-1000px;overflow:hidden;}
-#index .timeline-item .infos .desc .card a{word-wrap:normal;word-break:break-all;}
-#index .timeline-item .infos .desc .card .key{color:#aaa;margin-left:10px;}
-#index .timeline-item .infos .desc .card .key:first-child{margin-left:0;}
-#index .timeline-item .infos .desc .card .shanchang .key{float:left;}
-#index .timeline-item .infos .desc .card .shanchang .value{float:left;width:350px;}
-#index .timeline-item{padding:10px;padding-left:18px;position:relative;border-bottom:1px solid #eee;font-size:12px;}#index .timeline-item .entry-title{position:relative;}#index .timeline-item .entry-title .headpic{float:left;margin-right:20px;}
-#index .timeline-item .entry-title .suo{color:#999;font-size:12px;}
-#index .timeline-item .entry-title .title{font-size:15px;line-height:30px;margin:0;font-weight:bold;font-weight:normal;}#index .timeline-item .entry-title .title a{color:#333;}
-#index .timeline-item .entry-title .title{margin:0;}#index .timeline-item .entry-title .title a{line-height:30px;margin:0;color:#111;font-weight:normal;}
-#index .timeline-item .entry-title .title .real-title{margin-left:0px;}
-#index .timeline-item .entry-title .title .t-user{display:inline-block;float:right;vertical-align:-4px;background:#fff;box-shadow:1px 1px 1px #ddd;width:20px;height:20px;}#index .timeline-item .entry-title .title .t-user img{display:block;}
-#index .timeline-item .entry-title .others{margin-top:10px;}
-#index .timeline-item .entry-title .item{font-size:12px;margin-right:20px;}#index .timeline-item .entry-title .item .index{color:#aaa;}
-#index .timeline-item .entry-title .item .value{color:#aaa;}
-#index .timeline-item .entry-title .item a.value{color:#5bb793;}
-#index .timeline-item .entry-title .actions a{margin-right:5px;}
-#index .timeline-item .entry-title .tags a{margin-right:5px;}
-#index .timeline-item .entry-title .user{position:absolute;right:10px;top:7px;}#index .timeline-item .entry-title .user a{display:block;}
-#index .timeline-item .entry-title .user img{width:40px;height:40px;}
-#index .timeline-item .entry-content{padding:20px 0;word-break:break-all;color:#404040;}#index .timeline-item .entry-content h1,#index .timeline-item .entry-content h2,#index .timeline-item .entry-content h3,#index .timeline-item .entry-content h4,#index .timeline-item .entry-content h5{font-size:1.5em;}
-#index .timeline-item .entry-content p{font-size:14px;line-height:20px;margin:10px 0;}
-#index .timeline-item .entry-foot{line-height:30px;}#index .timeline-item .entry-foot .item{font-size:12px;margin-right:20px;}#index .timeline-item .entry-foot .item .index{color:#aaa;}
-#index .timeline-item .entry-foot .item .value{color:#aaa;}
-#index .timeline-item .entry-foot .item a.value{color:#68a4d1;}
-#index .timeline-item .entry-name{position:absolute;top:17px;left:-9px;line-height:18px;font-size:16px;color:#aaa;padding:0 5px;}
-#index .timeline-item.yooo{background:#F7F7F7;}
-#index .card-item .t-user{float:right;}
-#index .card-item .index{color:#aaa;}
-#index .card-item .value{color:#aaa;}
-#index .card-item a.value{color:#68a4d1;}
-#index .card-item .entry-name{top:12px;}
-#index .article-list{margin:0;padding:0;}
+#index .top .banner{width:600px;float:left;padding:0;}
+#index .top .about{float:left;width:350px;font-size:12px;margin-right:10px;color:#999;}#index .top .about span{margin-right:10px;}#index .top .about span em{color:#444;}
+#index .top .about a{margin-right:10px;color:#444;}
+#index .top .qqs{float:left;width:360px;font-size:12px;}
 #index .top-users .item{line-height:30px;}#index .top-users .item img{margin-right:5px;}
 #index .mod .hd{display:block;}#index .mod .hd a{color:#444;}
 #index .mod .bd{width:110%;}

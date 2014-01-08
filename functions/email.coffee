@@ -47,7 +47,7 @@ module.exports =
       buffer += c.toString()
     .on 'end',()->
       mail({
-        subject:"你在前端乱炖订阅的专栏更新了一篇文章",
+        subject:"前端乱炖专栏新文章："+article.title,
         to:emails,
         html:buffer
       })

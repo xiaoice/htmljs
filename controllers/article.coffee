@@ -1,5 +1,5 @@
 func_user = __F 'user'
-func_article = __F 'article'
+func_article = __F 'article/article'
 func_info = __F 'info'
 func_timeline = __F 'timeline'
 func_column = __F 'column'

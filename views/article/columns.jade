@@ -22,19 +22,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
           span 所有专栏
       .actions.topactions
         a.btn(href="/article/column/add",data-original-title="专栏按照最新文章的添加时间排序，要让自己的专栏有更多展示机会，那就经常更新文章吧。") 创建我的专栏
-      .module.columns-list
-        .hd 我的专栏
-        .bd
-          if locals.my_columns && my_columns.length
-            each column in my_columns
-              .column
-                a.title(href="/article/column/#{column.id}") #{column.name}
-                .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
-                .action   
-                  a(href="/article/add?column_id=#{column.id}",data-original-title="",style="margin-right:10px;") 发表文章
-          else
-            .no 还没有专栏，先创建专栏再发表原创文章吧！
-              a(href="/article/column/add") 创建专栏
+      
 
       .columns-list.module
         .hd 所有专栏

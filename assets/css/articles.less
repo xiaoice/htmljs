@@ -1,70 +1,5 @@
 @import 'article/article.less';
-#articles{
 
-  .left{
-    .infos{
-      margin-left: 0;
-    }
-    .new_warning{
-    margin-left:0;
-    width:640px;
-
-    }
-    
-    .title{
-      a{
-overflow: hidden;
-height: 30px;
-      }
-      }
-    .cats{
-      background: #fff;
-    padding:10px;
-    margin-bottom: 10px;
-    border-radius: 3px;
-    a{
-      border-right:1px solid #ddd;
-      padding:0 10px;
-      font-size:16px;
-      color:#999;
-    }
-    a.active{
-      color:#333;
-    }
-    }
-    
-  }
-  .right{
-    .actions{
-    background: #fff;
-    margin-bottom: 10px;
-    border-radius: 3px;
-      .publish{
-        height:30px;
-        line-height: 30px;
-        background: #5bb793 url(../images/button+.png) no-repeat 0 -1px;
-        padding-left: 30px;
-        padding-right: 10px;
-        border-radius: 3px;
-        display: inline-block;
-        color: #fff;
-        margin-right:10px;
-      }
-      .publish:hover{
-          background-color: #35b382; 
-      }
-    }
-    .item{
-        border-bottom: 1px solid #eee;
-        padding:5px 0;
-        a{
-      color:@lightgreen;
-    }
-      }
-  }
-  
-
-}
 #articles
 {
   .right-actions{
@@ -143,18 +78,24 @@ height: 30px;
     }
   }
   .my_columns{
+    padding:15px 15px;
+    .hd{
+      line-height: 20px;
+      height: 20px;
+    }
     .bd{
       width:1000px;
+
     }
     .my_column{
         margin-right: 20px;
         display: inline-block;
-        line-height: 27px;
-        margin-bottom: 10px;
+        line-height: 25px;
+        margin-bottom: 5px;
         width:300px;
         vertical-align: top;
         .title{
-          font-size: 13px;
+          font-size: 12px;
         color:#777;
         line-height: 20px;
         height:20px;
@@ -169,36 +110,7 @@ height: 30px;
         
     }
   }
-   .recent_columns{
-    .recent_column{
-      padding:5px 0;
-      border-top: 1px solid #eee;
-      margin-right: 20px;
-      display: inline-block;
-      vertical-align: top;
-      width:230px;
-      .title{
-        font-size: 13px;
-        color:#444;
-        line-height: 20px;
-        font-weight: bold;
-      }
-      .go{
-        color: @green;
-      }
-      
-      // .actions{
-      //   margin-bottom: 0;
-      //   a{
-      //     font-size: 12px;
-      //     color:@green;
-      //     i:before{
-      //       color:@green;
-      //     }
-      //   }
-      // }
-    }
-  }
+   
   .column{
     background: #fff;
     color:#333;
@@ -240,305 +152,9 @@ height: 30px;
       line-height: 30px;
       font-size: 12px;
     }
-  .column-list{
-    border-radius:5px;
-    margin-bottom: 20px;
-    .hd{
-      font-size: 14px;
-      font-weight: bold;
-    }
-    .bd{
-      
-     
-    }
-     width:1100px;
-      overflow: hidden;
-    .btn{
-      margin-right: 10px;
-    }
-
-    .column-item{
-      display: inline-block;
-      border-radius: 3px;
-      margin-bottom: 10px;
-      margin-right:10px;
-      vertical-align: top;
-      width:488px;
-      border:1px solid #e1e1e1;
-
-      .head{
-        background: #fff;
-        padding:0px 15px;
-        
-        border-bottom: 1px solid #efefef;
-        line-height: 40px;
-        
-        a{
-          color:@red;
-          font-size: 14px;
-        }
-        i{
-          font-size: 12px;
-          margin-left: 10px;
-          color:#999;
-        }
-        .actions{
-          float: right;
-            a{
-              margin-left: 4px;
-              margin-right: 0;
-              width:20px;height:20px;
-              padding:0;
-              i{
-                margin:0;
-                padding:0;
-                vertical-align: 0;
-                color:#fff;
-              }
-            }
-            span{
-              color:#aaa;
-              i{
-                color: #aaa;
-              }
-            }
-          }
-      }
-      .title{
-        font-size: 14px;
-
-      }
-      .user{
-        line-height: 25px;
-      }
-      .others{
-        color: #ccc;
-        font-size: 12px;
-        opacity: 0.8;
-        margin-left: -2px;
-        .item{
-          margin-right: 10px;
-          i{
-            transform: scale(0.8);
-            -webkit-transform: scale(0.8); /* for Chrome || Safari */
-
-            -moz-transform: scale(0.8); /* for Firefox */
-
-            -ms-transform: scale(0.8); /* for IE */
-
-            -o-transform: scale(0.8); /* for Opera */
-            vertical-align: -2px;
-            padding-right: 2px;
-          }
-        }
-        .key{
-        }
-      }
-      
-    }
-    .other-column{
-      display: inline-block;
-    }
-    .more-column,.create-column,.publish-column{
-      padding:5px 10px;
-      margin:0;
-      margin-bottom: 2px;
-      font-size: 12px;
-      width:70px;
-      margin-right: 5px;
-      i{
-        margin-right: 3px;
-        margin-top: -1px;
-      }
-    }
-    
-  }
-  .post{
-    padding:5px 10px;
-    position: relative;
-    padding-top: 10px;
-    margin-bottom: 10px;
-    border-top:1px solid #eee;
-    background: #fff;
-    i{
-          background: none;
-        }
-    .tip{
-      // position: absolute;
-      right:0;
-      top:0;
-      width:30px;
-      height:14px;
-      font-size: 12px;
-      line-height: 14px;
-      text-align: center;
-      background:rgba(104,164,209,0.7);
-      color: #fff;
-      z-index: 10;
-      padding:1px 2px;
-      font-weight: normal;
-      font-size: 12px;
-      vertical-align: 1px;
-      margin-left: 10px;
-      transform: scale(0.9);
-      display: inline-block;
-      -webkit-transform: scale(0.9); /* for Chrome || Safari */
-      -moz-transform: scale(0.9); /* for Firefox */
-
-      -ms-transform: scale(0.9); /* for IE */
-
-      -o-transform: scale(0.9); /* for Opera */
-    }
-    .tip.new{
-      background: rgba(203,122,101,0.7);
-    }
-    .tip.hot{
-      background:rgba(247,67,96,0.7);
-    }
-    .fang-eye{
-          display: inline-block;
-          width:13px;
-          height:13px;
-          background: url(../images/fang-eye.png) no-repeat;
-          background-size: 100%;
-        }
-        .entry-column{
-          line-height: 30px;
-          text-align: right;
-          color:#999;
-          font-size: 12px;
-          margin-right: 10px;
-        }
-    .entry-title{
-      position: relative;
-      .headpic{
-        float: left;
-        margin-right: 20px;
-      }
-      
-      .title{
-        margin:0;
-        padding-right:80px;
-        line-height: 20px;
-        a{
-        line-height: 20px;
-        margin:0;
-        color: #444;
-        font-weight: normal;
-        font-size: 14px;
-          font-weight: bold;
-        }
-        .real-title{
-          // margin-left: 10px;
-          font-size: 16px;
-          font-weight: bold;
-
-        }
-         
-      }
-      .t-user{
-        display: inline-block;
-        position: absolute;
-        margin-right: 5px;
-        vertical-align: -14px;
-        background: #fff;
-        box-shadow: 0px 0px 2px #aaa;
-        width:30px;
-        height:30px;
-        border:3px solid #fff;
-        border-radius: 50px;
-        right:10px;
-        top:2px;
-        img{
-          display: block;
-          border-radius: 50px;
-        }
-        
-      }
-      .others{
-        margin-top: 10px;
-
-      }
-      .item{
-        font-size: 12px;
-        margin-right: 20px;
-
-        .index{
-          color:#ccc;
-        }
-        .value{
-          color:#999;
-        }
-      }
-      .actions{
-        a{
-          margin-right: 5px;
-        }
-      }
-      .tags{
-        a{
-          margin-right: 5px;
-        }
-      }
-      .user{
-        position: absolute;
-        right:10px;
-        top:7px;
-        a{
-          display: block;
-        }
-        img{
-          width:40px;
-          height:40px;
-        }
-      }
-    }
-    .entry-content{
-      padding:10px 10px;
-      word-break: break-all;
-      color:#666;
-      overflow: hidden;
-      font-size:12px;
-      h1,h2,h3,h4,h5{
-        font-size:14px;
-        margin:10px 0;
-        line-height: 20px;
-      }
-      p{
-        font-size:14px;
-        line-height:20px;
-        margin:10px 0;
-        color:#404040;
-      }
-    }
-    .entry-foot{
-      line-height: 40px;
-      .item{
-        font-size: 12px;
-        margin-right: 20px;
-        .index{
-          color:#bbb;
-        }
-        .value{
-          color:#bbb;
-        }
-      }
-      .right-foot{
-        float: right;
-        .item{
-       margin-right: 0px;
-        margin-left: 10px;
-      }
-      }
-    }
-  }
-  .post.yooo{
-  }
-  .article-list{
-    margin:0;
-    padding:0;
   
-  }
+    
+  
   
 }
 

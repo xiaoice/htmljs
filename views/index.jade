@@ -15,16 +15,15 @@ html
 
     #content.clearfix
       .content
-        .left
-          //
-            div.alert.alert-warning 本站第一次线下活动【中秋节杭州基层前端大聚会】，开始报名！<a href="/act/1">戳我去报名</a>！
-          .module.search
+          .module.search.hidden
               form(action="/search",method="get",style="margin:0;")
                 fieldset
                   .input-append(style="margin:0;")
                     input#keyword.span2.input-large(type="text",name="q",placeholder="请输入关键词查询全站、站外内容")
                     button.btn 搜索
-              
+              .quick-go
+                
+          
           //- div(style="margin-bottom:10px;")
           //-   - var random = Math.random();
           //-     if random>0.5
@@ -33,29 +32,17 @@ html
           //-     else
           //-       a(href="/article/1498")
           //-         img(src="http://htmljs.b0.upaiyun.com/uploads/1388068398976-bb.png")
-          if locals.cards
-            .module.mod.recent_cards
-              .hd
-                a(href="/cards") 花名册新人（#{locals.all_count?all_count.card:0}）
-              .bd
-                .card.user(class="nan-user")
-                  .pic
-                    a.tooltip-trigger(href="/edit-card",data-original-title="加入花名册")
-                      img(src="http://htmljs.b0.upaiyun.com/uploads/1388023439858-ce.png")
-                  .name
-                    a(href="/edit-card")  我也加入
-                each card,i in cards
-                  .card.user(class="#{card.sex=='男'?'nan-user':'nv-user'}")
-                    .pic
-                      a.tooltip-trigger(href="/card/#{card.id}",data-original-title="#{card.desc}")
-                        img(src="#{card.head_pic}")
-                        if card.sex == '男'
-                          .sex.nan
-                        else
-                          .sex.nv
-                    .name
-                      a(href="/card/#{card.id}")  #{card.nick}
-                
+          
+          //- if locals.top_users
+          //-   .module.top-users
+          //-     .hd 用户经验榜
+          //-     .bd
+          //-       each user in locals.top_users
+          //-         .item 
+          //-           a(href="/user/#{user.id}")
+          //-             img(src="#{user.head_pic}",width="20")
+          //-           a(href="/user/#{user.id}") #{user.nick} 
+          //-           span #{user.coin}     
           
           if locals.articles
             .module.mod.recent_articles
@@ -63,16 +50,16 @@ html
                 a(href="/article") 最新的专栏文章（#{locals.all_count?all_count.article:0}）
               .bd(role="list")
                 each article,i in articles
-                  .item(class="#{article.visit_count<60?'new':''}",role="listitem")
+                  .item(class="#{article.visit_count<60?'new':''} #{Math.floor(i/2)%2==1?'yooo':''}",role="listitem")
                     a.title(href="/article/#{article.pinyin?article.pinyin:article.id}") #{article.title}
                     .desc 
                       
                       a.user(href="/user/#{article.user_id}") #{article.user_nick}
                       span.time #{moment(article.createdAt).fromNow()}
                       span.desc-item
-                        span.index 浏览
-                        a.value #{article.visit_count}
-                      span.desc-item
+                        span.index 赞
+                        a.value #{article.zan_count}
+                      span.desc-item.hidden
                         span.index 评论
                         a.value #{article.comment_count}
                 
@@ -97,7 +84,7 @@ html
                 //-     .visitor.user
                 //-       a(href="/user/#{visitor.user_id}",data-original-title="#{visitor.user_nick} #{moment(visitor.createdAt).fromNow()}")
                 //-         img(src="#{visitor.user_headpic}")
-          .module.
+          .module.hidden
             <script type="text/javascript">
             /*728*90，创建于2013-12-16*/
             var cpro_id = "u1435510";
@@ -109,7 +96,7 @@ html
                 a(href="/qa") 最新的问题（#{locals.all_count?all_count.question:0}）
               .bd
                 each question,i in questions
-                  .item(class="#{question.visit_count<30?'new':''}")
+                  .item(class="#{question.visit_count<30?'new':''}  #{Math.floor(i/2)%2==1?'yooo':''}")
                     a.title(href="/qa/#{question.pinyin?question.pinyin:question.id}") #{question.title}
                     .desc 
                       a.user(href="/user/#{question.user_id}") #{question.user_nick}
@@ -130,7 +117,7 @@ html
                 a(href="/topic") 最新的话题（#{locals.all_count?all_count.topic:0}）
               .bd
                 each topic,i in topics
-                  .item(class="#{topic.visit_count<30?'new':''}")
+                  .item(class="#{topic.visit_count<30?'new':''}  #{Math.floor(i/2)%2==1?'yooo':''}")
                     a.title(href="/topic/#{topic.id}") #{topic.title}
                     .desc 
                       if topic.last_comment_user_id
@@ -146,135 +133,157 @@ html
                   .hd 话题类型
                   each tag in topic_tags
                     a.tag(href="/topic?tag_id=#{tag.id}",class="#{tag.important?'important':''}") #{tag.name}
-          .module.timelines
-            each timeline in timelines
-              if timeline.card_id
-                .card-item.timeline-item.clearfix
-                  a.t-user(href="/user/#{timeline.card_user_id}",data-original-title="#{timeline.card_nick}")
-                    img(data-original="#{timeline.card_head_pic}",width="20")
-                  span.value  #{moment(timeline.createdAt).fromNow()} 
-                  a(href="/card/#{timeline.card_id}") #{timeline.card_nick} 
-                  span 添加了自己的名片：
-                  a(href="/card/#{timeline.card_id}") 查看名片 
-                  .entry-name <i class="icon-nameplate" title="名片"></i>
-              else if timeline.article_id
-                .article-item.timeline-item.clearfix
-                  .entry-title
-                    h2.title
-                      a.t-user(href="/user/#{timeline.article_user_id}",data-original-title="#{timeline.article_user_nick}")
-                        img(data-original="#{timeline.article_user_headpic}",width="20")
-                      span.suo 「专栏」
-                      a.real-title(href='/article/#{timeline.article_id}', title='#{timeline.article_title}', rel='bookmark') #{timeline.article_title}
-                  .entry-foot
-                    div.others
-                      span.time.item
-                        span.value #{moment(timeline.createdAt).fromNow()} 由
-                        a.value.url.fn(rel='author', href='/user/#{timeline.article_user_id}')  #{timeline.article_user_nick} 
-                        span.value 
-                          | 发布在 
-                          if timeline.article_column_id && locals.columns
-                            each column in columns
-                              if column.id == timeline.article_column_id
-                                a(href="/article/column/#{column.id}") #{column.name}
-                          |  专栏
-                      span.item
-                        span.index 浏览 
-                        span.value #{timeline.article_visit_count}
-                      span.item
-                        span.index 评论 
-                        span.value  #{timeline.article_comment_count}
-                      span.item
-                        span.index 评分
-                        a.value(href="/article/#{timeline.article_id}#score")  #{timeline.article_score}
-                      if locals.user&&locals.user.is_admin
-                        span.actions.item
-                          span.index 操作：
-                          if timeline.sort ==10000
-                            a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
-                          else
-                            a(href="/index/#{timeline.id}/update?sort=10000") 置顶
-                  .entry-name <i class="icon-book-open" title="专栏原创文章"></i>
+          if locals.cards
+            .module.mod.recent_cards
+              .hd
+                a(href="/cards") 花名册新人（#{locals.all_count?all_count.card:0}）
+              .bd
+                .card.user(class="nan-user")
+                  .pic
+                    a.tooltip-trigger(href="/edit-card",data-original-title="加入花名册")
+                      img(src="http://htmljs.b0.upaiyun.com/uploads/1388023439858-ce.png")
+                  .name
+                    a(href="/edit-card")  我也加入
+                each card,i in cards
+                  .card.user(class="#{card.sex=='男'?'nan-user':'nv-user'}")
+                    .pic
+                      a.tooltip-trigger(href="/card/#{card.id}",data-original-title="#{card.desc}")
+                        img(src="#{card.head_pic}")
+                        if card.sex == '男'
+                          .sex.nan
+                        else
+                          .sex.nv
+                    .name
+                      a(href="/card/#{card.id}")  #{card.nick}
+          //- .module.timelines
+          //-   each timeline in timelines
+          //-     if timeline.card_id
+          //-       .card-item.timeline-item.clearfix
+          //-         a.t-user(href="/user/#{timeline.card_user_id}",data-original-title="#{timeline.card_nick}")
+          //-           img(data-original="#{timeline.card_head_pic}",width="20")
+          //-         span.value  #{moment(timeline.createdAt).fromNow()} 
+          //-         a(href="/card/#{timeline.card_id}") #{timeline.card_nick} 
+          //-         span 添加了自己的名片：
+          //-         a(href="/card/#{timeline.card_id}") 查看名片 
+          //-         .entry-name <i class="icon-nameplate" title="名片"></i>
+          //-     else if timeline.article_id
+          //-       .article-item.timeline-item.clearfix
+          //-         .entry-title
+          //-           h2.title
+          //-             a.t-user(href="/user/#{timeline.article_user_id}",data-original-title="#{timeline.article_user_nick}")
+          //-               img(data-original="#{timeline.article_user_headpic}",width="20")
+          //-             span.suo 「专栏」
+          //-             a.real-title(href='/article/#{timeline.article_id}', title='#{timeline.article_title}', rel='bookmark') #{timeline.article_title}
+          //-         .entry-foot
+          //-           div.others
+          //-             span.time.item
+          //-               span.value #{moment(timeline.createdAt).fromNow()} 由
+          //-               a.value.url.fn(rel='author', href='/user/#{timeline.article_user_id}')  #{timeline.article_user_nick} 
+          //-               span.value 
+          //-                 | 发布在 
+          //-                 if timeline.article_column_id && locals.columns
+          //-                   each column in columns
+          //-                     if column.id == timeline.article_column_id
+          //-                       a(href="/article/column/#{column.id}") #{column.name}
+          //-                 |  专栏
+          //-             span.item
+          //-               span.index 浏览 
+          //-               span.value #{timeline.article_visit_count}
+          //-             span.item
+          //-               span.index 评论 
+          //-               span.value  #{timeline.article_comment_count}
+          //-             span.item
+          //-               span.index 评分
+          //-               a.value(href="/article/#{timeline.article_id}#score")  #{timeline.article_score}
+          //-             if locals.user&&locals.user.is_admin
+          //-               span.actions.item
+          //-                 span.index 操作：
+          //-                 if timeline.sort ==10000
+          //-                   a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
+          //-                 else
+          //-                   a(href="/index/#{timeline.id}/update?sort=10000") 置顶
+          //-         .entry-name <i class="icon-book-open" title="专栏原创文章"></i>
                       
-              else if timeline.question_id
-                .question-item.timeline-item.clearfix
-                  .entry-title
-                    h2.title
-                      a.t-user(href="/user/#{timeline.question_user_id}",data-original-title="#{timeline.question_user_nick}")
-                        img(data-original="#{timeline.question_user_headpic}",width="20")
-                      span.suo 「问题」
-                      a.real-title(href='/qa/#{timeline.question_id}', title='#{timeline.question_title}', rel='bookmark') #{timeline.question_title}
-                  .entry-foot
-                    div.others
-                      span.time.item
-                        span.value #{moment(timeline.createdAt).fromNow()} 由
-                        a.value.url.fn(rel='author', href='/user/#{timeline.question_user_id}')  #{timeline.question_user_nick} 
-                        span.value 发布在 问答区
-                      span.item
-                        span.index 浏览 
-                        span.value #{timeline.question_visit_count}
-                      span.item
-                        span.index 回答 
-                        span.value #{timeline.question_answer_count}
-                      if locals.user&&locals.user.is_admin
-                        span.actions.item
-                          span.index 操作：
-                          if timeline.sort ==10000
-                            a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
-                          else
-                            a(href="/index/#{timeline.id}/update?sort=10000") 置顶
-                  .entry-name <i class="icon-lightbulb"  title="问答"></i>
-              else if timeline.topic_id
-                .topic-item.timeline-item.clearfix
-                  .entry-title
-                    h2.title
-                      a.t-user(href="/user/#{timeline.topic_user_id}",data-original-title="#{timeline.topic_user_nick}")
-                        img(data-original="#{timeline.topic_user_headpic}",width="20")
-                      span.suo 「话题」
-                      a.real-title(href='/topic/#{timeline.topic_id}', title='#{timeline.topic_title}', rel='bookmark') #{timeline.topic_title}
-                  .entry-foot
-                    div.others
-                      span.time.item
-                        span.value #{moment(timeline.createdAt).fromNow()} 由
-                        a.value.url.fn(rel='author', href='/user/#{timeline.topic_user_id}')  #{timeline.topic_user_nick} 
-                        span.value 发布在 话题区
-                      span.item
-                        span.index 浏览 
-                        span.value #{timeline.topic_visit_count}
-                      span.item
-                        span.index 跟帖
-                        span.value  #{timeline.topic_comment_count}
-                      if locals.user&&locals.user.is_admin
-                        span.actions.item
-                          span.index 操作：
-                          if timeline.sort ==10000
-                            a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
-                          else
-                            a(href="/index/#{timeline.id}/update?sort=10000") 置顶
-                  .entry-name <i class="icon-conversation" title="话题"></i>
-              else if timeline.act_id
-                .topic-item.timeline-item.clearfix
-                  .entry-title
-                    h2.title
-                      a.real-title(href='/act/#{timeline.act_id}', title='#{timeline.act_title}', rel='bookmark') 【活动】#{timeline.act_title}
-                  .entry-foot
-                    div.others
-                      span.time.item
-                        span.value #{moment(timeline.createdAt).fromNow()} 
-                        span.value 发布在 活动区
-                      span.item
-                        span.index 浏览 
-                        span.value #{timeline.act_visit_count}
-                      span.item
-                        span.index 跟帖
-                        span.value  #{timeline.act_comment_count}
-                      if locals.user&&locals.user.is_admin
-                        span.actions.item
-                          span.index 操作：
-                          if timeline.sort ==10000
-                            a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
-                          else
-                            a(href="/index/#{timeline.id}/update?sort=10000") 置顶
-                  .entry-name <i class="icon-sampler" title="活动"></i>
+          //-     else if timeline.question_id
+          //-       .question-item.timeline-item.clearfix
+          //-         .entry-title
+          //-           h2.title
+          //-             a.t-user(href="/user/#{timeline.question_user_id}",data-original-title="#{timeline.question_user_nick}")
+          //-               img(data-original="#{timeline.question_user_headpic}",width="20")
+          //-             span.suo 「问题」
+          //-             a.real-title(href='/qa/#{timeline.question_id}', title='#{timeline.question_title}', rel='bookmark') #{timeline.question_title}
+          //-         .entry-foot
+          //-           div.others
+          //-             span.time.item
+          //-               span.value #{moment(timeline.createdAt).fromNow()} 由
+          //-               a.value.url.fn(rel='author', href='/user/#{timeline.question_user_id}')  #{timeline.question_user_nick} 
+          //-               span.value 发布在 问答区
+          //-             span.item
+          //-               span.index 浏览 
+          //-               span.value #{timeline.question_visit_count}
+          //-             span.item
+          //-               span.index 回答 
+          //-               span.value #{timeline.question_answer_count}
+          //-             if locals.user&&locals.user.is_admin
+          //-               span.actions.item
+          //-                 span.index 操作：
+          //-                 if timeline.sort ==10000
+          //-                   a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
+          //-                 else
+          //-                   a(href="/index/#{timeline.id}/update?sort=10000") 置顶
+          //-         .entry-name <i class="icon-lightbulb"  title="问答"></i>
+          //-     else if timeline.topic_id
+          //-       .topic-item.timeline-item.clearfix
+          //-         .entry-title
+          //-           h2.title
+          //-             a.t-user(href="/user/#{timeline.topic_user_id}",data-original-title="#{timeline.topic_user_nick}")
+          //-               img(data-original="#{timeline.topic_user_headpic}",width="20")
+          //-             span.suo 「话题」
+          //-             a.real-title(href='/topic/#{timeline.topic_id}', title='#{timeline.topic_title}', rel='bookmark') #{timeline.topic_title}
+          //-         .entry-foot
+          //-           div.others
+          //-             span.time.item
+          //-               span.value #{moment(timeline.createdAt).fromNow()} 由
+          //-               a.value.url.fn(rel='author', href='/user/#{timeline.topic_user_id}')  #{timeline.topic_user_nick} 
+          //-               span.value 发布在 话题区
+          //-             span.item
+          //-               span.index 浏览 
+          //-               span.value #{timeline.topic_visit_count}
+          //-             span.item
+          //-               span.index 跟帖
+          //-               span.value  #{timeline.topic_comment_count}
+          //-             if locals.user&&locals.user.is_admin
+          //-               span.actions.item
+          //-                 span.index 操作：
+          //-                 if timeline.sort ==10000
+          //-                   a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
+          //-                 else
+          //-                   a(href="/index/#{timeline.id}/update?sort=10000") 置顶
+          //-         .entry-name <i class="icon-conversation" title="话题"></i>
+          //-     else if timeline.act_id
+          //-       .topic-item.timeline-item.clearfix
+          //-         .entry-title
+          //-           h2.title
+          //-             a.real-title(href='/act/#{timeline.act_id}', title='#{timeline.act_title}', rel='bookmark') 【活动】#{timeline.act_title}
+          //-         .entry-foot
+          //-           div.others
+          //-             span.time.item
+          //-               span.value #{moment(timeline.createdAt).fromNow()} 
+          //-               span.value 发布在 活动区
+          //-             span.item
+          //-               span.index 浏览 
+          //-               span.value #{timeline.act_visit_count}
+          //-             span.item
+          //-               span.index 跟帖
+          //-               span.value  #{timeline.act_comment_count}
+          //-             if locals.user&&locals.user.is_admin
+          //-               span.actions.item
+          //-                 span.index 操作：
+          //-                 if timeline.sort ==10000
+          //-                   a(href="/index/#{timeline.id}/update?sort=0") 取消置顶
+          //-                 else
+          //-                   a(href="/index/#{timeline.id}/update?sort=10000") 置顶
+          //-         .entry-name <i class="icon-sampler" title="活动"></i>
               //- .timeline-item.clearfix
               //-   .user
               //-     .headpic(href="/user/#{timeline.who_id}") 
@@ -287,17 +296,12 @@ html
               //-       span.time #{moment(timeline.createdAt).fromNow()}
               //-     if timeline.desc
               //-       .desc.clearfix !{timeline.desc}
-            include page
-      .right
+            //- include page
+      //- .right
         //- .module
         //-   .hd 公告
         //-   .bd
-        .module.quick-go
-          .hd 快速入口
-          .bd
-              a.btn(href="/qa/add") 提问
-              a.btn(href="/article/column/add") 创建专栏
-              a.btn(href="/topic/add") 发起话题
+        
         .module
           .hd 乱炖是什么？
           .bd
@@ -331,15 +335,7 @@ html
         //-         a(href="#{active.target_path}") #{active.target_path_name.substr(0,20)}
         if locals.top_users
           #fixed-modules
-            .module.top-users
-              .hd 用户经验榜
-              .bd
-                each user in locals.top_users
-                  .item 
-                    a(href="/user/#{user.id}")
-                      img(src="#{user.head_pic}",width="20")
-                    a(href="/user/#{user.id}") #{user.nick} 
-                    span #{user.coin}
+            
             
     include footer
     script(src="#{assets_head}/js/messageTip.js")

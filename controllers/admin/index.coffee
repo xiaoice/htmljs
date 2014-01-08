@@ -1,5 +1,5 @@
 F_user = __F 'user'
-F_article = __F 'article'
+F_article = __F 'article/article'
 module.exports.controllers = 
   "/admin":
     get:(req,res,next)->

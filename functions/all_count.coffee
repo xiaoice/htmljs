@@ -13,7 +13,7 @@ func_allcount =
       func_allcount.data.card = count
     (__F 'user').count null,(error,count)->
       func_allcount.data.user = count
-    (__F 'article').count null,(error,count)->
+    (__F 'article/article').count null,(error,count)->
       func_allcount.data.article = count
     (__F 'column').count null,(error,count)->
       func_allcount.data.column = count

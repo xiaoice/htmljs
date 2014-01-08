@@ -1,4 +1,4 @@
-func_article = __F 'article'
+func_article = __F 'article/article'
 module.exports = (req,res,next)->
   page = req.query.page || 1
   count = req.query.count || 30

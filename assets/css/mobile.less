@@ -50,7 +50,20 @@
         display: block;
     }
     }
-    
+    .column{
+    }
+    .mod .bd{
+      overflow: hidden;
+      width:100% !important;
+    }
+     .mod .item{
+      width:auto;
+      float: none;
+      display: block;
+     }
+  }
+  #index .recent_articles .columns .column{
+    width:95%;
   }
   #index #content .search input{
     width:70%;
@@ -79,6 +92,9 @@ width:110%;
         display: none !important;
       }
       li[pageId="9"]{
+        display: none !important;
+      }
+      li.sub-trigger{
         display: none !important;
       }
       i{
@@ -142,6 +158,11 @@ width:110%;
     .column{
       width:100%;
       overflow: hidden;
+    }
+  }
+  #header{
+    .search{
+      display: none;
     }
   }
 }

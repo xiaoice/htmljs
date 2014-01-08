@@ -206,10 +206,6 @@ html
                     span 此问题在 <em>#{moment(eh.createdAt).fromNow()}</em> 被 <em>#{eh['users.nick']}</em> 修改。<br/>理由：<em>#{eh.reason}</em>
               else
                 .item 暂无修改记录
-        .module
-          .hd 用手机访问（用微信扫描）
-          .bd(style="height:230px;")
-            img(width="230",height="230",src="http://qr.liantu.com/api.php?text=http://www.html-js.com/qa/#{question.id}&logo=http://htmljs.b0.upaiyun.com//images/icon.png")
         
         #fixed-modules
           

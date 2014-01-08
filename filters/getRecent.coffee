@@ -1,4 +1,4 @@
-func_article = require './../functions/article.coffee'
+func_article = __F 'article/article'
 module.exports = (req,res,next)->
   func_article.getRecent (error,recents)->
     if recents

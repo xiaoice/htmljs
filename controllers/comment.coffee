@@ -1,6 +1,6 @@
 func_comment = __F 'comment'
 func_info = __F 'info'
-func_article = __F 'article'
+func_article = __F 'article/article'
 func_card = __F 'card'
 func_user = __F 'user'
 func_question = __F 'question'

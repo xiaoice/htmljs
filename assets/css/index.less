@@ -312,24 +312,35 @@
        }
     }
     .bd{
-      width:900px;
+      width:110%;
 
     }
     .item{
-      width:350px;
-      margin-right: 20px;
+      width:470px;
       display: inline-block;
       _float:left;
-      border-bottom: 1px dashed #eee;
+      background: #fff;
+      padding-left: 10px;
+    position: relative;
+    border-bottom:1px solid #f1f1f1;
       vertical-align: top;
+      padding-top:5px;
+      padding-bottom: 5px;
       overflow: hidden;
       .title{
-        color:#333;
-        font-size: 13px;
         line-height: 30px;
-        height:30px;
+          margin:0;
+          height:30px;
+          overflow: hidden;
+            font-size:14px;
+        line-height: 30px;
+        font-weight: normal;
         display: block;
-        overflow: hidden;
+        color:#444;
+        a{
+          color: #444;
+
+        }
       }
       .desc{
         font-size: 12px;
@@ -364,6 +375,9 @@
       }
       }
     }
+    .item.yooo{
+    background: #F7F7F7;
+  }
     .item.new{
       .title{
         color:#5bb793;
@@ -373,7 +387,7 @@
   }
   .recent_articles{
     .columns{
-      width:730px;
+      width:100%;
       margin-top:20px;
       .column{
         display:inline-block;
@@ -447,14 +461,14 @@
     }
   }
   .tags{
-    width:700px;
+    width:1000px;
     margin-top:20px;
     .tag{
       padding:0 12px;
       color:#666;
       background:#eee;
-      border-radius:10px;
-      line-height:20px;
+      border-radius:5px;
+      line-height:25px;
       display:inline-block;
       margin-top:10px;
       margin-right:10px;
@@ -466,14 +480,14 @@
     }
   }
   .topic_tags{
-    width:700px;
+    width:1000px;
     margin-top:20px;
     a{
       padding:0 12px;
       color:#666;
       background:#eee;
-      border-radius:10px;
-      line-height:20px;
+      border-radius:5px;
+      line-height:25px;
       display:inline-block;
       margin-top:10px;
       margin-right:10px;
@@ -502,14 +516,11 @@
         width:40px;
         margin:0 auto;
         position: relative;
-        border-radius: 100px;
-        border:1px solid #aaa;
+        border:1px solid #ddd;
         img{
-          border-radius: 100px;
           display: block;
           width:36px;
           height:36px;
-          border-radius: 100px;
           border:2px solid #fff;
         }
         
@@ -518,8 +529,6 @@
         display: block;
       }
       .sex{
-        border-radius: 20px;
-        border:1px solid #aaa;
         width:12px;
         height:12px;
       }
@@ -536,23 +545,11 @@
         }
       }
     }
-    .nv-user{
-      .pic{
-        border:1px solid @red;
-        img{
-          border:2px solid #fff;
-        }
-      }
-      .sex{
-        border:1px solid @red;
-      }
-    }
+    
   }
-  #content .search .input-append{display:block;}
-      #content .search input{height:22px;width:630px;}
-      #content .search button{height:32px;width:80px;}
-      .search a{margin-right:10px;}
+ 
   .quick-go{
+    float:left;
     .btn{
       font-size: 12px;
       padding:2px 5px;

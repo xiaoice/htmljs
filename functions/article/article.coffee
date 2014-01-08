@@ -4,7 +4,7 @@ Column = __M 'columns'
 User = __M "users"
 Card = __M 'cards'
 Visit_log = __M 'article_visit_logs'
-en_func = require './../lib/translate.coffee'
+en_func = require './../../lib/translate.coffee'
 Visit_log.sync()
 User.hasOne Article,{foreignKey:"user_id"}
 Article.belongsTo User,{foreignKey:"user_id"}

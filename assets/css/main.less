@@ -378,6 +378,7 @@ i{
   // box-shadow: 3px 2px 1px #ddd;
   // border-top: 3px solid @red;
   // border-bottom: 3px solid #aaa;
+
   .wrapper{
     width:1000px;
     margin:0 auto;
@@ -397,18 +398,19 @@ i{
     span{
         display: inline-block;
         width:27px;
-        height:26px;
-        border:2px solid #fff;
+        height:28px;
+        border:1px solid @green;
         background: none;
         font-size: 18px;
         
-        line-height: 25px;
+        line-height: 27px;
         text-align: center;
       }
       span.dun{
-        border:2px solid @red;
-        color:@red;
-        background: #fff;
+        color:#fff;
+        display: none;
+        border-radius: 3px;
+        background: @green;
       }
   }
   .navbar{
@@ -425,6 +427,7 @@ i{
     overflow: visible;
     li{
       margin-right: 0px;
+      position: relative;
     }
     a{
       text-shadow:none;
@@ -453,6 +456,36 @@ i{
     }
     .nav{
       float:left;
+    }
+    .sub-trigger{
+      cursor: pointer;
+      a{
+        text-decoration: none;
+      }
+      
+    }
+    .sub-menu{
+      position: absolute;
+      right:0;
+      z-index:10000;
+      width:80px;
+      top:25px;
+      margin:0;
+      padding:0;
+      background: @green;
+      li{
+        float: none;
+        margin:0;
+        padding:0;
+        display: block;
+        border-bottom: 1px solid #eee;
+        text-align: center;
+        a{
+          color:#fff;
+          text-decoration: none;
+          line-height: 25px;
+        }
+      }
     }
   }
   .left-nav{
@@ -499,7 +532,29 @@ i{
   }
     }
   }
-  
+  .search{
+    background: #fff;
+    color:#aaa;
+    margin-left:10px;
+    height:26px;
+    width:200px;
+    margin-top: 2px;
+    border-radius: 3px;
+    i{
+      margin-left:6px;
+      vertical-align: 2px;
+    }
+    input{
+      height:18px;
+      
+      -webkit-box-shadow:none;
+      box-shadow: none;
+      
+      font-size: 12px;
+      border:none;
+      color:#666;
+    }
+  }
 }
 #footer{
   .wrapper{

@@ -19,7 +19,10 @@
                 a(href="/blog") <i class="icon-sampler"></i>博集
               li.hidden(class="#{locals.pageId==8?'active':''}",pageId="8")
                 a(href="/tag") 标签
-            
+              li.search
+                form(action="/search",method="get",style="margin:0;")
+                  i.icon-search
+                  input#keyword.span2.input-large(type="text",name="q",placeholder="搜索全站、站外内容")
               
               
 
@@ -44,16 +47,35 @@
               else
                 li
                   a(href="/user/login?redirect=#{encodeURIComponent(locals.url)}") 登录
-              li(class="#{locals.pageId==2?'':''}",pageId="2")
-                a(href="/cards") <i class="icon-nameplate hidden"></i>花名册
-              li(class="#{locals.pageId==4?'':''}",pageId="4")
-                a(href="/read") 阅读
-              li(class="#{locals.pageId==5?'active':''}",pageId="5")
-                a(href="/act") 活动
-              li(class="#{locals.pageId==9?'':''}",pageId="9")
-                a(href="/tools") <i class="icon-classic-hammer hidden"></i>常用工具
+              li.sub-trigger()
+                a 快捷入口
+                ul.sub-menu.hidden
+                  li
+                    a(href="/qa/add") 提问
+                  li
+                    a(href="/article/column/add") 创建专栏
+                  li
+                    a(href="/topic/add") 发起话题
+              li.sub-trigger()
+                a 其他功能
+                ul.sub-menu.hidden
+                  li(class="#{locals.pageId==2?'':''}",pageId="2")
+                    a(href="/cards") <i class="icon-nameplate hidden"></i>花名册
+                  li(class="#{locals.pageId==4?'':''}",pageId="4")
+                    a(href="/read") 阅读
+                  li(class="#{locals.pageId==5?'':''}",pageId="5")
+                    a(href="/act") 活动
+                  li(class="#{locals.pageId==9?'':''}",pageId="9")
+                    a(href="/tools") <i class="icon-classic-hammer hidden"></i>常用工具
 
-        
+script
+  $(document).ready(function(){
+    $(".sub-trigger").mouseenter(function(){
+      $(".sub-menu",this).removeClass("hidden")
+      }).mouseleave(function(){
+      $(".sub-menu",this).addClass("hidden")
+      })
+    })       
 if locals.user && (!locals.user.card_id)
   #tips(style="width:1000px;margin:0 auto;margin-top:20px;")
     .module

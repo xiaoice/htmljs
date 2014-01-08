@@ -24,7 +24,6 @@ html
         li.active
           span #{locals.who?(who.nick+"的"):""}问答
       .content
-        .left
           .actions
             a.btn(href="/qa/add") <i class="icon-plus icon-white"></i> 我要提问
             .right-actions
@@ -101,29 +100,29 @@ html
                         .answer-con !{question.answers.html.replace(/<[^>]*>/g,"").substr(0,100)}
                           |<a href="/qa/#{question.id}#answer-#{question.answers.id}">阅读更多</a>
             include ../page
-      .right
-        .module
-          .bd 
-            p 2013年9月出生。
-            p 致力于为您解决各类技术问题。
-            p 给人玫瑰，手留余香。
-        .module.recent_answers
-          .hd 最新回答
-          .bd 
-            if locals.recent_answers
-              each ans in recent_answers
-                div.item 
-                  span #{ans.user_nick}：
-                  a(href="/qa/#{ans.question_id}#answer-#{ans.id}",style="word-break:break-all;") #{ans.html.replace(/<[^>]*?>/g,"").substr(0,50)+"..."}
+      //- .right
+      //-   .module
+      //-     .bd 
+      //-       p 2013年9月出生。
+      //-       p 致力于为您解决各类技术问题。
+      //-       p 给人玫瑰，手留余香。
+      //-   .module.recent_answers
+      //-     .hd 最新回答
+      //-     .bd 
+      //-       if locals.recent_answers
+      //-         each ans in recent_answers
+      //-           div.item 
+      //-             span #{ans.user_nick}：
+      //-             a(href="/qa/#{ans.question_id}#answer-#{ans.id}",style="word-break:break-all;") #{ans.html.replace(/<[^>]*?>/g,"").substr(0,50)+"..."}
         
-        .module.hot_questions
-          .hd 热门问题
-          .bd 
-            if locals.hot_questions
-              each q in hot_questions
-                div.item 
-                  a(href="/qa/#{q.id}") #{q.title}
-                  // span (浏览：#{q.visit_count} 回答：#{q.answer_count})
+      //-   .module.hot_questions
+      //-     .hd 热门问题
+      //-     .bd 
+      //-       if locals.hot_questions
+      //-         each q in hot_questions
+      //-           div.item 
+      //-             a(href="/qa/#{q.id}") #{q.title}
+      //-             // span (浏览：#{q.visit_count} 回答：#{q.answer_count})
         
     script
       $('.user a').tooltip({

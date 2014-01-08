@@ -1,5 +1,5 @@
 func_fav = __F 'user/fav'
-func_article = __F 'article'
+func_article = __F 'article/article'
 module.exports = (req,res,next)->
   if res.locals.article && res.locals.user
     #检查是否收藏过

@@ -1,4 +1,4 @@
-func_article = __F 'article'
+func_article = __F 'article/article'
 func_info = __F 'info'
 func_timeline = __F 'timeline'
 func_coin = __F 'coin'

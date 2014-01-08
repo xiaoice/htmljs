@@ -1,7 +1,7 @@
 func_user = __F 'user'
 func_card = __F 'card'
 func_bao = __F 'bao'
-func_article = __F 'article'
+func_article = __F 'article/article'
 func_info = __F 'info'
 func_timeline = __F 'timeline'
 func_index = __F 'index'
@@ -34,17 +34,17 @@ module.exports.controllers =
         res.render '404.jade',{status: 404},(error,page)->
           res.send page,404  
       else
-        func_index.count (error,_count)->
-          if error then next error
-          else
-            res.locals.total=_count
-            res.locals.totalPage=Math.ceil(_count/count)
-            res.locals.page = (req.query.page||1)
-            func_index.getAll page,count,(error,timelines)->
-              if error then next error
-              else
-                res.locals.timelines = timelines
-                res.render 'index.jade'
+        # func_index.count (error,_count)->
+        #   if error then next error
+        #   else
+        #     res.locals.total=_count
+        #     res.locals.totalPage=Math.ceil(_count/count)
+        #     res.locals.page = (req.query.page||1)
+        #     func_index.getAll page,count,(error,timelines)->
+        #       if error then next error
+        #       else
+        #         res.locals.timelines = timelines
+        res.render 'index.jade'
 
   "/index/:id/update":
     get:(req,res,next)->
@@ -421,3 +421,5 @@ module.exports.filters =
     post:['checkLoginJson']
   "/card/:id/bao":
     post:['checkLogin',"checkCard"]
+  "/search":
+    get:['freshLogin']

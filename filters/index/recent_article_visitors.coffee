@@ -1,4 +1,4 @@
-func_article = __F 'article'
+func_article = __F 'article/article'
 _ = require 'underscore'
 module.exports = (req,res,next)->
   if req.query.page 

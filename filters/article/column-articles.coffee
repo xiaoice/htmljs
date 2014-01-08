@@ -1,5 +1,5 @@
 func_column = __F 'column'
-func_article = __F 'article'
+func_article = __F 'article/article'
 module.exports = (req,res,next)->
   if res.locals.columns
     count = res.locals.columns.length

@@ -77,11 +77,11 @@ html
                             a.at(href="",data-nick="#{ans.user_nick}") <i class="icon-new-window icon-gray"></i>回复
                             a.reply(href="",data-md="#{ans.md}",data-nick="#{ans.user_nick}") <i class="icon-retweet icon-gray"></i>引用
                             a(target="_blank",href="http://service.weibo.com/share/share.php?url=#{encodeURIComponent("http://www.html-js.com/topic/"+topic.id+"#comment-"+ans.id)}&title=分享自@前端乱炖 的精彩跟帖【#{topic.title}】#{ans.user_nick}：#{ans.md.replace(/>/g,'').substr(0,100)}&appkey=659341943") 分享
-                        if i==0
+                        if i==0 && locals.page==1
                           .ans-lou 沙发
-                        else if i==1
+                        else if i==1&& locals.page==1
                           .ans-lou 板凳
-                        else if i==2
+                        else if i==2&& locals.page==1
                           .ans-lou 地板
                         else
                           .ans-lou #{(locals.page-1)*30+i+1} 楼

@@ -9,10 +9,10 @@ module.exports = (req,res,next)->
     if error then next error
     else
       if not req.query.page and _count>30
-        req.query.page = Math.ceil(_count/30)
+        page = Math.ceil(_count/30)
       res.locals.total=_count
       res.locals.totalPage=Math.ceil(_count/count)
-      res.locals.page = (req.query.page||1)
+      res.locals.page = (page||1)
       func_topic_comment.getAll page,count,condition,"id",(error,comments)->
         if error then next error
         else

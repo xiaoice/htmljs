@@ -204,5 +204,5 @@ func_article =
       callback null,logs
     .error (e)->
       callback e
-__FC func_article,Article,['update','count','delete']
+__FC func_article,Article,['update','count','delete','addCount']
 module.exports=func_article

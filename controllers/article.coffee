@@ -263,6 +263,8 @@ module.exports.controllers =
     post:(req,res,next)->
       result = 
         success:0
+      if res.locals.user.is_admin
+        func_article.addCount req.params.id,"zan_count"
       func_article.addZan req.params.id,res.locals.user.id,req.body.score,(error,log,article)->
         if error 
           result.info = error.message

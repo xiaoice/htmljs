@@ -88,21 +88,30 @@ module.exports.controllers =
                   content:req.body.html
           else if match = req.body.target_id.match(/^act_([0-9]*)$/)
             (__F 'act').addCount(match[1],"comment_count")
-
-          if atname = req.body.md.match(/\@([^\s]*)/)
-            atname = atname[1]
-            func_user.getByNick atname,(error,user)->
-              if user
-                func_info.add 
-                  target_user_id:user.id
-                  type:6
-                  source_user_id:res.locals.user.id
-                  source_user_nick:res.locals.user.nick
-                  time:new Date()
-                  target_path:"/"+req.body.target_id.replace("_","/").replace("question","qa")
-                  action_name:"在评论中【提到】了你"
-                  target_path_name:"查看出处"
-                  content:req.body.html
+          console.log req.body
+          if atnames = req.body.md.match(/\@([^\s]*)/g)
+            atcount = atnames.length
+            html = req.body.html
+            console.log atnames
+            atnames.forEach (atname)->
+              console.log atname
+              atname = atname.replace("@","")
+              func_user.getByNick atname,(error,user)->
+                atcount--
+                if user
+                  html = html.replace("@"+atname,"<a href='/user/"+user.id+"'>@"+atname+"</a>")
+                  if atcount==0
+                    func_comment.update comment.id,{html:html}
+                  func_info.add 
+                    target_user_id:user.id
+                    type:6
+                    source_user_id:res.locals.user.id
+                    source_user_nick:res.locals.user.nick
+                    time:new Date()
+                    target_path:"/"+req.body.target_id.replace("_","/").replace("question","qa")
+                    action_name:"在评论中【提到】了你"
+                    target_path_name:"查看出处"
+                    content:req.body.html
         res.send result
 
 module.exports.filters = 

@@ -143,7 +143,7 @@ func_column =
     .success (column)->
       if column
         nowtime = new Date().getTime()
-        if (nowtime - column.last_notify_time) >1000*60*60*24 && (nowtime - column.last_article_time) >1000*60*60*24*5
+        if (nowtime - column.last_notify_time) >1000*60*60*24 #&& (nowtime - column.last_article_time) >1000*60*60*24*5
           Card.find
             where:
               user_id:column.user_id

@@ -60,12 +60,13 @@ html
                       
                       a.user(href="/user/#{article.user_id}") #{article.user_nick}
                       span.time #{moment(article.createdAt).fromNow()}
+                      
+                      span.desc-item
+                        span.index 浏览
+                        a.value #{article.visit_count}
                       span.desc-item
                         span.index 赞
                         a.value #{article.zan_count}
-                      span.desc-item.hidden
-                        span.index 评论
-                        a.value #{article.comment_count}
                 
                 .columns 
                   .hd

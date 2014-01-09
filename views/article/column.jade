@@ -105,7 +105,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                 .rht
                   h2.entry-title
 
-                      a.real-title(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                      a.real-title(href='/article/#{article.pinyin?article.pinyin:article.id}', title='#{article.title}', rel='bookmark') #{article.title}
                       span.column-col
                         if article['column']
                           |[

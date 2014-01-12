@@ -5,6 +5,7 @@ config         = require './config.coffee'
 rainbow        = require './lib/rainbow.js'
 lessmiddle     = require 'less-middleware'
 less           = require 'less'
+_ = require 'underscore'
 module.exports = app = express()
 log4js = require('log4js')
 log4js.configure({
@@ -21,8 +22,8 @@ log4js.configure({
 })
 logger = log4js.getLogger('normal')
 logger.setLevel('INFO')
-black = ['DNSPod','monitor','snarfware']
-_ = require 'underscore'
+black = ['DNSPod','monitor','snarfware','majestic12','easou','yunyun','sougou','yunrang']
+
 app.configure ->
   app.set "port", config.run_port
   app.set "views", path.join __dirname, 'views'

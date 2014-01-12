@@ -25,6 +25,10 @@
       $("#status").html("连接成功")
     })
     $("#submit").on("click",function(){
+      if($("#send-md").val().replace(/\s/g,"")==""){
+          alert("不能发送空消息")
+          return;
+        }
       socket.emit('new-message', { content:$("#send-md").val()});
       $("#send-md").val("")
     })
@@ -32,6 +36,10 @@
 
       if (e.ctrlKey && e.keyCode == 13) {
         e.preventDefault();
+        if($("#send-md").val().replace(/\s/g,"")==""){
+          alert("不能发送空消息")
+          return;
+        }
         socket.emit('new-message', { content:$("#send-md").val()});
       $("#send-md").val("")
 

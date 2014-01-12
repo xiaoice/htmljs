@@ -28,7 +28,7 @@
       socket.emit('new-message', { content:$("#send-md").val()});
       $("#send-md").val("")
     })
-    $(document.body).onkeydown(function(e){
+    $(document.body).on("keydown",function(e){
       if (e.ctrlKey && e.keyCode == 13) {
         socket.emit('new-message', { content:$("#send-md").val()});
       $("#send-md").val("")

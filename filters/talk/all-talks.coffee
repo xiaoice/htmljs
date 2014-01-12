@@ -3,11 +3,14 @@ module.exports = (req,res,next)->
   page = req.query.page || 1
   count = req.query.count || 20
 
-  func_talk.getAllAndCount page,count,null,"id desc",(error,_count,talks)->
+  func_talk.count null,(error,_count)->
     if error then next error
     else
       res.locals.total=_count
       res.locals.totalPage=Math.ceil(_count/count)
-      res.locals.page = (req.query.page||1)
-      res.locals.talks = talks
-      next()
+      res.locals.page = (page||1)
+      func_talk.getAll res.locals.totalPage-page+1,count,null,"id desc",(error,talks)->
+        if error then next error
+        else
+          res.locals.talks = talks
+          next()

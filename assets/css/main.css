@@ -168,7 +168,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 .comment .comment-list .comment-item .author a{font-size:12px;font-weight:bold;}
 .comment .comment-list .comment-item .con{color:#777;word-break:break-all;}.comment .comment-list .comment-item .con p{margin:0;display:inline;padding-right:10px;color:#777;line-height:25px;}
 .comment .comment-list .comment-item .con h1,.comment .comment-list .comment-item .con h2,.comment .comment-list .comment-item .con h3,.comment .comment-list .comment-item .con h4,.comment .comment-list .comment-item .con h5{font-size:14px;font-weight:bold;}
-.comment .comment-list .comment-item .con .html{color:#777;}.comment .comment-list .comment-item .con .html *{margin:0;display:inline;padding-right:10px;}
+.comment .comment-list .comment-item .con .html{color:#777;}.comment .comment-list .comment-item .con .html *{margin:0;padding-right:10px;}
 .comment .comment-list .comment-item .time{color:#999;display:inline;}
 .comment .comment-list .comment-item .reply{cursor:pointer;position:absolute;right:10px;top:15px;color:#999;font-size:12px;}.comment .comment-list .comment-item .reply i{background:none;vertical-align:-1px;}
 .comment-layer{position:fixed;bottom:0;background:#aaa;height:40px;z-index:1000;line-height:40px;padding:0 10px;box-shadow:0px 0px 2px #999;width:580px;}.comment-layer .icon-comment{margin-right:5px;}
@@ -547,7 +547,29 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #card .my_columns .column .user{font-size:12px;line-height:20px;color:#999;}
 #card .my_columns .column .action{margin-bottom:0;margin-top:5px;}#card .my_columns .column .action a{font-size:12px;color:#5bb793;padding:5px 0;}#card .my_columns .column .action a i:before{color:#5bb793;font-size:14px;}
 #card .my_columns .column .action span{color:#aaa;}#card .my_columns .column .action span i:before{font-size:14px;color:#aaa;}
-#talk{background:#efefef;}
+@-webkit-keyframes twinkling{0%{background:#fff;} 50%{background:#fcf8e3;} 100%{background:#fff;}}#talk .talk-main{width:750px;float:left;}
+#talk .talk-onlines{width:240px;float:left;margin-left:10px;}#talk .talk-onlines .user{height:30px;padding-left:5px;overflow:hidden;cursor:pointer;}#talk .talk-onlines .user img{vertical-align:-5px;}
+#talk .talk-onlines .user .nick{margin-left:10px;color:#444;font-size:14px;line-height:30px;}
+#talk .talk-onlines .user a{display:block;}
+#talk .talk-onlines .user img{width:20px;height:20px;}
+#talk .talk-onlines .user:hover{background:#efefef;}
+#talk .send .con textarea{width:98%;height:60px;}
+#talk .messages .message{background:#fff;padding:10px 15px;position:relative;border-bottom:1px solid #f1f1f1;}#talk .messages .message .c{padding-top:10px;}
+#talk .messages .message .lft{display:none;height:50px;width:50px;color:#666;border:1px solid #ddd;vertical-align:top;text-align:center;margin-right:10px;line-height:30px;}#talk .messages .message .lft i{background:none;}
+#talk .messages .message .lft .count{color:#999;padding-left:3px;}
+#talk .messages .message .rht{display:inline-block;}
+#talk .messages .message .entry-title{margin:0;height:30px;overflow:hidden;font-size:15px;line-height:30px;font-weight:normal;color:#444;}#talk .messages .message .entry-title a{color:#444;}
+#talk .messages .message .entry-foot .right-foot{float:right;}
+#talk .messages .message .entry-foot .item{font-size:12px;line-height:25px;margin-right:10px;}#talk .messages .message .entry-foot .item i{background:none;}
+#talk .messages .message .entry-foot .item i:before{color:#aaa;background:none;}
+#talk .messages .message .entry-foot .item a{color:#aaa;}
+#talk .messages .message .time{color:#999;}
+#talk .messages .message .user{display:inline-block;}#talk .messages .message .user img{vertical-align:top;margin-right:10px;}
+#talk .messages .message .user .nick{color:#444;font-size:14px;line-height:25px;}
+#talk .messages .message .user a{display:block;}
+#talk .messages .message .user img{width:20px;height:20px;}
+#talk .messages .message:nth-child(2n){background:#F7F7F7;}
+#talk .messages .message.shan{-webkit-animation:twinkling 0.8s 3 ease-in-out;animation:twinkling 0.8s 3 ease-in-out;}
 #topics .head{background:#fff;border-bottom:none;margin-bottom:10px;}#topics .head .tags{display:inline-block;vertical-align:top;padding:15px;width:110%;}#topics .head .tags .tag{display:inline-block;vertical-align:top;margin-right:10px;margin-bottom:10px;width:195px;padding:10px;padding-top:5px;}
 #topics .head .tags a.name{font-size:14px;color:#444;display:inline-block;vertical-align:top;line-height:20px;}
 #topics .head .tags .desc{font-size:12px;color:#aaa;line-height:20px;margin-top:5px;height:20px;overflow:hidden;}

@@ -1,7 +1,9 @@
-func_card = __F 'card'
+func_talk = __F 'talk/talk'
 module.exports.controllers = 
-  "/:uuid":
+  "/":
     get:(req,res,next)->
-      func_card.getByUUID req.params.uuid,(error,card)->
-        res.locals.target_card = card
-        res.render 'talk/talk.jade'
+      res.render 'talk/talk.jade'
+
+module.exports.filters = 
+  "/":
+    get:['freshLogin','talk/all-talks']

@@ -5,6 +5,7 @@ config         = require './config.coffee'
 rainbow        = require './lib/rainbow.js'
 lessmiddle     = require 'less-middleware'
 less           = require 'less'
+fs             = require 'fs'
 _ = require 'underscore'
 module.exports = app = express()
 log4js = require('log4js')
@@ -39,6 +40,7 @@ app.configure ->
   app.use express.cookieSession(secret: 'fd2afdsafdvcxzjaklfdsa')
   app.use(log4js.connectLogger(logger, {level:log4js.levels.INFO}))
   app.locals.assets_head = config.assets_head
+  #过滤黑名单
   app.use (req,res,next)->
     res.locals.url = req.url
     agent = req.get("user-agent")
@@ -56,12 +58,24 @@ app.configure ->
     filters:'/filters/',      
     template:'/views/'   
   })
-  app.all 'adsense.txt',(req,res,next)->
-    res.end '本人 孙信宇（需要与您的账户收款人一致） 声明确认我对本网站的所有权，同时确认本网站遵守 Google AdSense 计划政策和条款。'
-  #require('./alipay_config').alipay.route(app);
+  static_jades = {}
+  #直接输出静态jade的route，无需自己配置route
+  app.get "/:p",(req,res,next)->
+    p = req.params.p
+    if static_jades[p]
+      res.render p+".jade"
+      return
+    else
+      if fs.existsSync path.join(__dirname,'views',p+".jade")
+        res.render p+".jade"
+        static_jades[p] = true
+        return
+    next()
+  #404
   app.all "*",(req, res, next)->
     res.render '404.jade',{status: 404},(error,page)->
       res.send page,404
+  #错误显示页面
   app.use (err, req, res, next)->
     console.trace err
     res.render 'error.jade',{error:err.message,code:err.code},(error,page)->

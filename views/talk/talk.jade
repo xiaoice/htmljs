@@ -2,19 +2,53 @@
 html
   head
     meta(charset='utf-8')
-    title 私信-#{locals.card?card.nick:""}
+    title 实时讨论 - 前端乱炖
     include ../head
-    script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
-    style
   body#talk
     include ../header
-    #content
-      p.alert 私信功能即将上线
-      if !locals.target_card
-        p.alert.alert-error 不存在的用户，不能使用私信功能
-      else
-        .module
-          .hd 与 #{target_card.nick} 的对话
-          .bd 
-            
+    #content.clearfix
+      .talk-main
+        
+        .module.send.clearfix
+          p.alert 连接状态：<em id="status">初始化中</em>
+          .con
+            textarea#send-md(placeholder="请不要灌水，否则封号。")
+          .submit
+            a.btn#submit 发送
+        .module.messages
+          .hd 实时消息
+          .bd#message-list
+            each talk,i in talks
+              .message(class="#{i%2==0?'yooo':''} ")
+                .h
+                  a.user(data-original-title="#{talk.user_nick}",href="/user/#{talk.user_id}")
+                    img(src="#{talk.user_headpic}")
+                    span.nick #{talk.user_nick}：
+                  span.time #{moment(talk.time).fromNow()}
+                .c !{talk.html}
+            include ../page
+      .talk-onlines
+        .module.onlines
+          .hd 当前在线
+          .bd#user-list 加载中
     include ../footer
+    script#talk-tpl(type="text/template")
+      .message
+        .h
+          a.user(data-original-title="{{user_nick}}",href="/user/{{user_id}}")
+            {{#user_headpic}}
+            img(src="{{user_headpic}}")
+            {{/user_headpic}}
+            span.nick {{user_nick}}：
+          span.time {{time}}
+        .c {{{html}}}
+    script#user-tpl(type="text/template")
+      .user(data-nick="{{user_nick}}",href="/user/{{user_id}}")
+        img(src="{{user_headpic}}")
+        span.nick @{{user_nick}}
+    script(src="#{assets_head}/js/mustache.js")
+    script(src="#{assets_head}/js/messageTip.js")
+    script(src="#{assets_head}/js/loadingTip.js")
+    script(src="#{assets_head}/socket.io/socket.io.js")
+    script
+      $.getScript("http://talk.html-js.com:8765/assets/js/talk.js",function(){})

@@ -19,7 +19,7 @@
     })
     socket.socket.on("error",function(data){
       console.log("error:"+data)
-      $("#status").html("连接失败，是否已经登录？")
+      $("#status").html("连接失败，是否已经登录？<a href='/user/login'>点击登录</a>")
     })
     socket.socket.on("connect",function(data){
       $("#status").html("连接成功")
@@ -27,6 +27,12 @@
     $("#submit").on("click",function(){
       socket.emit('new-message', { content:$("#send-md").val()});
       $("#send-md").val("")
+    })
+    $(document.body).onkeydown(function(e){
+      if (e.ctrlKey && e.keyCode == 13) {
+        socket.emit('new-message', { content:$("#send-md").val()});
+      $("#send-md").val("")
+      }
     })
 
 

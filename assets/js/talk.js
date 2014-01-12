@@ -29,10 +29,12 @@
       $("#send-md").val("")
     })
     $(document.body).on("keydown",function(e){
-      e.preventDefault();
+
       if (e.ctrlKey && e.keyCode == 13) {
+        e.preventDefault();
         socket.emit('new-message', { content:$("#send-md").val()});
       $("#send-md").val("")
+
       }
     })
 

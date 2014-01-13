@@ -16,12 +16,12 @@
     while ++i < totalPage*1+1
       - pageList.push (i)
   ul
-    if page==1
+    if page==totalPage
       li.disabled
         a Prev
     else
       li
-        a(href="?page=#{page-1}") Prev
+        a(href="?page=#{page+1}") Prev
     - var i=0
     - pageList = pageList.reverse()
     for p in pageList
@@ -31,11 +31,11 @@
       else
         li(class="#{p==page?'active':''}")
           a(href="?page=#{p}") #{p}
-    if page==totalPage
+    if page==1
       li.disabled
         a Next
     else
       li
-        a(href="?page=#{page+1}") Next
+        a(href="?page=#{page-1}") Next
 
   .total.label 共 #{total} 

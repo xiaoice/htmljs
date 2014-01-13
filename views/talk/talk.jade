@@ -72,7 +72,7 @@ html
     script(src="#{assets_head}/socket.io/socket.io.js")
     script(src='#{assets_head}/js/ajaxfileupload.js')
     script
-      $.getScript("http://talk.html-js.com:8765/assets/js/talk.js",function(){})
+      $.getScript("http://talk.html-js.com:8765/assets/js/talk.js?dd",function(){})
       var converter1 =new  Markdown.Converter();
       Markdown.Extra.init(converter1);
       var editor1 = new Markdown.Editor(converter1);

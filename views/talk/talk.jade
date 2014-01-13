@@ -32,7 +32,7 @@ html
                   a.user(data-original-title="#{talk.user_nick}",href="/user/#{talk.user_id}")
                     img(src="#{talk.user_headpic}")
                     span.nick #{talk.user_nick}：
-                  span.time #{moment(talk.time*1).fromNow()}
+                  span.time #{moment(talk.time*1).format("MM-DD hh:mm")}
                 .c !{talk.html}
             include ../desc_page
       .talk-onlines

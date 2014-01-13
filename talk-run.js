@@ -40,7 +40,7 @@ io.sockets.on('connection', function (socket) {
       time:new Date().getTime()
     },function(error,talk){
       if(talk){
-        talk.time = moment(talk.time).fromNow()
+        talk.time = moment(talk.time).format("MM-DD hh:mm")
         socket.broadcast.emit('new-message', {talk:talk});
         socket.emit('new-message', {talk:talk});
         if(atnames = data.content.match(/\@([^\s]*)/g)){
@@ -75,7 +75,7 @@ io.sockets.on('connection', function (socket) {
       user_headpic:"",
       md:user.nick+" 离开了聊天",
       html:"<a href=/user/"+user.id+">"+user.nick+"</a> 离开了聊天",
-      time:moment().fromNow(),
+      time:moment().format("MM-DD hh:mm"),
       client_id:socket.id
     }
     delete onlines[user.id]
@@ -88,7 +88,7 @@ io.sockets.on('connection', function (socket) {
     user_headpic:"",
     md:user.nick+" 加入了聊天",
     html:"<a href=/user/"+user.id+">"+user.nick+"</a> 加入了聊天",
-    time:moment().fromNow()
+    time:moment().format("MM-DD hh:mm")
   }
   onlines[user.id] = {
     user_id:user.id,

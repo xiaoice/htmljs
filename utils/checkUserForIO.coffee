@@ -1,6 +1,8 @@
 func_user = __F 'user'
 md5 = require 'MD5'
 module.exports = (cookie,callback)->
+  if not cookie
+    callback new Error '没有登录'
   cookiearr = cookie.split(";")
   cookies = {}
   cookiearr.forEach (c)->

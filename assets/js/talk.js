@@ -25,23 +25,23 @@
       $("#status").html("连接成功")
     })
     $("#submit").on("click",function(){
-      if($("#send-md").val().replace(/\s/g,"")==""){
+      if($("#wmd-input").val().replace(/\s/g,"")==""){
           alert("不能发送空消息")
           return;
         }
-      socket.emit('new-message', { content:$("#send-md").val()});
-      $("#send-md").val("")
+      socket.emit('new-message', { content:$("#wmd-input").val()});
+      $("#wmd-input").val("")
     })
     $(document.body).on("keydown",function(e){
 
       if (e.ctrlKey && e.keyCode == 13) {
         e.preventDefault();
-        if($("#send-md").val().replace(/\s/g,"")==""){
+        if($("#wmd-input").val().replace(/\s/g,"")==""){
           alert("不能发送空消息")
           return;
         }
-        socket.emit('new-message', { content:$("#send-md").val()});
-      $("#send-md").val("")
+        socket.emit('new-message', { content:$("#wmd-input").val()});
+      $("#wmd-input").val("")
 
       }
     })
@@ -63,8 +63,8 @@
     $("#user-list").on("click",function(e){
       e.preventDefault();
       if($(e.target).closest(".user").length){
-         $("#send-md").val("@"+$(e.target).closest(".user").attr("data-nick")+" ").focus()
-      $("#send-md")[0].setSelectionRange($("#send-md")[0].value.length, $("#send-md")[0].value.length)
+         $("#wmd-input").val("@"+$(e.target).closest(".user").attr("data-nick")+" ").focus()
+      $("#wmd-input")[0].setSelectionRange($("#wmd-input")[0].value.length, $("#wmd-input")[0].value.length)
       }
      
       

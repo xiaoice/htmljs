@@ -12,14 +12,17 @@ module.exports = (req,res,next)->
   #       return;
   #     catch e 
   #       console.log 'redis parse error'
-  res.locals.question.tagNames.split(',').forEach (tagname,i)->
-    if i!=0
-      querystring+=" or "
-    querystring+=" questions.tagNames like ? "
-    condition.push "%"+tagname+"%"
-  condition.unshift querystring
-  func_question.getAll 1,10,condition,(error,questions)->
-    res.locals.same_questions = questions
-    # redis_client.set __filename+res.locals.question.tagNames,(JSON.stringify questions)
-    # redis_client.expire __filename+res.locals.question.tagNames,60*10
+  if !res.locals.question.tagNames
     next()
+  else
+    res.locals.question.tagNames.split(',').forEach (tagname,i)->
+      if i!=0
+        querystring+=" or "
+      querystring+=" questions.tagNames like ? "
+      condition.push "%"+tagname+"%"
+    condition.unshift querystring
+    func_question.getAll 1,10,condition,(error,questions)->
+      res.locals.same_questions = questions
+      # redis_client.set __filename+res.locals.question.tagNames,(JSON.stringify questions)
+      # redis_client.expire __filename+res.locals.question.tagNames,60*10
+      next()

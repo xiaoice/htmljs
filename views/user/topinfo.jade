@@ -38,6 +38,7 @@ if locals.card
               a#more_info(href="#") 展开更多
               if locals.card && locals.card.id == card.id
                 a(href="/edit-card") 编辑
+              a(href="/card/#{card.id}") 我的名片
         .my_card.hidden
           .hd 详细信息
           if locals.card

@@ -11,13 +11,10 @@ html
     #content
       include topinfo
       .main.clearfix
-        .left
           - locals.user_page_id = 3;
           include left
 
-        .right
           .infos.module
-            .hd 经验值获得记录
             .bd
               if !locals.coinhis
                 p 暂无记录，在网站活跃可以获得经验值，赶紧去活动下吧。

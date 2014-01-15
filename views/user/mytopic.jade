@@ -11,17 +11,15 @@ html
     #content
       include topinfo
       .main.clearfix
-          - locals.user_page_id = 4;
+          - locals.user_page_id = 6;
           include left
 
           .infos.module
             .bd
-              if !locals.articles
+              if !locals.topics
                 p 暂无记录。
               else
-                .info-item 
-                  a(href="/qa/49") 什么是专栏？如何利用专栏来提高知名度？
-                each article in articles
+                each article in topics
                   .info-item
                     .t 
                       .entry-title

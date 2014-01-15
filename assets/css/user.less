@@ -120,19 +120,15 @@
     margin-top: 20px;
     width:1000px;
     .left{
-      float:left;
-      width:200px;
       margin-right: 0;
     }
     .right{
-      width:790px;
-      float:left;
-      margin-left: 10px;
     }
     .nav{
+      margin:0;
       a{
         display: block;
-        line-height: 30px;
+        line-height: 20px;
         font-size: 14px;
         color: #666;
       }
@@ -140,6 +136,11 @@
         color:@green;
         font-weight: bold;
       }
+      .active a{
+        color:#fff;
+        font-weight: bold;
+      }
+      padding-bottom: 0px;
     }
     .infos{
       .info-item {

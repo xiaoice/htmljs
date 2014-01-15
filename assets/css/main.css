@@ -383,10 +383,10 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #user .visit-info .visitor{float:left;margin-right:5px;margin-bottom:5px;}#user .visit-info .visitor img{width:30px;height:30px;}
 #user .my_card{width:650px;margin:20px 0;}#user .my_card .item{margin-right:50px;margin-bottom:20px;font-size:13px;padding-left:5px;line-height:18px;word-break:break-all;}#user .my_card .item .key{color:#404040;padding-right:10px;}
 #user .my_card .item .value{color:#999;}
-#user .main{margin-top:20px;width:1000px;}#user .main .left{float:left;width:200px;margin-right:0;}
-#user .main .right{width:790px;float:left;margin-left:10px;}
-#user .main .nav a{display:block;line-height:30px;font-size:14px;color:#666;}
+#user .main{margin-top:20px;width:1000px;}#user .main .left{margin-right:0;}
+#user .main .nav{margin:0;padding-bottom:0px;}#user .main .nav a{display:block;line-height:20px;font-size:14px;color:#666;}
 #user .main .nav a:hover,#user .main .nav a.active{color:#5bb793;font-weight:bold;}
+#user .main .nav .active a{color:#fff;font-weight:bold;}
 #user .main .infos .info-item{border-top:1px dotted #eee;padding-top:10px;padding-bottom:10px;padding:10px;}#user .main .infos .info-item .t{color:#999;line-height:20px;}#user .main .infos .info-item .t .time{padding-left:10px;color:#ccc;}
 #user .main .infos .info-item .con{background:#f3f3f3;border-radius:3px;padding:10px;color:#666;}#user .main .infos .info-item .con p{margin:0;}
 #user .main .infos .info-item.noread{background:#f8faf7;}

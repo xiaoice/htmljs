@@ -11,13 +11,10 @@ html
     #content
       include topinfo
       .main.clearfix
-        .left
           - locals.user_page_id = 5;
           include left
 
-        .right
           .infos.module
-            .hd 经验值获得记录
             .bd
               if !locals.questions
                 p 暂无记录。

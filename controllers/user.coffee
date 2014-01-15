@@ -144,6 +144,9 @@ module.exports.controllers =
   "/myarticles":
     get:(req,res,next)->
       res.render 'user/myarticles.jade'
+  "/mytopics":
+    get:(req,res,next)->
+      res.render 'user/mytopic.jade'
   "/myqa":
     get:(req,res,next)->
       res.render 'user/myqa.jade'
@@ -199,15 +202,17 @@ module.exports.controllers =
     
 module.exports.filters = 
   "/":
-    get:['checkLogin',"checkCard",'card/visitors','user/infos','user/article-count','user/qa-count']
+    get:['checkLogin',"checkCard",'card/visitors','user/infos','user/article-count','user/qa-count','user/topic-count']
   "/coinhis":
-    get:['checkLogin',"checkCard",'card/visitors','user/coinhistories','user/article-count','user/qa-count']
+    get:['checkLogin',"checkCard",'card/visitors','user/coinhistories','user/article-count','user/qa-count','user/topic-count']
   "/bihis":
     get:['checkLoginJson']
   "/myarticles":
-    get:['checkLogin',"checkCard",'card/visitors','user/myarticles','user/article-count','user/qa-count']
+    get:['checkLogin',"checkCard",'card/visitors','user/myarticles','user/article-count','user/qa-count','user/topic-count']
+  "/mytopics":
+    get:['checkLogin',"checkCard",'card/visitors','user/mytopics','user/article-count','user/qa-count','user/topic-count']
   "/myqa":
-    get:['checkLogin',"checkCard",'card/visitors','user/myqa','user/article-count','user/qa-count']
+    get:['checkLogin',"checkCard",'card/visitors','user/myqa','user/article-count','user/qa-count','user/topic-count']
   "/:id":
     get:['freshLogin']
   "/fav":

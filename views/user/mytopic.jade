@@ -26,7 +26,7 @@ html
                         h1.title
                           if article.sort == 100000
                               span.label.tip.top 置顶
-                          a(href='/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                          a(href='/topic/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
                       .entry-foot
                         span.item
                           span.index 时间：
@@ -37,12 +37,9 @@ html
                         span.views.item
                           span.index 评论：
                           a.value #{article.comment_count}
-                        if article.quote_url
-                          span.views.item
-                            a.value(href="#{article.quote_url}",target="_blank") 原文链接
                         if locals.user && (user.is_admin||user.id==article.user_id)
                           span.views.item
-                            a.value(href="/article/#{article.id}/edit") 编辑
+                            a.value(href="/topic/#{article.id}/edit") 编辑
               include ../page
 
     include ../footer

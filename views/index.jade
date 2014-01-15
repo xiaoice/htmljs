@@ -20,13 +20,18 @@ html
             .module.about
               a(href="http://www.html-js.com/topic/115") 关于乱炖
               span 乱炖技术群：<em style=";">227896607</em>
-              span NodeJS乱炖: <em style=";">95323225</em>
+              span NodeJS乱炖：<em style=";">95323225</em>
+              span 微博：<a href="http://weibo.com/1734409185" target="_blank" title="前端乱炖" class="weibo">前端乱炖</a>
               //- <div>自由职业者: <em style=";"> 275182059</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=5fdf12b1a777677e8b1f25e32cec5cee7cfd59417cce2bd7bc46a8cac95972ea">加入</a></div>
               //- <div>求职招聘群: <em style=";"> 12892863</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=e941d6613691a264555ae3fe62168d2d56928bc2a7a7d53d80536ff44fdb63d3">加入</a></div>
               //- <div>站长的QQ: <em style=";"> 676588498</em></div>
-            a.banner.module(href="http://www.html-js.com/topic/155")
-              img(src="http://htmljs.b0.upaiyun.com/uploads/1389196443681-%E6%9C%AA%E6%A0%87%E9%A2%98-2.png")
-                
+            - var r = Math.random();
+            if r<0.5
+              a.banner.module(href="http://www.html-js.com/topic/155")
+                img(src="http://htmljs.b0.upaiyun.com/uploads/1389761455776-1389196443681-%E6%9C%AA%E6%A0%87%E9%A2%98-2.png")
+            else
+              a.banner.module(href="http://www.html-js.com/topic?tag_id=3")
+                img(src="http://htmljs.b0.upaiyun.com/uploads/1389761857219-banner-1.png")
           
           //- div(style="margin-bottom:10px;")
           //-   - var random = Math.random();

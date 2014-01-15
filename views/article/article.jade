@@ -56,13 +56,13 @@ html
                         a.rss.hidden(href="/article/column/#{column.id}/rss")
                           |  邮件订阅（#{column.rss_count}）
                 .actions
-                  a#add_fav.action(href="javascript:void(0);") 
+                  a.add_fav.action(href="javascript:void(0);") 
                     i.icon-heart
                     if locals.has_fav
                       |<em>已收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
                     else
                       |<em>收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
-                  a#zan.action(href="javascript:void(0);") 
+                  a.zan.action(href="javascript:void(0);") 
                     i.icon-thumbs-up
                     if locals.has_zan
                       |<em>已赞</em> <span>#{article.zan_count}</span>
@@ -87,13 +87,13 @@ html
             .bottom-action
               .wrapper
                 .actions
-                  a#add_fav.action(href="javascript:void(0);") 
+                  a.add_fav.action(href="javascript:void(0);") 
                     i.icon-heart
                     if locals.has_fav
                       |<em>已收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
                     else
                       |<em>收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
-                  a#zan.action(href="javascript:void(0);") 
+                  a.zan.action(href="javascript:void(0);") 
                     i.icon-thumbs-up
                     if locals.has_zan
                       |<em>已赞</em> <span>#{article.zan_count}</span>
@@ -348,7 +348,7 @@ html
         }
         })
         
-        $("#zan").click(function(){
+        $(".zan").click(function(){
           var self = this;
             HtmlJS.util.ajax("/article/#{article.id}/zan",{
               score:$(self).attr("data-index")
@@ -386,7 +386,7 @@ html
           $('.user').tooltip({
           placement:"bottom"
           });
-          $("#add_fav").click(function(){
+          $(".add_fav").click(function(){
             var self=this;
             HtmlJS.util.ajax("/user/fav",{
               uuid:"#{article.uuid}"

@@ -322,7 +322,7 @@ module.exports.filters =
   "/:id":
     get:['freshLogin','qa/get-question','qa/get-answers','qa/all-edit-history','qa/same-questions','qa/favs']
   "/:id/edit":
-    get:['checkLogin','tag/all-tags']
+    get:['checkLogin','tag/all-tags','qa/all-channels']
     post:['checkLogin']
   "/answer/:id/edit":
     get:['checkLogin']

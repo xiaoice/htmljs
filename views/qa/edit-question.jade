@@ -6,6 +6,8 @@ html
     script(src='#{assets_head}/js/jquery.js')
     include ../editor_head
     title 编辑问题-前端乱炖
+    style
+      #content textarea{height:300px !important;}
     
   body#qa-add
     - locals.pageId=7;
@@ -26,14 +28,23 @@ html
                     textarea.wmd-input#wmd-input(name="md",placeholder='详细问题') #{question.md}
                 .control-group
                   input.reason(type="text",name="reason",required,placeholder="编辑原因")
+                if locals.channels
+                  .control-group
+                    .channels
+                      input#channel_id(type="hidden",name="channel_id",value="#{question.channel_id?question.channel_id:''}")
+                      .channels-hd 所属分类
+                      .channels-bd 
+                        each channel,i in channels
+                          span.channel(data-id="#{channel.id}",class="#{question.channel_id?(question.channel_id==channel.id?'active':''):''}",data-original-title="#{channel.desc.substr(0,100)}",title="#{channel.desc.substr(0,100)}") #{channel.name}
+                
                 if locals.tags
                   .control-group
                     .tags
                       input#tags(type="hidden",name="tags",value="")
                       input#tagNames(type="hidden",name="tagNames",value="#{question.tagNames}")
-                      span.tags-hd 问题标签：
+                      .tags-hd 问题标签：
                       - if(question.tagNames){var tagNames = question.tagNames.split(",");}else{var tagNames=[]}
-                      span.tags-bd 
+                      .tags-bd 
                         each tag,i in tags
                           span(class="label #{tagNames.indexOf(tag.name)==-1?'':'label-success'}",data-id="#{tag.id}",data-original-title="#{tag.desc_md.substr(0,100)}",title="#{tag.desc_md.substr(0,100)}") #{tag.name}
                         a(href="/tag/add",target="_blank",style="padding-left:10px;font-size:12px;") 添加新标签

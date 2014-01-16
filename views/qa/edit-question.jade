@@ -80,6 +80,11 @@ html
     script(src='#{assets_head}/js/loadingTip.js')
     script(src='#{assets_head}/js/messageTip.js')
     script
+      $(".channels .channel").click(function(){
+        $(".channels .channel").removeClass("active");
+        $(this).addClass("active");
+        $("#channel_id").val($(this).attr("data-id"))
+        })
       var selectedTags = []
         var selectedTagNames=[]
         $(".tags .label").each(function(i,tag){

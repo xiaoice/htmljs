@@ -1,9 +1,7 @@
 func_user = __F 'user'
 func_card = __F 'card'
-func_bao = __F 'bao'
 func_article = __F 'article/article'
 func_info = __F 'info'
-func_timeline = __F 'timeline'
 func_index = __F 'index'
 func_column = __F 'column'
 config = require './../config.coffee'
@@ -34,16 +32,6 @@ module.exports.controllers =
         res.render '404.jade',{status: 404},(error,page)->
           res.send page,404  
       else
-        # func_index.count (error,_count)->
-        #   if error then next error
-        #   else
-        #     res.locals.total=_count
-        #     res.locals.totalPage=Math.ceil(_count/count)
-        #     res.locals.page = (req.query.page||1)
-        #     func_index.getAll page,count,(error,timelines)->
-        #       if error then next error
-        #       else
-        #         res.locals.timelines = timelines
         res.render 'index.jade'
 
   "/index/:id/update":
@@ -151,14 +139,6 @@ module.exports.controllers =
         else
           func_index.add card.uuid
           (__F 'coin').add 40,res.locals.user.id,"创建了名片"
-          func_timeline.add 
-            who_id:res.locals.user.id
-            who_headpic:res.locals.user.head_pic
-            who_nick:res.locals.user.nick
-            target_url:"/card/"+card.id
-            target_name:"["+card.nick+"的个人名片]"
-            action:"添加了个人名片："
-            desc:'<li class="card clearfix"><div class="head_pic"><img src="'+res.locals.user.head_pic+'"  class="lazy"  style="display: inline;"></div><div class="car-infos"><div><span class="key">昵称</span>：'+card.nick+'<span class="sns"><a href="'+card.weibo+'" target="_blank" title="微博地址" class="weibo">weibo</a></span></div><div><span class="key">性别</span><span class="value">：'+card.sex+'</span><span class="key">感情状况</span><span class="value">：'+card.is_dan+'</span><span class="key">城市</span><span class="value">：'+card.city+'</span><span class="key">职位</span><span class="value">：'+card.zhiwei+'</span><span class="key">工作时间</span><span class="value">：'+card.shijian+'</span></div><div class="shanchang clearfix"><span class="key">擅长：</span><span class="value">'+card.desc+'</span></div></div></li>'
           func_user.connectCard res.locals.user.id,card.id,(error)->
             if error then next error
             else
@@ -214,30 +194,7 @@ module.exports.controllers =
             res.render 'user/p.jade'
           else
             res.render 'user/p.jade'
-  "/card/:id/bao":
-    post:(req,res,next)->
-      data = 
-        pic:req.body.pic
-        content:req.body.content
-        user_id:res.locals.user.id
-        user_headpic:res.locals.user.head_pic
-        user_nick:res.locals.user.nick
-        card_id:req.params.id
-      func_bao.add data,(error,bao)->
-        if error then next error
-        else
-          func_card.getById req.params.id,(error,card)->
-            if not error
-              if req.body.pic
-                sina.statuses.upload 
-                  access_token:res.locals.user.weibo_token
-                  pic:config.base_path+req.body.pic
-                  status:"我在@前端乱炖 爆料了大神 "+card.nick+" 的真像，求围观，求吐槽！！http://www.html-js.com/card/"+req.params.id
-              else
-                sina.statuses.update 
-                  access_token:res.locals.user.weibo_token
-                  status:"我在@前端乱炖 爆料了大神 "+card.nick+" 的八卦，求围观，求吐槽，求同扒！！http://www.html-js.com/card/"+req.params.id
-            res.redirect 'back'
+  
   "/card/:id/zan":
     post:(req,res,next)->
       result = 

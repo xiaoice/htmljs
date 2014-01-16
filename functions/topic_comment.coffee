@@ -13,7 +13,7 @@ func_comment =
         TopicComment.create(data)
         .success (comment)->
           callback null,comment,topic
-        .error (e)->
+        .error (e)-> 
           callback e
     .error (e)->
       callback e

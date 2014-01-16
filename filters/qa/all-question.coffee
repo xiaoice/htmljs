@@ -12,6 +12,10 @@ module.exports = (req,res,next)->
           condition[kv[0]]=kv[1]
         res.locals["filter_"+kv[0]]=kv[1]
   console.log condition
+  if req.query.channel_id
+    res.locals.channel_id = req.query.channel_id
+    condition=condition||{}
+    condition.channel_id = req.query.channel_id
   page = req.query.page || 1
   count = req.query.count || 20
   (__F 'question').count condition,(error,_count)->

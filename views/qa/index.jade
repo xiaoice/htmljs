@@ -24,82 +24,110 @@ html
         li.active
           span #{locals.who?(who.nick+"的"):""}问答
       .content
-          .actions
-            a.btn(href="/qa/add") <i class="icon-plus icon-white"></i> 我要提问
-            .right-actions
-              a(class="#{(locals.filter_answer_count===undefined&&locals.filter_user_id==undefined)?'active':''}",href="/qa") 全部问题
-              a(class="#{locals.filter_answer_count==='0'?'active':''}",href="/qa?filter=answer_count|0") 未回答
-              if locals.user
-                a(class="#{locals.filter_user_id==user.id?'active':''}",href="?filter=user_id|#{user.id}") 我的提问
-          if locals.questions
-            .qa-list
-              each question,i in questions
-                .qa-item(class="#{i%2==1?'yooo':''} #{question.answer_count==0?'new':''}")
-                  
-                  
-                  .entry-title
-                    h2.title
-                      if question.is_jing
-                        img(src="#{assets_head}/images/jing.png",width="18px",height="18px")
-                      a(href='/qa/#{question.pinyin?question.pinyin:question.id}', title='#{question.title}', rel='bookmark') 
-                        |#{question.title}
-                      if question.answer_count == 0
-                        span.label.tip.new 求回答
-                      else if question.answer_count >=7 || question.is_hot
-                        span.label.tip.hot HOT
-                      else if question.sort == 10000
-                        span.label.tip.top 置顶
-                      if question.is_admin
-                        span.label.tip.admin 官方
-                      if question.is_closed
-                        span.label.tip.closed 关闭
-                    div.others
-                      
+        .head
+          if locals.channels && (!locals.now_page)
+              .channels
+                //- a(href="/topic",class="#{!locals.tag_id?'active':''}") 全部
+                each channel in channels
+                  .channel(class="#{channel.important?'important':''}")
+                    a.name(href="/qa?channel_id=#{channel.id}") #{channel.name}
+                    .others
                       span.views.item
-                        span.index 浏览
-                        a.value #{question.visit_count}
+                        span.index 问题数：
+                        a.value #{channel.qa_count}
                       span.views.item
-                        span.index 回答
-                        a.value #{question.answer_count}
-                      span.time.item
-                        a.value #{moment(question.createdAt).fromNow()}
-                      if question.tagNames
-                        - var tags = question.tagNames.split(",")
-                        span.tags.item
-                          each tag in tags
-                            a.value(href="/tag/n/#{tag}") #{tag}
+                        span.index 浏览：
+                        a.value #{channel.visit_count}
+                    .desc #{channel.desc}
+          else if locals.channel
+              .now-channel
+                a.name(href="/qa?channel_id=#{channel.id}") #{channel.name}
+                .others
+                  span.views.item
+                    span.index 问题数：
+                    a.value #{channel.qa_count}
+                  span.views.item
+                    span.index 浏览：
+                    a.value #{channel.visit_count}
+                .desc #{channel.desc}
+                .actions
+                  a.btn.small-btn(href="/qa/add#{locals.channel_id?('?channel_id='+locals.channel_id):''}") 在此提问
+          //- .actions
+          //-   a.btn(href="/qa/add") <i class="icon-plus icon-white"></i> 我要提问
+          //-   .right-actions
+          //-     a(class="#{(locals.filter_answer_count===undefined&&locals.filter_user_id==undefined)?'active':''}",href="/qa") 全部问题
+          //-     a(class="#{locals.filter_answer_count==='0'?'active':''}",href="/qa?filter=answer_count|0") 未回答
+          //-     if locals.user
+          //-       a(class="#{locals.filter_user_id==user.id?'active':''}",href="?filter=user_id|#{user.id}") 我的提问
+        if locals.questions
+          .qa-list
+            each question,i in questions
+              .qa-item(class="#{i%2==1?'yooo':''} #{question.answer_count==0?'new':''}")
+                
+                
+                .entry-title
+                  h2.title
+                    if question.is_jing
+                      img(src="#{assets_head}/images/jing.png",width="18px",height="18px")
+                    a(href='/qa/#{question.pinyin?question.pinyin:question.id}', title='#{question.title}', rel='bookmark') 
+                      |#{question.title}
+                    if question.answer_count == 0
+                      span.label.tip.new 求回答
+                    else if question.answer_count >=7 || question.is_hot
+                      span.label.tip.hot HOT
+                    else if question.sort == 10000
+                      span.label.tip.top 置顶
+                    if question.is_admin
+                      span.label.tip.admin 官方
+                    if question.is_closed
+                      span.label.tip.closed 关闭
+                  div.others
+                    
+                    span.views.item
+                      span.index 浏览
+                      a.value #{question.visit_count}
+                    span.views.item
+                      span.index 回答
+                      a.value #{question.answer_count}
+                    span.time.item
+                      a.value #{moment(question.createdAt).fromNow()}
+                    if question.tagNames
+                      - var tags = question.tagNames.split(",")
+                      span.tags.item
+                        each tag in tags
+                          a.value(href="/tag/n/#{tag}") #{tag}
+                    
+                    if locals.user&&locals.user.is_admin
+                      span.actions.item
+                        span.index 操作：
+                        if question.sort ==10000
+                          a(href="/qa/#{question.id}/update?sort=#{question.id}") 取消置顶
+                        else
+                          a(href="/qa/#{question.id}/update?sort=10000") 置顶
+                        a(href="/qa/#{question.id}/update?is_hot=1") hot
+                        a(href="/qa/#{question.id}/update?is_hot=0") nohot
+                        a(href="/qa/#{question.id}/move_to_topic") 变话题
+                        if question.is_jing
+                          a(href="/qa/#{question.id}/update?is_jing=0") 去精
+                        elseqa
+                          a(href="/qa/#{question.id}/update?is_jing=1") 变精
+                  div.user
+                    a(data-original-title="#{question.user_nick}",href="/user/#{question.user_id}")
+                      img(src="#{question.user_headpic}")
                       
-                      if locals.user&&locals.user.is_admin
-                        span.actions.item
-                          span.index 操作：
-                          if question.sort ==10000
-                            a(href="/qa/#{question.id}/update?sort=#{question.id}") 取消置顶
-                          else
-                            a(href="/qa/#{question.id}/update?sort=10000") 置顶
-                          a(href="/qa/#{question.id}/update?is_hot=1") hot
-                          a(href="/qa/#{question.id}/update?is_hot=0") nohot
-                          a(href="/qa/#{question.id}/move_to_topic") 变话题
-                          if question.is_jing
-                            a(href="/qa/#{question.id}/update?is_jing=0") 去精
-                          elseqa
-                            a(href="/qa/#{question.id}/update?is_jing=1") 变精
-                    div.user
-                      a(data-original-title="#{question.user_nick}",href="/user/#{question.user_id}")
-                        img(src="#{question.user_headpic}")
-                        
-                        if question['users.sex']
-                          if question['users.sex'] == '男'
-                            .sex.nan
-                          else
-                            .sex.nv
-                    if question.answers.id
-                      div.answer.clearfix
-                        .answer-user
-                          a(data-original-title="#{question.answers.user_nick}")
-                            img(src="#{question.answers.user_headpic}")
-                        .answer-con !{question.answers.html.replace(/<[^>]*>/g,"").substr(0,100)}
-                          |<a href="/qa/#{question.id}#answer-#{question.answers.id}">阅读更多</a>
-            include ../page
+                      if question['users.sex']
+                        if question['users.sex'] == '男'
+                          .sex.nan
+                        else
+                          .sex.nv
+                  if question.answers.id
+                    div.answer.clearfix
+                      .answer-user
+                        a(data-original-title="#{question.answers.user_nick}")
+                          img(src="#{question.answers.user_headpic}")
+                      .answer-con !{question.answers.html.replace(/<[^>]*>/g,"").substr(0,100)}
+                        |<a href="/qa/#{question.id}#answer-#{question.answers.id}">阅读更多</a>
+          include ../page
       //- .right
       //-   .module
       //-     .bd 

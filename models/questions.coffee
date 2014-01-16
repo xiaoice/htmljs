@@ -37,3 +37,4 @@ module.exports =
     type:"tinyint"
     defaultValue:0
   pinyin:"varchar(1500)"
+  channel_id:"int"

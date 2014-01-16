@@ -1,5 +1,4 @@
 func_question = __F 'question'
-func_timeline = __F 'timeline'
 func_answer = __F 'answer'
 func_info = __F 'info'
 func_user = __F 'user'
@@ -9,6 +8,7 @@ func_comment = __F 'comment'
 func_tag = __F 'tag'
 func_card = __F 'card'
 func_search = __F 'search'
+func_channel = __F 'qa/channel'
 pagedown = require("pagedown")
 safeConverter = new pagedown.Converter()
 pagedown.Extra.init(safeConverter);
@@ -19,13 +19,14 @@ en_func = require './../lib/translate.coffee'
 module.exports.controllers = 
   "/":
     get:(req,res,next)->
-      
+      res.locals.now_page = req.query.page
       res.render 'qa/index.jade'
   "/user/:id":
     get:(req,res,next)->
       res.render 'qa/index.jade'
   "/add":
     get:(req,res,next)->
+      res.locals.channel_id = req.query.channel_id||''
       res.render 'qa/add.jade'
     post:(req,res,next)->
       result = 
@@ -35,6 +36,14 @@ module.exports.controllers =
       req.body.user_headpic = res.locals.user.head_pic
       req.body.user_nick = res.locals.user.nick
 
+      if !req.body.md || !req.body.title
+        result.info = "问题内容和标题不能为空"
+        res.send result
+        return;
+      if !req.body.channel_id
+        result.info = "必须选择一个问题分类"
+        res.send result
+        return;
       func_question.add req.body,(error,q)->
         if error 
           result.info = error.message
@@ -45,6 +54,7 @@ module.exports.controllers =
           if req.body.tags
             func_question.addTagsToQuestion q.id,req.body.tags.split(",")
             
+          func_channel.addCount req.body.channel_id,"qa_count"
           (__F 'coin').add 20,res.locals.user.id,"发布了一条问题"
           if req.body.to_weibo
             sina.statuses.update 
@@ -99,6 +109,8 @@ module.exports.controllers =
   "/:id":
     "get":(req,res,next)->
       func_question.addCount req.params.id,'visit_count'
+      if res.locals.question.channel_id
+        func_channel.addCount res.locals.question.channel_id,"visit_count"
       res.render 'qa/qa.jade'
   "/:id/update":
     "get":(req,res,next)->
@@ -297,11 +309,11 @@ module.exports.controllers =
                   res.redirect '/topic'
 module.exports.filters = 
   "/":
-    get:['freshLogin','qa/all-question','qa/hot-question','qa/recent-answers']
+    get:['freshLogin','qa/all-question','qa/hot-question','qa/recent-answers','qa/all-channels-ifonlyone']
   "/user/:id":
     get:['freshLogin','who','qa/his-questions','qa/hot-question','qa/recent-answers']
   "/add":
-    get:['checkLogin','tag/all-tags']
+    get:['checkLogin','tag/all-tags','qa/all-channels']
     post:['checkLoginJson']
   "/:id/update":
     get:['checkLogin','checkAdmin']

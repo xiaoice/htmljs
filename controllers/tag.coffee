@@ -1,5 +1,4 @@
 func_tag = __F 'tag'
-func_timeline = __F 'timeline'
 pagedown = require("pagedown")
 safeConverter = pagedown.getSanitizingConverter()
 module.exports.controllers = 
@@ -16,14 +15,7 @@ module.exports.controllers =
       func_tag.add req.body,(error,tag)->
         if error then next error
         else
-          func_timeline.add 
-            who_id:res.locals.user.id
-            who_headpic:res.locals.user.head_pic
-            who_nick:res.locals.user.nick
-            target_url:"/tag/"+tag.id
-            target_name:tag.name
-            action:"添加了一个新标签："
-            desc:tag.desc
+          
           res.redirect '/tag'
   "/:id":
     get:(req,res,next)->

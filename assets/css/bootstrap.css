@@ -5018,12 +5018,12 @@ a.thumbnail:focus {
 }
 
 .label,.label-default {
-  background-color: #999999;
+  background-color: #999;
 }
 
 .label,.label-default[href]:hover,
 .label,.label-default[href]:focus {
-  background-color: #808080;
+  background-color: #999;
 }
 
 .label-primary {

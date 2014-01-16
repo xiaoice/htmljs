@@ -25,7 +25,7 @@ func_user =
         callback null,us
       .error (e)->
         callback null,[]
-
+ 
     else
       callback null,cache.allNames.data
   getByUserIds:(ids,callback)->

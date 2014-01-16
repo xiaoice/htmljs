@@ -23,7 +23,7 @@ module.exports.controllers =
     get:(req,res,next)->
       func_tools.getAll 1,50,null,"id",(error,tools)->
         if error then next error
-        else
+        else 
           res.locals.tools = tools
           func_tools.addCountByName req.params.name,(error,tool)->
             res.locals.t = tool

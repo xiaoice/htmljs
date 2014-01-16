@@ -13,26 +13,122 @@
       }
     }
   }
-  
-  .right{
-    
-    a{
-      color:#6fb79b;
-    }
-    .recent_answers{ 
-      .item{
-        border-bottom: 1px solid #eee;
-        padding:5px 0;
-      }
-    }
-    .hot_questions{
-      .item{
-        border-bottom: 1px solid #eee;
-        padding:5px 0;
-      }
-    }
+  .head{
+    background: #fff;
+    margin-bottom: 10px;
   }
-  .qa-list{
+  .channels{
+    display: inline-block;
+    vertical-align: top;
+    padding:15px;
+    width:110%;
+
+    .channel{
+      display:inline-block;
+      vertical-align: top;
+      margin-bottom:10px;
+        // background: #f3f3f3;
+        width:208px;
+        padding:10px;
+        padding-top:5px;
+        padding-right: 20px;
+      }
+      a.name{
+        font-size: 14px;
+        color:#444;
+        display: inline-block;
+        vertical-align:top;
+
+        line-height: 20px;
+        
+      }
+      .desc{
+        font-size: 12px;
+        color:#aaa;
+        line-height: 20px;
+        margin-top:5px;
+        height:20px;
+        overflow: hidden;
+      }
+      a.active{
+        background: #eee;
+        border-radius: 3px;
+        border-bottom: none;
+        // color:@green;
+        font-weight: bold;
+      }
+      a:first-child{
+        border-left: none;
+      }
+      a.important{
+        color:@red;
+        font-weight:bold;
+      }
+      .item{
+        font-size: 12px;
+        margin-right: 20px;
+        .index{
+          color:#999;
+        }
+        .value{
+          color:@green;
+        }
+      }
+      .channel.important{
+        background: #f3f3f3;
+        .name{
+          color: @red;
+        }
+      }
+    }
+    .now-channel{
+      a.name{
+        font-size: 16px;
+        color:#444;
+        line-height: 30px;
+        margin-top: 4px;
+      }
+      .desc{
+        font-size: 12px;
+        color:#aaa;
+        line-height: 20px;
+        margin-top:5px;
+        height:20px;
+      }
+      padding:15px;
+      .item{
+        font-size: 12px;
+        margin-right: 20px;
+        .index{
+          color:#888;
+        }
+        .value{
+          color:@green;
+        }
+      }
+      .actions{
+        margin-top: 10px;
+      }
+    }
+    .right{
+
+      a{
+        color:#6fb79b;
+      }
+      .recent_answers{ 
+        .item{
+          border-bottom: 1px solid #eee;
+          padding:5px 0;
+        }
+      }
+      .hot_questions{
+        .item{
+          border-bottom: 1px solid #eee;
+          padding:5px 0;
+        }
+      }
+    }
+    .qa-list{
     // border:1px solid @module-border-color;
     border-left: none;
     border-right: none;
@@ -198,19 +294,19 @@
     }
   }
   .left{
-    
+
     .module{
       padding-top: 10px;
     }
     .control-group{
-      
+
     }
   }
   .wmd-input{
     height:600px;
   }
   .right{
-   
+
     .module.count{
       span{
         font-size: 12px;
@@ -222,12 +318,14 @@
       }
     }
     .item{
-        border-bottom: 1px solid #eee;
-        padding:5px 0;
-      }
+      border-bottom: 1px solid #eee;
+      padding:5px 0;
+    }
   }
   .tags-hd{
-    float:left;
+    line-height: 25px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
   }
   .tags{
     .label{
@@ -238,83 +336,121 @@
     }
     a{
      float:left;
-      margin:0px 3px;
-      cursor: pointer;
-      margin-bottom: 5px; 
-    }
+     margin:0px 3px;
+     cursor: pointer;
+     margin-bottom: 5px; 
+   }
+   .tags-bd{
+    margin-top: 10px;
   }
-  .reason{
-    width:100%;
-  }
-  .invite{
-    .invite-area{
-      position: relative;
-      input{
-        width:350px;
-        font-size: 12px;
-      }
-      .invite-user-dropdown{
-        width:362px;
-        border:1px solid #ddd;
-        background: #fff;
-        position: absolute;
-        left:-25px;
-        z-index: 10000;
-        top:30px;
-        
-        li{
-          list-style: none;
-          line-height: 20px;
-          font-size: 13px;
-          padding:5px;
-          cursor: pointer;
-        }
-        li:hover{
-          background: @green;
-          color: #fff;
+}
+.invite-hd{
+  line-height: 25px;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.channels{
 
-        }
-      }
+  .channels-hd{
+    line-height: 25px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+  }
+  .channels-bd{
+    margin-top: 10px;
+  }
+  .channel{
+    display: inline-block;
+    padding:5px 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    background: #eee;
+    color:#444;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .channel:hover{
+    background: #ddd;
+  }
+  .channel.active{
+    background: @green;
+    color:#fff;
+  }
+}
+.reason{
+  width:100%;
+}
+.invite{
+  .invite-area{
+    position: relative;
+    input{
+      width:350px;
+      font-size: 12px;
     }
-    .invite-list{
-      padding:10px 0;
-      .user{
-        font-size: 12px;
-        width:90px;
-        background: #eee;
-        border: 1px solid #ddd;
-        display: inline-block;
-        margin-right: 5px;
-        vertical-align: top;
+    .invite-user-dropdown{
+      width:362px;
+      border:1px solid #ddd;
+      background: #fff;
+      position: absolute;
+      left:-25px;
+      z-index: 10000;
+      top:30px;
+
+      li{
+        list-style: none;
+        line-height: 20px;
+        font-size: 13px;
         padding:5px;
         cursor: pointer;
-        .headpic{
-          float:left;
-          img{
-            width:30px;
-            height:30px;
-          }
-        }
-        .infos{
-          width:150px;
-          float: left;
-          margin-left: 10px;
-          margin-top:-5px;
-          .nick{
-            font-weight: bold;
-            line-height: 20px;
-          }
-          .desc{
-            color:#aaa;
-            line-height:15px;
-          }
-        }
       }
-      .user:hover{
-        background: #ddd;
+      li:hover{
+        background: @green;
+        color: #fff;
+
       }
     }
   }
+  .invite-list{
+    padding:10px 0;
+    .user{
+      font-size: 12px;
+      width:90px;
+      background: #eee;
+      border: 1px solid #ddd;
+      display: inline-block;
+      margin-right: 5px;
+      vertical-align: top;
+      padding:5px;
+      cursor: pointer;
+      .headpic{
+        float:left;
+        img{
+          width:30px;
+          height:30px;
+        }
+      }
+      .infos{
+        width:150px;
+        float: left;
+        margin-left: 10px;
+        margin-top:-5px;
+        .nick{
+          font-weight: bold;
+          line-height: 20px;
+        }
+        .desc{
+          color:#aaa;
+          line-height:15px;
+        }
+      }
+    }
+    .user:hover{
+      background: #ddd;
+    }
+  }
+}
 }
 #qa{
   .module{
@@ -322,22 +458,24 @@
 
     }
   }
- 
+
   .right{
-    
-    .module.count{
-      span{
-        font-size: 12px;
-        color:#999;
-        padding-right: 10px;
-      }
+    .tags{
       a{
+        padding:5px 8px;
+        margin-right: 5px;
+        color:#fff;
+        font-weight: normal;
         font-size: 12px;
-        padding-right: 10px;
+        background: #aaa;
+      }
+      a:hover{
+        background: #999;
       }
     }
+    
     .edithistory{
-      
+
       .item{
         color:#999;
       }
@@ -347,12 +485,13 @@
       }
     }
     .item{
-        border-bottom: 1px solid #eee;
-        padding:5px 0;
-        a{
-      color:@lightgreen;
+      border-bottom: 1px solid #eee;
+      padding:5px 0;
+      a{
+        font-size: 13px;
+        color:@lightgreen;
+      }
     }
-  }
   }
   .main{
     .con-comments{
@@ -375,18 +514,18 @@
         margin-top: 10px;
       }
       .author{
-              a{
-                margin-right: 10px;
-              }
-              
-            }
+        a{
+          margin-right: 10px;
+        }
+
+      }
     }
   }
   .qa-title{
     border-bottom: 1px solid #ddd;
     .title{
       font-size: 20px;
-      line-height: 50px;
+      line-height: 40px;
       font-weight: normal;
       margin:0;
       padding: 0;
@@ -394,42 +533,71 @@
   }
   .qa-content{
     padding:10px;
-    font-size: 14px;
-    color: #404040;
-    blockquote p{
-          line-height: 25px;
-          margin:0;
-          font-size: 12px;
-        }
-  }
+    color:#555;
+    font-size:14px;
+    line-height:25px;
+    h1,h2,h3,h4,h5{
+      font-size:1.2em;
+    }
+    word-wrap: break-word; 
+    p{
 
-  .qa-user{
+      line-height:25px;
+      margin:15px 0;
+    }
+    img{
+      display: block;
+
+    }
+    blockquote p{
+      line-height: 25px;
+      margin:0;
+      font-size: 12px;
+    }
+  }
+  .actions{
+    padding:10px;
+    float:left;
+    padding-left: 0;
     .action{
-      float: left;
-      a{
-        line-height: 40px;
-        margin-right: 10px;
-        color:#999;
-        font-size: 14px;
-        i{
-          -webkit-transform: scale(0.9); 
-              -moz-transform: scale(0.9);
-        }
+      cursor: pointer;
+      color:#666;
+      font-size: 13px;
+      line-height: 30px;
+      text-decoration: none;
+      height:30px;
+      padding:0 10px;
+      display: inline-block;
+      background: #eee;
+      border-radius: 5px;
+      margin-right: 10px;
+      em{
+        font-style: normal;
       }
-      .tags{
-        a{
-          padding:1px 4px;
-          margin-right: 5px;
-          color:#fff;
-          font-weight: normal;
-          font-size: 12px;
-          background: #aaa;
-        }
-        a:hover{
-          background: @green;
-        }
+      span{
+        color:#aaa;
+        font-size: 12px;
       }
     }
+    .action:hover{
+      background: #dedede;
+    }
+    i{
+      background: none;
+      font-size: 15px;
+      margin-right: 5px;
+      color:#aaa;
+    }
+    color:#666;
+    font-size: 14px;
+    i{
+      margin-right: 3px;
+    }
+
+  }
+  .qa-user{
+
+
     .user{
       float:right;
       font-size: 12px;
@@ -464,21 +632,33 @@
       }
       .ans-con{
         float:left;
-        width:608px;
-        margin-left: 10px;
+        width:605px;
+        margin-left: 13px;
         font-size: 13px;
         color:#404040;
+        h1,h2,h3,h4,h5{
+          font-size:1.2em;
+        }
+        word-wrap: break-word; 
         p{
+
+          line-height:25px;
+          margin:15px 0;
+        }
+        img{
+          display: block;
+
+        }
+        blockquote p{
           line-height: 25px;
+          margin:0;
+          font-size: 12px;
         }
         .con-hd{
           font-size: 13px;
           font-weight: bold;
         }
-        blockquote p{
-          font-size:12px;
-        }
-          .con-action{
+        .con-action{
           a{
             line-height: 30px;
             color: #999;
@@ -580,6 +760,12 @@
           height:20px;
           line-height: 20px;
           margin-top: 10px;
+          background: #eee;
+          color: #666;
+          border:none;
+        }
+        .good:hover{
+          background: #ddd;
         }
         .good-answer{
           padding:0;

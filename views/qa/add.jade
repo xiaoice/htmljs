@@ -2,9 +2,11 @@
 html
   head
     include ../head
-    
+    title 添加问题
     script(src='#{assets_head}/js/jquery.js')
     include ../editor_head
+    style
+      #content textarea{height:300px !important;}
   body#qa-add
     - locals.pageId=7;
     include ../header
@@ -21,20 +23,28 @@ html
                     .padding
                       #wmd-bar-parent
                         #wmd-button-bar
-                    textarea.expand.wmd-input#wmd-input(name="md",placeholder='详细问题',required)
-                
+                    textarea.expand.wmd-input#wmd-input(name="md",placeholder='详细问题,提问后当有人回答你的时候，你会收到邮件通知',required)
+                if locals.channels
+                  .control-group
+                    .channels
+                      input#channel_id(type="hidden",name="channel_id",value="#{locals.channel_id?channel_id:''}")
+                      .channels-hd 所属分类
+                      .channels-bd 
+                        each channel,i in channels
+                          span.channel(data-id="#{channel.id}",class="#{locals.channel_id?(channel_id==channel.id?'active':''):''}",data-original-title="#{channel.desc.substr(0,100)}",title="#{channel.desc.substr(0,100)}") #{channel.name}
                 if locals.tags
                   .control-group
                     .tags
                       input#tags(type="hidden",name="tags",value="")
                       input#tagNames(type="hidden",name="tagNames",value="")
-                      span.tags-hd 问题标签：
-                      span.tags-bd 
+                      .tags-hd 问题标签
+                      .tags-bd 
                         each tag,i in tags
                           span.label(data-id="#{tag.id}",data-original-title="#{tag.desc_md.substr(0,100)}",title="#{tag.desc_md.substr(0,100)}") #{tag.name}
                         a(href="/tag/add",target="_blank",style="padding-left:10px;font-size:12px;") 添加新标签
+                
                 .control-group.invite
-                  label 邀请回答
+                  .invite-hd 邀请回答
                   .invite-area
                     input#invite_input(type="text",placeholder="输入关键字搜索用户，支持拼音，对方会收到站内和邮箱通知。")
                     ul.invite-user-dropdown.hidden
@@ -90,6 +100,11 @@ html
     script(src='#{assets_head}/js/messageTip.js')
 
     script
+      $(".channels .channel").click(function(){
+        $(".channels .channel").removeClass("active");
+        $(this).addClass("active");
+        $("#channel_id").val($(this).attr("data-id"))
+        })
       var users = [];
       $.ajax({
         url:"/user/all-users",
@@ -164,9 +179,7 @@ html
         $("#tags").val(selectedTags.join(","))
         $("#tagNames").val(selectedTagNames.join(","))
         })
-      $('.tags .label').tooltip({
-          placement:"bottom"
-      })
+      
       var converter1 =new  Markdown.Converter();
       Markdown.Extra.init(converter1);
       var editor1 = new Markdown.Editor(converter1);

@@ -1,7 +1,6 @@
 func_user = __F 'user'
 func_article = __F 'article/article'
 func_info = __F 'info'
-func_timeline = __F 'timeline'
 func_column = __F 'column'
 func_card = __F 'card'
 func_bi = __F 'bi'
@@ -86,14 +85,6 @@ module.exports.controllers =
           result.info = error.message
         else
           result.success = 1
-          func_timeline.add 
-            who_id:res.locals.user.id
-            who_headpic:res.locals.user.head_pic
-            who_nick:res.locals.user.nick
-            target_url:"/read/"+article.id
-            target_name:article.title
-            action:"收藏了文章："
-            desc:article.html.replace(/<p>(.*?)<\/p>/g,"$1\n").replace(/<[^>]*?>/g,"").substr(0,200).replace(/([^\n])\n+([^\n])/g,"$1<br/>$2")
         res.send result
   "/online_to_local":
     "post":(req,res,next)->

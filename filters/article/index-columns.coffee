@@ -9,7 +9,7 @@ module.exports = (req,res,next)->
       res.locals.page = (req.query.page||1)
 
       
-    func_column.getAll res.locals.page,10,null,"last_article_time desc,article_count desc",(error,columns)->
+    func_column.getAll res.locals.page,30,null,"last_article_time desc,article_count desc",(error,columns)->
       if error then next error
       else
         res.locals.columns = columns

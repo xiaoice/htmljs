@@ -1,5 +1,8 @@
 module.exports =  
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   user_id:"int"
   user_nick:"varchar(100)"
   user_headpic:"varchar(255)"
@@ -19,6 +22,10 @@ module.exports =
     type:"int"
   publish_time:"int"
   is_publish:
+    defaultValue:0
+    type:"tinyint"
+    private:true
+  is_jian:
     defaultValue:0
     type:"tinyint"
     private:true

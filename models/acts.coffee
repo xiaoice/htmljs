@@ -1,9 +1,12 @@
-Sequelize = require 'sequelize'
+
 module.exports = 
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   title:"varchar(200)"
   person_limit:"int"
-  time:Sequelize.DATE
+  time:"datetime"
   location:"varchar(255)"
   map_url:"varchar(1000)"
   partner:"text"

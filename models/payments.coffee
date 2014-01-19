@@ -1,5 +1,8 @@
 module.exports = 
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   uuid:"varchar(40)"
   trade_num:"varchar(100)"
   trade_title:"varchar(200)"

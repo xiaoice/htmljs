@@ -1,5 +1,8 @@
 module.exports = 
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   udid:"varchar(40)"
   card_count:"int"
   user_count:"int"

@@ -1,5 +1,8 @@
 module.exports =
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   name:"varchar(30)"
   desc_md:"varchar(500)"
   desc:"text"

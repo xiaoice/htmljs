@@ -1,8 +1,12 @@
 module.exports = 
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   md:"text"
   html:"text"
-  question_id:"int"
+  question_id:
+    type:"int"
   user_id:
     type: "int",
     references: "cards"

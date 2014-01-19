@@ -1,5 +1,8 @@
 module.exports =
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   user_id:"int"
   card_id:"int"
   

@@ -1,5 +1,8 @@
 module.exports = 
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   uuid:"varchar(40)"
   user_id:"int"
   user_nick:"varchar(100)"

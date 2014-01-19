@@ -1,5 +1,8 @@
 module.exports = 
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   nick:"varchar(255)"
   head_pic:"varchar(255)"
   weibo_id:

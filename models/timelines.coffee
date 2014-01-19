@@ -1,5 +1,8 @@
 module.exports = 
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   who_id:"int"
   who_headpic:"varchar(255)"
   who_nick:"varchar(100)"

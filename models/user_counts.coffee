@@ -1,5 +1,8 @@
 module.exports = 
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   uuid:"varchar(40)"
   user_id:"int"
   answer_count:  #回答过多少个问题

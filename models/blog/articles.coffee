@@ -1,5 +1,8 @@
 module.exports = 
-  id:"int"
+  id:
+    type:"int"
+    autoIncrement: true
+    primaryKey: true
   blog_id:"int"
   uuid:"varchar(40)"
   url:"varchar(1000)"

@@ -16,6 +16,7 @@ global.sequelize = sequelize = new Sequelize(config.mysql_table, config.mysql_us
     collate: 'utf8_general_ci'
   host:config.mysql_host
   maxConcurrentQueries:120
+  logging:true
 )
 module.exports = global.__M= (modelName)->
   obj = sequelize.define modelName.replace(/\//g,"_"), require path.join config.base_path,"models",modelName+config.script_ext

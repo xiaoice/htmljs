@@ -99,9 +99,9 @@ html(xmlns:wb='http://open.weibo.com/wb')
               .my_column
                 .title 
                   a(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
-                  a.go(href="/article/add?column_id=#{column.id}") 添加文章
+                  //- a.go(href="/article/add?column_id=#{column.id}") 添加文章
             div
-              a.btn(href="/article/column/add") 创建新专栏
+              a.btn.small-btn(href="/article/column/add") 创建新专栏
           else
             .no 还没有专栏，先创建专栏再发表原创文章吧！
               a(href="/article/column/add") 创建专栏
@@ -114,7 +114,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
               .my_column
                 .title 
                   a(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
-                  a.go(href="/article/add?column_id=#{column.id}") 添加文章
+                  //- a.go(href="/article/add?column_id=#{column.id}") 添加文章
       .content
         if articles && articles.length
           .articles
@@ -154,13 +154,24 @@ html(xmlns:wb='http://open.weibo.com/wb')
                           i.icon-clock
                         a.value #{moment(article.publish_time*1000).fromNow()}
                         
+                      
+                      span.views.item
+                        span.index 
+                          i.icon-eye-open
+                        a.value #{article.visit_count}
+                      span.views.item
+                        span.index 
+                          i.icon-thumbs-up
+                        a.value #{article.zan_count}
                       if locals.user && (user.is_admin||user.id==article.user_id)
                         span.views.item
                           a.value(href="/article/#{article.id}/edit") 编辑
+                      if locals.user && user.is_admin
                         span.views.item
-                          span.index 
-                            i.icon-thumbs-up
-                          a.value #{article.zan_count}
+                          if article.sort == 100000
+                            a.value(href="/article/#{article.id}/update?sort=#{article.id}") 取消置顶
+                          else
+                            a.value(href="/article/#{article.id}/update?sort=100000") 置顶
                         //- span.views.item
                         //-   span.index 
                         //-     i.icon-signal

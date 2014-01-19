@@ -1,11 +1,14 @@
 Comment = __M 'comments'
 Comment.sync()
 func_comment = 
-  getAllByTargetId:(target_id,page,count,condition,callback)->
+  getAllByTargetId:(target_id,page,count,condition,order,callback)->
+    if arguments.length == 5
+      callback = order
+      order = null
     query = 
       offset: (page - 1) * count
       limit: count
-      order: "id desc"
+      order: order||"id desc"
       where:
         target_id:target_id
       raw:true

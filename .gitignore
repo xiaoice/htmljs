@@ -3,3 +3,4 @@ config.coffee
 alipay_config.js
 node_modules
 .DS_Store
+node_modules/*

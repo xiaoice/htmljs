@@ -10,29 +10,28 @@ html
     include ../header
     #content.clearfix
       .group 
-        form.search(action="/search")
-          .input-append
-            input.input-large(name="q",type="text",placeholder="根据昵称或者真名搜索")
-            button.btn.btn-mini(type="submit") 搜索
-      if locals.q
-        .group
-          a.label.title.label-inverse 搜索词：
-          a.label #{q}
-      .group
-          a.label.title.label-inverse 按状态寻找：
-          a.label(href="?",class="#{(!locals.filter_is_qiuzhi&&!locals.filter_is_zhaopin&&!locals.filter_is_jiehuo&&!locals.filter_is_xiangqin)?'label-success':''}") 所有
-          a.label(href="?filter=is_qiuzhi|1",class="#{locals.filter_is_qiuzhi=='1'?'label-success':''}") 求职中
-          a.label(href="?filter=is_zhaopin|1",class="#{locals.filter_is_zhaopin=='1'?'label-success':''}") 在招人
-          a.label(href="?filter=is_jiehuo|1",class="#{locals.filter_is_jiehuo=='1'?'label-success':''}") 想接活
-          a.label(href="?filter=is_xiangqin|1",class="#{locals.filter_is_xiangqin=='1'?'label-success':''}") 找对象
-          a.label(href="?filter=sex|女",class="#{locals.filter_sex=='女'?'label-success':''}") 女生
-          a.label(href="?filter=is_dan|单身",class="#{locals.filter_is_dan=='单身'?'label-success':''}") 单身
+        //- form.search(action="/search")
+        //-   .input-append
+        //-     input.input-large(name="q",type="text",placeholder="根据昵称或者真名搜索")
+        //-     button.btn.btn-mini(type="submit") 搜索
+      //- if locals.q
+      //-   .group
+      //-     a.label.title.label-inverse 搜索词：
+      //-     a.label #{q}
+      //- .group
+      //-     a.label.title.label-inverse 按状态寻找：
+      //-     a.label(href="?",class="#{(!locals.filter_is_qiuzhi&&!locals.filter_is_zhaopin&&!locals.filter_is_jiehuo&&!locals.filter_is_xiangqin)?'label-success':''}") 所有
+      //-     a.label(href="?filter=is_qiuzhi|1",class="#{locals.filter_is_qiuzhi=='1'?'label-success':''}") 求职中
+      //-     a.label(href="?filter=is_zhaopin|1",class="#{locals.filter_is_zhaopin=='1'?'label-success':''}") 在招人
+      //-     a.label(href="?filter=is_jiehuo|1",class="#{locals.filter_is_jiehuo=='1'?'label-success':''}") 想接活
+      //-     a.label(href="?filter=is_xiangqin|1",class="#{locals.filter_is_xiangqin=='1'?'label-success':''}") 找对象
+      //-     a.label(href="?filter=sex|女",class="#{locals.filter_sex=='女'?'label-success':''}") 女生
+      //-     a.label(href="?filter=is_dan|单身",class="#{locals.filter_is_dan=='单身'?'label-success':''}") 单身
       .main.clearfix
         .content
-          .left
-            ul.f2er-list
+            .f2er-list
               each card in cards
-                li.vcard
+                a.vcard.card(href="/card/#{card.id}")
                   div.head_pic.user
                     img.lazy(itemprop="photo",data-original='#{card.head_pic||"http://www.gravatar.com/avatar/"+md5(card.email)+"?d=http://ww2.sinaimg.cn/mw690/6663ae3cgw1dw6f3l62w6j.jpg"}', width='50',height="50")
                     if card.sex
@@ -49,14 +48,14 @@ html
                       if card.blog || card.github || card.weibo
                         span.sns
                           if card.blog
-                            a.blog(href='#{card.blog}', target='_blank',title="博客地址") blog
+                            span.blog(href='#{card.blog}', target='_blank',title="博客地址") blog
                           if card.github
-                            a.github(href='#{card.github}', target='_blank',title="github地址") github
+                            span.github(href='#{card.github}', target='_blank',title="github地址") github
                           if card.weibo
-                            a.weibo.url(href='#{card.weibo}', target='_blank',title="微博地址") weibo
+                            span.weibo.url(href='#{card.weibo}', target='_blank',title="微博地址") weibo
                     div
                       span.key 经验值：
-                      span.value #{card.users?card.users.coin:0}
+                      span.value #{card.user?card.user.coin:0}
                     div
                       span.key 性别
                       span.value ：#{card.sex}
@@ -72,44 +71,42 @@ html
                     div.shanchang.clearfix
                       span.key 擅长：
                       span.value #{card.techang.substr(0,100)}
-                    div.more
-                      a(href="/card/#{card.id}") 更多信息
                     if !locals.card
                       if card.user_id
                         span.renling 已被认领
                       else
-                        a.renling(data-id="#{card.id}") 认领此名片 
+                        span.renling(data-id="#{card.id}") 认领此名片 
                   div.count-infos
-                    a(href="/card/#{card.id}")
+                    span(href="/card/#{card.id}")
                       .icon-eye-open.icon
                       span #{card.visit_count||0}
-                    a.zan(data-id="#{card.id}")
+                    span.zan(data-id="#{card.id}")
                       .icon-heart.icon 
                       em #{card.zan_count||0}
-                    a(href="/card/#{card.id}#comment-module")
+                    span(href="/card/#{card.id}#comment-module")
                       .icon-comments.icon
                       span #{card.comment_count||0}
                     
             include ../page
-        .right
-          if locals.comments
-            .module
-              .hd 最新评论
-              .bd
-                each comment in comments
-                  div.item
-                    |#{comment.user_nick}：
-                    a(href="/card/#{comment.target_id.split("_")[1]}") #{comment.md.substr(0,70)}
-          if locals.recents
-            .module
-              .hd 最新加入
-              .bd
-                each recent in recents
-                  .item
-                    a(href="/card/#{recent.id}") #{recent.nick}
-          .module.fix-ad
-              .hd 广告位
-              .bd
+        //- .right
+        //-   if locals.comments
+        //-     .module
+        //-       .hd 最新评论
+        //-       .bd
+        //-         each comment in comments
+        //-           div.item
+        //-             |#{comment.user_nick}：
+        //-             a(href="/card/#{comment.target_id.split("_")[1]}") #{comment.md.substr(0,70)}
+        //-   if locals.recents
+        //-     .module
+        //-       .hd 最新加入
+        //-       .bd
+        //-         each recent in recents
+        //-           .item
+        //-             a(href="/card/#{recent.id}") #{recent.nick}
+        //-   .module.fix-ad
+        //-       .hd 广告位
+        //-       .bd
                 
     include ../footer
     script(src="#{assets_head}/js/messageTip.js")

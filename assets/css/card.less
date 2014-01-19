@@ -9,12 +9,12 @@
 .f2er-list{
   padding: 0;
   margin:0;
-  width:1000px;
+  width:1100px;
 }
 .f2er-list{
   .sns{
     margin-left: 0px;
-    a{padding-left:5px;vertical-align: -3px;}
+    span{padding-left:5px;vertical-align: -3px;}
     .blog{
       background: url(http://htmljs.b0.upaiyun.com/images/icon-blog.png) no-repeat center center;
       height: 15px;
@@ -41,33 +41,34 @@
     }
   }
 }
-.f2er-list li{
-  width:360px;
+.f2er-list .card{
+  width:460px;
   background:#fff;
   list-style: none;
   margin:0;
   display:inline-block;
   vertical-align: top;
-  border:1px solid @module-border-color;
   margin-top:10px;
   padding:15px;
+  height:140px;
+  overflow: hidden;
   font-size:12px;
   color:#666;
   margin-right:10px;
   box-shadow: 1px 1px 2px #ddd;
   position: relative;
 }
-.f2er-list li a{
+.f2er-list .card span{
   word-wrap: normal;
   word-break: break-all;
 }
-.f2er-list li .head_pic{
+.f2er-list .card .head_pic{
   width:50px;
   height:50px;
 }
-.f2er-list li .key{margin-left:10px;color:#666;}
-.f2er-list li .value{color:#999;}
-.f2er-list li {
+.f2er-list .card .key{margin-left:10px;color:#666;}
+.f2er-list .card .value{color:#999;}
+.f2er-list .card {
   .shanchang{
   .key{
 float:left;
@@ -79,7 +80,7 @@ float:left;
   }
   }
 }
-.f2er-list li .more{margin-left:10px;}
+.f2er-list .card .more{margin-left:10px;}
   .main{
     width:1000px;
   }
@@ -126,7 +127,7 @@ width:310px;
     right:10px;
     line-height: 17px;
     
-    a{
+    span{
       color:#999;
     cursor: pointer;
     }

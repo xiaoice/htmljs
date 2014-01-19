@@ -137,7 +137,7 @@ func_card =
     if arguments.length == 4
       callback = desc
       
-      desc = "users.coin desc,cards.zan_count+cards.visit_count desc"
+      desc = "user.coin desc,cards.zan_count+cards.visit_count desc"
     query = 
       offset: (page - 1) * count
       limit: count

@@ -6,8 +6,8 @@ html
     |<meta name="description" content="#{locals.article?article.html.replace(/<[^>]*?>/g,'').replace(/\s/g,'').substr(0,100):""}">
     style
       #bdshare a{}
-    script(src='http://tjs.sjs.sinajs.cn/open/api/js/wb.js')
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
+    script(src='#{assets_head}/js/bootstrap/bootstrap-scrollspy.js')
   body#article
     - locals.pageId=1;
     include ../header
@@ -35,8 +35,10 @@ html
       else
         .content
             
+
             .title
               .wrapper
+
                 h2.title(href='http://p.html-js.com/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
                 .info
                   div.line
@@ -74,6 +76,8 @@ html
                   if locals.user && (user.is_admin||user.id==article.user_id)
                     a.action(href="/article/#{article.id}/edit") 编辑
             article.post(id="post-#{article.id}")
+              .artivle_nav
+                ul.nav
               .wrapper
                 
                 .entry-content !{article.html.replace(/([^>])\r\n\r\n([^<])/g,"$1<br/>$2").replace(/<code>/g,"<code class='language-javascript'>")}
@@ -417,5 +421,35 @@ html
           })
             
           })
+            });
+
+          (function(){
+            var ts = ['h1','h2','h3','h4']
+            var html = ""
+            var id_count = 0;
+            $(".post .entry-content").find("h1,h2,h3,h4").each(function(i,h){
+              id_count++
+              h.id="h"+id_count
+              html+="<li class='item item-"+h.tagName+"'><a href='#h"+id_count+"'> · "+h.innerHTML+"</a></li>"
             })
+              $(".artivle_nav .nav").html(html)
+              $('.artivle_nav').scrollspy()
+              if($('.artivle_nav').length){
+              var offset = $('.artivle_nav').offset();
+              $(window).scroll(function(){
+                var scrollTop = $(window).scrollTop();
+                if (offset.top < scrollTop+40) 
+                  $('.artivle_nav').addClass('fixed').css({
+                  position:"fixed",top:0
+                  });
+                else $('.artivle_nav').removeClass('fixed').css({
+                  position:"absolute",top:0
+                });
+                if($('.artivle_nav').height()+$('.artivle_nav').offset().top>$(".bottom-action").offset().top+60){
+                  $('.artivle_nav').css({position:"absolute",top:$(".post").height()-$('.artivle_nav').height()+60})
+                }
+              });
+            }
+            })();
+            
           

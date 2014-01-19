@@ -72,8 +72,7 @@ func_article =
     
     Article.create(data)
     .success (article)->
-      
-      article.updateAttributes {sort:article.id},['sort']
+      console.log article
       Column.find
         where:
           id:article.column_id

@@ -183,7 +183,8 @@ module.exports.controllers =
           result.info = error.message
         else
           result.success = 1
-          (__F 'index').add article.uuid
+
+          func_article.update article.id,{sort:article.id}
           (__F 'coin').add 40,article.user_id,"发表了一篇专栏文章"
           if req.body.column_id
             func_column.update req.body.column_id,{last_article_time:(new Date()).getTime()},()->

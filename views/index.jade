@@ -101,7 +101,7 @@ html
                 a(href="/qa") 最新的问题（#{locals.all_count?all_count.question:0}）
               .bd
                 each question,i in questions
-                  .item(class="#{question.visit_count<30?'new':''}  #{Math.floor(i/2)%2==1?'yooo':''}")
+                  .item(class="#{question.answer_count<1?'new':''}  #{Math.floor(i/2)%2==1?'yooo':''}")
                     a.title(href="/qa/#{question.pinyin?question.pinyin:question.id}") #{question.title}
                     .desc 
                       a.user(href="/user/#{question.user_id}") #{question.user_nick}

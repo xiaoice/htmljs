@@ -77,6 +77,7 @@ html
                             a.at(href="",data-nick="#{ans.user_nick}") <i class="icon-new-window icon-gray"></i>回复
                             a.reply(href="",data-md="#{ans.md}",data-nick="#{ans.user_nick}") <i class="icon-retweet icon-gray"></i>引用
                             a(target="_blank",href="http://service.weibo.com/share/share.php?url=#{encodeURIComponent("http://www.html-js.com/topic/"+topic.id+"#comment-"+ans.id)}&title=分享自@前端乱炖 的精彩跟帖【#{topic.title}】#{ans.user_nick}：#{ans.md.replace(/>/g,'').substr(0,100)}&appkey=659341943") 分享
+                            a.zan(href="",data-id="#{ans.id}") <i class="icon-thumbs-up"></i>赞 <em>#{ans.zan_count}</em>
                         if i==0 && locals.page==1
                           .ans-lou 沙发
                         else if i==1&& locals.page==1
@@ -186,7 +187,8 @@ html
               alert("请先登录")
                 window.location.href="/user/login"
             }else if(data.success){
-              $("em",self).html(data.comment.zan_count)
+              $("em",self).html( $("em",self).html()*1+1)
+              messageTip.show("成功")
             }else{
               alert(data.info)
             }

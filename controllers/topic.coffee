@@ -123,6 +123,10 @@ module.exports.controllers =
                       target_path_name:topic.title
                       content:req.body.html
           res.send result
+  "/comment/:id/zan":
+    post:(req,res,next)->
+      func_topic_comment.addCount req.params.id,"zan_count",()->
+        res.send({success:1})
 module.exports.filters = 
   "/":
     get:['freshLogin','topic/all-tags-ifonlyone','topic/all-topics','topic/recent-replys']

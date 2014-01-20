@@ -11,3 +11,6 @@ module.exports =
   user_nick:"varchar(40)"
   user_headpic:"varchar(255)"
   topic_id:"int"
+  zan_count:
+    type:"int"
+    defaultValue:0

@@ -372,6 +372,12 @@ module.exports.controllers =
         if error then next error
         else 
           res.redirect '/article/column/'+column.id
+  "/column/:id/update":
+    get:(req,res,next)->
+      func_column.update req.params.id,req.query,(error)->
+        if error then next error
+        else
+          res.redirect 'back'
   "/column/:id":
     get:(req,res,next)->
       condition = 
@@ -452,7 +458,7 @@ module.exports.filters =
     post:['checkLoginJson',"checkCard"]
 
   "/":
-    get:['freshLogin','get_infos','article/new-comments','article/my-columns','article/public-columns','article/all-publish-articles']#'article/index-columns','article/column-articles','article/checkRss']
+    get:['freshLogin','get_infos','article/my-columns','article/public-columns','article/all-publish-articles','article/jian-articles','article/jian_columns','article/jian-hots']#'article/index-columns','article/column-articles','article/checkRss']
   "/user/:id":
     get:['freshLogin','article/who','article/his-articles']
   "/old":
@@ -467,6 +473,8 @@ module.exports.filters =
   "/column/add":
     get:['checkLogin',"checkCard"]
     post:['checkLogin',"checkCard"]
+  "/column/:id/update":
+    get:['checkLogin']
   "/column/:id":
     get:['freshLogin','getRecent','get_infos','article/new-comments','article/recent-columns',"article/get-column",'article/get-column-rss','article/get-rsses']
   "/column/:id/rss":

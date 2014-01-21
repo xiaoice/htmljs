@@ -45,6 +45,12 @@ html(xmlns:wb='http://open.weibo.com/wb')
                     a.rss-btn(href="/article/column/#{column.id}/rss")
                       i.rss.social
                       |  邮件订阅（#{column.rss_count}）
+                  if locals.user && user.is_admin
+                    span.views.item
+                      if column.is_jian == 1
+                        a.value(href="/article/column/#{column.id}/update?is_jian=0") 不荐
+                      else
+                        a.value(href="/article/column/#{column.id}/update?is_jian=1") 荐
       include ../page
       
     

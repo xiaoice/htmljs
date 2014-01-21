@@ -90,31 +90,99 @@ html(xmlns:wb='http://open.weibo.com/wb')
       //- .actions     
       //-   a.btn(href="/article/column/add") <i class="icon-white icon-book-open"></i> 创建专栏
       //-   a(href="/article/column",style="margin-left:20px;") 所有专栏
-      .module.my_columns
-        .hd 我的专栏
-        .bd
-          - var now = new Date().getTime();
-          if locals.my_columns && my_columns.length
-            each column in my_columns
-              .my_column
-                .title 
-                  a(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
-                  //- a.go(href="/article/add?column_id=#{column.id}") 添加文章
-            div
-              a.btn.small-btn(href="/article/column/add") 创建新专栏
-          else
-            .no 还没有专栏，先创建专栏再发表原创文章吧！
-              a(href="/article/column/add") 创建专栏
-      .module.my_columns
-        .hd 开放投稿的专栏
-        .bd
-          - var now = new Date().getTime();
-          if locals.public_columns && public_columns.length
-            each column in public_columns
-              .my_column
-                .title 
-                  a(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
-                  //- a.go(href="/article/add?column_id=#{column.id}") 添加文章
+      //- .module.my_columns
+      //-   .hd 我的专栏
+      //-   .bd
+      //-     - var now = new Date().getTime();
+      //-     if locals.my_columns && my_columns.length
+      //-       each column in my_columns
+      //-         .my_column
+      //-           .title 
+      //-             a(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
+      //-             //- a.go(href="/article/add?column_id=#{column.id}") 添加文章
+      //-       div
+      //-         a.btn.small-btn(href="/article/column/add") 创建新专栏
+      //-     else
+      //-       .no 还没有专栏，先创建专栏再发表原创文章吧！
+      //-         a(href="/article/column/add") 创建专栏
+      //- .module.my_columns
+      //-   .hd 开放投稿的专栏
+      //-   .bd
+      //-     - var now = new Date().getTime();
+      //-     if locals.public_columns && public_columns.length
+      //-       each column in public_columns
+      //-         .my_column
+      //-           .title 
+      //-             a(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
+      //-             //- a.go(href="/article/add?column_id=#{column.id}") 添加文章
+      .module
+        .my_columns
+          .t 我的专栏
+          .b
+            - var now = new Date().getTime();
+            if locals.my_columns && my_columns.length
+              each column in my_columns
+                .my_column
+                  .title 
+                    a(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
+                    //- a.go(href="/article/add?column_id=#{column.id}") 添加文章
+              div
+                a.btn.small-btn(href="/article/column/add") 创建新专栏
+            else
+              .no 还没有专栏，先创建专栏再发表原创文章吧！
+                a(href="/article/column/add") 创建专栏
+      .module.jian.clearfix  
+        .lft
+          .t 推荐专栏
+          .b 
+            each column in jian_columns
+              .item 
+                a.title(href="/article/column/#{column.id}") #{column.name}
+                .desc 
+                  
+                  a.user(href="/user/#{column.user_id}") #{column.user.nick}
+                  //- span.time #{moment(article.createdAt).fromNow()}
+                  span.desc-item
+                    span.index 订阅
+                    a.value #{column.rss_count}
+                  span.desc-item
+                    span.index 最后更新
+                    a.value #{moment(column.last_article_time*1).fromNow()}
+          
+        .rht
+          .t 推荐文章
+          .b
+            each article in jian_articles
+              .item(class="#{article.visit_count<60?'new':''} #{Math.floor(i/2)%2==1?'yooo':''}",role="listitem")
+                a.title(href="/article/#{article.pinyin?article.pinyin:article.id}") #{article.title}
+                .desc 
+                  
+                  a.user(href="/user/#{article.user_id}") #{article.user_nick}
+                  //- span.time #{moment(article.createdAt).fromNow()}
+                  
+                  span.desc-item
+                    span.index 浏览
+                    a.value #{article.visit_count}
+                  span.desc-item
+                    span.index 赞
+                    a.value #{article.zan_count}
+        .thr
+          .t 本月最热
+          .b 
+            each article in jian_hots
+              .item(class="#{article.visit_count<60?'new':''} #{Math.floor(i/2)%2==1?'yooo':''}",role="listitem")
+                a.title(href="/article/#{article.pinyin?article.pinyin:article.id}") #{article.title}
+                .desc 
+                  
+                  a.user(href="/user/#{article.user_id}") #{article.user_nick}
+                  //- span.time #{moment(article.createdAt).fromNow()}
+                  
+                  span.desc-item
+                    span.index 浏览
+                    a.value #{article.visit_count}
+                  span.desc-item
+                    span.index 赞
+                    a.value #{article.zan_count}
       .content
         if articles && articles.length
           .articles
@@ -172,6 +240,11 @@ html(xmlns:wb='http://open.weibo.com/wb')
                             a.value(href="/article/#{article.id}/update?sort=#{article.id}") 取消置顶
                           else
                             a.value(href="/article/#{article.id}/update?sort=100000") 置顶
+                        span.views.item
+                          if article.is_jian == 1
+                            a.value(href="/article/#{article.id}/update?is_jian=0") 不荐
+                          else
+                            a.value(href="/article/#{article.id}/update?is_jian=1") 荐
                         //- span.views.item
                         //-   span.index 
                         //-     i.icon-signal

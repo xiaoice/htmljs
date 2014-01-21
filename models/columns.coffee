@@ -29,3 +29,7 @@ module.exports =
   last_notify_time:
     type:"bigint"
     defaultValue:0
+  is_jian:
+    defaultValue:0
+    type:"tinyint"
+    private:true

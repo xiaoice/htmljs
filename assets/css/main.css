@@ -458,7 +458,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .topactions{margin-bottom:10px;}
 #articles .my-columns a{margin-left:10px;color:#f27369;}
 #articles .actions{margin-bottom:10px;}#articles .actions a{margin-right:5px;}
-#articles .jian .t{font-size:16px;line-height:30px;}
+#articles .jian .t{font-size:16px;line-height:30px;}#articles .jian .t .more{font-size:12px;padding-left:10px;color:#5bb793;}
 #articles .jian .lft{float:left;width:33%;}
 #articles .jian .rht{float:left;width:33%;}
 #articles .jian .thr{float:left;width:33%;}

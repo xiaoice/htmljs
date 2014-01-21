@@ -133,10 +133,10 @@ html(xmlns:wb='http://open.weibo.com/wb')
                 a(href="/article/column/add") 创建专栏
       .module.jian.clearfix  
         .lft
-          .t 推荐专栏
+          .t 推荐专栏 <a class="more" href="/article/column">全部专栏</a>
           .b 
             each column in jian_columns
-              .item 
+              .item(role="listitem")
                 a.title(href="/article/column/#{column.id}") #{column.name}
                 .desc 
                   
@@ -153,7 +153,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
           .t 推荐文章
           .b
             each article in jian_articles
-              .item(class="#{article.visit_count<60?'new':''} #{Math.floor(i/2)%2==1?'yooo':''}",role="listitem")
+              .item(role="listitem")
                 a.title(href="/article/#{article.pinyin?article.pinyin:article.id}") #{article.title}
                 .desc 
                   
@@ -170,7 +170,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
           .t 本月最热
           .b 
             each article in jian_hots
-              .item(class="#{article.visit_count<60?'new':''} #{Math.floor(i/2)%2==1?'yooo':''}",role="listitem")
+              .item(role="listitem")
                 a.title(href="/article/#{article.pinyin?article.pinyin:article.id}") #{article.title}
                 .desc 
                   

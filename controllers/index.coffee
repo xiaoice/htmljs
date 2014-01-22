@@ -38,26 +38,7 @@ module.exports.controllers =
     get:(req,res,next)->
       func_index.update req.params.id,req.query,(error)->
         res.redirect '/'
-  "/rss":
-    "get":(req,res,next)->
-      feed = new RSS
-        title: "前端乱炖，前端人才资源学习资源集散地",
-        description: "前端乱炖，前端人才资源学习资源集散地",
-        feed_url: 'http://www.html-js.com/rss.xml',
-        site_url: 'http://www.html-js.com',
-        image_url: 'http://www.html-js.com/icon.png',
-        author: "芋头"
-      func_article.getAll 1,20,null,(error,articles)->
-        if error then next error
-        else
-          articles.forEach (article)->
-            feed.item
-              title: article.title,
-              description: article.html,
-              url: 'http://www.html-js.com/article/'+article.id
-              author: article.user_nick
-              date: article.publish_time*1000
-          res.end feed.xml()
+  
   "/rss.xml":
     "get":(req,res,next)->
       feed = new RSS

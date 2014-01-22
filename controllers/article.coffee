@@ -19,34 +19,54 @@ pagedown.Extra.init(safeConverter);
 read = require("readability")
 path = require 'path'
 request = require 'request'
-rss = require 'rss'
+RSS=require 'rss'
 module.exports.controllers = 
   "/":
     "get":(req,res,next)->
       res.render 'article/articles-list.jade'
-  ".json":
+  "/rss|/rss.xml":
     "get":(req,res,next)->
-      condition = 
-        is_yuanchuang:1
-      result = 
-        success:0
-        data:{}
-      func_article.count condition,(error,count)->
-        if error 
-          result.info = error.message
+      feed = new RSS
+        title: "前端乱炖，前端人才资源学习资源集散地",
+        description: "前端乱炖，前端人才资源学习资源集散地",
+        feed_url: 'http://www.html-js.com/rss.xml',
+        site_url: 'http://www.html-js.com',
+        image_url: 'http://www.html-js.com/icon.png',
+        author: "前端乱炖"
+      func_article.getAll 1,20,{is_yuanchuang:1},"id desc",(error,articles)->
+        if error then next error
         else
-          result.data.total=count
-          result.data.totalPage=Math.ceil(count/10)
-          result.data.page = (req.query.page||1)
-          func_article.getAll result.data.page,10,condition,(error,articles)->
-            if error 
-              result.info = error.message
-            else
-              result.success = 1
-              articles.forEach (a)->
-                delete a.html
-              result.data.articles = articles
-            res.send result
+          articles.forEach (article)->
+            feed.item
+              title: article.title,
+              description: article.html,
+              url: 'http://www.html-js.com/article/'+article.id
+              author: article.user_nick
+              date: article.publish_time*1000
+          res.end feed.xml()
+  # ".json":
+  #   "get":(req,res,next)->
+  #     condition = 
+  #       is_yuanchuang:1
+  #     result = 
+  #       success:0
+  #       data:{}
+  #     func_article.count condition,(error,count)->
+  #       if error 
+  #         result.info = error.message
+  #       else
+  #         result.data.total=count
+  #         result.data.totalPage=Math.ceil(count/10)
+  #         result.data.page = (req.query.page||1)
+  #         func_article.getAll result.data.page,10,condition,(error,articles)->
+  #           if error 
+  #             result.info = error.message
+  #           else
+  #             result.success = 1
+  #             articles.forEach (a)->
+  #               delete a.html
+  #             result.data.articles = articles
+  #           res.send result
   "/old":
     "get":(req,res,next)->
       condition = 

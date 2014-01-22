@@ -94,11 +94,12 @@ global.__FC = (func,model,methods)->
           where:
             id:id
         .success (m)->
-          
+          console.log model
           if m
             fields = []
             for k,v of data
-              fields.push k
+              if model.rawAttributes[k]
+                fields.push k
             m.updateAttributes(data,fields)
             .success ()->
               callback&&callback null,m
@@ -213,6 +214,7 @@ __BaseFunction.prototype =
     .error (error)->
       callback&&callback error
   update:(id,data,callback)->
+    self = this
     this.model.find
       where:
         id:id
@@ -221,7 +223,8 @@ __BaseFunction.prototype =
       if m
         fields = []
         for k,v of data
-          fields.push k
+          if self.model.rawAttributes[k]
+            fields.push k
         m.updateAttributes(data,fields)
         .success ()->
           callback&&callback null,m

@@ -10,7 +10,10 @@ module.exports =
   md:
     type:"text"
     private:true
-  html:"text"
+  html:
+    type:"text"
+    set:(v)->
+      return this.setDataValue('html', xss(v));
   visit_count:
     defaultValue:0
     type:"int"

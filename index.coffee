@@ -6,6 +6,8 @@ rainbow        = require './lib/rainbow.js'
 lessmiddle     = require 'less-middleware'
 less           = require 'less'
 fs             = require 'fs'
+global.xss = require 'xss'
+xss.whiteList['iframe'] = ['src', 'width','height','allowfullscreen','frameborder','id','class','style'];
 _ = require 'underscore'
 module.exports = app = express()
 log4js = require('log4js')
@@ -88,3 +90,4 @@ app.configure ->
   app.locals.assets_tm = "8-23"
 app.configure "development", ->
   app.use express.errorHandler()
+

@@ -4,7 +4,10 @@ module.exports =
     autoIncrement: true
     primaryKey: true
   md:"text"
-  html:"text"
+  html:
+    type:"text"
+    set:(v)->
+      return this.setDataValue('html', xss(v));
   user_id:"int"
   user_headpic:"varchar(255)"
   user_nick:"varchar(50)"

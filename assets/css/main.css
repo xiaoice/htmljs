@@ -25,7 +25,7 @@
 .user .sex.nan{background:rgba(255, 255, 255, 0.9) url(../images/nan.png) no-repeat center center;background-size:80% 80%;}
 .user .sex.nv{background:rgba(255, 255, 255, 0.9) url(../images/nv.png) no-repeat center center;background-size:80% 80%;}
 .module{background:#fff;border-radius:0px;padding:15px 20px;margin-bottom:10px;}.module .hd .right_more{font-size:12px;float:right;padding-right:10px;}
-.module .hd{line-height:30px;color:#333;font-size:16px;height:30px;font-weight:bold;color:#666;}
+.module .hd{line-height:14px;margin:7px 0;font-size:14px;height:16px;font-weight:bold;color:#666;border-left:3px solid #5bb793;padding-left:5px;}
 .module .bd{font-size:12px;padding:0px;color:#666;margin-top:10px;}
 body{background:url(../images/bg-repeat.png);background:#efefef;}
 #content{width:940px;margin:20px auto;}#content table{width:100%;overflow:auto;display:block;}
@@ -458,7 +458,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #articles .topactions{margin-bottom:10px;}
 #articles .my-columns a{margin-left:10px;color:#f27369;}
 #articles .actions{margin-bottom:10px;}#articles .actions a{margin-right:5px;}
-#articles .jian .t{font-size:16px;line-height:30px;}#articles .jian .t .more{font-size:12px;padding-left:10px;color:#5bb793;}
+#articles .jian .t .more{font-size:12px;padding-left:10px;color:#5bb793;}
 #articles .jian .lft{float:left;width:33%;}
 #articles .jian .rht{float:left;width:33%;}
 #articles .jian .thr{float:left;width:33%;}
@@ -728,6 +728,11 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #topic .topic-content{padding:10px;font-size:14px;color:#404040;}#topic .topic-content p{line-height:25px;margin:15px 0;}
 #topic .topic-content blockquote p{line-height:25px;margin:0;font-size:12px;}
 #topic .topic-content img{border:1px solid #ddd;margin:10px;}
+#topic .actions{padding:10px;float:left;padding-left:0;color:#666;font-size:14px;}#topic .actions .action{cursor:pointer;color:#666;font-size:13px;line-height:30px;text-decoration:none;height:30px;padding:0 10px;display:inline-block;background:#eee;border-radius:5px;margin-right:10px;}#topic .actions .action em{font-style:normal;}
+#topic .actions .action span{color:#aaa;font-size:12px;}
+#topic .actions .action:hover{background:#dedede;}
+#topic .actions i{background:none;font-size:15px;margin-right:5px;color:#aaa;}
+#topic .actions i{margin-right:3px;}
 #topic .topic-user .action{float:left;}#topic .topic-user .action a{line-height:40px;margin-right:10px;color:#999;font-size:14px;}#topic .topic-user .action a i{-webkit-transform:scale(0.9);-moz-transform:scale(0.9);}
 #topic .topic-user .action .tags a{padding:1px 4px;margin-right:5px;color:#fff;font-weight:normal;font-size:12px;background:#aaa;}
 #topic .topic-user .action .tags a:hover{background:#5bb793;}

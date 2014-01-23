@@ -117,8 +117,8 @@ html(xmlns:wb='http://open.weibo.com/wb')
       //-             //- a.go(href="/article/add?column_id=#{column.id}") 添加文章
       .module
         .my_columns
-          .t 我的专栏
-          .b
+          .hd 我的专栏
+          .bd
             - var now = new Date().getTime();
             if locals.my_columns && my_columns.length
               each column in my_columns
@@ -133,7 +133,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                 a(href="/article/column/add") 创建专栏
       .module.jian.clearfix  
         .lft
-          .t 推荐专栏 <a class="more" href="/article/column">全部专栏</a>
+          .t.hd 推荐专栏 <a class="more" href="/article/column">全部专栏</a>
           .b 
             each column in jian_columns
               .item(role="listitem")
@@ -150,7 +150,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                     a.value #{moment(column.last_article_time*1).fromNow()}
           
         .rht
-          .t 推荐文章
+          .t.hd 推荐文章
           .b
             each article in jian_articles
               .item(role="listitem")
@@ -167,7 +167,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                     span.index 赞
                     a.value #{article.zan_count}
         .thr
-          .t 本月最热
+          .t.hd 本月最热
           .b 
             each article in jian_hots
               .item(role="listitem")

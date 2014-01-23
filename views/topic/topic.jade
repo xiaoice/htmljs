@@ -33,11 +33,17 @@ html
             .topic-content
               .desc !{topic.html.replace(/<code>/g,"<code class='language-javascript'>")}
             .topic-user.clearfix
-              .action
-                if locals.user && (user.is_admin||user.id==topic.user_id)
-                  a(href="/topic/#{topic.id}/edit") <i class="icon-pencil icon-gray"></i>编辑
-                a#bdshare.bdshare_t.bds_tools.get-codes-bdshare(style="float:none;") 
-                  span.bds_more(style="background:none !important;float:none;display:inline;padding:0;") 分享
+              .actions
+                
+                  if locals.user && (user.is_admin||user.id==topic.user_id)
+                    a.action(href="/topic/#{topic.id}/edit") <i class="icon-pencil icon-gray"></i>编辑
+                  a.action#add_fav(href="javascript:void(0);") 
+                    i.icon-heart
+                    span 收藏 #{locals.favs?locals.favs.length:0}
+                  a.action#bdshare.bdshare_t.bds_tools.get-codes-bdshare(style="float:none;") 
+                    i.icon-new-window
+                    span.bds_more(style="background:none !important;float:none;display:inline;padding:0;") 分享
+                  span 浏览 #{topic.visit_count}
               .user
                 img(src="#{topic.user_headpic}")
                 .nick
@@ -121,22 +127,6 @@ html
                 </div>
       .right(class="#{locals.is_clear?'hidden':''}")
         
-        #fixed-modules
-          .module.share
-            .hd 分享
-            .bd 
-              div#bdshare.bdshare_t.bds_tools.get-codes-bdshare.clearfix(style="width:300px;margin-top:10px;float:none;margin-left:0px;")
-                a.bds_tsina
-                a.bds_qzone
-                a.bds_tqq
-                a.bds_douban
-                a.bds_renren
-                a.shareCount
-          .module.count
-            .bd
-              a#add_fav.action(href="javascript:void(0);") 收藏（#{locals.favs?locals.favs.length:0}）
-              span 浏览：#{topic.visit_count}
-          
           .module.sametag_topics
             .hd 同类型的话题
             .bd

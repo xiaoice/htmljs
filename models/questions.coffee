@@ -1,3 +1,4 @@
+
 module.exports = 
   id:
     type:"int"
@@ -5,7 +6,10 @@ module.exports =
     primaryKey: true
   title:"varchar(300)"
   md:"text"
-  html:"text"
+  html:
+    type:"text"
+    set:(v)->
+      return this.setDataValue('html', xss(v));
   user_id:"int"
   user_headpic:"varchar(255)"
   user_nick:"varchar(50)"

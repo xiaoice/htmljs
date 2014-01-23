@@ -6,7 +6,10 @@ module.exports =
   uuid:"varchar(40)"
   title:"varchar(100)"
   md:"text"
-  html:"text"
+  html:
+    type:"text"
+    set:(v)->
+      return this.setDataValue('html', xss(v));
   visit_count:
     type:"int"
     defaultValue:0

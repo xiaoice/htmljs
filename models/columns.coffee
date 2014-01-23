@@ -21,7 +21,10 @@ module.exports =
     defaultValue:1
     type:"tinyint"
   desc_md:"text"
-  desc_html:"text"
+  desc_html:
+    type:"text"
+    set:(v)->
+      return this.setDataValue('desc_html', xss(v));
   last_article_time:"bigint"
   rss_count:
     defaultValue:0

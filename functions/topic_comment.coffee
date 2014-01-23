@@ -29,5 +29,5 @@ func_comment =
         callback new Error 'no comment'
     .error (e)->
       callback e
-__FC func_comment,TopicComment,['update','delete','count','getAll','addCount']
+__FC func_comment,TopicComment,['update','delete','count','getAll','addCount','getById']
 module.exports = func_comment

@@ -127,6 +127,17 @@ module.exports.controllers =
     post:(req,res,next)->
       func_topic_comment.addCount req.params.id,"zan_count",()->
         res.send({success:1})
+      if res.locals.user
+        func_topic_comment.getById req.params.id,(error,comment)->
+          func_info.add 
+            target_user_id:comment.user_id
+            type:4
+            source_user_id:res.locals.user.id
+            source_user_nick:res.locals.user.nick
+            time:new Date()
+            target_path:"/topic/"+comment.topic_id
+            action_name:"【赞】了您的跟帖"
+            target_path_name:comment.html.replace(/<.*?>/g,"")
 module.exports.filters = 
   "/":
     get:['freshLogin','topic/all-tags-ifonlyone','topic/all-topics','topic/recent-replys']
@@ -140,3 +151,5 @@ module.exports.filters =
   "/:id/edit":
     get:['checkLogin','topic/all-tags']
     post:['checkLoginJson']
+  "/comment/:id/zan":
+    post:['freshLogin']

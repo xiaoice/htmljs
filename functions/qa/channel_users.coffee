@@ -4,11 +4,10 @@ Users = new __BaseModel 'users'
 Users.hasOne ChannelUsers,{foreignKey:"user_id"}
 ChannelUsers.belongsTo Users,{foreignKey:"user_id"}
 func = new __BaseFunction(ChannelUsers)
-func.getByChannelId = (channelId,callback)->
+func.getByChannelId = (channelId,is_publish,callback)->
   ChannelUsers.findAll
     where:
       channel_id:channelId
-      is_publish:1
     include:[Users]
   .success (users)->
     callback null,users

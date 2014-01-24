@@ -8,3 +8,6 @@ module.exports =
   user_nick:"varchar(40)"
   user_headpic:"varchar(255)"
   user_desc:"varchar(200)"
+  is_publish:
+    type:"tinyint"
+    defaultValue:0

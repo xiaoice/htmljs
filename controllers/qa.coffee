@@ -9,6 +9,7 @@ func_tag = __F 'tag'
 func_card = __F 'card'
 func_search = __F 'search'
 func_channel = __F 'qa/channel'
+func_channel_user = __F 'qa/channel_users'
 pagedown = require("pagedown")
 safeConverter = new pagedown.Converter()
 pagedown.Extra.init(safeConverter);
@@ -307,13 +308,48 @@ module.exports.controllers =
                 if error then next error
                 else
                   res.redirect '/topic'
+  "/channel/:id/join":
+    post:(req,res,next)->
+      result = 
+        success:0
+      if res.locals.card 
+        if res.locals.card.email 
+          console.log res.locals.user
+          func_channel_user.checkAlready req.params.id,res.locals.user.id,(error)->
+            if error
+              result.info = error.message
+              res.send result
+              return
+            else
+              func_channel_user.add
+                channel_id:req.params.id
+                user_id:res.locals.user.id
+                user_nick:res.locals.user.nick
+                user_headpic:res.locals.user.head_pic
+                user_desc:res.locals.user.desc
+              .success ()->
+                result.success = 1
+                res.send result
+              .error (e)->
+                result.info = e.message
+                res.send result
+                return
+        else
+          result.info = '必须在花名册中填写邮箱地址'
+          res.send result
+          return
+
+      else
+        result.info = '必须填写花名册'
+        res.send result
+        return
 module.exports.filters = 
   "/":
     get:['freshLogin','qa/all-question','qa/hot-question','qa/recent-answers','qa/all-channels-ifonlyone']
   "/user/:id":
     get:['freshLogin','who','qa/his-questions','qa/hot-question','qa/recent-answers']
   "/add":
-    get:['checkLogin','tag/all-tags','qa/all-channels']
+    get:['checkLogin','tag/all-tags','qa/all-channels','qa/get-add-pros']
     post:['checkLoginJson']
   "/:id/update":
     get:['checkLogin','checkAdmin']
@@ -337,3 +373,5 @@ module.exports.filters =
     get:['checkLogin']
   "/:question_id/move_to_topic":
     get:['checkLogin']
+  "/channel/:id/join":
+    post:['checkLoginJson','checkCard']

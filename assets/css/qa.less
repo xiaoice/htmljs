@@ -19,10 +19,42 @@
   }
   .publish-tip{
     line-height: 30px;
-    
     height:30px;
     padding:0;
     padding-left: 10px;
+  }
+  .channel_info{
+    float:left;
+    width:640px;
+  }
+  .pros{
+    border:1px solid #eee;
+    border-radius: 5px;
+    padding:10px;
+    float:left;
+    width:300px;
+    .alert{
+      height:25px;
+      line-height: 25px;
+      padding:0 10px;
+      margin:0;
+      margin-top: 5px;
+      font-size: 12px;
+    }
+    .users{
+      padding:10px 0;
+      font-size: 12px;
+      .no{
+        color:#999;
+      }
+      
+      .user:after{
+        content:"，";
+      }
+      .user:last-child:after{
+        content:"";
+      }
+    }
   }
   .channels{
     display: inline-block;
@@ -464,8 +496,15 @@
         }
       }
     }
+    img{
+      vertical-align: -1px;
+      margin-left: 3px;
+    }
     .user:hover{
       background: #ddd;
+    }
+    .close{
+      font-size: 12px;
     }
   }
 }

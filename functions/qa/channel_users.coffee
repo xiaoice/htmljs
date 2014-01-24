@@ -8,9 +8,22 @@ func.getByChannelId = (channelId,callback)->
   ChannelUsers.findAll
     where:
       channel_id:channelId
+      is_publish:1
     include:[Users]
   .success (users)->
     callback null,users
+  .error (e)->
+    callback e
+func.checkAlready = (channelId,userId,callback)->
+  ChannelUsers.find
+    where:
+      channel_id:channelId
+      user_id:userId
+  .success (user)->
+    if user
+      callback new Error '已经加入过'
+    else
+      callback null
   .error (e)->
     callback e
 module.exports = func 

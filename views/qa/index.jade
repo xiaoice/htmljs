@@ -42,24 +42,34 @@ html
               .publish-tip.alert 如要发表问题，请点击分类进入之后，再发表到此分类。
 
           else if locals.channel
-              .now-channel
-                a.name(href="/qa?channel_id=#{channel.id}") #{channel.name}
-                .others
-                  span.views.item
-                    span.index 问题数：
-                    a.value #{channel.qa_count}
-                  span.views.item
-                    span.index 浏览：
-                    a.value #{channel.visit_count}
-                .desc #{channel.desc}
-                if channel.users&&channel.users.length
-                  .users
-                    span 专家组：
-                    each user in channel.users
-                      a.user(href="/user/#{user.user.id}") #{user.user.nick}
-                      |，
-                .actions
-                  a.btn.small-btn(href="/qa/add#{locals.channel_id?('?channel_id='+locals.channel_id):''}") 在此提问
+              .now-channel.clearfix
+                .channel_info
+                  a.name(href="/qa?channel_id=#{channel.id}") #{channel.name}
+                  .others
+                    span.views.item
+                      span.index 问题数：
+                      a.value #{channel.qa_count}
+                    span.views.item
+                      span.index 浏览：
+                      a.value #{channel.visit_count}
+                  .desc #{channel.desc}
+                  
+                  .actions
+                    a.btn.small-btn(href="/qa/add#{locals.channel_id?('?channel_id='+locals.channel_id):''}") 在此提问
+                .pros
+                  .hd 本栏目专家组
+                    .alert 提问的时候会默认邮件邀请专家回答
+                    .users
+                      if channel.users&&channel.users.length
+                        - var prouses = []
+                        each user in channel.users
+                          a.user(href="/user/#{user.user.id}") #{user.user.nick}
+                            if !user.is_publish 
+                              |（审核中）
+                      else
+                        .no 暂无
+                  .join
+                    .btn.gray.small-btn#join-pro(data-id="#{channel.id}",href="/qa/channel/#{channel.id}/join") 加入专家组
           //- .actions
           //-   a.btn(href="/qa/add") <i class="icon-plus icon-white"></i> 我要提问
           //-   .right-actions
@@ -164,5 +174,19 @@ html
       $('.user a').tooltip({
           placement:"bottom"
       })
+      $("#join-pro").click(function(){
+        $.ajax({
+          url:"/qa/channel/"+$(this).attr("data-id")+"/join",
+          dataType:"json",
+          type:"post",
+          success:function(data){
+          if(data.success){
+            alert("加入成功，等待审核中。")
+          }else{
+            alert(data.info)
+          }
+          }
+          })
+        })
                 
     include ../footer

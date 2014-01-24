@@ -20,4 +20,6 @@ module.exports = (req,res,next)->
   else
     func_channel.getById req.query.channel_id,(error,channel)->
       res.locals.channel = channel
-      next()
+      func_channel_users.getByChannelId channel.id,(error,users)->
+        channel.users = users
+        next()

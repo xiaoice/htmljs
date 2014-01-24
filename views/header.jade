@@ -46,7 +46,6 @@
                     img(src="#{user.head_pic}",width="20px")
                     if locals.unread_count
                       span.unread(href="/user",) #{unread_count}
-                  a(href="/user/logout?redirect=#{encodeURIComponent(locals.url)}") 退出
               else
                 li
                   a(href="/user/login?redirect=#{encodeURIComponent(locals.url)}") 登录
@@ -73,7 +72,9 @@
                     a(href="/talk")  
                       i.icon-conversation
                       |实时讨论
-
+              if locals.user
+                li 
+                  a(href="/user/logout?redirect=#{encodeURIComponent(locals.url)}") 退出
 script
   $(document).ready(function(){
     $(".sub-trigger").mouseenter(function(){

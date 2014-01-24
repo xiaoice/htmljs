@@ -63,9 +63,15 @@ html
                       if channel.users&&channel.users.length
                         - var prouses = []
                         each user in channel.users
-                          a.user(href="/user/#{user.user.id}") #{user.user.nick}
-                            if !user.is_publish 
-                              |（审核中）
+                          if user.is_publish
+                            a.user(href="/user/#{user.user.id}") #{user.user.nick}
+                          else if locals.user
+                            if locals.user.is_admin
+                              a.user(href="/user/#{user.user.id}") #{user.user.nick}（审核中）
+                            else if locals.user.id == user.user.id
+                              a.user(href="/user/#{user.user.id}") #{user.user.nick}（审核中）
+
+                              
                       else
                         .no 暂无
                   .join

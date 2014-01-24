@@ -4,13 +4,24 @@ Users = new __BaseModel 'users'
 Users.hasOne ChannelUsers,{foreignKey:"user_id"}
 ChannelUsers.belongsTo Users,{foreignKey:"user_id"}
 func = new __BaseFunction(ChannelUsers)
-func.getByChannelId = (channelId,is_publish,callback)->
-  ChannelUsers.findAll
-    where:
-      channel_id:channelId
-    include:[Users]
-  .success (users)->
-    callback null,users
+func.getAll = (page,count,condition,order,include,callback)->
+  if arguments.length == 4
+    callback = order
+    order = null
+    include = null
+  else if arguments.length == 5
+    callback = include
+    include = null
+  query = 
+    offset: (page - 1) * count
+    limit: count
+    order: order || "id desc"
+    raw:true
+  if condition then query.where = condition
+  query.include = [Users]
+  ChannelUsers.findAll(query)
+  .success (ms)->
+    callback null,ms
   .error (e)->
     callback e
 func.checkAlready = (channelId,userId,callback)->

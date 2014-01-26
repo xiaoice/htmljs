@@ -48,7 +48,8 @@ module.exports =
     .on 'end',()->
       mail({
         subject:"前端乱炖专栏新文章："+article.title,
-        to:emails,
+        bcc:emails,
+        to:"xinyu198736@gmail.com",
         html:buffer
       })
   sendColumnNotify:(column,card,rsses)->

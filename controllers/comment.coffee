@@ -57,6 +57,8 @@ module.exports.controllers =
                   action_name:"【评论】了您的原创文章"
                   target_path_name:article.title
                   content:req.body.html
+                if article.user_id!=res.locals.user.id
+                  func_email.sendArticleComment res.locals.user,article
           else if match = req.body.target_id.match(/^card_([0-9]*)$/)
             func_card.addComment(match[1])
             func_card.getById match[1],(error,card)->
@@ -71,7 +73,8 @@ module.exports.controllers =
                   action_name:"【评论】了您的名片"
                   target_path_name:card.nick+"的名片"
                   content:req.body.html
-                func_email.sendCardComment res.locals.user.nick,card
+                if card.user_id!=res.locals.user.id
+                  func_email.sendCardComment res.locals.user.nick,card
           else if match = req.body.target_id.match(/^question_([0-9]*)$/)
             func_question.addComment(match[1])
             func_question.getById match[1],(error,question)->

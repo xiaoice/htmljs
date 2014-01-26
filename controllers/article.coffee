@@ -14,7 +14,6 @@ Sina=require("./../lib/sdk/sina.js")
 sina=new Sina(config.sdks.sina)
 pagedown = require("pagedown")
 safeConverter = new pagedown.Converter()
-console.log pagedown.Converter.Extra
 pagedown.Extra.init(safeConverter);
 read = require("readability")
 path = require 'path'
@@ -180,7 +179,6 @@ module.exports.controllers =
     "post":(req,res,next)->
       html = safeConverter.makeHtml req.body.md
       match = html.match(/<img[^>]+?src="([^"]+?)"/)
-      console.log req.body
       data = 
         md:req.body.md
         html:html

@@ -8,6 +8,7 @@ authorize=require("./../lib/sdk/authorize.js")
 Sina=require("./../lib/sdk/sina.js")
 func_bi = __F 'bi'
 md5 = require 'MD5'
+querystring = require 'querystring'
 module.exports.controllers = 
   "/login":
     get:(req,res,next)->
@@ -54,6 +55,9 @@ module.exports.controllers =
                   expires: new Date(Date.now() + 1000*60*60*24*7)
                   httpOnly: true
                   domain:"html-js.com"
+                if not user.email
+                  res.redirect '/user/email?'+querystring.stringify(req.query)
+                  return
                 if req.query.mini
                   res.send '<script>parent.window.HtmlJS.util.logincallback&&parent.window.HtmlJS.util.logincallback()</script>'
                 else
@@ -77,10 +81,14 @@ module.exports.controllers =
                         expires: new Date(Date.now() + 1000*60*60*24*7)
                         httpOnly: true
                         domain:"html-js.com"
+                      if not user.email
+                        res.redirect '/user/email?'+querystring.stringify(req.query)
+                        return
                       if req.query.mini
                         res.send '<script>parent.window.HtmlJS.util.logincallback&&parent.window.HtmlJS.util.logincallback()</script>'
                       else
                         res.redirect req.query.redirect||"/user"
+
   "/connet-card":
     post:(req,res,next)->
       result = 
@@ -177,6 +185,26 @@ module.exports.controllers =
     get:(req,res,next)->
       
       res.render 'user/index.jade'
+  "/email":
+    get:(req,res)->
+      res.locals.query = req.query
+      res.render 'user/email.jade'
+    post:(req,res)->
+      result = 
+        success:0
+      if req.body.email
+        func_user.update res.locals.user.id,{email:req.body.email},(error)->
+          result.success = 1
+          res.send result
+          return
+        # if req.query.mini
+        #   res.send '<script>parent.window.HtmlJS.util.logincallback&&parent.window.HtmlJS.util.logincallback()</script>'
+        # else
+        #   res.redirect req.query.redirect||"/user"
+      else
+        result.info = '邮箱格式不正确，请重新填写。'
+        res.send result
+
   "/:id":
     get:(req,res,next)->
       res.locals.md5 = md5
@@ -190,7 +218,7 @@ module.exports.controllers =
               res.redirect '/card/'+user.card_id
             else
               res.render 'user/p.jade'
-    
+
 module.exports.filters = 
   "/":
     get:['checkLogin',"checkCard",'card/visitors','user/infos','user/article-count','user/qa-count','user/topic-count']
@@ -213,3 +241,6 @@ module.exports.filters =
     post:['checkLoginJson',"checkCard"]
   "/update":
     post:['checkLogin',"checkCard"]
+  "/email":
+    get:['checkLogin']
+    post:['checkLoginJson']

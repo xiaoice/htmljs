@@ -1,9 +1,7 @@
 module.exports = (req,res,next)->
-  if res.locals.user && !res.locals.user.is_admin
-    condition = 
-      is_yuanchuang:1
-  else
-    condition = null
+  condition = 
+    is_publish:1
+    is_yuanchuang:1
   page = req.query.page || 1
   count = req.query.count || 20
   (__F 'article/article').count condition,(error,_count)->

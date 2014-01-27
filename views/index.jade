@@ -35,27 +35,6 @@ html
             else
               a.banner.module(href="http://www.html-js.com/topic/180")
                 img(src="http://htmljs.b0.upaiyun.com/uploads/1390799392472-banner-2.png")
-          
-          //- div(style="margin-bottom:10px;")
-          //-   - var random = Math.random();
-          //-     if random>0.5
-          //-       a(href="/topic/136")
-          //-         img(src="http://htmljs.b0.upaiyun.com/uploads/1387964257099-souche-1.png")
-          //-     else
-          //-       a(href="/article/1498")
-          //-         img(src="http://htmljs.b0.upaiyun.com/uploads/1388068398976-bb.png")
-          
-          //- if locals.top_users
-          //-   .module.top-users
-          //-     .hd 用户经验榜
-          //-     .bd
-          //-       each user in locals.top_users
-          //-         .item 
-          //-           a(href="/user/#{user.id}")
-          //-             img(src="#{user.head_pic}",width="20")
-          //-           a(href="/user/#{user.id}") #{user.nick} 
-          //-           span #{user.coin}     
-          
           if locals.articles
             .module.mod.recent_articles
               .hd
@@ -65,17 +44,14 @@ html
                   .item(class="#{article.visit_count<60?'new':''} #{Math.floor(i/2)%2==1?'yooo':''}",role="listitem")
                     a.title(href="/article/#{article.pinyin?article.pinyin:article.id}") #{article.title}
                     .desc 
-                      
                       a.user(href="/user/#{article.user_id}") #{article.user_nick}
                       span.time #{moment(article.createdAt).fromNow()}
-                      
                       span.desc-item
                         span.index 浏览
                         a.value #{article.visit_count}
                       span.desc-item
                         span.index 赞
                         a.value #{article.zan_count}
-                
                 .columns 
                   .hd
                     a(href="/article/column") 最近更新的专栏（#{locals.all_count?all_count.column:0}）

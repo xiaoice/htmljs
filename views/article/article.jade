@@ -292,24 +292,21 @@ html
                 }else{
                   alert(data.info)
                 }
-            },function(){
-            HtmlJS.util.ajax("/user/fav",{
-              uuid:"#{article.uuid}"
-            },"post",function(data){
-                loadingTip.hide()
-                if(data.success){
-                  messageTip.show("收藏成功！")
-                     $("em",self).html("已收藏")
-                      $("span",self).html($("span",self).html()*1+1)
-                }else{
-                  alert(data.info)
-                }
-            },function(){
-            
-            
-          })
-            
-          })
+            },function(){},null,function(){
+                HtmlJS.util.ajax("/user/fav",{
+                  uuid:"#{article.uuid}"
+                },"post",function(data){
+                    loadingTip.hide()
+                    if(data.success){
+                      messageTip.show("收藏成功！")
+                         $("em",self).html("已收藏")
+                          $("span",self).html($("span",self).html()*1+1)
+                    }else{
+                      alert(data.info)
+                    }
+                },function(){
+                })
+            })
             });
 
           (function(){

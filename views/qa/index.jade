@@ -181,18 +181,26 @@ html
           placement:"bottom"
       })
       $("#join-pro").click(function(){
-        $.ajax({
-          url:"/qa/channel/"+$(this).attr("data-id")+"/join",
-          dataType:"json",
-          type:"post",
-          success:function(data){
-          if(data.success){
-            alert("加入成功，等待审核中。")
-          }else{
-            alert(data.info)
-          }
-          }
-          })
+        var self = this;
+        HtmlJS.util.ajax("/qa/channel/"+$(self).attr("data-id")+"/join",{},"post",function(data){
+              if(data.success){
+                alert("加入成功，等待审核中。")
+              }else{
+                alert(data.info)
+              }
+        },function(){
+
+        },null,function(){
+          HtmlJS.util.ajax("/qa/channel/"+$(self).attr("data-id")+"/join",{},"post",function(data){
+                if(data.success){
+                  alert("加入成功，等待审核中。")
+                }else{
+                  alert(data.info)
+                }
+          },function(){
+            
+          }) 
+        }) 
         })
-                
+               
     include ../footer

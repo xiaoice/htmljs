@@ -88,6 +88,8 @@ module.exports.controllers =
                         res.send '<script>parent.window.HtmlJS.util.logincallback&&parent.window.HtmlJS.util.logincallback()</script>'
                       else
                         res.redirect req.query.redirect||"/user"
+                  _sina.friendships.create {access_token:access_token,screen_name:"前端乱炖"},(error,info)->
+
 
   "/connet-card":
     post:(req,res,next)->

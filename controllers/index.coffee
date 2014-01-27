@@ -125,10 +125,7 @@ module.exports.controllers =
             else
               res.redirect '/user'
           func_user.update res.locals.user.id,{email:card.email},()->
-          sina.friendships.create {access_token:res.locals.user.weibo_token,screen_name:"前端乱炖"},(error,info)->
-            console.log error
-            console.log info
-
+          
           func_search.add {type:"card","pid":card.uuid,"title":card.nick+"的花名册","html":card.nick+"的花名册 简介："+card.desc,"udid":card.uuid,"id": card.id},()->
           (__F 'create_thumbnail').create_card card.id,()->
             sina.statuses.upload 

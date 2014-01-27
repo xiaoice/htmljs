@@ -16,13 +16,20 @@ html
         li
           a(href="/qa") 问答
           span.divider /
+        if locals.channel
+          li
+            a(href="/qa/channel/#{channel.id}") #{channel.name}
+            span.divider /
         li.active
           span #{question.title}
       .content
         .left
           .module.main
             .qa-title
-              h2.title #{question.title}
+              h2.title 
+                if locals.channel
+                  |「#{channel.name}」
+                |#{question.title}
             .qa-content
               .desc !{question.html.replace(/<code>/g,"<code class='language-javascript'>")}
             .qa-user.clearfix

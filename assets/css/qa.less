@@ -23,6 +23,7 @@
     height:30px;
     padding:0;
     padding-left: 10px;
+    margin-bottom: 0;
   }
   .channel_info{
     float:left;
@@ -130,6 +131,30 @@
         .name{
           color: @red;
         }
+      }
+    }
+    .simple-channels{
+       
+       overflow: hidden;
+       height:30px;
+       background: #dedede;
+      .item{
+        display: inline-block;
+        font-size: 12px;
+        line-height: 30px;
+        padding:0 15px;
+        background: #ddd !important;
+        color: #666;
+        border-right: 1px solid #eee;
+        border-bottom: 1px solid #ddd;
+      }
+      .item:last-child{
+        border-right: none;
+      }
+      .active{
+        background: #fff !important;
+        color: #666;
+        border-bottom: none;
       }
     }
     .now-channel{

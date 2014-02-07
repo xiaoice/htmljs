@@ -58,7 +58,8 @@ module.exports.controllers =
                   target_path_name:article.title
                   content:req.body.html
                 if article.user_id!=res.locals.user.id
-                  func_email.sendArticleComment res.locals.user,article
+                  func_user.getById article.user_id,(error,user)->
+                    func_email.sendArticleComment res.locals.user,user,article
           else if match = req.body.target_id.match(/^card_([0-9]*)$/)
             func_card.addComment(match[1])
             func_card.getById match[1],(error,card)->

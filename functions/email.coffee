@@ -26,8 +26,8 @@ module.exports =
         to:card.email,
         html:buffer
       })
-  sendArticleComment:(source_user,article)->
-    if not source_user.email then return;
+  sendArticleComment:(source_user,article_user,article)->
+    if not article_user.email then return;
     buffer = ""
     article.source_user = source_user
     mustache.compileAndRender('./views/mail/article-comment.html', article)
@@ -36,7 +36,7 @@ module.exports =
     .on 'end',()->
       mail({
         subject:source_user.nick+" 在 前端乱炖 评论了你的原创文章",
-        to:source_user.email,
+        to:article_user.email,
         html:buffer
       })
   sendAnswer:(answer,question,card)->

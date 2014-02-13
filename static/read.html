@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="Shortcut Icon" href="/assets/images/logo.ico?123">
+  <link href="/assets/images/logo.ico?123" rel="shortcut icon" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/css/bootstrap.css?dddddddd" type="text/css">
+  <link rel="stylesheet" href="/assets/css/glyphicons.css?2d2ddddddd" type="text/css">
+  <script src="/assets/js/jquery.js"></script>
+  <script src="/assets/js/htmljs.js?12dd2dedddd23"></script>
+  <style>
+  .hidden{
+    display: none !important;
+  }
+  .items{
+    width:20%;
+    float:left;
+  }
+  .items .item{
+    min-height: 50px;
+    border:1px solid #fff;
+    background: #eee;
+    position: relative;
+  }
+  .items .item .wrapper{
+    padding:10px;
+  }
+  .items .item .t{
+    color:#444;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 25px;
+  }
+  .items .item .b{
+    color:#999;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .items .item .add{
+    width:40px;
+    height:100%;
+    position: absolute;
+    right:0;
+    top:0;
+    background: #5bb793;
+    color:#fff;
+    font-size: 30px;
+    line-height: 55px;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+  }
+  .items .item.active{
+    background: #ddd;
+  }
+  .items .item.active .add{
+  }
+  .items .add-item{
+    font-size: 30px;
+    height:40px;
+    line-height: 35px;
+    background: #5bb793;
+    color:#fff;
+    text-align: center;
+    margin:1px;
+  }
+  .items .add-form{
+    margin:10px 10px;
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius: 5px;
+  }
+  .items .add-form input{
+    border-radius: 3px;
+    border:1px solid #ccc;
+    height:30px;
+    line-height: 30px;
+    display: block;
+    padding: 0;
+    width:100%;
+  }
+  .items .add-form .control-group{
+    width:100%;
+    margin-bottom: 10px;
+  }
+  .items .add-form textarea{
+    border-radius: 3px;
+    border:1px solid #ccc;
+    height:130px;
+    line-height: 30px;
+    padding: 0px;
+    width:100%;
+  }
+  .items .add-form .btn{
+    border-radius: 3px;
+    border:1px solid #ccc;
+  }
+  </style>
+  <title>读书笔记</title>
+</head>
+<body>
+  <div class="times items">
+    <div id="times">
+
+    </div>
+    <div class="add-item">
+      +
+    </div>
+    <div class="add-form hidden">
+      <form class="form-horizontal" id="time-form">
+        <fieldset>
+          <div class="control-group">
+            <input name="title" placeholder="输入标题"/>
+          </div>
+          <div class="control-group">
+            <textarea placeholder="输入简介" name="desc"></textarea>
+          </div>
+          <div class="control-group">
+            <button class="btn">保存</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="books items">
+    <div id="books">
+
+    </div>
+    <div class="add-item">
+      +
+    </div>
+    <div class="add-form hidden">
+      <form class="form-horizontal" id="book-form">
+        <fieldset>
+          <div class="control-group">
+            <input name="title" placeholder="输入标题"/>
+          </div>
+          <div class="control-group">
+            <textarea placeholder="输入简介" name="desc"></textarea>
+          </div>
+          <div class="control-group">
+            <button class="btn">保存</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="notes items">
+    <div id="notes">
+
+    </div>
+    <div class="add-item">
+      +
+    </div>
+    <div class="add-form hidden">
+      <form class="form-horizontal" id="note-form">
+        <fieldset>
+          <div class="control-group">
+            <input name="title" placeholder="输入标题"/>
+          </div>
+          <div class="control-group">
+            <textarea placeholder="输入简介" name="desc"></textarea>
+          </div>
+          <div class="control-group">
+            <button class="btn">保存</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="details">
+    <div class="title"></div>
+    <div class="desc"></div>
+  </div>
+</body>
+<script>
+
+var HtmlJsDB = function(_namespace){
+  this.namespace = (_namespace || 'htmljs') + "_";
+}
+var util = {
+      /**
+      * 将任何值转换为数组，如果已经是直接返回。
+      */
+      valueToArray:function(value){
+        if (value==null){
+          return [];
+        }else if (value.splice && value.length) {
+          return value;
+        }else{
+          return [value];
+        }
+      }
+    }
+    HtmlJsDB.prototype = {
+      get:function(key){
+        key = this.namespace + key;
+        var value = localStorage.getItem(key);
+        value = JSON.parse(value);
+        if(!value.length){
+          value = null;
+          return value;
+        }
+        return value[0];
+      },
+      set:function(key,value){
+        key = this.namespace + key;
+        value = util.valueToArray(value);
+        try{
+          localStorage.setItem(key,JSON.stringify(value));
+        }catch(e){
+          console.trace(e)
+        }
+        
+      },
+      gets:function(key){
+        key = this.namespace + key;
+        var value = localStorage.getItem(key);
+        value = JSON.parse(value);
+        return value;
+      },
+      sets:function(key,value){
+        key = this.namespace + key;
+        value = util.valueToArray(value);
+        try{
+          localStorage.setItem(key,JSON.stringify(value));
+        }catch(e){
+          console.trace(e)
+        }
+      },
+      add:function(key,value){
+        var values = this.gets(key);
+        var value = util.valueToArray(value);
+        if(values){
+          values = values.concat(value);
+        }else if(value){
+          values = value;
+        }
+        this.sets(key,values);
+      },
+      del:function(key){
+        key = this.namespace + key;
+        localStorage.setItem(key,'');
+      }
+    }
+
+
+    var db = new HtmlJsDB('htmljs');
+    db.set("test",'ddd');
+    console.log(db.get("test"));
+    db.sets('test1',['aa','bb']);
+    console.log(db.gets('test1'));
+    db.add("test",'eee');
+    console.log(db.gets('test'));
+    console.log(db.get("test"));
+    </script>
+    <script>
+    var db = new HtmlJsDB('biji');
+    var Time = function(){
+      this.title = "";
+      this.desc = "";
+      this.id = (new Date()).getTime();
+    }
+    var Book = function(){
+      this.title = "";
+      this.desc = "";
+      this.id = (new Date()).getTime();
+    }
+    var Note = function(){
+      this.title = "";
+      this.desc = "";
+      this.id = (new Date()).getTime();
+    }
+    
+    var BiJi = (function(){
+      var loadTime = function(){
+        var times = db.gets("time");
+        $("#times").html("")
+        if(!times){
+          BiJi.time = null;
+          loadBook();
+          return;
+        }
+        times.forEach(function(t){
+          $("#times").append("<div class='item' data-id='"+t.id+"'><div class='wrapper'><div class='t'>"+t.title+"</div><div class='b'>"+t.desc+"</div><a class='add'>+</a></div></div>")
+
+        })
+        BiJi.activeTime(times[0].id)
+        loadBook();
+        $("#times .item").on("click",function(e){
+          
+          BiJi.activeTime($(this).attr("data-id"))
+          loadBook();
+        })
+      }
+      var loadBook = function(){
+        var books = db.gets("book+"+BiJi.time);
+        $("#books").html("")
+        if(!books){
+          BiJi.book = null;
+          loadNote();
+          return;
+        }
+        books.forEach(function(t){
+          $("#books").append("<div class='item' data-id='"+t.id+"'><div class='wrapper'><div class='t'>"+t.title+"</div><div class='b'>"+t.desc+"</div><a class='add'>+</a></div></div>")
+
+        })
+        BiJi.activeBook(books[0].id)
+        loadNote();
+        $("#books .item").on("click",function(e){
+          
+          BiJi.activeBook($(this).attr("data-id"))
+          loadNote();
+        })
+      }
+      var loadNote = function(){
+        var notes = db.gets("note+"+BiJi.book);
+        $("#notes").html("")
+        if(!notes){
+          return;
+        }
+        notes.forEach(function(t){
+          $("#notes").append("<div class='item' data-id='"+t.id+"'><div class='wrapper'><div class='t'>"+t.title+"</div><div class='b'>"+t.desc+"</div><a class='add'>+</a></div></div>")
+
+        })
+        BiJi.activeNote(notes[0].id)
+        // $("#notes .item").on("click",function(e){
+          
+        //   BiJi.activeNote($(this).attr("data-id"))
+        // })
+      }
+      return {
+        time:null,
+        book:null,
+        note:null,
+        init:function(){
+          this.bind();
+        },
+        load:function(){
+          loadTime();
+        },
+        activeTime:function(id){
+          this.time = id;
+          
+          $("#times .item").removeClass("active");
+          $("#times .item[data-id='"+id+"']").addClass("active")
+          // loadBook()
+        },
+        activeBook:function(id){
+          this.book = id;
+          
+          $("#books .item").removeClass("active");
+          $("#books .item[data-id='"+id+"']").addClass("active")
+          // loadNote()
+        },
+        activeNote:function(id){
+          this.note = id;
+        },
+        bind:function(){
+          var self = this;
+          $(".add-item").on("click",function(e){
+            var p = this.parentNode;
+            $(".add-form").addClass("hidden");
+            $(".add-form",p).removeClass("hidden");
+            e.stopPropagation();
+            // console.log(e)
+          })
+          $(".add-form").on("click",function(e){
+            e.stopPropagation();
+            // console.log(e)
+          })
+          $("html,body").on("click",function(e){
+            $(".add-form").addClass("hidden");
+          })
+          $("#time-form").on("submit",function(e){
+            e.preventDefault();
+            var time = new Time();
+            time.title = $("input[name=title]",this).val();
+            time.desc = $("textarea[name=desc]",this).val();
+            time.id = new Date();
+            db.add("time",time);
+            $(".add-form").addClass("hidden");
+            loadTime();
+          })
+          $("#book-form").on("submit",function(e){
+            e.preventDefault();
+            var book = new Book();
+            book.title = $("input[name=title]",this).val();
+            book.desc = $("textarea[name=desc]",this).val();
+            book.id = new Date();
+            db.add("book+"+self.time,book);
+            $(".add-form").addClass("hidden");
+            loadBook();
+          })
+          $("#note-form").on("submit",function(e){
+            e.preventDefault();
+            var note = new Note();
+            note.title = $("input[name=title]",this).val();
+            note.desc = $("textarea[name=desc]",this).val();
+            note.id = new Date();
+            db.add("note+"+self.book,note);
+            $(".add-form").addClass("hidden");
+            loadNote();
+          })
+        },
+        addTime:function(time){
+          db.add("time",time);
+        },
+        addBook:function(time,book){
+          db.add("book+"+time,book);
+        },
+        addNote:function(book,note){
+          db.add("note+"+book,note);
+        }
+      }
+    })();
+    
+    // BiJi.addTime(time);
+    BiJi.init();
+    BiJi.load();
+    </script>
+    </html>

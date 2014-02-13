@@ -30,7 +30,7 @@ html
             span #{tag.name}
       .content
           .head
-            if locals.tags && (!locals.now_page)
+            if !locals.tag && (!locals.now_page)
               .tags
                 //- a(href="/topic",class="#{!locals.tag_id?'active':''}") 全部
                 each tag in tags
@@ -54,7 +54,10 @@ html
                             //- span (#{moment(t.createdAt).format("MM-DD")})
                         a.more(href="/topic?tag_id=#{tag.id}") 更多话题 >>
               .publish-tip.alert 如要发表话题，请点击分类进入之后，再发表到此分类。
-            else if locals.tag
+            else 
+              .simple-tags
+                each c,i in  tags
+                  a.item(href="/topic?tag_id=#{c.id}",class="#{tag_id==c.id?'active':''}") #{c.name}
               .now-tag
                 a.name(href="/topic?tag_id=#{tag.id}",class="#{locals.tag_id==tag.id?'active':''} #{tag.important?'important':''}") #{tag.name}
                 .others

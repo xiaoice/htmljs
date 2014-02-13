@@ -1,5 +1,6 @@
 mail = require './../lib/mail.js'
 mustache = require 'mu2'
+
 module.exports = 
   sendQAInvite:(qa,emails)->
     buffer = ""

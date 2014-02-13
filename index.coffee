@@ -35,7 +35,7 @@ app.configure ->
   app.use "/assets",lessmiddle({src:__dirname+"/assets",compress:true})
   app.use "/assets", express.static(__dirname+"/assets")
   app.use "/uploads", express.static(__dirname+"/uploads")
- 
+  app.use "/static", express.static(__dirname+"/static")
 #  app.use express.logger("dev")
   app.use express.bodyParser()
   app.use express.cookieParser()
@@ -85,6 +85,7 @@ app.configure ->
   
   app.locals.moment= require 'moment'
   app.locals.stringUtil = require './lib/string-util.coffee'
+  app.locals.arrayUtil = require './lib/array-util.coffee'
   app.locals.moment.lang('zh-cn');
   app.locals.assets_head = config.assets_head
   app.locals.assets_tm = "8-23"

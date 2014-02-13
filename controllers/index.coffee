@@ -4,6 +4,7 @@ func_article = __F 'article/article'
 func_info = __F 'info'
 func_index = __F 'index'
 func_column = __F 'column'
+func_rss_email = __F 'rss_email'
 config = require './../config.coffee'
 func_search = __F 'search'
 authorize=require("./../lib/sdk/authorize.js");
@@ -334,11 +335,22 @@ module.exports.controllers =
   "/robots.txt":
     "get":(req,res,next)->
       res.end "
-  
 User-agent: *\n
 Disallow: /user/login\n
 Disallow: /talk/\n
 "
+  "/rss/email":
+    "post":(req,res,next)->
+      if req.body.email && /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/.test(req.body.email)
+        func_rss_email.add
+          email:req.body.email
+        .success ()->
+          res.send {success:1}
+        .error (e)->
+          res.send {success:0,info:e.message}
+      else
+        res.send {success:0,info:"提交失败，错误的邮箱格式"}
+
 module.exports.filters = 
   "/article/add":
     get:['checkLogin',"checkCard"]

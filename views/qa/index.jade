@@ -25,7 +25,7 @@ html
           span #{locals.who?(who.nick+"的"):""}问答
       .content
         .head
-          if locals.channels && (!locals.now_page)
+          if !locals.channel 
               .channels
                 //- a(href="/topic",class="#{!locals.tag_id?'active':''}") 全部
                 each channel in channels
@@ -41,7 +41,13 @@ html
                     .desc #{channel.desc}
               .publish-tip.alert 如要发表问题，请点击分类进入之后，再发表到此分类。
 
-          else if locals.channel
+          else
+              .simple-channels
+                - var colors = ['ec898e','efad8b','efc48b','b67fdb','89dc80','7fd5db','7faadb'];
+
+                each c,i in  channels
+                  - var color = colors[i];
+                  a.item(href="/qa?channel_id=#{c.id}",class="#{channel.id==c.id?'active':''}",style="background:##{color}") #{c.name}
               .now-channel.clearfix
                 .channel_info
                   a.name(href="/qa?channel_id=#{channel.id}") #{channel.name}

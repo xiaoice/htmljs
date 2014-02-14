@@ -30,7 +30,7 @@ html
             span #{tag.name}
       .content
           .head
-            if !locals.tag && (!locals.now_page)
+            if !locals.tag
               .tags
                 //- a(href="/topic",class="#{!locals.tag_id?'active':''}") 全部
                 each tag in tags

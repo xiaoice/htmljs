@@ -16,7 +16,9 @@ html
     #content.clearfix
       .content
           .top.clearfix
-            
+            div
+              a(href="http://www.html-js.com/static/htmljs-weekly-1.html")
+                img(src="http://htmljs.b0.upaiyun.com/uploads/1392438199253-%E6%9C%AA%E6%A0%87%E9%A2%98-3.png",width="1200")
             .module.about
               a(href="http://www.html-js.com/topic/115") 关于乱炖
               span 乱炖技术群：<em style=";">227896607</em>
@@ -26,10 +28,7 @@ html
               //- <div>求职招聘群: <em style=";"> 12892863</em><a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=e941d6613691a264555ae3fe62168d2d56928bc2a7a7d53d80536ff44fdb63d3">加入</a></div>
               //- <div>站长的QQ: <em style=";"> 676588498</em></div>
             - var r = Math.random();
-            if r<0.35
-              a.banner.module(href="http://www.html-js.com/qa?channel_id=9")
-                img(src="http://htmljs.b0.upaiyun.com/uploads/1390798794049-%E6%9C%AA%E6%A0%87%E9%A2%98-1.png")
-            else if r<0.7 
+            if r<0.5
               a.banner.module(href="http://www.html-js.com/topic?tag_id=3")
                 img(src="http://htmljs.b0.upaiyun.com/uploads/1389761857219-banner-1.png")
             else

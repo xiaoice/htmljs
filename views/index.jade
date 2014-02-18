@@ -141,6 +141,7 @@ html
                           .sex.nv
                     .name
                       a(href="/card/#{card.id}")  #{card.nick}
+          include google970
           //- .module.timelines
           //-   each timeline in timelines
           //-     if timeline.card_id
@@ -323,6 +324,7 @@ html
           #fixed-modules
             
             
+
     include footer
     script(src="#{assets_head}/js/messageTip.js")
     script(src="#{assets_head}/js/loadingTip.js")

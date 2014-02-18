@@ -9,24 +9,7 @@ html
     - locals.pageId=2;
     include ../header
     #content.clearfix
-      .group 
-        //- form.search(action="/search")
-        //-   .input-append
-        //-     input.input-large(name="q",type="text",placeholder="根据昵称或者真名搜索")
-        //-     button.btn.btn-mini(type="submit") 搜索
-      //- if locals.q
-      //-   .group
-      //-     a.label.title.label-inverse 搜索词：
-      //-     a.label #{q}
-      //- .group
-      //-     a.label.title.label-inverse 按状态寻找：
-      //-     a.label(href="?",class="#{(!locals.filter_is_qiuzhi&&!locals.filter_is_zhaopin&&!locals.filter_is_jiehuo&&!locals.filter_is_xiangqin)?'label-success':''}") 所有
-      //-     a.label(href="?filter=is_qiuzhi|1",class="#{locals.filter_is_qiuzhi=='1'?'label-success':''}") 求职中
-      //-     a.label(href="?filter=is_zhaopin|1",class="#{locals.filter_is_zhaopin=='1'?'label-success':''}") 在招人
-      //-     a.label(href="?filter=is_jiehuo|1",class="#{locals.filter_is_jiehuo=='1'?'label-success':''}") 想接活
-      //-     a.label(href="?filter=is_xiangqin|1",class="#{locals.filter_is_xiangqin=='1'?'label-success':''}") 找对象
-      //-     a.label(href="?filter=sex|女",class="#{locals.filter_sex=='女'?'label-success':''}") 女生
-      //-     a.label(href="?filter=is_dan|单身",class="#{locals.filter_is_dan=='单身'?'label-success':''}") 单身
+      include ../google970
       .main.clearfix
         .content
             .f2er-list

@@ -227,7 +227,7 @@ body{background:url(../images/bg-repeat.png);background:#efefef;}
 #index .card-item .entry-name{top:12px;}
 #index .article-list{margin:0;padding:0;}
 #index .top .banner{width:510px;float:left;padding:0;}
-#index .top .about{float:left;width:440px;font-size:12px;margin-right:10px;color:#999;}#index .top .about span{margin-right:10px;}#index .top .about span em{color:#444;}
+#index .top .about{float:left;width:460px;font-size:12px;margin-right:10px;color:#999;height:50px;line-height:50px;padding:0 10px;}#index .top .about span{margin-right:10px;}#index .top .about span em{color:#444;}
 #index .top .about a{margin-right:10px;color:#444;}
 #index .top .qqs{float:left;width:360px;font-size:12px;}
 #index .top-users .item{line-height:30px;}#index .top-users .item img{margin-right:5px;}

@@ -54,11 +54,6 @@ html
                     div.shanchang.clearfix
                       span.key 擅长：
                       span.value #{card.techang.substr(0,100)}
-                    if !locals.card
-                      if card.user_id
-                        span.renling 已被认领
-                      else
-                        span.renling(data-id="#{card.id}") 认领此名片 
                   div.count-infos
                     span(href="/card/#{card.id}")
                       .icon-eye-open.icon

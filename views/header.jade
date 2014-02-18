@@ -22,6 +22,8 @@
                 a(href="/blog") <i class="icon-sampler"></i>博集
               li.hidden(class="#{locals.pageId==8?'active':''}",pageId="8")
                 a(href="/tag") 标签
+              li(class="#{locals.pageId==2?'active':''}",pageId="2")
+                a(href="/cards") <i class="icon-nameplate"></i>花名册
               li.search
                 form(action="/search",method="get",style="margin:0;")
                   i.icon-search
@@ -61,8 +63,7 @@
               li.sub-trigger()
                 a 其他功能
                 ul.sub-menu.hidden
-                  li(class="#{locals.pageId==2?'':''}",pageId="2")
-                    a(href="/cards") <i class="icon-nameplate hidden"></i>花名册
+                  
                   li(class="#{locals.pageId==5?'':''}",pageId="5")
                     a(href="/act") 活动
                   li(class="#{locals.pageId==9?'':''}",pageId="9")

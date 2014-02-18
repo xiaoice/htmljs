@@ -309,33 +309,33 @@ html
             })
             });
 
-          (function(){
-            var ts = ['h1','h2','h3','h4']
-            var html = ""
-            var id_count = 0;
-            $(".post .entry-content").find("h1,h2,h3,h4").each(function(i,h){
-              id_count++
-              h.id="h"+id_count
-              html+="<li class='item item-"+h.tagName+"'><a href='#h"+id_count+"'> · "+h.innerHTML+"</a></li>"
-            })
-              $(".artivle_nav .nav").html(html)
-              $('.artivle_nav').scrollspy()
-              if($('.artivle_nav').length){
-              var offset = $('.artivle_nav').offset();
-              $(window).scroll(function(){
-                var scrollTop = $(window).scrollTop();
-                if (offset.top < scrollTop+40) 
-                  $('.artivle_nav').addClass('fixed').css({
-                  position:"fixed",top:0
-                  });
-                else $('.artivle_nav').removeClass('fixed').css({
-                  position:"absolute",top:0
-                });
-                if($('.artivle_nav').height()+$('.artivle_nav').offset().top>$(".bottom-action").offset().top+60){
-                  $('.artivle_nav').css({position:"absolute",top:$(".post").height()-$('.artivle_nav').height()+60})
-                }
-              });
-            }
-            })();
+          //- (function(){
+          //-   var ts = ['h1','h2','h3','h4']
+          //-   var html = ""
+          //-   var id_count = 0;
+          //-   $(".post .entry-content").find("h1,h2,h3,h4").each(function(i,h){
+          //-     id_count++
+          //-     h.id="h"+id_count
+          //-     html+="<li class='item item-"+h.tagName+"'><a href='#h"+id_count+"'> · "+h.innerHTML+"</a></li>"
+          //-   })
+          //-     $(".artivle_nav .nav").html(html)
+          //-     $('.artivle_nav').scrollspy()
+          //-     if($('.artivle_nav').length){
+          //-     var offset = $('.artivle_nav').offset();
+          //-     $(window).scroll(function(){
+          //-       var scrollTop = $(window).scrollTop();
+          //-       if (offset.top < scrollTop+40) 
+          //-         $('.artivle_nav').addClass('fixed').css({
+          //-         position:"fixed",top:0
+          //-         });
+          //-       else $('.artivle_nav').removeClass('fixed').css({
+          //-         position:"absolute",top:0
+          //-       });
+          //-       if($('.artivle_nav').height()+$('.artivle_nav').offset().top>$(".bottom-action").offset().top+60){
+          //-         $('.artivle_nav').css({position:"absolute",top:$(".post").height()-$('.artivle_nav').height()+60})
+          //-       }
+          //-     });
+          //-   }
+          //-   })();
             
    include ../googlead

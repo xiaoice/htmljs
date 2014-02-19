@@ -55,8 +55,8 @@ html
                       span.item
                         span.index 所属专栏：
                         a.value(href="/article/column/#{column.id}") #{column.name}
-                        a.rss.hidden(href="/article/column/#{column.id}/rss")
-                          |  邮件订阅（#{column.rss_count}）
+                        a.rss(href="/article/column/#{column.id}/rss")
+                          |  订阅此专栏（#{column.rss_count}）
                 .actions
                   a.add_fav.action(href="javascript:void(0);") 
                     i.icon-heart

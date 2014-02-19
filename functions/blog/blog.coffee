@@ -25,7 +25,17 @@ func_blog =
       callback null,ms
     .error (e)->
       callback e
-
+  getByName:(name,callback)->
+    Blog.find
+      where:
+        name:name
+    .success (b)->
+      if b then callback null,b
+      else
+        callback new Error '不存在'
+    .error (e)->
+      callback e
+      
 __FC func_blog,Blog,['add','getById','update','count','addCount','delete']
 
 module.exports = func_blog

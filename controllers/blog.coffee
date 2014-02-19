@@ -53,6 +53,16 @@ module.exports.controllers =
         if error then next error
         else
           res.redirect '/blog'
+  "/add-one":
+    get:(req,res,next)->
+      res.render 'blog/add'
+    post:(req,res,next)->
+      blog_name = req.body.blog_name
+      func_blog.getByName blog_name,(error,b)->
+        if error 
+          func_blog.add({name:blog_name,})
+        else
+
   "/:id":
     get:(req,res,next)->
       func_article.getById req.params.id,(error,blog)->

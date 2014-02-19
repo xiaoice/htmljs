@@ -6,14 +6,19 @@ html(xmlns:wb='http://open.weibo.com/wb')
     |<meta name="description" content="#{blog.title}。html,js,css,nodejs,前端开发,前端招聘,jquery,qianduan">
     script(src='#{assets_head}/js/bootstrap/bootstrap-tooltip.js')
   body#blog
-    .jump(style="text-align:center;font-size:14px;margin-top:50px;") 
-      |您即将访问的是站外链接
-      a(href="#{blog.url}") 《#{blog.title}》
-      |，正在为您跳转，请稍候。。。
-    h1.title.hidden #{blog.title}
+    //- .jump(style="text-align:center;font-size:14px;margin-top:50px;") 
+    //-   |您即将访问的是站外链接
+    //-   a(href="#{blog.url}") 《#{blog.title}》
+    //-   |，正在为您跳转，请稍候。。。
+    //- h1.title.hidden #{blog.title}
     #content.hidden !{blog.content}
     
-    script
-      setTimeout(function(){
-        window.location.href="#{blog.url}"
-        },1000)
+    //- script
+    //-   setTimeout(function(){
+    //-     window.location.href="#{blog.url}"
+    //-     },1000)
+  iframe(src="#{blog.url}",style="width:100%;height:100%;", frameborder="no",border="0" ,marginwidth="0" ,marginheight="0" ,allowtransparency="yes")
+
+  script
+    $("iframe").css({height:$(window).height()-10})
+  include ../googlead

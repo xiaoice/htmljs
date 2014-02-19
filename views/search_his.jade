@@ -44,7 +44,7 @@ html
             .bd 
               if locals.recent_words
                 each w in recent_words
-                  a(href="/search?q=#{w.word}") #{w.word}
+                  a(href="/search?q=#{w.word}",rel="nofollow") #{w.word}
               include page
       .right
         .module.hot
@@ -52,7 +52,7 @@ html
           .bd 
             if locals.hot_words
               each w in hot_words
-                a(href="/search?q=#{w.word}") #{w.word}(#{w.count})
+                a(href="/search?q=#{w.word}",rel="nofollow") #{w.word}(#{w.count})
         
     include footer
     script

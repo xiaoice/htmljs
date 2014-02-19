@@ -337,7 +337,7 @@ module.exports.controllers =
       res.locals.article = article
       func_article.addVisit req.params.id,res.locals.user||null
       if article.column_id
-        func_column.addCount article.column_id,"visit_count",()->
+        func_column.addCount article.column_id,"visit_count",(()->),2
       if req.query.is_clear 
         res.render 'article/clear-article.jade'
       else

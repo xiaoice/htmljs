@@ -132,14 +132,14 @@ global.__FC = (func,model,methods)->
         .error (error)->
           callback&&callback error
     else if m == 'addCount'
-      func.addCount = (id,field,callback)->
+      func.addCount = (id,field,callback,count)->
         model.find
           where:
             id:id
         .success (m)->
           if m
             updates = {}
-            updates[field]=m[field]*1+1
+            updates[field]=m[field]*1+(if count then count else 1)
             m.updateAttributes(updates,[field])
             .success ()->
               callback&&callback null,m
@@ -254,14 +254,14 @@ __BaseFunction.prototype =
           callback&&callback error
     .error (error)->
       callback&&callback error
-  addCount:(id,field,callback)->
+  addCount:(id,field,callback,count)->
     this.model.find
       where:
         id:id
     .success (m)->
       if m
         updates = {}
-        updates[field]=m[field]*1+1
+        updates[field]=m[field]*1+(if count then count else 1)
         m.updateAttributes(updates,[field])
         .success ()->
           callback&&callback null,m

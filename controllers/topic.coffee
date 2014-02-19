@@ -41,9 +41,9 @@ module.exports.controllers =
   "/:id":
     get:(req,res,next)->
       res.locals.is_clear = req.query.is_clear 
-      func_topic.addCount req.params.id,'visit_count'
+      func_topic.addCount req.params.id,'visit_count',(()->),2
       if res.locals.topic.tag_id
-        func_topic_tag.addCount res.locals.topic.tag_id,'visit_count'
+        func_topic_tag.addCount res.locals.topic.tag_id,'visit_count',(()->),2
       res.render 'topic/topic.jade'
   "/:id/edit":
     get:(req,res,next)->

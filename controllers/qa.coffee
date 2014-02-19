@@ -109,9 +109,9 @@ module.exports.controllers =
         res.send result
   "/:id":
     "get":(req,res,next)->
-      func_question.addCount req.params.id,'visit_count'
+      func_question.addCount req.params.id,'visit_count',(()->),2
       if res.locals.question.channel_id
-        func_channel.addCount res.locals.question.channel_id,"visit_count"
+        func_channel.addCount res.locals.question.channel_id,"visit_count",(()->),2
       res.render 'qa/qa.jade'
   "/:id/update":
     "get":(req,res,next)->

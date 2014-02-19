@@ -100,7 +100,7 @@ func_article =
         id:articleId
     .success (article)->
       if article
-        article.updateAttributes {visit_count: if article.visit_count then (article.visit_count+1) else 1},['visit_count']
+        article.updateAttributes {visit_count: if article.visit_count then (article.visit_count+2) else 1},['visit_count']
         if visitor
           Visit_log.create
             article_id:articleId

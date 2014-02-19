@@ -53,6 +53,7 @@ module.exports.controllers =
         if error then next error
         else
           res.redirect '/blog'
+  #参数
   "/add-one":
     get:(req,res,next)->
       res.render 'blog/add'

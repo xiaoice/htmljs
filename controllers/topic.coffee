@@ -42,7 +42,7 @@ module.exports.controllers =
             func_topic_tag.addCount req.body.tag_id,'topic_count'
           sina.statuses.update 
             access_token:res.locals.user.weibo_token
-            status:'我在@前端乱炖 发起了一个话题【'+topic.title+'】点击查看：http://www.html-js.com/topic/'+topic.id +"【@前端乱炖 是中国最大的前端内容原创社区】"
+            status:'我在@前端乱炖 发起了一个话题【'+topic.title+'】点击查看：http://www.html-js.com/topic/'+topic.id+"【@前端乱炖 是中国最大的前端内容原创社区】"
         res.send result
   "/:id":
     get:(req,res,next)->

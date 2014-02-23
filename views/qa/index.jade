@@ -24,7 +24,7 @@ html
         li.active
           span #{locals.who?(who.nick+"的"):""}问答
       .content
-        .head
+        .head.mod-white
           if !locals.channel 
               .channels
                 //- a(href="/topic",class="#{!locals.tag_id?'active':''}") 全部
@@ -90,7 +90,7 @@ html
           //-     if locals.user
           //-       a(class="#{locals.filter_user_id==user.id?'active':''}",href="?filter=user_id|#{user.id}") 我的提问
         if locals.questions
-          .qa-list
+          .qa-list.mod-white
             each question,i in questions
               .qa-item(class="#{i%2==1?'yooo':''} #{question.answer_count==0?'new':''}")
                 

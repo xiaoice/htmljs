@@ -14,7 +14,8 @@ html(xmlns:wb='http://open.weibo.com/wb')
           a(href="/") 首页
           span.divider /
         li.active
-          span 博集,一个博客集合平台，提供全文订阅和推送服务，订阅推送正在开发中，将支持rss,pocket,kindle推送,网易云阅读等各个平台。
+          span 博集,精彩博文收集
+          a(href="javascript:var script = document.createElement('script');script.src='#{assets_head}/js/jquery.js';document.body.appendChild(script);setTimeout(function(){var script = document.createElement('script');script.src='#{assets_head}/js/blog-add.js';document.body.appendChild(script);},1000)") 收集工具
       .blog-list.module
         .hd 收录博客列表
         .bd

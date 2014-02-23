@@ -57,8 +57,8 @@ app.configure ->
   app.use app.router
   rainbow.route(app, {  
     controllers: '/controllers/',
-    filters:'/filters/',      
-    template:'/views/'   
+    filters:'/filters/',
+    template:'/views/'
   })
   static_jades = {}
   #直接输出静态jade的route，无需自己配置route

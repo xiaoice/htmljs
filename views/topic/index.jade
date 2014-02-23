@@ -29,7 +29,7 @@ html
           li.active
             span #{tag.name}
       .content
-          .head
+          .head.mod-white
             if !locals.tag
               .tags
                 //- a(href="/topic",class="#{!locals.tag_id?'active':''}") 全部
@@ -75,7 +75,7 @@ html
               .notopic 还没有话题，快去发表一个吧！
 
           else
-            .topic-list
+            .topic-list.mod-white
               each topic,i in topics
                 .topic-item(class="#{i%2==1?'':'yooo'} #{topic.answer_count==1?'':''}")
                   

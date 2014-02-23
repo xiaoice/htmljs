@@ -185,7 +185,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
                     a.value #{article.zan_count}
       .content
         if articles && articles.length
-          .articles
+          .articles.mod-white
             each article,i in articles
               article(id="post-#{article.id}",class="#{i%2==0?'yooo':''}")
                 .lft 

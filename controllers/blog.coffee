@@ -59,11 +59,26 @@ module.exports.controllers =
       res.render 'blog/add'
     post:(req,res,next)->
       blog_name = req.body.blog_name
+      blog_url = req.body.blog_url
       func_blog.getByName blog_name,(error,b)->
         if error 
-          func_blog.add({name:blog_name,})
+          func_blog.add({name:blog_name,url:blog_url})
+          .success (b)->
+            req.body.blog_id = b.id
+            func_article.add(req.body)
+            .success (a)->
+              callback null,a
+            .error (e)->
+              callback e
+          .error (e)->
+            callback e
         else
-
+          req.body.blog_id = b.id
+          func_article.add(req.body)
+          .success (a)->
+            callback null,a
+          .error (e)->
+            callback e
   "/:id":
     get:(req,res,next)->
       func_article.getById req.params.id,(error,blog)->

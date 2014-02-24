@@ -25,4 +25,13 @@ module.exports =
       console.log stdout
       console.log stderr
       callback&&callback()
+  create_topic:(topic_id,callback)->
+    childArgs = [
+      './lib/phantom/topic.js'
+      topic_id
+    ]
+    childProcess.execFile binPath, childArgs,(err, stdout, stderr)->
+      console.log stdout
+      console.log stderr
+      callback&&callback()
           

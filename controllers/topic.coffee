@@ -40,9 +40,11 @@ module.exports.controllers =
           func_search.add {type:"topic","pid":topic.uuid,"title":topic.title,"html":topic.html.replace(/<[^>]*>/g,""),"udid":topic.uuid,"id": topic.id},()->
           if req.body.tag_id
             func_topic_tag.addCount req.body.tag_id,'topic_count'
-          sina.statuses.update 
-            access_token:res.locals.user.weibo_token
-            status:'我在@前端乱炖 发起了一个话题【'+topic.title+'】点击查看：http://www.html-js.com/topic/'+topic.id+"【@前端乱炖 是中国最大的前端内容原创社区】"
+          (__F 'create_thumbnail').create_topic topic.id,()->
+            sina.statuses.upload 
+              access_token:res.locals.user.weibo_token
+              pic:(require 'path').join __dirname,"../uploads/article_thumb/topic-"+topic.id+".png"
+              status:'我在@前端乱炖 发起了一个话题《'+topic.title+'》点击查看：http://www.html-js.com/topic/'+topic.id+"  {@前端乱炖 是中国最大的前端知识原创内容社区}"
         res.send result
   "/:id":
     get:(req,res,next)->

@@ -344,10 +344,11 @@ Disallow: /talk/\n
       if req.body.email && /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/.test(req.body.email)
         func_rss_email.add
           email:req.body.email
-        .success ()->
-          res.send {success:1}
-        .error (e)->
-          res.send {success:0,info:e.message}
+        ,(e)->
+          if not e
+            res.send {success:1}
+          else
+            res.send {success:0,info:e.message}
       else
         res.send {success:0,info:"提交失败，错误的邮箱格式"}
 

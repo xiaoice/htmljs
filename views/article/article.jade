@@ -58,12 +58,7 @@ html
                         a.rss(href="/article/column/#{column.id}/rss")
                           |  订阅此专栏 
                 .actions
-                  a.add_fav.action(href="javascript:void(0);") 
-                    i.icon-heart
-                    if locals.has_fav
-                      |<em>已收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
-                    else
-                      |<em>收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
+                  
                   a.zan.action(href="javascript:void(0);") 
                     i.icon-thumbs-up
                     if locals.has_zan
@@ -75,6 +70,13 @@ html
                     em.bds_more(style="background:none !important;float:none;display:inline;padding:0;") 分享
                   if locals.user && (user.is_admin||user.id==article.user_id)
                     a.action(href="/article/#{article.id}/edit") 编辑
+                  a.add_fav.action(href="javascript:void(0);") 
+                    i.icon-heart
+                    if locals.has_fav
+                      |<em>已收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
+                    else
+                      |<em>收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
+                  
             article.post(id="post-#{article.id}")
               .artivle_nav
                 ul.nav

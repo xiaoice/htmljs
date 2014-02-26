@@ -35,6 +35,22 @@ html
                 input(type='text', name='nick', placeholder='常用网名',value="#{locals.weibo_info&&weibo_info.screen_name}",required)
             .control-group
               label.control-label
+                | 常用邮箱
+                span(style='color: #ff0000;') *
+                
+              .controls
+                input(type='email', name='email', placeholder='重要！发送通知和联系您的途径',required,value="#{user.email}")
+                span.label.label-warning 保密
+           
+            .control-group
+              label.control-label
+                | 手机
+                span(style='color: #ff0000;') *
+              .controls
+                input(type='text', name='tel', placeholder='用于联系方式，请务必填写正确',required)
+                span.label.label-warning 保密
+            .control-group
+              label.control-label
                 | 性别
                 span(style='color: #ff0000;') *
               .controls
@@ -65,65 +81,19 @@ html
               .controls
                 input(type='text', name='city', placeholder='',value="#{locals.weibo_info&&weibo_info.location}",required)
             .control-group
+              label.control-label 公司或大学
+              .controls
+                input(type='text', name='gongsi', placeholder='')
+            .control-group
               label.control-label
                 | 目前职位
                 span(style='color: #ff0000;') *
               .controls
                 input(type='text', name='zhiwei', placeholder='',required)
             
-            .control-group
-              label.control-label
-                | 常用邮箱
-                span(style='color: #ff0000;') *
-                
-              .controls
-                input(type='email', name='email', placeholder='重要！发送通知和联系您的途径',required,value="#{user.email}")
-                span.label.label-warning 保密
-            .control-group
-              label.control-label
-                | QQ
-                
-              .controls
-                input(type='text', name='qq', placeholder='')
-                span.label.label-warning 保密
-            .control-group
-              label.control-label
-                | 手机
-                span(style='color: #ff0000;') *
-              .controls
-                input(type='text', name='tel', placeholder='用于联系方式，请务必填写正确',required)
-                span.label.label-warning 保密
-            .control-group
-              label.control-label
-                | 收货地址
-                
-              .controls
-                input.input-xxlarge(type='text', name='address', placeholder='详细收货地址+邮编+姓名,用于收取礼物或者活动奖品')
-                span.label.label-warning 保密
-            .control-group
-              label.control-label
-                | 支付宝收款地址
-                
-              .controls
-                input.input-xxlarge(type='text', name='alipay', placeholder='http://me.alipay.com/***,在me.alipay.com可以获取到自己的地址，用于接收捐助')
-                span.label.label-warning 保密
-            .control-group
-              label.control-label 
-                |介绍下自己
-                span(style='color: #ff0000;') *
-              .controls
-                textarea(name='desc', style='width: 400px; height: 100px;') #{locals.weibo_info&&weibo_info.description}
-            .control-group
-              label.control-label
-                | 特长，擅长的技术
-                span(style='color: #ff0000;') *
-              .controls
-                textarea(name='techang', style='width: 400px; height: 50px;',required)
             
-            .control-group
-              label.control-label 公司或大学
-              .controls
-                input(type='text', name='gongsi', placeholder='')
+            
+            
             .control-group
               label.control-label 博客地址（带上http://）
               .controls
@@ -137,6 +107,13 @@ html
               label.control-label github地址（带上http://）
               .controls
                 input(type='text', name='github', placeholder='')
+            .control-group
+              label.control-label 
+                |介绍下自己
+                span(style='color: #ff0000;') *
+              .controls
+                textarea(name='desc', style='width: 400px; height: 100px;') #{locals.weibo_info&&weibo_info.description}
+            
             .control-group
               .controls
                 button.btn(type='submit') 提交

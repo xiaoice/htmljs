@@ -658,6 +658,7 @@ body{background:url(../images/bg-repeat.png);background:#e2e2e2;}
 #card .my_columns .column .user{font-size:12px;line-height:20px;color:#999;}
 #card .my_columns .column .action{margin-bottom:0;margin-top:5px;}#card .my_columns .column .action a{font-size:12px;color:#5bb793;padding:5px 0;}#card .my_columns .column .action a i:before{color:#5bb793;font-size:14px;}
 #card .my_columns .column .action span{color:#aaa;}#card .my_columns .column .action span i:before{font-size:14px;color:#aaa;}
+#add-card .control-label{background:#fff;}
 @-webkit-keyframes twinkling{0%{background:#fff;} 50%{background:#fcf8e3;} 100%{background:#fff;}}#talk .talk-main{width:750px;float:left;}
 #talk .talk-onlines{width:240px;float:left;margin-left:10px;}#talk .talk-onlines .user{height:30px;padding-left:5px;overflow:hidden;cursor:pointer;}#talk .talk-onlines .user img{vertical-align:-5px;}
 #talk .talk-onlines .user .nick{margin-left:10px;color:#444;font-size:14px;line-height:30px;}

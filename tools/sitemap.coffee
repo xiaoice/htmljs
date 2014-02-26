@@ -6,19 +6,51 @@ func_column = __F 'column'
 func_article = __F 'article/article'
 func_blog = __F 'blog/article'
 queuedo = require 'queuedo'
+moment = require 'moment'
 data = {
   "@": {
     "xmlns": "http://www.google.com/schemas/sitemap/0.84"
   },
-  "url":[]
+  "url":[
+    {
+      "loc":"http://www.html-js.com/article",
+      "lastmod":moment().format("YYYY-MM-DD"),
+      "changefreq":"always",
+      "priority":"1"
+    },
+    {
+      "loc":"http://www.html-js.com/qa",
+      "lastmod":moment().format("YYYY-MM-DD"),
+      "changefreq":"always",
+      "priority":"1"
+    },
+    {
+      "loc":"http://www.html-js.com/column",
+      "lastmod":moment().format("YYYY-MM-DD"),
+      "changefreq":"always",
+      "priority":"1"
+    },
+    {
+      "loc":"http://www.html-js.com/topic",
+      "lastmod":moment().format("YYYY-MM-DD"),
+      "changefreq":"always",
+      "priority":"1"
+    },
+    {
+      "loc":"http://www.html-js.com/cards",
+      "lastmod":moment().format("YYYY-MM-DD"),
+      "changefreq":"always",
+      "priority":"1"
+    }
+  ]
 }
 
 func_article.getAll 1,5000,null,(error,articles)->
   queuedo articles,(article,next,context)->
     data.url.push({
       "loc":"http://www.html-js.com/article/"+article.pinyin,
-      "lastmod":article.createdAt,
-      "changefreq":"monthly",
+      "lastmod":moment(article.createdAt).format("YYYY-MM-DD"),
+      "changefreq":"weekly",
       "priority":"1"
     })
     next.call(context)
@@ -30,8 +62,8 @@ func_article.getAll 1,5000,null,(error,articles)->
       queuedo topics,(topic,next,context)->
         data.url.push({
           "loc":"http://www.html-js.com/topic/"+topic.id,
-          "lastmod":topic.createdAt,
-          "changefreq":"monthly",
+          "lastmod":moment(topic.createdAt).format("YYYY-MM-DD"),
+          "changefreq":"weekly",
           "priority":"1"
         })
         next.call(context)
@@ -41,8 +73,8 @@ func_article.getAll 1,5000,null,(error,articles)->
           queuedo qas,(qa,next,context)->
             data.url.push({
               "loc":"http://www.html-js.com/qa/"+qa.pinyin,
-              "lastmod":qa.createdAt,
-              "changefreq":"monthly",
+              "lastmod":moment(qa.createdAt).format("YYYY-MM-DD"),
+              "changefreq":"weekly",
               "priority":"1"
             })
             next.call(context)
@@ -52,8 +84,8 @@ func_article.getAll 1,5000,null,(error,articles)->
               queuedo cards,(card,next,context)->
                 data.url.push({
                   "loc":"http://www.html-js.com/card/"+card.id,
-                  "lastmod":card.createdAt,
-                  "changefreq":"monthly",
+                  "lastmod":moment(card.createdAt).format("YYYY-MM-DD"),
+                  "changefreq":"weekly",
                   "priority":"1"
                 })
                 next.call(context)

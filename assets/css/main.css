@@ -528,6 +528,8 @@ body{background:url(../images/bg-repeat.png);background:#e2e2e2;}
 #article{background:#fff;}#article .actions{margin-top:20px;}#article .actions .action{color:#666;font-size:13px;line-height:30px;text-decoration:none;height:30px;padding:0 10px;display:inline-block;background:#fff;border-radius:5px;}#article .actions .action em{font-style:normal;}
 #article .actions .action span{color:#aaa;font-size:12px;}
 #article .actions i{background:none;font-size:15px;margin-right:5px;color:#aaa;}
+#article .actions .zan{background:#f27369;color:#fff;}#article .actions .zan i{background:none;font-size:15px;margin-right:5px;color:#fff;}
+#article .actions .zan span{color:#fff;}
 #article .bottom-action{padding:10px 0;background:#efefef;}#article .bottom-action .wrapper{width:700px;margin:0 auto;}
 #article .bottom-action .actions{margin:10px 0;}
 #article .bottom-action .entry-meta{padding-top:10px;border-top:1px solid #ddd;color:#999;}
@@ -550,7 +552,7 @@ body{background:url(../images/bg-repeat.png);background:#e2e2e2;}
 #article .daen{background:url(../images/daen.png) no-repeat;width:80px;height:90px;position:absolute;left:-57px;top:59px;}
 #article #content{overflow:visible;position:relative;width:100%;background:#fff;margin:0;}
 #article .breadcrumb{width:1000px;margin-left:auto;margin-right:auto;}
-#article #comment{width:700px;margin-left:auto;margin-right:auto;background:#fff;border-top:1px solid #ddd;padding:0;}
+#article #comment{width:700px;margin-left:auto;margin-right:auto;background:#fff;border-top:1px solid #ddd;padding:0;box-shadow:none;}
 #article .donate{padding:0;}
 #article .right .module.count span{padding-right:10px;color:#999;}
 #article .right .module.user .item{margin-top:10px;font-size:12px;color:#999;}
@@ -576,6 +578,8 @@ body{background:url(../images/bg-repeat.png);background:#e2e2e2;}
 #article .post .entry-content p{line-height:25px;margin:20px 0;}
 #article .post .entry-content img{display:block;}
 #article .post .entry-content blockquote p{line-height:25px;margin:0;font-size:12px;}
+#article .other-articles{width:700px;margin:10px auto;box-shadow:none;line-height:25px;}#article .other-articles a{font-size:13px;}
+#article .other-articles span{margin-left:10px;color:#999;}
 #cards .head_pic{float:left;}
 #cards .search{margin-bottom:5px;}
 #cards .f2er-list{padding:0;margin:0;width:1100px;}

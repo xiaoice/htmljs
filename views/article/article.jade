@@ -93,12 +93,6 @@ html
             .bottom-action
               .wrapper
                 .actions
-                  a.add_fav.action(href="javascript:void(0);") 
-                    i.icon-heart
-                    if locals.has_fav
-                      |<em>已收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
-                    else
-                      |<em>收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
                   a.zan.action(href="javascript:void(0);") 
                     i.icon-thumbs-up
                     if locals.has_zan
@@ -108,8 +102,17 @@ html
                   a#bdshare.action.bdshare_t.bds_tools.get-codes-bdshare(href="#comment",style="float:none;") 
                     i.icon-new-window
                     em.bds_more(style="background:none !important;float:none;display:inline;padding:0;") 分享
+                  
+                  
                   if locals.user && (user.is_admin||user.id==article.user_id)
                     a.action(href="/article/#{article.id}/edit") 编辑
+                  a.add_fav.action(href="javascript:void(0);") 
+                    //- i.icon-heart
+                    if locals.has_fav
+                      |<em>已收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
+                    else
+                      |<em>收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
+                  
                 .entry-meta
                   p 本站专栏文章皆为原创，转载请注明出处（带有 前端乱炖 字样）和本文的显式链接(<a href="http://www.html-js.com/article/#{article.id}">http://www.html-js.com/article/#{article.id}</a>)，本站和作者保留随时要求删除文章的权利！
             if column_articles && column_articles.length

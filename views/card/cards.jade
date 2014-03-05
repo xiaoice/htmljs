@@ -51,9 +51,9 @@ html
                       span.value.adr ：#{card.city}
                       span.key 职位
                       span.value.title ：#{card.zhiwei}
-                    div.shanchang.clearfix
-                      span.key 擅长：
-                      span.value #{card.techang.substr(0,100)}
+                    //- div.shanchang.clearfix
+                    //-   span.key 擅长：
+                    //-   span.value #{card.techang?card.techang.substr(0,100):""}
                   div.count-infos
                     span(href="/card/#{card.id}")
                       .icon-eye-open.icon

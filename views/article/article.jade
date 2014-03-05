@@ -122,7 +122,7 @@ html
                   each article,i in column_articles
                     div
                       a(href="/article/#{article.id}") · #{article.title} 
-                      span.time 时间:#{moment(article.createdAt).format("YYYY-HH-DD")}
+                      span.time 时间:#{moment(article.createdAt).format("YYYY-MM-DD")}
                       span.visit_count 浏览:#{article.visit_count}
                       span.zan_count 赞:#{article.zan_count}
 

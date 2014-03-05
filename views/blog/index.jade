@@ -16,23 +16,23 @@ html(xmlns:wb='http://open.weibo.com/wb')
         li.active
           span 博集,精彩博文收集
           a(href="javascript:var script = document.createElement('script');script.src='#{assets_head}/js/jquery.js';document.body.appendChild(script);setTimeout(function(){var script = document.createElement('script');script.src='#{assets_head}/js/blog-add.js';document.body.appendChild(script);},1000)") 收集工具
-      .blog-list.module
-        .hd 收录博客列表
-        .bd
-          each blog in blogs
-            .blog
-              .others
-                a.title(href="#{blog.url}",target="_blank") 
-                  img(src="http://g.etfv.co/#{blog.url}",width="15",height="15",style="margin-right:5px;")
-                  | #{blog.name}(#{blog.article_count})
-                .hidden.desc #{blog.desc.length>60?(blog.desc.substr(0,30)+"..."):blog.desc}
+      //- .blog-list.module
+      //-   .hd 收录博客列表
+      //-   .bd
+      //-     each blog in blogs
+      //-       .blog
+      //-         .others
+      //-           a.title(href="#{blog.url}",target="_blank") 
+      //-             img(src="http://g.etfv.co/#{blog.url}",width="15",height="15",style="margin-right:5px;")
+      //-             | #{blog.name}(#{blog.article_count})
+      //-           .hidden.desc #{blog.desc.length>60?(blog.desc.substr(0,30)+"..."):blog.desc}
       .article-list.module
         .hd 最近更新的博文
         .bd 
           each article in articles
             .article
               .title 
-                img(src="http://g.etfv.co/#{article.blogBlog.url}",width="15",height="15",style="margin-right:5px;")
+                //- img(src="http://g.etfv.co/#{article.blogBlog.url}",width="15",height="15",style="margin-right:5px;")
                 a(href="/blog/#{article.id}") #{article.title}
               .desc #{article.content.replace(/<[^>]*?>/g,"").substr(0,Math.floor(Math.random()*40+60))+"..."}
               .time #{article.time?moment(article.time*1).format("YYYY-MM-DD"):''}

@@ -3,6 +3,7 @@ Articles.sync()
 Blog = __M 'blog/blogs'
 Blog.hasOne Articles,{foreignKey:"blog_id"}
 Articles.belongsTo Blog,{foreignKey:"blog_id"}
+uuid = require 'node-uuid'
 func_article = 
   getAll:(page,count,condition,order,include,callback)->
     if arguments.length == 4
@@ -34,6 +35,22 @@ func_article =
         callback null,article
       else
         callback new Error '不存在的博文'
+    .error (e)->
+      callback e
+  add:(data,callback)->
+    Articles.find
+      where:
+        url:data.url
+    .success (article)->
+      if article
+        callback new Error '已经存在的文章'
+      else
+        data.uuid = uuid.v4()
+        Articles.create(data)
+        .success (m)->
+          callback&&callback null,m
+        .error (error)->
+          callback&&callback error
     .error (e)->
       callback e
 __FC func_article,Articles,['add','getById','update','count','addCount','delete']

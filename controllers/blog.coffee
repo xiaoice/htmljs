@@ -55,30 +55,16 @@ module.exports.controllers =
           res.redirect '/blog'
   #参数
   "/add-one":
-    get:(req,res,next)->
-      res.render 'blog/add'
     post:(req,res,next)->
-      blog_name = req.body.blog_name
-      blog_url = req.body.blog_url
-      func_blog.getByName blog_name,(error,b)->
-        if error 
-          func_blog.add({name:blog_name,url:blog_url})
-          .success (b)->
-            req.body.blog_id = b.id
-            func_article.add(req.body)
-            .success (a)->
-              callback null,a
-            .error (e)->
-              callback e
-          .error (e)->
-            callback e
+      result = 
+        success:0
+        info:""
+      func_article.add req.body,(error,article)->
+        if error
+          res.send 'hihihi('+JSON.stringify(result)+')'
         else
-          req.body.blog_id = b.id
-          func_article.add(req.body)
-          .success (a)->
-            callback null,a
-          .error (e)->
-            callback e
+          result.success = 1
+          res.send 'hihihi('+JSON.stringify(result)+')'
   "/:id":
     get:(req,res,next)->
       func_article.getById req.params.id,(error,blog)->

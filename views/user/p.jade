@@ -263,21 +263,7 @@ html
       script(src='#{assets_head}/js/card.js')
       script(src="#{assets_head}/js/mustache.js")
       script
-        //- var repo_tpl = $("#repo-tpl").html();
-        //- $.getJSON("https://api.github.com/users/#{card.github.replace(/^.*\//,'')}/repos?type=owner&sort=updated&direction=desc",function(data){
-        //-   console.log(data)
-        //-     $(".github-repos .bd em").html(data.length)
-        //-     data.forEach(function(repo){
-        //-       $(".github-repos .bd").append(Mustache.render(repo_tpl,repo))
-        //-       })
-        //-   })
-
-        //- $(document).ready(function(){
-        //-  $('.his-infos').masonry({
-        //-             itemSelector : '.his-info',
-        //-            columnWidth :410
-        //-         });
-        //- })
+        
         $("a.zan").click(function(){
         var id = $(this).data("id");
           var self=this;

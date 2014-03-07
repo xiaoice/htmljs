@@ -163,11 +163,9 @@ html
         <script id="bdshare_js" data="type=tools&amp;uid=2555549" ></script>
         <script type="text/javascript" id="bdshell_js"></script>
         <script type="text/javascript">
-        var bds_config={"bdText":"分享一篇@#{article.user_nick} 的原创文章【#{article.title}】来自#前端乱炖##{column?'专栏「'+column.name+'」':''}，戳这里阅读→_→","bdPic":"http://www.html-js.com/uploads/article_thumb/#{article.id}.png","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
+        var bds_config={"bdText":"分享一篇@#{article.user_nick} 的原创文章【#{article.title}】来自@前端乱炖 {column?'专栏「'+column.name+'」':''} {{前端乱炖是国内最专业的前端知识原创内容社区}}","bdPic":"http://www.html-js.com/uploads/article_thumb/#{article.id}.png","snsKey":{'tsina':'659341943','tqq':'','t163':'','tsohu':''}}
         document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
         </script>
-      
-
     include ../footer
     script(src="#{assets_head}/js/mustache.js")
     script(src="#{assets_head}/js/messageTip.js")

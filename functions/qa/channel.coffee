@@ -21,7 +21,6 @@ func_channel.getAll = (page,count,condition,order,include,callback)->
   if include then query.include = include
   Channel.findAll(query)
   .success (ms)->
-    console.log ms
     callback null,ms
  
   .error (e)->

@@ -25,7 +25,7 @@ log4js.configure({
 })
 logger = log4js.getLogger('normal')
 logger.setLevel('INFO')
-black = ['DNSPod','monitor','snarfware','majestic12','easou','yunyun','sougou','sogou','yunrang','ahrefs',"longurl",'rogerbot']
+black = ['webmeup','DNSPod','monitor','snarfware','majestic12','easou','yunyun','sougou','sogou','yunrang','ahrefs',"longurl",'rogerbot']
 
 app.configure ->
   app.set "port", config.run_port

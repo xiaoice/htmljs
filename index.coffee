@@ -26,7 +26,7 @@ log4js.configure({
 logger = log4js.getLogger('normal')
 logger.setLevel('INFO')
 black = ['webmeup','DNSPod','monitor','snarfware','majestic12','easou','yunyun','sougou','sogou','yunrang','ahrefs',"longurl",'rogerbot']
-
+ipblack = ['211.144.76.89']
 app.configure ->
   app.set "port", config.run_port
   app.set "views", path.join __dirname, 'views'
@@ -52,6 +52,13 @@ app.configure ->
     for i in [0...black.length]
       if agent.indexOf(black[i]) != -1
         res.end ' hello robot 2'
+        return
+    next()
+  app.use (req,res,next)->
+    ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+    for i in [0...ipblack.length]
+      if ip.indexOf(ipblack[i]) != -1
+        res.end ' 404'
         return
     next()
   app.use app.router

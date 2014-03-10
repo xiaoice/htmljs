@@ -26,20 +26,21 @@ html
       .content
         .head.mod-white
           if !locals.channel 
-              .channels
-                //- a(href="/topic",class="#{!locals.tag_id?'active':''}") 全部
-                each channel in channels
-                  .channel(class="#{channel.important?'important':''}")
-                    a.name(href="/qa?channel_id=#{channel.id}") #{channel.name}
-                    .others
-                      span.views.item
-                        span.index 问题数：
-                        a.value #{channel.qa_count}
-                      span.views.item
-                        span.index 浏览：
-                        a.value #{channel.visit_count}
-                    .desc #{channel.desc}
-              .publish-tip.alert 如要发表问题，请点击分类进入之后，再发表到此分类。
+              if locals.channels
+                .channels
+                  //- a(href="/topic",class="#{!locals.tag_id?'active':''}") 全部
+                  each channel in channels
+                    .channel(class="#{channel.important?'important':''}")
+                      a.name(href="/qa?channel_id=#{channel.id}") #{channel.name}
+                      .others
+                        span.views.item
+                          span.index 问题数：
+                          a.value #{channel.qa_count}
+                        span.views.item
+                          span.index 浏览：
+                          a.value #{channel.visit_count}
+                      .desc #{channel.desc}
+                .publish-tip.alert 如要发表问题，请点击分类进入之后，再发表到此分类。
 
           else
               .simple-channels

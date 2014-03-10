@@ -81,7 +81,7 @@ module.exports.controllers =
             if error then next error
             else
               res.locals.articles = articles
-              res.render 'articles.jade'
+              res.render 'article/articles.jade'
   
   "/add/recommend":
     "get":(req,res,next)->

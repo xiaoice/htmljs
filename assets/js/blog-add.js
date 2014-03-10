@@ -49,4 +49,5 @@ $("#hihihi-submit").on("click",function(e){
     type:"POST"
   })
   alert("提交成功")
+  $(".hihihi-wrapper").hide();
 })

@@ -11,7 +11,31 @@ div#googlead.hidden.
   <script>
   (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
+link(rel="stylesheet",href="#{assets_head}/css/csshake.css?dddddddd",type="text/css")
+script(src="#{assets_head}/js/prefixfree.min.js")
+style
+  .shake-arrow{position:fixed;height:20px;background:url(#{assets_head}/images/arrow_right.png) no-repeat;background-size:100%;width:20px;}
+  .shake-arrow-2{position:fixed;height:20px;background:url(#{assets_head}/images/arrow_bottom.png) no-repeat;background-size:100%;width:20px;}
+
 script
   setTimeout(function(){
     $("#googlead").removeClass("hidden").animate({bottom:0})
+    for(var i=0;i<13;i++){
+      var shake = $("<div class='shake-arrow big shake shake-constant hover-stop'></div>");
+      shake.css({
+        right:260,
+        bottom:i*20
+        })
+      $("body").append(shake)
+    }
+    for(var i=0;i<13;i++){
+      var shake = $("<div class='shake-arrow-2 big shake shake-constant hover-stop'></div>");
+      shake.css({
+        bottom:260,
+        right:i*20
+        })
+      $("body").append(shake)
+    }
   },3000)
+
+  

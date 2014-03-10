@@ -71,7 +71,7 @@ html
                 //-     .visitor.user
                 //-       a(href="/user/#{visitor.user_id}",data-original-title="#{visitor.user_nick} #{moment(visitor.createdAt).fromNow()}")
                 //-         img(src="#{visitor.user_headpic}")
-          
+          include recommend_books
           if locals.questions
             .module.mod
               .hd

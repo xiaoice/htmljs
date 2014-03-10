@@ -153,7 +153,7 @@ module.exports.filters =
     get:['checkLogin','topic/all-tags']
     post:['checkLoginJson']
   "/:id":
-    get:['freshLogin','topic/get-topic','topic/all-comments','topic/sametag_topics','topic/favs']
+    get:['freshLogin','topic/get-topic','topic/all-comments','topic/sametag_topics','topic/favs','book/some-books']
   "/:id/add":
     post:['checkLoginJson']
   "/:id/edit":

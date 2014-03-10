@@ -163,6 +163,10 @@ body{background:url(../images/bg-repeat.png);background:#e2e2e2;}
 #ad .his .item{line-height:25px;font-size:13px;}
 #ad .his .his-left{display:inline-block;vertical-align:top;width:48%;}
 #ad .his .his-right{display:inline-block;vertical-align:top;width:48%;}
+.recommend-books{margin:20px 0 !important;background:#f7f7f7;padding:20px;margin:0 auto;height:190px;overflow:hidden;}.recommend-books .bd{margin-left:-15px;}
+.recommend-books .book{display:inline-block;width:130px;vertical-align:top;margin-bottom:50px;margin-right:5px;}.recommend-books .book img{width:100px;}
+.recommend-books .book-pic{height:130px;display:block;overflow:hidden;width:100px;margin:0 auto;border:1px solid #ddd;box-shadow:1px 1px 2px #ccc;}
+.recommend-books a.book-title{margin-top:5px;display:block;font-size:12px;line-height:20px;text-align:center;}
 .comment{margin-top:20px;margin-left:0px;font-size:12px;}.comment .publish textarea{height:50px;margin-top:10px;}
 .comment .comment-hd{font-size:14px;margin-bottom:8px;}
 .comment .comment-list{margin-top:20px;border-bottom:1px dotted #ddd;}.comment .comment-list .comment-item{border-bottom:1px dotted #ddd;padding:10px 0;position:relative;}.comment .comment-list .comment-item .headpic{float:left;}.comment .comment-list .comment-item .headpic img{width:25px;}

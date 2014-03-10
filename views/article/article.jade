@@ -35,7 +35,6 @@ html
       else
         .content
             
-
             .title
               .wrapper
 
@@ -81,7 +80,7 @@ html
               .artivle_nav
                 ul.nav
               .wrapper
-                
+                include ../recommend_books
                 .entry-content !{article.html.replace(/([^>])\r\n\r\n([^<])/g,"$1<br/>$2").replace(/<code>/g,"<code class='language-javascript'>")}
                 //- if article.card && article.card.alipay 
                 //-   div.donate.module(style="margin-top:10px;")

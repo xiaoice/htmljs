@@ -72,6 +72,7 @@ html
               .comment-publish
                 textarea#q_comment_content.input-block-level(placeholder="发表一些对此问题的看法，不是答案的讨论都应在此处进行。",data-question-id="#{question.id}")
                 .btn#q_comment_submit(data-question-id="#{question.id}") 提交评论
+          include ../recommend_books
           .qa-answers.module
             .hd 回答
             .bd 

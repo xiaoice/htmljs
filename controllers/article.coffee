@@ -412,7 +412,14 @@ module.exports.controllers =
             if error then next error
             else
               res.locals.articles = articles
-              res.render 'article/column.jade'
+              if req.query.is_clear 
+                res.render 'article/clear-column.jade'
+              else
+                res.render 'article/column.jade'
+  "/column/:id/create_pic":
+    get:(req,res,next)->
+      (__F 'create_thumbnail').create_column req.params.id
+      res.redirect 'back'
   "/column/:id/rss":
     get:(req,res,next)->
       if not res.locals.card then next new Error '请先添加花名册并且填写正确的邮箱地址才能使用此功能！'

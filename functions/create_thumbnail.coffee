@@ -34,4 +34,12 @@ module.exports =
       console.log stdout
       console.log stderr
       callback&&callback()
-          
+  create_column:(column_id,callback)->
+    childArgs = [
+      './lib/phantom/column.js'
+      column_id
+    ]
+    childProcess.execFile binPath, childArgs,(err, stdout, stderr)->
+      console.log stdout
+      console.log stderr
+      callback&&callback()        

@@ -81,8 +81,10 @@ html
                 ul.nav
               .wrapper
                 include ../recommend_books
-                .entry-content !{article.html.replace(/([^>])\r\n\r\n([^<])/g,"$1<br/>$2").replace(/<code>/g,"<code class='language-javascript'>")}
-                //- if article.card && article.card.alipay 
+                .entry-content 
+                  | !{article.html.replace(/([^>])\r\n\r\n([^<])/g,"$1<br/>$2").replace(/<code>/g,"<code class='language-javascript'>")}
+                  | <script src="#{assets_head}/js/tuiku.js"></script>
+                  //- if article.card && article.card.alipay 
                 //-   div.donate.module(style="margin-top:10px;")
                 //-     .hd 如果本文对您有帮助，本站希望您能为作者赞助一点心意，
                 //-     .bd

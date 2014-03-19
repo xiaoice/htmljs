@@ -4,13 +4,13 @@ config = require './../config.coffee'
 
 buffer = ""
 
-mustache.compileAndRender('./../static/htmljs-weekly-2-clear.html', {})
+mustache.compileAndRender('./../static/htmljs-weekly-4-clear.html', {})
 .on 'data',(c)->
    buffer += c.toString()
 .on 'end',()->
   mail({
-    subject:"乱炖周刊第二期新鲜出炉，每周会为您推送业界新鲜营养",
-    # to:"xinyu198736@gmail.com",
+    subject:"乱炖周刊第四期新鲜出炉，每周会为您推送业界新鲜营养",
+    #to:"xinyu198736@gmail.com",
     to:"weekly@htmljs.sendcloud.org",
     use_maillist:"true",
     api_user:config.mail.api_user_list,

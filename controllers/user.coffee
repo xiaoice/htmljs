@@ -9,6 +9,7 @@ Sina=require("./../lib/sdk/sina.js")
 func_bi = __F 'bi'
 md5 = require 'MD5'
 querystring = require 'querystring'
+uuid = require 'node-uuid'
 module.exports.controllers = 
   "/login":
     get:(req,res,next)->
@@ -209,7 +210,15 @@ module.exports.controllers =
       else
         result.info = '邮箱格式不正确，请重新填写。'
         res.send result
-
+  "/getappid":
+    get:(req,res,next)->
+      func_user.getById res.locals.user.id,(error,user)->
+        if user.uuid
+          res.send {user_id:user.id,app_id:md5(user.uuid)}
+        else
+          func_user.update user.id,{uuid:uuid.v4()},(error,user)->
+            console.log(user)
+            res.send {user_id:user.id,app_id:md5(user.uuid)}
   "/:id":
     get:(req,res,next)->
       res.locals.md5 = md5
@@ -223,7 +232,7 @@ module.exports.controllers =
               res.redirect '/card/'+user.card_id
             else
               res.render 'user/p.jade'
-
+  
 module.exports.filters = 
   "/":
     get:['checkLogin',"checkCard",'card/visitors','user/infos','user/article-count','user/qa-count','user/topic-count']
@@ -249,3 +258,5 @@ module.exports.filters =
   "/email":
     get:['checkLogin']
     post:['checkLoginJson']
+  "/getappid":
+    get:['checkLogin']

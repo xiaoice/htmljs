@@ -38,3 +38,4 @@ module.exports =
     private:true
     type:"tinyint"
     defaultValue:0
+  uuid:"varchar(40)"

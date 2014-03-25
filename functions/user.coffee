@@ -108,6 +108,6 @@ func_user =
           callback error
     .error (error)->
       callback error
-
+  
 __FC func_user,User,['update','count','delete','getById','getAll','add']
 module.exports = func_user

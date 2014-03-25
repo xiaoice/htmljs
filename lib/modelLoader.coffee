@@ -94,7 +94,6 @@ global.__FC = (func,model,methods)->
           where:
             id:id
         .success (m)->
-          console.log model
           if m
             fields = []
             for k,v of data

@@ -222,6 +222,60 @@ module.exports.controllers =
               status:'我在@前端乱炖 发表了一篇原创文章《'+article.title+'》点击查看：http://www.html-js.com/article/'+article.id+" {{前端乱炖是国内最专业的前端知识原创内容社区}}"
             
         res.send result
+  "/add-direct":
+    post:(req,res,next)->
+      user_id = req.body.userId
+      user_uuid = req.body.appId
+      result = 
+        success:0
+      func_user.getById user_id,(error,user)->
+        if error 
+          result.info = error.message
+          res.send result
+        else
+          if md5(user.uuid) != user_uuid
+            result.info = "不正确的uuid"
+            res.send result
+          else
+            html = safeConverter.makeHtml req.body.md
+            match = html.match(/<img[^>]+?src="([^"]+?)"/)
+            data = 
+              md:req.body.md
+              html:html
+              title:req.body.title
+              type:1
+              user_id:user.id
+              user_nick:user.nick
+              column_id:req.body.column_id
+              user_headpic:user.head_pic
+              publish_time:new Date().getTime()/1000
+              is_yuanchuang:1
+              is_publish:1
+            func_article.add data,(error,article)->
+              if error 
+                result.info = error.message
+              else
+                result.success = 1
+
+                func_article.update article.id,{sort:article.id}
+                (__F 'coin').add 40,article.user_id,"发表了一篇专栏文章"
+                if req.body.column_id
+                  func_column.update req.body.column_id,{last_article_time:(new Date()).getTime()},()->
+                  func_column.addCount req.body.column_id,"article_count",(error)->
+                  func_column.getRsses req.body.column_id,(error,rsses)->
+                    if rsses && rsses.length>0
+                      emails = []
+                      rsses.forEach (rss)->
+                        if rss.cards&&rss.cards.email
+                          emails.push rss.cards.email
+                      func_email.sendArticleRss article,emails.join(";")
+                func_search.add {type:"article","pid":article.uuid,"title":article.title,"html":article.html.replace(/<[^>]*>/g,""),"udid":article.uuid,"id": article.id},()->
+                (__F 'create_thumbnail').create_article article.id,()->
+                  sina.statuses.upload 
+                    access_token:user.weibo_token
+                    pic:path.join __dirname,"../uploads/article_thumb/"+article.id+".png"
+                    status:'我在@前端乱炖 发表了一篇原创文章《'+article.title+'》点击查看：http://www.html-js.com/article/'+article.id+" {{前端乱炖是国内最专业的前端知识原创内容社区}}"
+              res.send result
   "/:id/edit":
     "get":(req,res,next)->
       func_article.getById req.params.id,(error,article)->

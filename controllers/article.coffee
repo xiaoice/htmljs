@@ -219,7 +219,7 @@ module.exports.controllers =
             sina.statuses.upload 
               access_token:res.locals.user.weibo_token
               pic:path.join __dirname,"../uploads/article_thumb/"+article.id+".png"
-              status:'我在@前端乱炖 发表了一篇原创文章《'+article.title+'》点击查看：http://www.html-js.com/article/'+article.id+" {{前端乱炖是国内最专业的前端知识原创内容社区}}"
+              status:'我在@前端乱炖 发表了一篇原创文章《'+article.title+'》点击查看：http://www.html-js.com/article/'+article.id+" 。前端乱炖是一个专业的前端原创内容社区"
             
         res.send result
   "/add-direct":
@@ -274,7 +274,7 @@ module.exports.controllers =
                   sina.statuses.upload 
                     access_token:user.weibo_token
                     pic:path.join __dirname,"../uploads/article_thumb/"+article.id+".png"
-                    status:'我在@前端乱炖 发表了一篇原创文章《'+article.title+'》点击查看：http://www.html-js.com/article/'+article.id+" {{前端乱炖是国内最专业的前端知识原创内容社区}}"
+                    status:'我在@前端乱炖 发表了一篇原创文章《'+article.title+'》点击查看：http://www.html-js.com/article/'+article.id+" 。前端乱炖是一个专业的前端原创内容社区"
               res.send result
   "/:id/edit":
     "get":(req,res,next)->

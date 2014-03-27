@@ -44,7 +44,7 @@ module.exports.controllers =
             sina.statuses.upload 
               access_token:res.locals.user.weibo_token
               pic:(require 'path').join __dirname,"../uploads/article_thumb/topic-"+topic.id+".png"
-              status:'我在@前端乱炖 发起了一个话题《'+topic.title+'》点击查看：http://www.html-js.com/topic/'+topic.id+"  {@前端乱炖 是中国最大的前端知识原创内容社区}"
+              status:'我在@前端乱炖 发起了一个话题《'+topic.title+'》点击查看：http://www.html-js.com/topic/'+topic.id+"  。前端乱炖是一个专业的前端原创内容社区"
         res.send result
   "/:id":
     get:(req,res,next)->

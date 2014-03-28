@@ -38,7 +38,7 @@ html
             .title
               .wrapper
 
-                h2.title(href='http://p.html-js.com/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                div(class="#{Math.floor(Math.random()*100)}",style="font-size: 20px;",href='http://p.html-js.com/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
                 .info
                   div.line
                     span.author.vcard.item

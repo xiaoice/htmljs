@@ -38,43 +38,37 @@ html
             .title
               .wrapper
 
-                div(class="#{Math.floor(Math.random()*100)}",style="font-size: 20px;",href='http://p.html-js.com/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                div(class="#{Math.floor(Math.random()*100)}",style="font-size: 30px;line-height:50px;",href='http://p.html-js.com/article/#{article.id}', title='#{article.title}', rel='bookmark') #{article.title}
                 .info
                   div.line
                     span.author.vcard.item
-                      span.index #{article.quote_url?"推荐者":"作者"}：
                       a.value.url.fn(rel='author', href='/user/#{article.user_id}') #{article.user_nick} 
-                    span.time.item
-                      a.value #{moment(article.publish_time*1000).fromNow()}
+                      |  发布在 
+                      if locals.column
+                        a.value(href="/article/column/#{column.id}") #{column.name}
                     span.item
                       span.index view：
                       span.value #{article.visit_count}
-                  if column
-                    div.line
-                      span.item
-                        span.index 所属专栏：
-                        a.value(href="/article/column/#{column.id}") #{column.name}
-                        a.rss(href="/article/column/#{column.id}/rss")
-                          |  订阅此专栏 
-                .actions
                   
-                  a.zan.action(href="javascript:void(0);") 
-                    i.icon-thumbs-up
-                    if locals.has_zan
-                      |<em>已赞</em> <span>#{article.zan_count}</span>
-                    else
-                      |<em>赞</em> <span>#{article.zan_count}</span>
-                  a#bdshare.action.bdshare_t.bds_tools.get-codes-bdshare(href="#comment",style="float:none;") 
-                    i.icon-new-window
-                    em.bds_more(style="background:none !important;float:none;display:inline;padding:0;") 分享
-                  if locals.user && (user.is_admin||user.id==article.user_id)
-                    a.action(href="/article/#{article.id}/edit") 编辑
-                  a.add_fav.action(href="javascript:void(0);") 
-                    //- i.icon-heart
-                    if locals.has_fav
-                      |<em>已收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
-                    else
-                      |<em>收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
+                //- .actions
+                  
+                //-   a.zan.action(href="javascript:void(0);") 
+                //-     i.icon-thumbs-up
+                //-     if locals.has_zan
+                //-       |<em>已赞</em> <span>#{article.zan_count}</span>
+                //-     else
+                //-       |<em>赞</em> <span>#{article.zan_count}</span>
+                //-   a#bdshare.action.bdshare_t.bds_tools.get-codes-bdshare(href="#comment",style="float:none;") 
+                //-     i.icon-new-window
+                //-     em.bds_more(style="background:none !important;float:none;display:inline;padding:0;") 分享
+                //-   if locals.user && (user.is_admin||user.id==article.user_id)
+                //-     a.action(href="/article/#{article.id}/edit") 编辑
+                //-   a.add_fav.action(href="javascript:void(0);") 
+                //-     //- i.icon-heart
+                //-     if locals.has_fav
+                //-       |<em>已收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
+                //-     else
+                //-       |<em>收藏</em> <span>#{locals.favs?locals.favs.length:0}</span>
                   
             article.post(id="post-#{article.id}")
               .artivle_nav
@@ -116,6 +110,25 @@ html
                   
                 .entry-meta
                   p 本站专栏文章皆为原创，转载请注明出处（带有 前端乱炖 字样）和本文的显式链接(<a href="http://www.html-js.com/article/#{article.id}">http://www.html-js.com/article/#{article.id}</a>)，本站和作者保留随时要求删除文章的权利！
+            .writer-and-column.clearfix
+              .wrapper
+                .writer
+                  .hd WRITTEN BY
+                  a.head-pic(href="/user/#{writer.id}")
+                    img(src='#{writer.head_pic}')
+                  .info
+                    a.nick(href="/user/#{writer.id}") #{writer.nick}
+                    .desc #{writer.desc}
+                    a.weibo(href="#{writer.weibo}",target="_blank") TA的新浪微博
+                .column
+                  .hd PUBLISHED IN
+                  .info
+                    a.name(href="/article/column/#{column.id}") #{column.name}
+                    .desc #{column.desc_html?column.desc_html.replace(/<[^>]*?>/g,''):''}
+                    .action
+                      a.rssit.btn.small-btn(href="/article/column/1/rss")
+                        i.rss.social
+                        |  订阅
             if column_articles && column_articles.length
               .other-articles.module
                 .hd 本专栏其他文章

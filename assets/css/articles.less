@@ -590,14 +590,14 @@ line-height: 20px;
     width:100%;
     margin:0 auto;
     background: #efefef;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     padding-top: 40px;
     .wrapper{
       width:700px;
       margin:0 auto;
     }
     h2{
-      font-size: 20px;
+      font-size: 40px;
       margin:0;
       padding:0;
     }
@@ -860,5 +860,96 @@ margin:0;
         margin-left: 10px;
         color:#999;
       }
+    }
+    .writer-and-column{
+      width:700px;
+      margin:20px auto;
+      .hd{
+        font-size: 14px;
+        color:#999;
+        line-height: 30px;
+        padding-left: 10px;
+        letter-spacing: .1em;
+        padding-bottom: 10px;
+        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+      }
+      .writer{
+        width:45%;
+        float:left;
+        border-top:2px solid #eee;
+        .head-pic{
+          float:left;
+          width:60px;
+          overflow:hidden;
+          height:60px;
+          border-radius: 60px;
+          margin-left: 10px;
+          img{
+            width:60px;
+            height:60px;
+            display: block;
+            border-radius: 60px;
+          }
+        }
+        .info{
+          float:left;
+          margin-left:10px;
+          width:230px;
+          .nick{
+            font-size: 14px;
+            color:#555;
+            font-weight: bold;
+          }
+          .desc{
+            color:#999;
+            font-size: 12px;
+            margin-top: 5px;
+            line-height: 18px;
+          }
+          .weibo{
+            color:#555;
+            font-size: 12px;
+            margin-top: 5px;
+          }
+        }
+      }
+      .column{
+        width:45%;
+        float: right;
+        border-top:2px solid #eee;
+        .info{
+          margin-left: 10px;
+        }
+        .name{
+          font-size: 14px;
+            color:#555;
+            font-weight: bold;
+        }
+        .desc{
+            color:#999;
+            font-size: 12px;
+            margin-top: 5px;
+            max-height: 100px;
+            overflow: hidden;
+            word-break:break-all;
+            line-height: 18px;
+          }
+          .others{
+            font-size: 12px;
+            color:#666;
+          }
+          .action{
+            margin-top: 5px;
+            .rssit{
+              height:20px;
+              padding:0 10px;
+              line-height: 20px;
+              i{
+                vertical-align: -2px;
+              }
+            }
+          }
+      }
+
     }
 }

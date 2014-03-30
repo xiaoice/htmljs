@@ -543,7 +543,7 @@ module.exports.filters =
   "/old":
     get:['freshLogin','getRecent','get_infos','article/new-comments']
   "/:id":
-    get:['freshLogin','getRecent','get_infos','article/get-article','article/get-article-column','article/this-column','article/comments','article/check_zan_fav','article/favs','book/some-books']
+    get:['freshLogin','getRecent','get_infos','article/get-article','article/article-writer','article/get-article-column','article/this-column','article/comments','article/check_zan_fav','article/favs','book/some-books']
   
   "/:id/zan":
     post:['checkLoginJson']

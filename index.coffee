@@ -91,6 +91,7 @@ app.configure ->
       res.send page,404
   
   app.locals.moment= require 'moment'
+  app.locals.pretty = true
   app.locals.stringUtil = require './lib/string-util.coffee'
   app.locals.arrayUtil = require './lib/array-util.coffee'
   app.locals.moment.lang('zh-cn');

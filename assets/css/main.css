@@ -593,7 +593,7 @@ body{background:url(../images/bg-repeat.png);background:#e2e2e2;}
 #article .writer-and-column .writer .info .weibo{color:#555;font-size:12px;margin-top:5px;}
 #article .writer-and-column .column{width:45%;float:right;border-top:2px solid #eee;}#article .writer-and-column .column .info{margin-left:10px;}
 #article .writer-and-column .column .name{font-size:14px;color:#555;font-weight:bold;}
-#article .writer-and-column .column .desc{color:#999;font-size:12px;margin-top:5px;max-height:100px;overflow:hidden;word-break:break-all;line-height:18px;}
+#article .writer-and-column .column .desc{color:#999;font-size:12px;margin-top:5px;max-height:90px;overflow:hidden;word-break:break-all;line-height:18px;}#article .writer-and-column .column .desc *{font-size:12px;line-height:18px;font-weight:normal;color:#999;}
 #article .writer-and-column .column .others{font-size:12px;color:#666;}
 #article .writer-and-column .column .action{margin-top:5px;}#article .writer-and-column .column .action .rssit{height:20px;padding:0 10px;line-height:20px;}#article .writer-and-column .column .action .rssit i{vertical-align:-2px;}
 #cards .head_pic{float:left;}

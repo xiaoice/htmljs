@@ -124,7 +124,7 @@ html
                   .hd PUBLISHED IN
                   .info
                     a.name(href="/article/column/#{column.id}") #{column.name}
-                    .desc #{column.desc_html?column.desc_html.replace(/<[^>]*?>/g,''):''}
+                    .desc !{column.desc_html?column.desc_html:''}
                     .action
                       a.rssit.btn.small-btn(href="/article/column/1/rss")
                         i.rss.social

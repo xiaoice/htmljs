@@ -120,15 +120,16 @@ html
                     a.nick(href="/user/#{writer.id}") #{writer.nick}
                     .desc #{writer.desc}
                     a.weibo(href="#{writer.weibo}",target="_blank") TA的新浪微博
-                .column
-                  .hd PUBLISHED IN
-                  .info
-                    a.name(href="/article/column/#{column.id}") #{column.name}
-                    .desc !{column.desc_html?column.desc_html:''}
-                    .action
-                      a.rssit.btn.small-btn(href="/article/column/1/rss")
-                        i.rss.social
-                        |  订阅
+                if locals.column
+                  .column
+                    .hd PUBLISHED IN
+                    .info
+                      a.name(href="/article/column/#{column.id}") #{column.name}
+                      .desc !{column.desc_html?column.desc_html:''}
+                      .action
+                        a.rssit.btn.small-btn(href="/article/column/1/rss")
+                          i.rss.social
+                          |  订阅
             if column_articles && column_articles.length
               .other-articles.module
                 .hd 本专栏其他文章

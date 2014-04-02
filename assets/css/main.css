@@ -571,6 +571,7 @@ body{background:url(../images/bg-repeat.png);background:#e2e2e2;}
 #article .actions .action{font-size:12px;margin-right:10px;}
 #article .actions .my{margin-left:10px;line-height:30px;}
 #article .actions .fav-list{margin-top:10px;}#article .actions .fav-list a{margin-right:5px;}
+#article .zanlogs a{display:inline-block;}#article .zanlogs a img{width:30px;height:30px;border-radius:30px;margin-right:5px;border:2px solid #fff;box-shadow:1px 1px 2px #ccc;}
 #article .post{padding-bottom:20px;position:relative;}#article .post .wrapper{background:#fff;}
 #article .post .entry-title{border-bottom:1px solid #eee;padding-bottom:10px;}#article .post .entry-title .headpic{float:left;margin-right:20px;margin-top:10px;}
 #article .post .entry-title .title{font-size:20px;line-height:30px;margin:0;color:#404040;font-weight:normal;}

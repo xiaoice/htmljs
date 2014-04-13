@@ -131,42 +131,88 @@ html(xmlns:wb='http://open.weibo.com/wb')
             else
               .no 还没有专栏，先创建专栏再发表原创文章吧！
                 a(href="/article/column/add") 创建专栏
-      .module.jian.clearfix  
-        .lft
-          .t.hd 推荐专栏 <a class="more" href="/article/column">全部专栏</a>
-          .b 
-            each column in jian_columns
-              .item(role="listitem")
-                a.title(href="/article/column/#{column.id}") #{column.name}
-                .desc 
-                  
-                  a.user(href="/user/#{column.user_id}") #{column.user.nick}
-                  //- span.time #{moment(article.createdAt).fromNow()}
-                  span.desc-item
-                    span.index 订阅
-                    a.value #{column.rss_count}
-                  span.desc-item
-                    span.index 最后更新
-                    a.value #{moment(column.last_article_time*1).fromNow()}
-          
-        .rht
-          .t.hd 推荐文章
-          .b
-            each article in jian_articles
-              .item(role="listitem")
-                a.title(href="/article/#{article.pinyin?article.pinyin:article.id}") #{article.title}
-                .desc 
-                  
-                  a.user(href="/user/#{article.user_id}") #{article.user_nick}
-                  //- span.time #{moment(article.createdAt).fromNow()}
-                  
-                  span.desc-item
-                    span.index 浏览
-                    a.value #{article.visit_count}
-                  span.desc-item
-                    span.index 赞
-                    a.value #{article.zan_count}
-        .thr
+
+      
+      .content
+        .left
+          if articles && articles.length
+            .articles.mod-white
+              each article,i in articles
+                article(id="post-#{article.id}",class="#{i%2==0?'yooo':''}")
+                  .lft 
+                    .line
+                      i.icon-thumbs-up
+                      span.count #{article.zan_count}
+                    .line
+                      i.icon-heart
+                      span.count #{article.fav_count}
+                  .rht
+                    h2.entry-title
+
+                        a(class="real-title-#{Math.floor(Math.random()*100)}",href='/article/#{article.pinyin?article.pinyin:article.id}', title='#{article.title}', rel='bookmark') #{article.title}
+                        span.column-col
+                          if article['column']
+                            |[
+                            a.column-title(href="/article/column/#{article['column']['id']}")
+                              |#{article['column']['name']}
+                            |] 
+                    if article.desc
+                      .entry-content.hidden.clearfix 
+                        |!{article.desc.replace(/<[^>]*?>/g," ").substr(0,200)}
+                        a(href="/article/#{article.id}")  阅读更多>>
+                    .entry-foot
+                      div.others
+                        span.author.vcard.item
+                          span.index 
+                            i.icon-user
+                          a.value.url.fn(rel='author', href='/user/#{article.user_id}') #{article.user_nick}
+                        
+                        
+                        span.time.item
+                          span.index 
+                            i.icon-clock
+                          a.value #{moment(article.publish_time*1000).fromNow()}
+                          
+                        
+                        span.views.item
+                          span.index 
+                            i.icon-eye-open
+                          a.value #{article.visit_count}
+                        span.views.item
+                          span.index 
+                            i.icon-thumbs-up
+                          a.value #{article.zan_count}
+                        if locals.user && (user.is_admin||user.id==article.user_id)
+                          span.views.item
+                            a.value(href="/article/#{article.id}/edit") 编辑
+                        if locals.user && user.is_admin
+                          span.views.item
+                            if article.sort == 100000
+                              a.value(href="/article/#{article.id}/update?sort=#{article.id}") 取消置顶
+                            else
+                              a.value(href="/article/#{article.id}/update?sort=100000") 置顶
+                          span.views.item
+                            if article.is_jian == 1
+                              a.value(href="/article/#{article.id}/update?is_jian=0") 不荐
+                            else
+                              a.value(href="/article/#{article.id}/update?is_jian=1") 荐
+                          //- span.views.item
+                          //-   span.index 
+                          //-     i.icon-signal
+                          //-   a.value #{article.visit_count}
+                        div.user
+                          a(data-original-title="#{article.user_nick}",href="/user/#{article.user_id}")
+                            img(src="#{article.user_headpic}")
+                            if article.user&&article.user.sex
+                              if article.user.sex == '男'
+                                .sex.nan
+                              else
+                                .sex.nv  
+          else
+            .articles 暂无文章
+          include ../page
+      .right.jian
+        .module
           .t.hd 本月最热
           .b 
             each article in jian_hots
@@ -183,83 +229,41 @@ html(xmlns:wb='http://open.weibo.com/wb')
                   span.desc-item
                     span.index 赞
                     a.value #{article.zan_count}
-      .content
-        if articles && articles.length
-          .articles.mod-white
-            each article,i in articles
-              article(id="post-#{article.id}",class="#{i%2==0?'yooo':''}")
-                .lft 
-                  .line
-                    i.icon-thumbs-up
-                    span.count #{article.zan_count}
-                  .line
-                    i.icon-heart
-                    span.count #{article.fav_count}
-                .rht
-                  h2.entry-title
-
-                      a(class="real-title-#{Math.floor(Math.random()*100)}",href='/article/#{article.pinyin?article.pinyin:article.id}', title='#{article.title}', rel='bookmark') #{article.title}
-                      span.column-col
-                        if article['column']
-                          |[
-                          a.column-title(href="/article/column/#{article['column']['id']}")
-                            |#{article['column']['name']}
-                          |] 
-                  if article.desc
-                    .entry-content.hidden.clearfix 
-                      |!{article.desc.replace(/<[^>]*?>/g," ").substr(0,200)}
-                      a(href="/article/#{article.id}")  阅读更多>>
-                  .entry-foot
-                    div.others
-                      span.author.vcard.item
-                        span.index 
-                          i.icon-user
-                        a.value.url.fn(rel='author', href='/user/#{article.user_id}') #{article.user_nick}
-                      
-                      
-                      span.time.item
-                        span.index 
-                          i.icon-clock
-                        a.value #{moment(article.publish_time*1000).fromNow()}
-                        
-                      
-                      span.views.item
-                        span.index 
-                          i.icon-eye-open
-                        a.value #{article.visit_count}
-                      span.views.item
-                        span.index 
-                          i.icon-thumbs-up
-                        a.value #{article.zan_count}
-                      if locals.user && (user.is_admin||user.id==article.user_id)
-                        span.views.item
-                          a.value(href="/article/#{article.id}/edit") 编辑
-                      if locals.user && user.is_admin
-                        span.views.item
-                          if article.sort == 100000
-                            a.value(href="/article/#{article.id}/update?sort=#{article.id}") 取消置顶
-                          else
-                            a.value(href="/article/#{article.id}/update?sort=100000") 置顶
-                        span.views.item
-                          if article.is_jian == 1
-                            a.value(href="/article/#{article.id}/update?is_jian=0") 不荐
-                          else
-                            a.value(href="/article/#{article.id}/update?is_jian=1") 荐
-                        //- span.views.item
-                        //-   span.index 
-                        //-     i.icon-signal
-                        //-   a.value #{article.visit_count}
-                      div.user
-                        a(data-original-title="#{article.user_nick}",href="/user/#{article.user_id}")
-                          img(src="#{article.user_headpic}")
-                          if article.user&&article.user.sex
-                            if article.user.sex == '男'
-                              .sex.nan
-                            else
-                              .sex.nv  
-        else
-          .articles 暂无文章
-        include ../page
+        .module.clearfix  
+          .t.hd 推荐专栏 <a class="more" href="/article/column">全部专栏</a>
+          .b 
+            each column in jian_columns
+              .item(role="listitem")
+                a.title(href="/article/column/#{column.id}") #{column.name}
+                .desc 
+                  
+                  a.user(href="/user/#{column.user_id}") #{column.user.nick}
+                  //- span.time #{moment(article.createdAt).fromNow()}
+                  span.desc-item
+                    span.index 订阅
+                    a.value #{column.rss_count}
+                  span.desc-item
+                    span.index 最后更新
+                    a.value #{moment(column.last_article_time*1).fromNow()}
+          
+        .module
+          .t.hd 推荐文章
+          .b
+            each article in jian_articles
+              .item(role="listitem")
+                a.title(href="/article/#{article.pinyin?article.pinyin:article.id}") #{article.title}
+                .desc 
+                  
+                  a.user(href="/user/#{article.user_id}") #{article.user_nick}
+                  //- span.time #{moment(article.createdAt).fromNow()}
+                  
+                  span.desc-item
+                    span.index 浏览
+                    a.value #{article.visit_count}
+                  span.desc-item
+                    span.index 赞
+                    a.value #{article.zan_count}
+        
       include ../google970
       //- .right
         

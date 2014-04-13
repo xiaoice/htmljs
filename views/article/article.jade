@@ -78,6 +78,13 @@ html
                 .entry-content 
                   | !{article.html.replace(/([^>])\r\n\r\n([^<])/g,"$1<br/>$2").replace(/<code>/g,"<code class='language-javascript'>")}
                   | <script src="#{assets_head}/js/tuiku.js"></script>
+                .vertical-actions
+                  a.action
+                    |赞
+                  a.action
+                    |分享
+                  a.action
+                    |讨论
                   //- if article.card && article.card.alipay 
                 //-   div.donate.module(style="margin-top:10px;")
                 //-     .hd 如果本文对您有帮助，本站希望您能为作者赞助一点心意，
@@ -125,7 +132,7 @@ html
                   .info
                     a.nick(href="/user/#{writer.id}") #{writer.nick}
                     .desc #{writer.desc}
-                    a.weibo(href="#{writer.weibo}",target="_blank") TA的新浪微博
+                    a.weibo(href="http://weibo.cn/#{writer.weibo_id}",target="_blank") TA的新浪微博
                 if locals.column
                   .column
                     .hd PUBLISHED IN
@@ -187,6 +194,7 @@ html
                       .time {{createdAt}} 
                         a.reply(data-nick="{{user_nick}}") 回复
       - locals.shareImgs = article.html.match(/img\s*?src=["|'](.*?)["|']/);
+      
       p.
         <script id="bdshare_js" data="type=tools&amp;uid=2555549" ></script>
         <script type="text/javascript" id="bdshell_js"></script>
@@ -350,7 +358,18 @@ html
                 })
             })
             });
-
+          
+          $(window).scroll(function(){
+            var scrollTop = $(window).scrollTop();
+            if (offset.top < scrollTop+40) 
+              $(".vertical-actions").css({top:0})
+            else $('#fixed-modules').removeClass('fixed').css({
+              position:"relative",top:0
+            });
+            if($('#fixed-modules').height()+$('#fixed-modules').offset().top>$("#footer").offset().top+60){
+              $('#fixed-modules').css({position:"absolute",top:$("#content").height()-$('#fixed-modules').height()+60})
+            }
+          });
           //- (function(){
           //-   var ts = ['h1','h2','h3','h4']
           //-   var html = ""

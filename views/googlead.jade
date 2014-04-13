@@ -1,6 +1,9 @@
 style
   #googlead{position:fixed;bottom:-250px;right:0px;}
-
+  .ad-tip{position:fixed;right:-185px;font-size:12px;top:20px;height:30px;line-height:30px;background:#efefef;
+  box-shadow:0px 1px 3px #ccc;cursor:default;
+  border:1px solid #fff;padding:0 10px;border-top-left-radius:3px;border-bottom-left-radius:3px;}
+  .ad-tip span{display:inline-block;}
 div#googlead.hidden.
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <!-- 弹出广告 -->
@@ -16,8 +19,19 @@ div#googlead.hidden.
 //- style
 //-   .shake-arrow{position:fixed;height:20px;background:url(#{assets_head}/images/arrow_right.png) no-repeat;background-size:100%;width:20px;}
 //-   .shake-arrow-2{position:fixed;height:20px;background:url(#{assets_head}/images/arrow_bottom.png) no-repeat;background-size:100%;width:20px;}
+div.ad-tip 觉得本站不错？ -> 
+  span 点一下右下角的广告支持下吧
 
-script
+script.
+  $(".ad-tip").on("mouseenter",function(e){
+      $(this).animate({
+      right:0
+      },400)
+    }).on("mouseleave",function(e){
+      $(this).animate({
+      right:-185
+      },400)
+    })
   setTimeout(function(){
     $("#googlead").removeClass("hidden").animate({bottom:0})
     //- for(var i=0;i<13;i++){
@@ -38,4 +52,3 @@ script
     //- }
   },3000)
 
-  

@@ -78,7 +78,7 @@ html
                 .entry-content 
                   | !{article.html.replace(/([^>])\r\n\r\n([^<])/g,"$1<br/>$2").replace(/<code>/g,"<code class='language-javascript'>")}
                   | <script src="#{assets_head}/js/tuiku.js"></script>
-                .vertical-actions
+                .vertical-actions.hidden
                   a.action
                     |赞
                   a.action
@@ -125,7 +125,7 @@ html
                   p 本站专栏文章皆为原创，转载请注明出处（带有 前端乱炖 字样）和本文的显式链接(<a href="http://www.html-js.com/article/#{article.id}">http://www.html-js.com/article/#{article.id}</a>)，本站和作者保留随时要求删除文章的权利！
             .writer-and-column.clearfix
               .wrapper
-                .writer
+                .writer.clearfix
                   .hd WRITTEN BY
                   a.head-pic(href="/user/#{writer.id}")
                     img(src='#{writer.head_pic}')
@@ -134,7 +134,7 @@ html
                     .desc #{writer.desc}
                     a.weibo(href="http://weibo.cn/#{writer.weibo_id}",target="_blank") TA的新浪微博
                 if locals.column
-                  .column
+                  .column.clearfix
                     .hd PUBLISHED IN
                     .info
                       a.name(href="/article/column/#{column.id}") #{column.name}

@@ -85,7 +85,7 @@ html
               else
                 .comment-list
                   each ans,i in comments
-                    if !ans.is_unused
+                    if !ans.is_unused && ans.md
                       .comment-item.clearfix(id="comment-#{ans.id}")
                         .ans-user.clearfix
                           a.user(href="/user/#{ans.user_id}",data-original-title="#{ans.user_nick}")

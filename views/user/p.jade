@@ -170,24 +170,6 @@ html
                               a.value #{article.comment_count}
                   else
                     .noitem 暂无文章，去订阅TA的专栏会触发催促作者写文章哦~~~
-                    
-            if locals.his_questions && locals.his_questions.length
-              .his-info.module.mod
-                a.hd(href="/qa/user/#{card.user_id}") TA提问的问题（#{his_questions_count}）
-                .bd
-                  ul.article-list
-                    each question,i in his_questions
-                      .item(class="#{question.visit_count<30?'new':''}")
-                        a.title(href="/qa/#{question.id}") #{question.title}
-                        .desc 
-                          a.user(href="/user/#{question.user_id}") #{question.user_nick}
-                          span.time #{moment(question.createdAt).fromNow()}
-                          span.desc-item
-                            span.index 浏览
-                            a.value #{question.visit_count}
-                          span.desc-item
-                            span.index 回答
-                            a.value #{question.answer_count}
             if locals.his_topics && locals.his_topics.length
               .his-info.module.mod
                 .hd TA发起的话题（#{his_topics_count}）

@@ -12,6 +12,13 @@ html
       include ../google970
       .main.clearfix
         .content
+            .module
+              span(style="font-size:13px;margin-right:10px;color:#666;") 花名册是一个前端开发人员的信息集合，可以看到每个人的基本信息和创造的内容。
+              if !(locals.user && user.card_id) 
+                a.btn.small-btn(href="/add-card") 我也要加入
+              else if (locals.user)
+                a.btn.small-btn(href="/edit-card") 编辑我的花名册
+
             .f2er-list
               each card in cards
                 a.vcard.card.mod-white(href="/card/#{card.id}")

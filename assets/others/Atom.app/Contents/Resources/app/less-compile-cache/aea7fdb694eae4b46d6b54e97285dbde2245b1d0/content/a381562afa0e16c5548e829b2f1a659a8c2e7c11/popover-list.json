@@ -1,1 +1,0 @@
-{"digest":"bee1bab9f6655291228bb6d3b39f018fab8ec496","css":".select-list.popover-list {\n  width: 200px;\n  min-width: 200px;\n  margin-left: 0;\n  position: relative;\n}\n.select-list.popover-list ol.list-group {\n  position: relative;\n  overflow-y: scroll;\n  max-height: 200px;\n}\n","imports":[],"version":1}

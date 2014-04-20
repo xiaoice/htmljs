@@ -76,27 +76,27 @@ html
                 //-       a(href="/user/#{visitor.user_id}",data-original-title="#{visitor.user_nick} #{moment(visitor.createdAt).fromNow()}")
                 //-         img(src="#{visitor.user_headpic}")
           include recommend_books
-          if locals.questions
-            .module.mod
-              .hd
-                a(href="/qa") 最新的问题（#{locals.all_count?all_count.question:0}）
-              .bd
-                each question,i in questions
-                  .item(class="#{question.answer_count<1?'new':''}  #{Math.floor(i/2)%2==1?'yooo':''}")
-                    a.title(href="/qa/#{question.pinyin?question.pinyin:question.id}") #{question.title}
-                    .desc 
-                      a.user(href="/user/#{question.user_id}") #{question.user_nick}
-                      span.time #{moment(question.createdAt).fromNow()}
-                      span.desc-item
-                        span.index 浏览
-                        a.value #{question.visit_count}
-                      span.desc-item
-                        span.index 回答
-                        a.value #{question.answer_count}
-                .tags
-                  a.hd(href="/tag") 问题标签
-                  each tag,i in tags
-                    a.tag(href="/tag/#{tag.id}") #{tag.name}
+          //- if locals.questions
+          //-   .module.mod
+          //-     .hd
+          //-       a(href="/qa") 最新的问题（#{locals.all_count?all_count.question:0}）
+          //-     .bd
+          //-       each question,i in questions
+          //-         .item(class="#{question.answer_count<1?'new':''}  #{Math.floor(i/2)%2==1?'yooo':''}")
+          //-           a.title(href="/qa/#{question.pinyin?question.pinyin:question.id}") #{question.title}
+          //-           .desc 
+          //-             a.user(href="/user/#{question.user_id}") #{question.user_nick}
+          //-             span.time #{moment(question.createdAt).fromNow()}
+          //-             span.desc-item
+          //-               span.index 浏览
+          //-               a.value #{question.visit_count}
+          //-             span.desc-item
+          //-               span.index 回答
+          //-               a.value #{question.answer_count}
+          //-       .tags
+          //-         a.hd(href="/tag") 问题标签
+          //-         each tag,i in tags
+          //-           a.tag(href="/tag/#{tag.id}") #{tag.name}
           if locals.topics
             .module.mod
               .hd

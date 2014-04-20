@@ -3,7 +3,7 @@ module.exports = (req,res,next)->
   if req.query.page 
     next()
     return
-  func_article.getAll 1,10,{is_publish:1},(error,articles)->
+  func_article.getAll 1,16,{is_publish:1},(error,articles)->
     if error 
       console.log error
       

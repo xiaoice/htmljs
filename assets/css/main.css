@@ -782,7 +782,7 @@ body{background:url(../images/bg-repeat.png);background:#e2e2e2;}
 #topic .topic-user .user .time{color:#999;}
 #topic .comment-list .comment-item{border-bottom:1px solid #ddd;padding:10px 0;padding-bottom:0;position:relative;}#topic .comment-list .comment-item h1,#topic .comment-list .comment-item h2,#topic .comment-list .comment-item h3,#topic .comment-list .comment-item h4,#topic .comment-list .comment-item h5{font-size:1.5em;}
 #topic .comment-list .comment-item .ans-lou{position:absolute;right:0px;top:0;display:inline;padding:0px 10px;background:#eee;}
-#topic .comment-list .comment-item .ans-con{float:left;width:558px;margin-left:10px;font-size:14px;color:#404040;}#topic .comment-list .comment-item .ans-con p{line-height:25px;margin:0;}
+#topic .comment-list .comment-item .ans-con{float:left;width:558px;margin-left:10px;font-size:14px;color:#404040;line-height:25px;}#topic .comment-list .comment-item .ans-con p{line-height:25px;margin:0;}
 #topic .comment-list .comment-item .ans-con blockquote p{line-height:25px;margin:0;font-size:12px;}
 #topic .comment-list .comment-item .ans-con .con-hd{font-size:14px;line-height:30px;}
 #topic .comment-list .comment-item .ans-con .con-action a{line-height:30px;color:#999;font-size:12px;margin-right:10px;}#topic .comment-list .comment-item .ans-con .con-action a i{-webkit-transform:scale(0.9);-moz-transform:scale(0.9);vertical-align:-1px;background:none;}

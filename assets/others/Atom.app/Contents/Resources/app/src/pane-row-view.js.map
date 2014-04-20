@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "pane-row-view.js",
+  "sourceRoot": "../../../../../../../private/var/lib/jenkins/workspace/atom-615ee4b3dc03/src/",
+  "sources": [
+    "pane-row-view.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,MAAA,+BAAA;IAAA;mSAAA;;AAAA,EAAC,IAAK,OAAA,CAAQ,wBAAR,EAAL,CAAD,CAAA;;AAAA,EACA,CAAA,GAAI,OAAA,CAAQ,iBAAR,CADJ,CAAA;;AAAA,EAEA,YAAA,GAAe,OAAA,CAAQ,kBAAR,CAFf,CAAA;;AAAA,EAIA,MAAM,CAAC,OAAP,GACM;AACJ,kCAAA,CAAA;;;;KAAA;;AAAA,IAAA,WAAC,CAAA,OAAD,GAAU,SAAA,GAAA;aACR,IAAC,CAAA,GAAD,CAAK;AAAA,QAAA,OAAA,EAAO,UAAP;OAAL,EADQ;IAAA,CAAV,CAAA;;AAAA,0BAGA,SAAA,GAAW,SAAA,GAAA;aACT,UADS;IAAA,CAHX,CAAA;;uBAAA;;KADwB,aAL1B,CAAA;AAAA"
+}

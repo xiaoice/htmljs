@@ -1,0 +1,1 @@
+{"digest":"6d5a50fe0440f6fccc2c1c32f1f26da753831bc7","css":".icon:before {\n  margin-right: 5px;\n}\na.icon,\nbutton.icon {\n  text-decoration: none;\n  color: #aaaaaa;\n}\na.icon:hover,\nbutton.icon:hover {\n  color: #ffffff;\n}\n","imports":[{"path":"node_modules/atom-dark-ui/stylesheets/ui-variables.less","digest":"9169f5824285022c54cae58ff9f3ce11d8d26f5d"}],"version":1}

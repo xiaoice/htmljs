@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "pane-column-view.js",
+  "sourceRoot": "../../../../../../../private/var/lib/jenkins/workspace/atom-615ee4b3dc03/src/",
+  "sources": [
+    "pane-column-view.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,MAAA,kCAAA;IAAA;mSAAA;;AAAA,EAAC,IAAK,OAAA,CAAQ,wBAAR,EAAL,CAAD,CAAA;;AAAA,EACA,CAAA,GAAI,OAAA,CAAQ,iBAAR,CADJ,CAAA;;AAAA,EAEA,YAAA,GAAe,OAAA,CAAQ,kBAAR,CAFf,CAAA;;AAAA,EAIA,MAAM,CAAC,OAAP,GACM;AAEJ,qCAAA,CAAA;;;;KAAA;;AAAA,IAAA,cAAC,CAAA,OAAD,GAAU,SAAA,GAAA;aACR,IAAC,CAAA,GAAD,CAAK;AAAA,QAAA,OAAA,EAAO,aAAP;OAAL,EADQ;IAAA,CAAV,CAAA;;AAAA,6BAGA,SAAA,GAAW,SAAA,GAAA;aACT,aADS;IAAA,CAHX,CAAA;;0BAAA;;KAF2B,aAL7B,CAAA;AAAA"
+}

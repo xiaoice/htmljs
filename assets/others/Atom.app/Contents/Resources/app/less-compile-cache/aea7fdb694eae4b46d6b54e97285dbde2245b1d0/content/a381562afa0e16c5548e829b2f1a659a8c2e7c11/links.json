@@ -1,0 +1,1 @@
+{"digest":"557455f0e3c465b454202b541ed32b3675505a2f","css":"a {\n  cursor: pointer;\n  color: #000000;\n}\na:hover {\n  color: #000000;\n  text-decoration: underline;\n}\n","imports":[{"path":"node_modules/atom-light-ui/stylesheets/ui-variables.less","digest":"b09590cbe2f0416fc5f60a611945029ced0b695a"}],"version":1}

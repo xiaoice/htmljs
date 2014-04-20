@@ -29,3 +29,4 @@ module.exports =
     type:"int"
     defaultValue:0
   tag_id:"int"
+  pinyin:"varchar(1500)"

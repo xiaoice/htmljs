@@ -39,9 +39,9 @@ app.configure ->
 #  app.use express.logger("dev")
   app.use express.bodyParser()
   app.use express.cookieParser()
-  app.use express.cookieSession(secret: 'fd2afdsafdvcxzjaklfdsa')
+  app.use express.cookieSession(secret: config.session_secret)
   app.use(log4js.connectLogger(logger, {level:log4js.levels.INFO}))
-  app.locals.assets_head = config.assets_head
+  
   #过滤黑名单
   app.use (req,res,next)->
     res.locals.url = req.url
@@ -91,10 +91,12 @@ app.configure ->
       res.send page,404
   
   app.locals.moment= require 'moment'
+  app.locals.moment.lang('zh-cn')
+  
   app.locals.pretty = true
   app.locals.stringUtil = require './lib/string-util.coffee'
   app.locals.arrayUtil = require './lib/array-util.coffee'
-  app.locals.moment.lang('zh-cn');
+  
   app.locals.assets_head = config.assets_head
   app.locals.assets_tm = "8-23"
 app.configure "development", ->

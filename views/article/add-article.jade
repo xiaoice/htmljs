@@ -54,6 +54,10 @@ html
                         else if column.id==locals.column_id
                           span.label(data-id="#{column.id}",class="label-success",data-original-title="#{column.desc_md&&column.desc_md.substr(0,100)}",title="#{column.desc_md&&column.desc_md.substr(0,100)}") #{column.name}
                 .control-group
+                  label.checkbox
+                    input(type="checkbox",name="to_weibo",checked="true")
+                    |分享到微博
+                .control-group
                   button.btn#submit(type='submit') 发表
                 .control-group#wmd-preview-parent
                   .wmd-panel.wmd-preview#wmd-preview-con

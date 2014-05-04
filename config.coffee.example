@@ -1,0 +1,53 @@
+config =
+  run_port:5678
+  socket_port:8765
+
+  mysql_table:"htmljs"
+  mysql_username:"root" #数据库用户名
+  mysql_password:"" #数据库密码
+  mysql_host:"127.0.0.1"
+
+
+  upload_path:__dirname+"/uploads/"
+  base_path:__dirname
+  session_secret:"fd2afdsafdvcxzjaklfdsa"
+
+  #又拍云配置
+  "upyun_bucketname":"***"
+  "upyun_username":"***"
+  "upyun_password":"***"
+
+  script_ext:".coffee"
+  assets_head:"http://www.html-js.com/assets"#http://htmljs.b0.upaiyun.com/"
+  base_host:"http://www.html-js.com"
+
+  day_coin_max:1000
+  day_bi_max:1000
+  
+  sdks:
+    sina:
+      app_key:"***"
+      app_secret:"***"
+      redirect_uri : 'http://www.html-js.com/user/sina_cb'
+  #邮件使用sendcloud
+  mail:
+    api_key  : '***',
+    api_user : 'postmaster@htmljs.sendcloud.org'
+    from     : 'postmaster@htmljs.sendcloud.org'
+    fromname : '前端乱炖官方'
+    api_user_list:"postmaster@htmljsmessage.sendcloud.org"
+    api_key_list:"***"
+
+  #每个操作的加分
+  bi:
+    article:100
+    question:10
+    answer:5
+    good_answer:10
+    topic:3
+    reply_topic:1
+    card:50
+    zan:1
+    zan_by:2
+  xunsearch_bin:"/private/var/root/xunsearch/sdk/php/"
+global.__C = module.exports = config

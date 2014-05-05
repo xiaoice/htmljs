@@ -44,8 +44,9 @@ html
                 if topic.topicTag
                   |「#{topic.topicTag.name}」
                 |#{topic.title}
+            include ../320ad
             .topic-content
-              include ../320ad
+
               .desc !{topic.html.replace(/<code>/g,"<code class='language-javascript'>")}
 
             .topic-user.clearfix

@@ -174,7 +174,7 @@ body{background:url(../images/bg-repeat.png);background:#e2e2e2;}
 .comment .comment-list{margin-top:20px;border-bottom:1px dotted #ddd;}.comment .comment-list .comment-item{border-bottom:1px dotted #ddd;padding:10px 0;position:relative;}.comment .comment-list .comment-item .headpic{float:left;}.comment .comment-list .comment-item .headpic img{width:50px;border-radius:50px;}
 .comment .comment-list .comment-item .comment-right{float:left;margin-left:10px;}
 .comment .comment-list .comment-item .author a{font-size:14px;font-weight:bold;line-height:30px;}
-.comment .comment-list .comment-item .con{color:#777;word-break:break-all;font-size:14px;}.comment .comment-list .comment-item .con p{margin:0;display:inline;padding-right:10px;color:#777;line-height:25px;}
+.comment .comment-list .comment-item .con{color:#777;word-break:break-all;font-size:14px;}.comment .comment-list .comment-item .con p{margin:0;padding-right:10px;color:#777;line-height:25px;}
 .comment .comment-list .comment-item .con h1,.comment .comment-list .comment-item .con h2,.comment .comment-list .comment-item .con h3,.comment .comment-list .comment-item .con h4,.comment .comment-list .comment-item .con h5{font-size:14px;font-weight:bold;}
 .comment .comment-list .comment-item .con .html{color:#777;}.comment .comment-list .comment-item .con .html *{margin:0;padding-right:10px;}
 .comment .comment-list .comment-item .time{color:#999;display:inline;}

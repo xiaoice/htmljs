@@ -65,7 +65,7 @@ module.exports.controllers =
                             title +='「站外博客」'
                           news.push
                             title:title+result.title
-                            description:a.title
+                            description:title+result.title
                             picurl:""
                             url:"http://www.html-js.com/"+result.type+"/"+result.id
                     if news.length == 0

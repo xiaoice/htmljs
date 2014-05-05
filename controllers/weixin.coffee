@@ -66,7 +66,7 @@ module.exports.controllers =
                           news.push
                             title:title+result.title.replace(/<[^>]*?>/g,"")
                             description:title+result.title.replace(/<[^>]*?>/g,"")
-                            picurl:""
+                            picurl:"http://www.html-js.com/assets/images/logo.png"
                             url:"http://www.html-js.com/"+result.type+"/"+result.id
                     if news.length == 0
                         res.reply '对不起，没有搜索到任何相关信息，尝试换一下关键字吧少年！'

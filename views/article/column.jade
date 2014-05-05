@@ -89,7 +89,7 @@ html(xmlns:wb='http://open.weibo.com/wb')
               if locals.user&&locals.user.is_admin
                 a.btn(href="/article/column/#{column.id}/create_pic") 缩略图
       .content
-
+        include ../320ad
         if articles && articles.length
           .articles
             each article,i in articles

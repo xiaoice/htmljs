@@ -1,7 +1,7 @@
 wechat = require 'wechat'
-func_article = __FC 'article'
-func_column = __FC 'column'
-func_topic = __FC 'topic'
+func_article = (__F 'article/article')
+func_column = __F 'column'
+func_topic = __F 'topic'
 d = "你好，欢迎使用前端乱炖公众号系统\n回复1查看最新原创文章，回复2查看最近更新专栏，回复3查看最新讨论，其他内容作为搜索关键字返回搜索结果"
 module.exports.controllers = 
     "/api":

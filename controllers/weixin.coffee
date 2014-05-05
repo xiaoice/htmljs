@@ -25,7 +25,7 @@ module.exports.controllers =
                             url:"http://www.html-js.com/article/"+a.id
                     res.reply news
             else if message == "2"
-                func_column.getAll 1,10,{is_publish:1},"last_article_time desc,visit_count desc",(error,articles)->
+                func_column.getAll 1,7,{is_publish:1},"last_article_time desc,visit_count desc",(error,articles)->
                     news = []
                     articles.forEach (a)->
                         news.push
@@ -35,7 +35,7 @@ module.exports.controllers =
                             url:"http://www.html-js.com/article/column/"+a.id
                     res.reply news
             else if message == "3"
-                func_topic.getAll 1,10,null,"last_comment_time desc,id desc",(error,articles)->
+                func_topic.getAll 1,7,null,"last_comment_time desc,id desc",(error,articles)->
                     news = []
                     articles.forEach (a)->
                         news.push
@@ -45,7 +45,7 @@ module.exports.controllers =
                             url:"http://www.html-js.com/topic/"+a.id
                     res.reply news
             else
-                func_search.query {"query":message,"limit":10,"offset":0},(error,data)->
+                func_search.query {"query":message,"limit":7,"offset":0},(error,data)->
                     data = JSON.parse data
                     results = data.data
                     news = []

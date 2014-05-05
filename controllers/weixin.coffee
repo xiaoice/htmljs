@@ -64,8 +64,8 @@ module.exports.controllers =
                         else if result.type == 'blog'
                             title +='「站外博客」'
                           news.push
-                            title:title+result.title
-                            description:title+result.title
+                            title:title+result.title.replace(/<[^>]*?>/g,"")
+                            description:title+result.title.replace(/<[^>]*?>/g,"")
                             picurl:""
                             url:"http://www.html-js.com/"+result.type+"/"+result.id
                     if news.length == 0

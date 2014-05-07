@@ -131,6 +131,7 @@ module.exports.controllers =
                       target_path_name:topic.title
                       content:req.body.html
           res.send result
+  
   "/comment/:id/zan":
     post:(req,res,next)->
       func_topic_comment.addCount req.params.id,"zan_count",()->
@@ -146,6 +147,27 @@ module.exports.controllers =
             target_path:"/topic/"+comment.topic_id
             action_name:"【赞】了您的跟帖"
             target_path_name:comment.html.replace(/<.*?>/g,"")
+  "/:id/zan":
+    post:(req,res,next)->
+      result = 
+        success:0
+      if res.locals.user.is_admin
+        func_topic.addCount req.params.id,"zan_count"
+      func_topic.addZan req.params.id,res.locals.user.id,req.body.score,(error,log,article)->
+        if error 
+          result.info = error.message
+        else
+          result.success = 1
+          func_info.add 
+            target_user_id:article.user_id
+            type:1
+            source_user_id:res.locals.user.id
+            source_user_nick:res.locals.user.nick
+            time:new Date()
+            target_path:"/topic/"
+            action_name:"【赞】了您发起的话题"
+            target_path_name:article.title
+        res.send result
 module.exports.filters = 
   "/":
     get:['freshLogin','topic/all-tags-ifonlyone','topic/all-topics','topic/recent-replys']
@@ -153,8 +175,10 @@ module.exports.filters =
     get:['checkLogin','topic/all-tags']
     post:['checkLoginJson']
   "/:id":
-    get:['freshLogin','topic/get-topic','topic/all-comments','topic/sametag_topics','topic/favs','book/some-books']
+    get:['freshLogin','topic/get-topic','topic/all-comments','topic/sametag_topics','topic/favs','book/some-books','topic/topic_zan_logs']
   "/:id/add":
+    post:['checkLoginJson']
+  "/:id/zan":
     post:['checkLoginJson']
   "/:id/edit":
     get:['checkLogin','topic/all-tags']

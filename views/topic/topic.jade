@@ -50,6 +50,18 @@ html
               .desc !{topic.html.replace(/<code>/g,"<code class='language-javascript'>")}
 
             .topic-user.clearfix
+              .zans.clearfix
+                a.zan.action(href="javascript:void(0);") 
+                    i.icon-thumbs-up
+                    if locals.has_zan
+                      |<em>已赞</em> <span>#{topic.zan_count}</span>
+                    else
+                      |<em>赞</em> <span>#{topic.zan_count}</span>
+                  if locals.zan_logs
+                    span.zanlogs
+                      each zan in zan_logs
+                        a.tooltip-trigger(href="/user/#{zan.user.id}",data-original-title="#{zan.user.desc}")
+                          img(src='#{zan.user.head_pic}')
               .actions
                 
                   if locals.user && (user.is_admin||user.id==topic.user_id)
@@ -193,13 +205,48 @@ html
     script(src='#{assets_head}/js/messageTip.js')
     script(src='#{assets_head}/js/mustache.js')
     script(src='#{assets_head}/js/moment.js')
-    script
+    script.
+      $(".zans .zan").click(function(){
+          var self = this;
+        HtmlJS.util.ajax("/topic/#{topic.id}/zan",{
+          score:$(self).attr("data-index")
+        },"post",function(data){
+          loadingTip.hide()
+            if(data.success){
+              
+              messageTip.show("成功！")
+                $("em",self).html("已赞")
+                $("span",self).html($("span",self).html()*1+1)
+            }else{
+              alert(data.info)
+            }
+        },function(){
+
+        },null,function(){
+        HtmlJS.util.ajax("/topic/#{topic.id}/zan",{
+          score:$(self).attr("data-index")
+        },"post",function(data){
+          loadingTip.hide()
+            if(data.success){
+              messageTip.show("成功！")
+                $("em",self).html("已赞")
+                $("span",self).html($("span",self).html()*1+1)
+            }else{
+              alert(data.info)
+            }
+        },function(){
+
+        },null,function(){
+        
+      })
+      })
+      })
       $('.user').tooltip({
           placement:"bottom"
       })
       var comment_tpl = $("#comment-tpl").html()
       var comment_tpl_1 = $("#comment-tpl-q").html()
-      $(".zan").click(function(e){
+      $(".con-action .zan").click(function(e){
         e.preventDefault();
         var self=this;
         $.ajax({

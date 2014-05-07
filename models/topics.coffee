@@ -30,3 +30,4 @@ module.exports =
     defaultValue:0
   tag_id:"int"
   pinyin:"varchar(1500)"
+  zan_count:"int"

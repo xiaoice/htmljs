@@ -167,6 +167,23 @@ module.exports.controllers =
             target_path:"/topic/"
             action_name:"【赞】了您发起的话题"
             target_path_name:article.title
+          data = 
+            md:"赞了此话题！"
+          data.html = safeConverter.makeHtml data.md
+          data.user_id = res.locals.user.id
+          data.user_headpic = res.locals.user.head_pic
+          data.user_nick = res.locals.user.nick
+          data.topic_id = req.params.id
+          func_topic_comment.add data,(error,comment,topic)->
+            if error 
+              result.info = error.message
+            else
+              result.success = 1
+              topic.updateAttributes
+                last_comment_time:new Date()
+                last_comment_user_id:res.locals.user.id
+                last_comment_user_nick:res.locals.user.nick
+                comment_count:topic.comment_count*1+1
         res.send result
 module.exports.filters = 
   "/":

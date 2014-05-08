@@ -7,6 +7,7 @@ func_info = __F 'info'
 func_topic_tag = __F 'topic/tag'
 func_user = __F 'user'
 func_search = __F 'search'
+func_email = __F 'email'
 config = require './../config.coffee'
 Sina=require("./../lib/sdk/sina.js")
 sina=new Sina(config.sdks.sina)
@@ -108,6 +109,11 @@ module.exports.controllers =
               action_name:"【回复】了您的话题"
               target_path_name:topic.title
               content:req.body.html
+            func_user.getById topic.user_id,(error,u)->
+              if u && u.email
+                func_email.sendMessage u.email,
+                  title:res.locals.user.nick+"回复了您发起的话题《"+topic.title+"》"
+                  content:req.body.html
             if atnames = req.body.md.match(/\@([^\s]*)/g)
               atcount = atnames.length
               html = req.body.html

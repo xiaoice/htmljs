@@ -40,6 +40,18 @@ module.exports =
         to:article_user.email,
         html:buffer
       })
+  sendMessage:(email,data)->
+    if not email then return;
+    buffer = ""
+    mustache.compileAndRender('./views/mail/common.html', data)
+    .on 'data',(c)->
+      buffer += c.toString()
+    .on 'end',()->
+      mail({
+        subject:data.title,
+        to:email,
+        html:buffer
+      })
   sendAnswer:(answer,question,card)->
     if not card.email then return;
     buffer = ""

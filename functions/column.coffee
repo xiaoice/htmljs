@@ -142,14 +142,12 @@ func_column =
         id:column_id
     .success (column)->
       if column
-        nowtime = new Date().getTime()
-        if (nowtime - column.last_notify_time) >1000*60*60*24 #&& (nowtime - column.last_article_time) >1000*60*60*24*5
-          Card.find
-            where:
-              user_id:column.user_id
-          .success (card)->
-            if card && card.email
-              func_email.sendColumnNotify column,card
-              column.updateAttributes({last_notify_time:nowtime})
+        Card.find
+          where:
+            user_id:column.user_id
+        .success (card)->
+          if card && card.email
+            func_email.sendColumnNotify column,card
+            column.updateAttributes({last_notify_time:nowtime})
 __FC func_column,Column,['delete','add','addCount','count','update']
 module.exports = func_column

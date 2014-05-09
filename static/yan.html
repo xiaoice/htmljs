@@ -20,6 +20,7 @@
                 responseCallback("Right back atcha")
             }
         })
+        bridge.addWord("haha")
         bridge.send('Hello from the javascript')
         bridge.send('Please respond to this', function responseCallback(responseData) {
             console.log("Javascript got its response", responseData)

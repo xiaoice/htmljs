@@ -136,6 +136,9 @@ module.exports.controllers =
                       action_name:"在回帖中【提到】了你"
                       target_path_name:topic.title
                       content:req.body.html
+                    func_email.sendMessage user.email,
+                      title:res.locals.user.nick+"在《"+topic.title+"》回帖中【提到】了你"
+                      content:req.body.html
           res.send result
   
   "/comment/:id/zan":

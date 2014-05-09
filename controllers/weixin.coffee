@@ -13,7 +13,8 @@ module.exports.controllers =
             info = req.weixin
             username = info.FromUserName
             message = info.Content
-
+            if message.length > 10
+                res.send '0k'
             if message == "1"
                 func_article.getAll 1,10,{is_publish:1,is_yuanchuang:1},"id desc",(error,articles)->
                     news = []

@@ -12,13 +12,13 @@ module.exports.controllers =
         "post":wechat('xinyu198736', (req, res, next)->
             info = req.weixin
             username = info.FromUserName
-            message = info.Content
+            message = if info.Content then info.Content else ""
             console.log req.weixin
             if message.length > 10
                 res.send '0k'
             if info.Event == "subscribe" || message == "?"
-                res.replay d
-            if message == "1"
+                res.reply d
+            else if message == "1"
                 func_article.getAll 1,10,{is_publish:1,is_yuanchuang:1},"id desc",(error,articles)->
                     news = []
                     articles.forEach (a)->

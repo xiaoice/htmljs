@@ -3,7 +3,7 @@ func_article = (__F 'article/article')
 func_column = __F 'column'
 func_topic = __F 'topic'
 func_search = __F 'search'
-d = "你好，欢迎使用前端乱炖公众号系统\n回复1查看最新原创文章，回复2查看最近更新专栏，回复3查看最新讨论，其他内容作为搜索关键字返回搜索结果"
+d = "你好，欢迎使用前端乱炖公众号系统\n回复1查看最新原创文章，\n回复2查看最近更新专栏，\n回复3查看最新讨论，\n回复：\"搜索：关键词\"可以使用本站的搜索系统搜索信息。\n也欢迎偶尔调戏下小炖(๑╹∀╹๑)萌。"
 module.exports.controllers = 
     "/api":
         get:wechat("xinyu198736",(req,res,next)->
@@ -15,6 +15,8 @@ module.exports.controllers =
             message = info.Content
             if message.length > 10
                 res.send '0k'
+            if info.Event == "subscribe" || message == "?"
+                res.replay d
             if message == "1"
                 func_article.getAll 1,10,{is_publish:1,is_yuanchuang:1},"id desc",(error,articles)->
                     news = []
@@ -45,8 +47,8 @@ module.exports.controllers =
                             picurl:a.user_headpic
                             url:"http://www.html-js.com/topic/"+a.id
                     res.reply news
-            else
-                func_search.query {"query":message,"limit":7,"offset":0},(error,data)->
+            else if message.substr(0,2) == "搜索"
+                func_search.query {"query":message.substr(3,message.length-1),"limit":7,"offset":0},(error,data)->
                     data = JSON.parse data
                     results = data.data
                     news = []

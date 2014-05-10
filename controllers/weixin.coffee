@@ -13,6 +13,7 @@ module.exports.controllers =
             info = req.weixin
             username = info.FromUserName
             message = info.Content
+            console.log req.weixin
             if message.length > 10
                 res.send '0k'
             if info.Event == "subscribe" || message == "?"

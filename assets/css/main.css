@@ -132,12 +132,12 @@ body{background:url(../images/bg-repeat.png);background:#e2e2e2;}
 #act #speaker .infos .who em{font-weight:bold;font-style:normal;font-size:16px;}
 #act #speaker .infos .topic{font-size:14px;margin:10px 0;}#act #speaker .infos .topic em{font-weight:bold;color:#c54d1a;font-style:normal;font-size:16px;}
 #acts{background:#efefef;}#acts #content{margin:30px auto;}
-#acts .act-item{background:#fff;margin-bottom:20px;display:inline-block;vertical-align:top;width:450px;margin-right:10px;height:166px;}#acts .act-item .act-infos{font-size:14px;padding:15px;color:#fff;}#acts .act-item .act-infos .ln{line-height:20px;margin-bottom:2px;font-size:14px;}#acts .act-item .act-infos .ln a{color:#333;font-weight:bold;text-decoration:none;}
-#acts .act-item .act-infos .act-title{font-size:18px;line-height:30px;}
+#acts .act-item{background:#fff;margin-bottom:20px;display:inline-block;vertical-align:top;width:450px;margin-right:10px;height:166px;}#acts .act-item .act-infos{font-size:14px;padding:15px;color:#fff;}#acts .act-item .act-infos .ln{line-height:20px;margin-bottom:2px;font-size:14px;}
+#acts .act-item .act-infos .act-title{font-size:18px;line-height:30px;}#acts .act-item .act-infos .act-title a{font-weight:bold;text-decoration:none;color:#333;}
 #acts .act-item .act-infos .act-time{color:#999;font-size:12px;}
 #acts .act-item .act-infos .act-location{color:#999;font-size:12px;}
 #acts .act-item .act-infos .act-limit{color:#999;font-size:12px;}
-#acts .act-item .act-infos .act-action{margin-top:10px;}#acts .act-item .act-infos .act-action a{font-weight:bold;color:#fff;}
+#acts .act-item .act-infos .act-action{margin-top:10px;}#acts .act-item .act-infos .act-action a{font-weight:bold;}
 #acts .act-item.isdown .act-title{color:#aaa;}
 #acts .act-item.isdown .act-infos{background:#ddd;}#acts .act-item.isdown .act-infos .act-action .btn{background:#bbb;color:#eee;border:none;}
 #books{background:#efefef;}#books ul,#books li{list-style:none;padding:0;margin:0;}

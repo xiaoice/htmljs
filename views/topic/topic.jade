@@ -114,7 +114,7 @@ html
                         .ans-con 
                           .con-hd 
                             a(href="/user/#{ans.user_id}") #{ans.user_nick}
-                            |<span style="color:#999;">(#{moment(ans.createdAt).fromNow()})</span>
+                            .hd-time #{moment(ans.createdAt).fromNow()}
                           .con-bd !{ans.html.replace(/<code>/g,"<code class='language-javascript'>")}
                           .con-action
                             //

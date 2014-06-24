@@ -177,9 +177,10 @@ html
                         .comment-right
                           div.con 
                             span.author.vcard.item
-                              a.value.url.fn(rel='author', href='/user/#{comment.user_id}') #{comment.user_nick}：
+                              a.value.url.fn(rel='author', href='/user/#{comment.user_id}') #{comment.user_nick}
+                              .hd-time #{moment(comment.createdAt).fromNow()}
                             .html !{comment.html}
-                          .time #{moment(comment.createdAt).fromNow()}
+                          .time 
                             a.reply(data-nick="#{comment.user_nick}") 回复
                   else
                     div 暂无评论

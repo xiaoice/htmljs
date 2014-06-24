@@ -17,8 +17,14 @@ module.exports = (function() {
       this.options.foreignKey = Utils._.underscoredIf(Utils.singularize(this.source.tableName, this.source.options.language) + "Id", this.source.options.underscored)
     }
 
-    if (!this.as) {
-      this.as = this.options.as = Utils.singularize(this.target.tableName, this.target.options.language)
+    if (this.as) {
+      this.isAliased = true
+    } else {
+      this.as = Utils.singularize(this.target.tableName, this.target.options.language)
+      // Hotfix
+      if (this.as === this.target.tableName) {
+        this.as = Utils.singularize(this.target.name, this.target.options.language)
+      }
     }
 
     this.associationAccessor = this.isSelfAssociation

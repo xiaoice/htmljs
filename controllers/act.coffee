@@ -99,9 +99,14 @@ module.exports.controllers =
               func_act.getById req.params.id,(error,act)->
                 if not error
                   sina=new Sina(config.sdks.sina)
+                  str = ""
+                  if act.share_text
+                    str = act.share_text
+                  else
+                    str = "我在@前端乱炖 报名了【"+act.title+"】的活动，欢迎关注或者参与：http://www.html-js.com/act/"+act.id
                   sina.statuses.update 
                     access_token:res.locals.user.weibo_token
-                    status:"我在@前端乱炖 报名了【"+act.title+"】的活动，欢迎关注或者参与：http://www.html-js.com/act/"+act.id
+                    status:str
               
               result.success = 1
               result.data = joiner

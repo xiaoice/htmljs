@@ -9,6 +9,12 @@ Column.sync()
 ColumnRss = __M 'column_rsses'
 ColumnRss.belongsTo Card,{foreignKey:"user_id"}
 ColumnRss.sync()
+
+ColumnUsers = __M 'article/column_users'
+# ColumnRss.belongsTo Card,{foreignKey:"user_id"}
+User.hasOne ColumnUsers,{foreignKey:"user_id"}
+ColumnUsers.belongsTo User,{foreignKey:"user_id"}
+ColumnUsers.sync()
 func_email = __F 'email'
 
 func_column = 
@@ -136,6 +142,35 @@ func_column =
         callback new Error '没有订阅过此专栏'
     .error (e)->
       callback e
+  getColumnUsers:(column_id,callback)->
+    ColumnUsers.findAll
+      where:
+        column_id:column_id
+      include:[User]
+    .success (users)->
+      callback null,users
+    .error (e)->
+      callback e
+  addColumnUser:(column_id,user_nick,callback)->
+    User.find
+      where:
+        nick:user_nick
+    .success (user)->
+      if not user
+        callback new Error '不存在的用户'
+      else
+        ColumnUsers.create
+          column_id:column_id
+          user_id:user.id
+          user_nick:user.nick
+          user_headpic:user.head_pic
+        .success ()->
+          callback null
+        .error (e)->
+          callback e
+    .error (e)->
+      callback e
+    
   checkNotify:(column_id)->
     Column.find
       where:

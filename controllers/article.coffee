@@ -451,6 +451,19 @@ module.exports.controllers =
         if error then next error
         else
           res.redirect 'back'
+  "/column/:id/adduser":
+    
+    post:(req,res,next)->
+      result = 
+        success:0
+        info:""
+      func_column.addColumnUser req.params.id,req.body.nick,(error)->
+        if error 
+          result.info = error.message
+        else
+          result.success =1 
+        res.send result
+
   "/column/:id":
     get:(req,res,next)->
       condition = 
@@ -556,7 +569,7 @@ module.exports.filters =
   "/column/:id/update":
     get:['checkLogin']
   "/column/:id":
-    get:['freshLogin','getRecent','get_infos','article/new-comments','article/recent-columns',"article/get-column",'article/get-column-rss','article/get-rsses']
+    get:['freshLogin','getRecent','get_infos','article/new-comments','article/recent-columns',"article/get-column",'article/get-column-rss','article/get-rsses','article/checkColumnUser']
   "/column/:id/rss":
     get:['checkLogin','checkCard']
     post:['checkLoginJson','checkCard']

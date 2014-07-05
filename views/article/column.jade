@@ -13,81 +13,68 @@ html(xmlns:wb='http://open.weibo.com/wb')
     - locals.pageId=1;
     include ../header
     #content.clearfix
+      .wrapper
       
-      if !locals.column
-          //- .column-list.clearfix.module
-          //-   .bd
-          //-     if locals.columns
-          //-       each column in columns
-          //-         .column-item 
-          //-           a.title(href="/article/column/#{column.id}") #{column.name}
-          //-           .user.hidden <a href="/user/#{column.user.id}">#{column.user.nick}</a>
-          //-           .others
-          //-             span.item
-          //-               span.key <i class="icon-white icon-list"></i>
-          //-               span.value #{column.article_count}
-          //-             span.item
-          //-               span.key <i class="icon-white icon-eye-open"></i>
-          //-               span.value #{column.visit_count}
-          //-             //- span.item
-          //-             //-   span.key <i class="icon-white icon-heart"></i>
-          //-             //-   span.value #{column.zan_count}
-          //-             if !column.is_public 
-          //-               span.item 
-          //-                 span.key <i class="icon-white icon-lock"></i>
-          //-           .actions.hidden
-          //-             if locals.user&&locals.user.id == column.user.id
-          //-               a 编辑
-          //-   .other-column
-          //-     //- a.column-item.more-column(href="/article/column") <i class="icon-show-thumbnails"></i>更多专栏
-          //-     a.btn(href="/article/column/add") <i class="icon-white icon-book-open"></i> 创建专栏
-          //-     a.btn(href="/article/add",data-original-title="",style="margin-right:10px;") 
-          //-       i.icon-plus.icon-white
-          //-       |  发表文章
-        else
-          ul.breadcrumb
-            li
-              a(href="/") 首页
-              span.divider /
-            li
-              a(href="/article/") 专栏
-              span.divider /
-            li.active
-              span #{column.name}
-          .column
-            .col-title 专栏名：#{column.name}
-            .col-user 所有者：#{column.user.nick}
-            .col-desc !{column.desc_html}
-            .col-share.item.share#bdshare.bdshare_t.bds_tools.get-codes-bdshare.clearfix(style="width:300px;margin-top:10px;float:none;margin-left:0px;")
-                span.index(style="float:left;line-height:30px;") 分享：
-                a.bds_tsina
-                a.bds_qzone
-                a.bds_tqq
-                a.bds_douban
-                a.bds_renren
-                a.shareCount
-            .col-action
-              if column.is_public || (locals.user&&user.id==column.user_id)
-                a.btn(href="/article/add?column_id=#{column.id}",data-original-title="",style="margin-right:10px;") 
-                  |  在此专栏发表文章
-              rss_his = '订阅者：'
-              if locals.rsses
-                each his in locals.rsses
-                  if his.cards
-                    - rss_his+=his.cards.nick+"，";
-              if !locals.is_rssed
-              
-                a.btn.tip-trigger(href="/article/column/#{column.id}/rss",data-original-title="#{rss_his}") 
-                  i.rss.social
-                  |   邮件订阅（#{locals.rsses?locals.rsses.length:''}）
+        ul.breadcrumb
+          li
+            a(href="/") 首页
+            span.divider /
+          li
+            a(href="/article/") 专栏
+            span.divider /
+          li.active
+            span #{column.name}
+        .column
+          .col-title 专栏名：#{column.name}
+          .col-user 所有者：#{column.user.nick}
+          .col-desc !{column.desc_html}
+          .col-share.item.share#bdshare.bdshare_t.bds_tools.get-codes-bdshare.clearfix(style="width:300px;margin-top:10px;float:none;margin-left:0px;")
+              span.index(style="float:left;line-height:30px;") 分享：
+              a.bds_tsina
+              a.bds_qzone
+              a.bds_tqq
+              a.bds_douban
+              a.bds_renren
+              a.shareCount
+          .col-action
+            if column.is_public || (locals.user&&user.id==column.user_id)||(locals.column_canedit)
+              a.btn(href="/article/add?column_id=#{column.id}",data-original-title="",style="margin-right:10px;") 
+                |  在此专栏发表文章
+            rss_his = '订阅者：'
+            if locals.rsses
+              each his in locals.rsses
+                if his.cards
+                  - rss_his+=his.cards.nick+"，";
+            if !locals.is_rssed
+              a.btn.tip-trigger(href="/article/column/#{column.id}/rss",data-original-title="#{rss_his}") 
+                i.rss.social
+                |   邮件订阅（#{locals.rsses?locals.rsses.length:''}）
+            else
+              a.btn.disabled.tip-trigger(data-original-title="#{rss_his}")
+                |已订阅（#{locals.rsses?locals.rsses.length:''}）
+            if (locals.user && locals.user.id == column.user_id)
+              a.btn(href="/article/column/#{column.id}/edit",style="margin-left:10px;") 编辑
+
+            if locals.user&&locals.user.is_admin
+              a.btn(href="/article/column/#{column.id}/create_pic") 缩略图
+        .module.editor-add
+          .hd 成员
+          .bd
+            .editors.clearfix
+              each u in locals.column_users
+                div.editor
+                  a.head-pic(href="/user/#{u.user.id}")
+                    img(src='#{u.user.head_pic}')
+                  .info
+                    a.nick(href="/user/#{u.user.id}") #{u.user.nick}
+                    .desc #{u.user.desc}
+            if (locals.user&&locals.user.is_admin)||(locals.user&&user.id==column.user_id)
+              .add-editor
+                form#add-editor
+                  input(type="text",name="usernick",placeholder="输入完整的昵称，可拼音联想")
+                  button.btn(type="submit") 添加成员
                 
-              else
-                a.btn.disabled.tip-trigger(data-original-title="#{rss_his}")
-                  |已订阅（#{locals.rsses?locals.rsses.length:''}）
-              if locals.user && locals.user.id == column.user_id
-                a.btn(href="/article/column/#{column.id}/edit",style="margin-left:10px;") 编辑
-              if locals.user&&locals.user.is_admin
-                a.btn(href="/article/column/#{column.id}/create_pic") 缩略图
+
       .content
         include ../320ad
         if articles && articles.length
@@ -150,8 +137,70 @@ html(xmlns:wb='http://open.weibo.com/wb')
         else
           .articles 暂无文章
         include ../page
+      .invite-user-dropdown
       
     script
+      var users = [];
+      $.ajax({
+        url:"/user/all-users",
+        dataType:"json",
+        success:function(data){
+          users = data;
+        }
+        })
+      var showUsers = function(us){
+      $(".invite-user-dropdown").css({
+        position:"absolute",
+        display:"block",
+        top:$("#add-editor input").offset().top+30,
+        left:$("#add-editor input").offset().left
+        })
+      $(".invite-user-dropdown").html("")
+      $(".invite-user-dropdown").removeClass("hidden")
+      var count = 0;
+        if(us.length==0){
+        $(".invite-user-dropdown").append("<li class=no>无结果</div>")
+        }
+        for(var i=0;i<(us.length>8?8:us.length);i++){
+        var u = us[i]
+          $(".invite-user-dropdown").append("<li class=user data-id="+u.id+">"+u.nick+"</div>")
+        }
+      }
+      var invited=[]
+      $(".invite-user-dropdown").click(function(e){
+        var target=e.target;
+        if($(target).hasClass("user")){
+          $("#add-editor input").val($(target).html())
+          $(".invite-user-dropdown").css({
+            display:"none"
+            })
+        }
+        })
+      $(".invite-list").click(function(e){
+        
+        if($(e.target).hasClass("close")){
+          var id = $(e.target.parentNode).attr("data-id")
+          $(e.target.parentNode).remove()
+          for(var i=0;i<invited.length;i++){
+            if(id==invited[i]){
+              invited.splice(i,1)
+            }
+          }
+          $("#invite").val(invited.join(","))
+          
+        }
+        })
+      $("#add-editor input").keyup(function(){
+        var keyword = $("#add-editor input").val();
+        var matchUsers = []
+        users.forEach(function(u){
+          if(u.nick.indexOf(keyword)!=-1||u.pinyin.indexOf(keyword)!=-1){
+            matchUsers.push(u)
+          }
+          })
+        console.log(matchUsers)
+        showUsers(matchUsers)
+        })
       $('.actions a').tooltip({
           placement:"bottom"
       })
@@ -172,6 +221,26 @@ html(xmlns:wb='http://open.weibo.com/wb')
             },5000)
           
           }
+          })
+        })
+      $("#add-editor").on("submit",function(e){
+        e.preventDefault();
+        $.ajax({
+          url:"/article/column/#{column.id}/adduser",
+          type:"post",
+          data:{
+            nick:$("#add-editor input").val()
+          },
+          dataType:"json",
+          success:function(data){
+            console.log(data)
+              if(data.success){
+                alert("添加成功！")
+                window.location.reload();
+              }else{
+              alert(data.info)
+              }
+            }
           })
         })
     include ../footer

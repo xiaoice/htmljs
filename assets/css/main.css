@@ -472,6 +472,15 @@ body{background:url(../images/bg-repeat.png);background:#e5e5e5;}
 #read article.post .entry-title .item{font-size:12px;margin-right:20px;}#read article.post .entry-title .item .index{color:#aaa;}
 #read article.post .entry-title .item .value{color:#888;}
 #read article.post .entry-content{padding:20px 0;color:#404040;font-size:13px;}
+#articles .invite-user-dropdown{width:362px;border:1px solid #ddd;background:#fff;position:absolute;left:-25px;z-index:10000;top:30px;}#articles .invite-user-dropdown li{list-style:none;line-height:20px;font-size:13px;padding:5px;cursor:pointer;}
+#articles .invite-user-dropdown li:hover{background:#5bb793;color:#fff;}
+#articles .editor-add .editors .editor{width:260px;float:left;border:1px solid #eee;background:#f7f7f7;padding:10px;margin-right:10px;margin-bottom:10px;}#articles .editor-add .editors .editor .head-pic{float:left;width:50px;overflow:hidden;height:50px;border-radius:60px;}#articles .editor-add .editors .editor .head-pic img{width:50px;height:50px;display:block;border-radius:60px;}
+#articles .editor-add .editors .editor .info{float:left;margin-left:10px;width:200px;}#articles .editor-add .editors .editor .info .nick{font-size:14px;color:#555;font-weight:bold;}
+#articles .editor-add .editors .editor .info .desc{color:#999;font-size:12px;margin-top:5px;line-height:18px;height:35px;overflow:hidden;}
+#articles .editor-add .editors .editor .info .weibo{color:#555;font-size:12px;margin-top:5px;}
+#articles .editor-add .add-editor{margin-top:20px;position:relative;}#articles .editor-add .add-editor form{margin:0;}
+#articles .editor-add .add-editor input{vertical-align:top;}
+#articles .editor-add .add-editor button{vertical-align:top;}
 #articles .right-actions{float:right;}
 #articles .topactions{margin-bottom:10px;}
 #articles .my-columns a{margin-left:10px;color:#f27369;}

@@ -20,6 +20,9 @@ module.exports =
   is_public:
     defaultValue:1
     type:"tinyint"
+  is_tuan:
+    defaultValue:0
+    type:"tinyint"
   desc_md:"text"
   desc_html:
     type:"text"

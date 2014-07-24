@@ -35,15 +35,15 @@ html
                     .padding
                       #wmd-bar-parent
                         #wmd-button-bar
-                    textarea.wmd-input#wmd-input(name="desc_md",placeholder='专栏描述',required) #{locals.column?locals.column.desc_md:''}
+                    textarea.wmd-input#wmd-input(name="desc_md",placeholder='专栏描述',required,style="height:300px;") #{locals.column?locals.column.desc_md:''}
                     
-                .control-group.hidden
+                .control-group
                   label.radio 
-                    input(type='radio', value = "0",name='is_public',checked) 
-                    | 只有我可以发表文章到专栏
+                    input(type='radio', value = "1",name='is_tuan') 
+                    | 团队专栏
                   label.radio
-                    input(type='radio', value = "1",name='is_public') 
-                    | 所有人都可以投递到此专栏
+                    input(type='radio', value = "0",name='is_tuan',checked) 
+                    | 个人专栏
                 .control-group#wmd-preview-parent
                   .wmd-panel.wmd-preview#wmd-preview-con
                     .padding

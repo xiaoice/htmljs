@@ -36,7 +36,7 @@ html
                         .padding
                           #wmd-bar-parent
                             #wmd-button-bar
-                          textarea.expand.wmd-input#wmd-input(name="md",placeholder="文章内容，markdown语法。如果没有写完，可以直接关闭页面，下次打开内容仍然会在。") #{locals.article?article.md:''}
+                          textarea.expand.wmd-input#wmd-input(name="md",placeholder="文章内容，markdown语法。如果没有写完，可以直接关闭页面，下次打开内容仍然会在。工具栏最后一个按钮点击后可以全屏编辑。") #{locals.article?article.md:''}
                   .tab-pane#seeeditor
                     .control-group
                       script(type="text/plain",id="myEditor")

@@ -72,18 +72,22 @@ html
             .module.tuanColumn
               .hd 团队专栏
               .bd
-                each column in tuan_columns
-                  .column
-                    a.title(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
-                    .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
-                    .user
-                      span 作者：
-                      a(href="/user/#{column.user.id}") #{column.user.nick}
-                    .actions
-                        a.rss-btn(href="/article/column/#{column.id}/rss")
-                          i.rss.social
-                          |  邮件订阅（#{column.rss_count}）
-         
+                .column-list
+                  each column in tuan_columns
+                    .column
+                      a.title(href="/article/column/#{column.id}") #{column.name}（#{column.article_count}）
+                      .desc !{column.desc_html?column.desc_html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,50)+"...":""}
+                      .user
+                        span 作者：
+                        a(href="/user/#{column.user.id}") #{column.user.nick}
+                      .actions
+                          a.rss-btn(href="/article/column/#{column.id}/rss")
+                            i.rss.social
+                            |  邮件订阅（#{column.rss_count}）
+                .actions
+                  a.btn(href="/article/column/add") 创建专栏 
+                  a.more(href="/article/column") 所有专栏（#{locals.all_count?all_count.column:0}）
+
           if locals.topics
             .module.mod
               .hd

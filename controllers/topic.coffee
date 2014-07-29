@@ -139,6 +139,11 @@ module.exports.controllers =
                     func_email.sendMessage user.email,
                       title:res.locals.user.nick+"在《"+topic.title+"》回帖中【提到】了你"
                       content:req.body.html
+          if req.body.to_weibo
+            sina.statuses.update 
+              access_token:res.locals.user.weibo_token
+              status:'我在@前端乱炖 回复了话题《'+topic.title+'》'+'http://www.html-js.com/topic/'+topic.id+" "+req.body.html.replace(/<[^>]*>/g,'').replace(/\s/g,'').substr(0,140)
+          
           res.send result
   
   "/comment/:id/zan":

@@ -86,10 +86,10 @@ html
                       a(href='/topic/#{topic.id}', title='#{topic.title}', rel='bookmark') 
 
                         |#{topic.title}
-                      if topic['topic_tags.name']
+                      if topic.topicTag
                         |[
                         a.tag(href="/topic/?tag_id=#{topic.tag_id}")
-                          |#{topic['topic_tags.name']}
+                          |#{topic.topicTag.name}
                         |] 
                       if topic.comment_count == 0
                         span.label.tip.new New

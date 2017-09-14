@@ -50,7 +50,7 @@
     "phantomjs": "^1.9.7-10",
     "queuedo": "^0.9.8",
     "qunit": "^0.6.4",
-    "rainbow": "^0.2.1",
+    "rainbow": "^1.0.0",
     "readof": "^0.9.5",
     "redis": "^0.10.3",
     "request": "^2.36.0",

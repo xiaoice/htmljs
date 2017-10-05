@@ -29,7 +29,7 @@
     "dependparser": "0.0.8",
     "doxmate": "^0.2.6",
     "eventproxy": "^0.3.1",
-    "express": "^3.4.8",
+    "express": "^4.16.0",
     "form-data": "^0.1.4",
     "formatjson": "0.0.1",
     "glob": "^4.0.2",

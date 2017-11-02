@@ -1,0 +1,10 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.8.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:marked:20170907':
+    - doxmate > marked:
+        patched: '2017-11-02T01:25:12.580Z'
+    - iced-coffee-script > docco > marked:
+        patched: '2017-11-02T01:25:12.580Z'

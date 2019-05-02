@@ -57,7 +57,7 @@
     "segment": "0.0.5",
     "sequelize": "^1.7.9",
     "snserror": "0.0.2",
-    "strong-agent": "^0.4.6",
+    "strong-agent": "^1.6.3",
     "stylus": "^0.46.3",
     "tinycolor2": "^0.10.0",
     "underscore": "^1.6.0",

@@ -4,7 +4,9 @@
   "description": "前端乱炖的repo",
   "main": "run.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -65,6 +67,8 @@
     "walk": "^2.3.3",
     "wechat": "^0.6.8",
     "weibov2": "^0.9.3",
-    "xss": "^0.1.9"
-  }
+    "xss": "^0.1.9",
+    "snyk": "^1.234.0"
+  },
+  "snyk": true
 }

@@ -47,7 +47,7 @@
     "mustache": "^0.8.2",
     "node-uuid": "^1.4.1",
     "pagedown": "^1.1.0",
-    "phantomjs": "^1.9.7-10",
+    "phantomjs": "^2.1.1",
     "queuedo": "^0.9.8",
     "qunit": "^0.6.4",
     "rainbow": "^0.2.1",

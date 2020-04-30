@@ -49,7 +49,7 @@
     "pagedown": "^1.1.0",
     "phantomjs": "^1.9.7-10",
     "queuedo": "^0.9.8",
-    "qunit": "^0.6.4",
+    "qunit": "^1.0.0",
     "rainbow": "^0.2.1",
     "readof": "^0.9.5",
     "redis": "^0.10.3",

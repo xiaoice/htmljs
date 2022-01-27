@@ -39,7 +39,7 @@
     "jsdom": "^0.11.0",
     "less": "^1.7.3",
     "less-middleware": "^1.0.3",
-    "log4js": "^0.6.14",
+    "log4js": "^6.4.0",
     "longjohn": "^0.2.4",
     "methods": "^1.0.1",
     "moment": "^2.7.0",
